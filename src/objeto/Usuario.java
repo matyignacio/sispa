@@ -9,12 +9,13 @@ package objeto;
  *
  * @author Kuky
  */
-public class ObjetoBase {
+public class Usuario {
 
     private int id;
     private String nombre;
-    private boolean visible;
-    private Usuario usuario;
+    private String mail;
+    private String clave;
+    private Perfil perfil;
 
     public int getId() {
         return id;
@@ -32,20 +33,28 @@ public class ObjetoBase {
         this.nombre = nombre;
     }
 
-    public boolean isVisible() {
-        return visible;
+    public String getMail() {
+        return mail;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getClave() {
+        return clave;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
 }
