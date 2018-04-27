@@ -48,4 +48,9 @@ public class Inciso {
         this.parcial = parcial;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(this.getNumero());//To change body of generated methods, choose Tools | Templates.
+    }
+
 }
