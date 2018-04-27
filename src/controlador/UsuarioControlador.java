@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import objeto.Inciso;
 import objeto.Usuario;
 public class UsuarioControlador {
     
@@ -23,7 +22,7 @@ public class UsuarioControlador {
     
     public Usuario extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Usuarios\"";
+        String consultaSql = "SELECT * FROM SISPA.Usuarios";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -43,7 +42,7 @@ public class UsuarioControlador {
     
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Usuarios\"";
+        String consultaSql = "SELECT * FROM SISPA.Usuarios";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
