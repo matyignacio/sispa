@@ -64,7 +64,7 @@ public class UsuarioControlador {
     
       public void insertar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO \"Usuarios\"( nombre, mail, clave) VALUES (?, ?, ?)";
+        String consultaSql = "INSERT INTO SISPA.Usuarios ( nombre, mail, clave) VALUES (?, ?, ?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
@@ -77,7 +77,7 @@ public class UsuarioControlador {
       
       public void modificar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE \"Usuarios\" SET nombre=?, mail=?, clave=? WHERE id=?";
+        String consultaSql = "UPDATE SISPA.Usuarios SET nombre=?, mail=?, clave=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
@@ -91,7 +91,7 @@ public class UsuarioControlador {
       
       public void borrar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM \"Usuarios\" WHERE id=?";
+        String consultaSql = "DELETE FROM SISPA.Usuarios WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, usuario.getId());
         ps.executeUpdate();
