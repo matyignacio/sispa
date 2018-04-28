@@ -26,7 +26,7 @@ public class MuebleControlador {
 
     public Mueble extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM SISPA.Muebles WHERE id=?";
+        String consultaSql = "SELECT * FROM public.Muebles WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
