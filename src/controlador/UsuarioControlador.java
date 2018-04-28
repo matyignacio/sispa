@@ -22,7 +22,7 @@ public class UsuarioControlador {
     
     public Usuario extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM SISPA.Usuarios";
+        String consultaSql = "SELECT * FROM public.Usuarios";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -42,7 +42,7 @@ public class UsuarioControlador {
     
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM SISPA.Usuarios";
+        String consultaSql = "SELECT * FROM public.Usuarios";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -63,7 +63,7 @@ public class UsuarioControlador {
     
       public void insertar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO SISPA.Usuarios ( nombre, mail, clave) VALUES (?, ?, ?)";
+        String consultaSql = "INSERT INTO public.Usuarios ( nombre, mail, clave) VALUES (?, ?, ?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
@@ -76,7 +76,7 @@ public class UsuarioControlador {
       
       public void modificar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE SISPA.Usuarios SET nombre=?, mail=?, clave=? WHERE id=?";
+        String consultaSql = "UPDATE public.Usuarios SET nombre=?, mail=?, clave=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
@@ -90,7 +90,7 @@ public class UsuarioControlador {
       
       public void borrar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM SISPA.Usuarios WHERE id=?";
+        String consultaSql = "DELETE FROM public.Usuarios WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, usuario.getId());
         ps.executeUpdate();
