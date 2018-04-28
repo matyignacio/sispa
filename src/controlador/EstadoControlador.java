@@ -26,7 +26,7 @@ public class EstadoControlador {
 
     public Estado extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM SISPA.Estados WHERE id=?";
+        String consultaSql = "SELECT * FROM public.Estados WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
