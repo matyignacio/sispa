@@ -27,7 +27,7 @@ public class IncisoControlador {
 
     public Inciso extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM SISPA.Incisos WHERE id=?";
+        String consultaSql = "SELECT * FROM public.Incisos WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -47,7 +47,7 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM SISPA.Incisos";
+        String consultaSql = "SELECT * FROM public.Incisos";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -68,7 +68,7 @@ public class IncisoControlador {
 
     public void insertar(Inciso inciso) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO SISPA.Incisos (numero, principal, parcial)  VALUES (?,?,?)";
+        String consultaSql = "INSERT INTO public.Incisos (numero, principal, parcial)  VALUES (?,?,?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, inciso.getNumero());
         ps.setInt(2, inciso.getPrincipal());
@@ -81,7 +81,7 @@ public class IncisoControlador {
 
     public void modificar(Inciso inciso) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE SISPA.Incisos SET numero=?, principal=?, parcial=? WHERE id=?";
+        String consultaSql = "UPDATE public.Incisos SET numero=?, principal=?, parcial=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, inciso.getNumero());
         ps.setInt(2, inciso.getPrincipal());
@@ -95,7 +95,7 @@ public class IncisoControlador {
 
     public void borrar(Inciso inciso) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM SISPA.Incisos WHERE id=?";
+        String consultaSql = "DELETE FROM public.Incisos WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, inciso.getId());
         ps.executeUpdate();
