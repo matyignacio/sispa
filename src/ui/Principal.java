@@ -408,7 +408,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpInmueblesMouseExited
 
     private void jpInmueblesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInmueblesMousePressed
-        // TODO add your handling code here:
+        Inmuebles inmuebles;
+        inmuebles = new Inmuebles();
+        inmuebles.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jpInmueblesMousePressed
 
     private void jpInformesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInformesMouseClicked
