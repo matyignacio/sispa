@@ -12,7 +12,7 @@ package objeto;
 public class Categoria extends ObjetoBase {
 
     private Inciso inciso;
-    private CodigoPresupuestaro codigoPresupuestaro;
+    private CodigoPresupuestario codigoPresupuestaro;
 
     public Inciso getInciso() {
         return inciso;
@@ -22,11 +22,11 @@ public class Categoria extends ObjetoBase {
         this.inciso = inciso;
     }
 
-    public CodigoPresupuestaro getCodigoPresupuestaro() {
+    public CodigoPresupuestario getCodigoPresupuestaro() {
         return codigoPresupuestaro;
     }
 
-    public void setCodigoPresupuestaro(CodigoPresupuestaro codigoPresupuestaro) {
+    public void setCodigoPresupuestaro(CodigoPresupuestario codigoPresupuestaro) {
         this.codigoPresupuestaro = codigoPresupuestaro;
     }
 

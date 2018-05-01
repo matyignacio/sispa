@@ -10,5 +10,11 @@ package objeto;
  * @author Kuky
  */
 public class Marca extends ObjetoBase{
+
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
+    
     
 }

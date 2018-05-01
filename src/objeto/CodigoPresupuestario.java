@@ -9,7 +9,7 @@ package objeto;
  *
  * @author Kuky
  */
-public class CodigoPresupuestaro {
+public class CodigoPresupuestario {
 
     private int id;
     private int numero;
@@ -28,6 +28,11 @@ public class CodigoPresupuestaro {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.getNumero());
     }
 
 }

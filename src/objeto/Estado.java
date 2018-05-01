@@ -10,5 +10,10 @@ package objeto;
  * @author Kuky
  */
 public class Estado extends ObjetoBase{
+
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
     
 }

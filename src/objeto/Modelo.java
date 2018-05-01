@@ -30,4 +30,9 @@ public class Modelo extends ObjetoBase {
         this.año = año;
     }
 
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
+
 }

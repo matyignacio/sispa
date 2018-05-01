@@ -81,6 +81,7 @@ public class UsuarioControlador {
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
         ps.setString(3, usuario.getClave());
+        ps.setInt(4, usuario.getId());
        
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, usuario.toString() + " modificado correctamente");
