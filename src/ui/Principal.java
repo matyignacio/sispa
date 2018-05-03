@@ -342,8 +342,8 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
