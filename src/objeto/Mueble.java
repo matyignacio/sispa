@@ -37,7 +37,7 @@ public class Mueble extends BienPatrimonial {
 
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
-    }    
+    }
 
     @Override
     public String toString() {

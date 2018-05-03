@@ -5,11 +5,7 @@
  */
 package ui;
 
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.paint.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -342,7 +338,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
         // TODO add your handling code here:
-        System.exit(0);
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            System.exit(0);
+        } else {
+
+        }
     }//GEN-LAST:event_jl_salirMousePressed
 
     int xx, xy;
