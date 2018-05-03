@@ -69,7 +69,7 @@ public class ModeloControlador {
      
       public void insertar(Modelo modelo) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?);";
+        String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, modelo.getNombre());
         ps.setBoolean(2, modelo.isVisible());

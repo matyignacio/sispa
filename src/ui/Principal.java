@@ -350,6 +350,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         xx = evt.getX();
         xy = evt.getY();
+        
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged

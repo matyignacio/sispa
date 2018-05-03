@@ -76,6 +76,11 @@ public class Reparticion {
     public void setReparticionSuperior(Reparticion reparticionSuperior) {
         this.reparticionSuperior = reparticionSuperior;
     }
+
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
     
     
 }

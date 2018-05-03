@@ -28,7 +28,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Component id="jpPrincipal" pref="1054" max="32767" attributes="0"/>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -164,7 +164,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jlIconoAjustes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jlAjustes" pref="20" max="32767" attributes="0"/>
+                      <Component id="jlAjustes" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -225,7 +225,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jlIconoMuebles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jlMuebles" pref="20" max="32767" attributes="0"/>
+                      <Component id="jlMuebles" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -286,7 +286,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jlIconoInmuebles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jlInmuebles" pref="20" max="32767" attributes="0"/>
+                      <Component id="jlInmuebles" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -347,7 +347,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jlIconoInformes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jlInformes" pref="20" max="32767" attributes="0"/>
+                      <Component id="jlInformes" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -408,7 +408,7 @@
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jlIconoUsuarios" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jlUsuarios" pref="20" max="32767" attributes="0"/>
+                      <Component id="jlUsuarios" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
