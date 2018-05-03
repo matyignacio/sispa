@@ -18,6 +18,7 @@ public class Muebles extends javax.swing.JFrame {
      */
     public Muebles() {
         initComponents();
+        jlNombreUsuario.setText(Login.usuario.getNombre());
     }
 
     /**
@@ -31,9 +32,11 @@ public class Muebles extends javax.swing.JFrame {
 
         jpPrincipal = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
-        jlSubtitulo = new javax.swing.JLabel();
         jl_salir = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
+        jlSubtitulo = new javax.swing.JLabel();
+        jlBienvenido = new javax.swing.JLabel();
+        jlNombreUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -57,11 +60,6 @@ public class Muebles extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jlSubtitulo.setText("Sistema de Control de Patrimonio");
-        jpTitulo.add(jlSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
-
         jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jl_salir.setForeground(new java.awt.Color(255, 255, 255));
         jl_salir.setText("X");
@@ -77,6 +75,22 @@ public class Muebles extends javax.swing.JFrame {
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble_blanco.png"))); // NOI18N
         jlTituloPrincipal.setText("SISPA - Muebles");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 340, 70));
+
+        jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jlSubtitulo.setText("Sistema de Control de Patrimonio");
+        jpTitulo.add(jlSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+
+        jlBienvenido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        jlBienvenido.setText("Bienvenido: ");
+        jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
+
+        jlNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlNombreUsuario.setText("Usuario");
+        jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 170, -1));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 200));
 
@@ -169,6 +183,8 @@ public class Muebles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jl_salir;

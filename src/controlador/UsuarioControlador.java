@@ -101,18 +101,20 @@ public class UsuarioControlador {
         conn.close();
     }
 
-    public int validarUsuario(Usuario usuario) throws SQLException {
-        int validar = 0;
+    public Usuario validarUsuario(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "select * from public.Usuarios where nombre like ? AND clave like ?";
+        String consultaSql = "select * from public.\"Usuarios\" where mail like ? AND clave like ?";
         ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, usuario.getNombre());
+        ps.setString(1, usuario.getMail());
         ps.setString(2, usuario.getClave());
         ps.executeQuery();
         rs = ps.getResultSet();
         while (rs.next()) {
-            validar = 1;
+            usuario.setId(rs.getInt(1));
+            usuario.setNombre(rs.getString(2));
+            usuario.setMail(rs.getString(3));
+            usuario.setClave(rs.getString(4));
         }
-        return validar;
+        return usuario;
     }
 }

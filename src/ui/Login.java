@@ -110,13 +110,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 100, -1));
-        jbAceptar.getAccessibleContext().setAccessibleName("Aceptar");
 
         jlUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jlUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlUsuario.setForeground(new java.awt.Color(33, 150, 243));
         jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlUsuario.setText("Usuario: ");
+        jlUsuario.setText("Correo: ");
         jpPrincipal.add(jlUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 80, -1));
 
         jtfUsuario.setBackground(new java.awt.Color(204, 204, 204));
@@ -182,7 +181,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jpTituloMouseDragged
 
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
-        // TODO add your handling code here:
+        ValidarUsuario();
     }//GEN-LAST:event_jbAceptarActionPerformed
 
     private void jtfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsuarioActionPerformed
@@ -190,7 +189,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfUsuarioActionPerformed
 
     private void jtfClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfClaveActionPerformed
-        // TODO add your handling code here:
+        ValidarUsuario();
     }//GEN-LAST:event_jtfClaveActionPerformed
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
@@ -264,15 +263,14 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void ValidarUsuario() {
-        usuario.setNombre(jtfUsuario.getText());
-        usuario.setClave(jtfClave.getPassword().toString());
-        int respuesta = 0;
+        usuario.setMail(jtfUsuario.getText());
+        usuario.setClave(jtfClave.getText());
         try {
-            respuesta = usuarioControlador.validarUsuario(usuario);
+            usuario = usuarioControlador.validarUsuario(usuario);
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (respuesta == 1) {
+        if (usuario.getId() != 0) {
             Principal principal;
             principal = new Principal();
             principal.setVisible(true);

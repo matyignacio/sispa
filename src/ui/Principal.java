@@ -19,6 +19,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        jlNombreUsuario.setText(Login.usuario.getNombre());
     }
 
     /**
@@ -32,9 +33,11 @@ public class Principal extends javax.swing.JFrame {
 
         jpPrincipal = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
-        jlSubtitulo = new javax.swing.JLabel();
+        jlNombreUsuario = new javax.swing.JLabel();
         jl_salir = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
+        jlSubtitulo = new javax.swing.JLabel();
+        jlBienvenido = new javax.swing.JLabel();
         jpAjustes = new javax.swing.JPanel();
         jlAjustes = new javax.swing.JLabel();
         jlIconoAjustes = new javax.swing.JLabel();
@@ -73,10 +76,11 @@ public class Principal extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jlSubtitulo.setText("Sistema de Control de Patrimonio");
-        jpTitulo.add(jlSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+        jlNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlNombreUsuario.setText("Usuario");
+        jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 170, -1));
 
         jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jl_salir.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,7 +95,17 @@ public class Principal extends javax.swing.JFrame {
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setText("SISPA");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 110, -1));
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 110, -1));
+
+        jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jlSubtitulo.setText("Sistema de Control de Patrimonio");
+        jpTitulo.add(jlSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+
+        jlBienvenido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        jlBienvenido.setText("Bienvenido: ");
+        jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 200));
 
@@ -133,7 +147,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jlIconoAjustes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addComponent(jlAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -177,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jlIconoMuebles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addComponent(jlMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -221,7 +235,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jlIconoInmuebles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addComponent(jlInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -265,7 +279,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jlIconoInformes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlInformes, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addComponent(jlInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -309,7 +323,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jlIconoUsuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addComponent(jlUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -322,7 +336,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,6 +506,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jlAjustes;
+    private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlIconoAjustes;
     private javax.swing.JLabel jlIconoInformes;
     private javax.swing.JLabel jlIconoInmuebles;
@@ -500,6 +515,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jlInformes;
     private javax.swing.JLabel jlInmuebles;
     private javax.swing.JLabel jlMuebles;
+    private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuarios;
