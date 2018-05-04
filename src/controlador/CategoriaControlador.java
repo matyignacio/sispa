@@ -12,16 +12,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.Categoria;
-import objeto.Categoria;
 
 public class CategoriaControlador {
-    
-     private Categoria categoria;
+
+    private Categoria categoria;
     private ArrayList<Categoria> categorias;
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    
+
     public Categoria extraer(Integer id) throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
@@ -44,8 +43,9 @@ public class CategoriaControlador {
         conn.close();
         return categoria;
     }
-public ArrayList<Categoria> extraerTodos() throws SQLException {
-         IncisoControlador i = new IncisoControlador();
+
+    public ArrayList<Categoria> extraerTodos() throws SQLException {
+        IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Categorias\"";
@@ -69,36 +69,36 @@ public ArrayList<Categoria> extraerTodos() throws SQLException {
         return categorias;
     }
 
- public void insertar(Categoria modelo) throws SQLException {
+    public void insertar(Categoria modelo) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario) VALUES (?, ?, ?, ?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, categoria.getNombre());
         ps.setBoolean(2, categoria.isVisible());
         ps.setInt(3, categoria.getInciso().getId());
-        ps.setInt (4, categoria.getCodigoPresupuestaro().getId());
+        ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
         ps.execute();
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
     }
- 
- public void modificar(Categoria categoria) throws SQLException {
+
+    public void modificar(Categoria categoria) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, categoria.getNombre());
         ps.setBoolean(2, categoria.isVisible());
         ps.setInt(3, categoria.getInciso().getId());
-        ps.setInt (4, categoria.getCodigoPresupuestaro().getId());
+        ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
         ps.setInt(5, categoria.getId());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, categoria.toString() + " modificado correctamente");
         ps.close();
         conn.close();
     }
- 
- public void borrar(Categoria categoria) throws SQLException {
+
+    public void borrar(Categoria categoria) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM \"Categorias\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -108,5 +108,5 @@ public ArrayList<Categoria> extraerTodos() throws SQLException {
         ps.close();
         conn.close();
     }
- 
+
 }

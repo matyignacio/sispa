@@ -23,7 +23,7 @@ public class UsuarioControlador {
 
     public Usuario extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Usuarios";
+        String consultaSql = "SELECT * FROM public.\"Usuarios\"";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -34,6 +34,7 @@ public class UsuarioControlador {
             usuario.setNombre(rs.getString(2));
             usuario.setMail(rs.getString(3));
             usuario.setClave(rs.getString(4));
+            usuario.setVisible(rs.getBoolean(5));
         }
         rs.close();
         ps.close();
@@ -43,7 +44,7 @@ public class UsuarioControlador {
 
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Usuarios";
+        String consultaSql = "SELECT * FROM public.\"Usuarios\"";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -54,6 +55,7 @@ public class UsuarioControlador {
             usuario.setNombre(rs.getString(2));
             usuario.setMail(rs.getString(3));
             usuario.setClave(rs.getString(4));
+            usuario.setVisible(rs.getBoolean(5));
             usuarios.add(usuario);
         }
         rs.close();
@@ -64,7 +66,7 @@ public class UsuarioControlador {
 
     public void insertar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO public.Usuarios ( nombre, mail, clave) VALUES (?, ?, ?)";
+        String consultaSql = "INSERT INTO public.\"Usuarios\" ( nombre, mail, clave) VALUES (?, ?, ?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
@@ -77,13 +79,13 @@ public class UsuarioControlador {
 
     public void modificar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE public.Usuarios SET nombre=?, mail=?, clave=? WHERE id=?";
+        String consultaSql = "UPDATE public.\"Usuarios\" SET nombre=?, mail=?, clave=?, visible=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getNombre());
         ps.setString(2, usuario.getMail());
         ps.setString(3, usuario.getClave());
-        ps.setInt(4, usuario.getId());
-
+        ps.setBoolean(4, usuario.isVisible());
+        ps.setInt(5, usuario.getId());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, usuario.toString() + " modificado correctamente");
         ps.close();
@@ -92,7 +94,7 @@ public class UsuarioControlador {
 
     public void borrar(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM public.Usuarios WHERE id=?";
+        String consultaSql = "DELETE FROM public.\"Usuarios\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, usuario.getId());
         ps.executeUpdate();
@@ -114,6 +116,7 @@ public class UsuarioControlador {
             usuario.setNombre(rs.getString(2));
             usuario.setMail(rs.getString(3));
             usuario.setClave(rs.getString(4));
+            usuario.setVisible(rs.getBoolean(5));
         }
         return usuario;
     }
