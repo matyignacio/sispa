@@ -77,13 +77,14 @@ public class Login extends javax.swing.JFrame {
 
         jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jl_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jl_salir.setText("X");
+        jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
         jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jl_salirMousePressed(evt);
             }
         });
-        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 0, 20, -1));
+        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 40));
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));

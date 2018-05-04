@@ -5,6 +5,7 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -32,11 +33,12 @@ public class Muebles extends javax.swing.JFrame {
 
         jpPrincipal = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
-        jl_salir = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jl_salir = new javax.swing.JLabel();
+        jl_volver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -60,16 +62,6 @@ public class Muebles extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jl_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jl_salir.setText("X");
-        jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jl_salirMousePressed(evt);
-            }
-        });
-        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 0, 22, -1));
-
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble_blanco.png"))); // NOI18N
@@ -91,6 +83,28 @@ public class Muebles extends javax.swing.JFrame {
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 170, -1));
+
+        jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jl_salir.setForeground(new java.awt.Color(255, 255, 255));
+        jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
+        jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jl_salirMousePressed(evt);
+            }
+        });
+        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, 40, 40));
+
+        jl_volver.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jl_volver.setForeground(new java.awt.Color(255, 255, 255));
+        jl_volver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_volver.png"))); // NOI18N
+        jl_volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jl_volverMousePressed(evt);
+            }
+        });
+        jpTitulo.add(jl_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 200));
 
@@ -115,14 +129,6 @@ public class Muebles extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
-        // TODO add your handling code here:
-        this.dispose();
-        Principal principal;
-        principal = new Principal();
-        principal.setVisible(true);
-    }//GEN-LAST:event_jl_salirMousePressed
-
     int xx, xy;
     private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
         // TODO add your handling code here:
@@ -136,6 +142,21 @@ public class Muebles extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jpTituloMouseDragged
+
+    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            System.exit(0);
+        } else {
+
+        }
+    }//GEN-LAST:event_jl_salirMousePressed
+
+    private void jl_volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_volverMousePressed
+        this.dispose();
+        Principal principal = new Principal();
+        principal.setVisible(true);
+    }//GEN-LAST:event_jl_volverMousePressed
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }
@@ -188,6 +209,7 @@ public class Muebles extends javax.swing.JFrame {
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jl_salir;
+    private javax.swing.JLabel jl_volver;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     // End of variables declaration//GEN-END:variables
