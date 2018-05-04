@@ -16,6 +16,7 @@ public class Usuario {
     private String mail;
     private String clave;
     private Perfil perfil;
+    private boolean visible;
 
     public int getId() {
         return id;
@@ -60,6 +61,14 @@ public class Usuario {
     @Override
     public String toString() {
         return this.getNombre();
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
 }

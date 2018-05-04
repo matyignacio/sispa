@@ -37,16 +37,13 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
-          
-          
-            
         }
         rs.close();
         ps.close();
         conn.close();
         return estado;
     }
-    
+
     public ArrayList<Estado> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.Estados";
@@ -59,8 +56,6 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
-            
-          
             estados.add(estado);
         }
         rs.close();
@@ -75,28 +70,26 @@ public class EstadoControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, estado.getNombre());
         ps.setBoolean(2, estado.isVisible());
-   
         ps.execute();
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
     }
-    
-     public void modificar(Estado estado) throws SQLException {
+
+    public void modificar(Estado estado) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE public.Estados SET nombre=?, visible=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, estado.getNombre());
         ps.setBoolean(2, estado.isVisible());
         ps.setInt(3, estado.getId());
-
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, estado.toString() + " modificado correctamente");
         ps.close();
         conn.close();
     }
-     
-      public void borrar(Estado estado) throws SQLException {
+
+    public void borrar(Estado estado) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Estados WHERE id=?";
         ps = conn.prepareStatement(consultaSql);

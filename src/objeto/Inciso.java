@@ -15,6 +15,15 @@ public class Inciso {
     private int numero;
     private int principal;
     private int parcial;
+    private boolean visible;
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public int getId() {
         return id;

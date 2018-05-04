@@ -13,6 +13,15 @@ public class CodigoPresupuestario {
 
     private int id;
     private int numero;
+    private boolean visible;
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public int getId() {
         return id;

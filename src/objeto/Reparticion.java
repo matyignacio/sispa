@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Kuky
  */
 public class Reparticion {
-    
+
     private int id;
     private String nombre;
     private String localidad;
@@ -20,6 +20,15 @@ public class Reparticion {
     private String domicilio;
     private ArrayList<Usuario> usuarios;
     private Reparticion reparticionSuperior;
+    private boolean visible;
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public int getId() {
         return id;
@@ -81,6 +90,5 @@ public class Reparticion {
     public String toString() {
         return this.getNombre();
     }
-    
-    
+
 }

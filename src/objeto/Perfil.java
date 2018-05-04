@@ -13,24 +13,24 @@ import java.util.ArrayList;
  */
 public class Perfil {
 
-    private int administrador;
-    private int comun;
+    private int tipo;
+    private boolean visible;
     private ArrayList<Operaciones> operaciones;
 
-    public int getAdministrador() {
-        return administrador;
+    public int getTipo() {
+        return tipo;
     }
 
-    public void setAdministrador(int administrador) {
-        this.administrador = administrador;
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
     }
 
-    public int getComun() {
-        return comun;
+    public boolean isVisible() {
+        return visible;
     }
 
-    public void setComun(int comun) {
-        this.comun = comun;
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public ArrayList<Operaciones> getOperaciones() {

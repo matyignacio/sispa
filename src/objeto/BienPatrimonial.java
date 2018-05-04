@@ -47,5 +47,4 @@ public class BienPatrimonial extends ObjetoBase {
     public void setReparticion(Reparticion reparticion) {
         this.reparticion = reparticion;
     }
-
 }
