@@ -29,10 +29,4 @@ public class Modelo extends ObjetoBase {
     public void setAño(int año) {
         this.año = año;
     }
-
-    @Override
-    public String toString() {
-        return this.getNombre();
-    }
-
 }

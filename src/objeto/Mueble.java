@@ -39,11 +39,4 @@ public class Mueble extends BienPatrimonial {
         this.modelo = modelo;
     }
 
-    @Override
-    public String toString() {
-        return this.getNombre();
-    }
-    
-    
-
 }

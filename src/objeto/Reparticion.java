@@ -86,9 +86,4 @@ public class Reparticion {
         this.reparticionSuperior = reparticionSuperior;
     }
 
-    @Override
-    public String toString() {
-        return this.getNombre();
-    }
-
 }

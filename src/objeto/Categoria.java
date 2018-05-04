@@ -30,9 +30,4 @@ public class Categoria extends ObjetoBase {
         this.codigoPresupuestaro = codigoPresupuestaro;
     }
 
-    @Override
-    public String toString() {
-        return this.getNombre();
-    }
-
 }
