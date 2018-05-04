@@ -48,4 +48,9 @@ public class ObjetoBase {
         this.usuario = usuario;
     }
 
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
+
 }
