@@ -11,6 +11,6 @@ import java.util.ArrayList;
  *
  * @author Kuky
  */
-public class Perfil extends ObjetoBase {
+public class Perfil extends ObjetoBase{
 
 }
