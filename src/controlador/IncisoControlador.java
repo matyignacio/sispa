@@ -27,7 +27,7 @@ public class IncisoControlador {
 
     public Inciso extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Incisos WHERE id=?";
+        String consultaSql = "SELECT * FROM public.\"Incisos\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();

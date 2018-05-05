@@ -23,7 +23,7 @@ public class CodigoPresupuestarioControlador {
 
     public CodigoPresupuestario extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Codigos_Presupuestarios WHERE id=?";
+        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();

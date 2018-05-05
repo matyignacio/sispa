@@ -5,21 +5,23 @@
  */
 package ui;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
- * @author proxc
+ * @author Kuky
  */
 public class Principal extends javax.swing.JFrame {
 
     /**
-     * Creates new form Home
+     * Creates new form Principal2
      */
     public Principal() {
         initComponents();
-        jlNombreUsuario.setText(Login.usuario.getNombre());
+        jlNombreUsuario.setText(Login.usuario.toString());
     }
 
     /**
@@ -31,13 +33,13 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dpPrincipal = new javax.swing.JDesktopPane();
         jpPrincipal = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
         jlNombreUsuario = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
-        jl_salir = new javax.swing.JLabel();
         jpAjustes = new javax.swing.JPanel();
         jlAjustes = new javax.swing.JLabel();
         jlIconoAjustes = new javax.swing.JLabel();
@@ -53,10 +55,24 @@ public class Principal extends javax.swing.JFrame {
         jpUsuarios = new javax.swing.JPanel();
         jlUsuarios = new javax.swing.JLabel();
         jlIconoUsuarios = new javax.swing.JLabel();
+        jmbPrincipal = new javax.swing.JMenuBar();
+        jmModulos = new javax.swing.JMenu();
+        jmiMuebles = new javax.swing.JMenuItem();
+        jmiInmubles = new javax.swing.JMenuItem();
+        jmiInformes = new javax.swing.JMenuItem();
+        jmiUsuarios = new javax.swing.JMenuItem();
+        jmiAjustes = new javax.swing.JMenuItem();
+        jmSesion = new javax.swing.JMenu();
+        jmiCerrarSesion = new javax.swing.JMenuItem();
+        jmAcercaDe = new javax.swing.JMenu();
+        jmiSispa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocationByPlatform(true);
-        setUndecorated(true);
+        setTitle("SISPA");
+        setResizable(false);
+
+        dpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        dpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setMinimumSize(new java.awt.Dimension(860, 600));
@@ -97,18 +113,7 @@ public class Principal extends javax.swing.JFrame {
         jlBienvenido.setText("Bienvenido: ");
         jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
-        jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jl_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
-        jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jl_salirMousePressed(evt);
-            }
-        });
-        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, 40, 40));
-
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 200));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 200));
 
         jpAjustes.setBackground(java.awt.SystemColor.controlHighlight);
         jpAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,40 +335,94 @@ public class Principal extends javax.swing.JFrame {
 
         jpPrincipal.add(jpUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 140, 120));
 
+        dpPrincipal.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout dpPrincipalLayout = new javax.swing.GroupLayout(dpPrincipal);
+        dpPrincipal.setLayout(dpPrincipalLayout);
+        dpPrincipalLayout.setHorizontalGroup(
+            dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE)
+        );
+        dpPrincipalLayout.setVerticalGroup(
+            dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+        );
+
+        jmbPrincipal.setBackground(new java.awt.Color(33, 150, 243));
+        jmbPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(33, 150, 243)));
+        jmbPrincipal.setForeground(new java.awt.Color(33, 150, 243));
+
+        jmModulos.setText("Modulos");
+
+        jmiMuebles.setText("Muebles");
+        jmiMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMueblesActionPerformed(evt);
+            }
+        });
+        jmModulos.add(jmiMuebles);
+
+        jmiInmubles.setText("Inmuebles");
+        jmModulos.add(jmiInmubles);
+
+        jmiInformes.setText("Informes");
+        jmModulos.add(jmiInformes);
+
+        jmiUsuarios.setText("Usuarios");
+        jmModulos.add(jmiUsuarios);
+
+        jmiAjustes.setText("Ajustes");
+        jmModulos.add(jmiAjustes);
+
+        jmbPrincipal.add(jmModulos);
+
+        jmSesion.setText("Sesion");
+
+        jmiCerrarSesion.setText("Cerrar Sesion");
+        jmiCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCerrarSesionActionPerformed(evt);
+            }
+        });
+        jmSesion.add(jmiCerrarSesion);
+
+        jmbPrincipal.add(jmSesion);
+
+        jmAcercaDe.setText("Acerca de");
+
+        jmiSispa.setText("Que es SISPA");
+        jmAcercaDe.add(jmiSispa);
+
+        jmbPrincipal.add(jmAcercaDe);
+
+        setJMenuBar(jmbPrincipal);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(dpPrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(dpPrincipal)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    int xx, xy;
+    private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
+
+    }//GEN-LAST:event_jpTituloMouseDragged
+
     private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
-        // TODO add your handling code here:
-        xx = evt.getX();
-        xy = evt.getY();
-        
+
     }//GEN-LAST:event_jpTituloMousePressed
 
-    private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
+    private void jpAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseClicked
         // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xx, y - xy);
-    }//GEN-LAST:event_jpTituloMouseDragged
+    }//GEN-LAST:event_jpAjustesMouseClicked
 
     private void jpAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseEntered
         // TODO add your handling code here:
@@ -376,10 +435,6 @@ public class Principal extends javax.swing.JFrame {
     private void jpAjustesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpAjustesMousePressed
-
-    private void jpAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpAjustesMouseClicked
 
     private void jpMueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMouseClicked
         // TODO add your handling code here:
@@ -395,10 +450,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jpMueblesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMousePressed
         Muebles muebles;
-        muebles = new Muebles();
-        muebles.setVisible(true);
-        this.dispose();
-
+        try {
+            muebles = new Muebles();
+            this.dpPrincipal.add(muebles);
+            muebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jpMueblesMousePressed
 
     private void jpInmueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInmueblesMouseClicked
@@ -452,21 +510,21 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpUsuariosMousePressed
 
-    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
-       // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
-            System.exit(0);
-        } else {
-
+    private void jmiMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMueblesActionPerformed
+        Muebles muebles;
+        try {
+            muebles = new Muebles();
+            this.dpPrincipal.add(muebles);
+            muebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jl_salirMousePressed
-    public void setColor(JPanel panel) {
-        panel.setBackground(new java.awt.Color(197, 197, 197));
-    }
 
-    public void resetColor(JPanel panel) {
-        panel.setBackground(new java.awt.Color(240, 240, 240));
-    }
+    }//GEN-LAST:event_jmiMueblesActionPerformed
+
+    private void jmiCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerrarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -505,6 +563,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dpPrincipal;
     private javax.swing.JLabel jlAjustes;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlIconoAjustes;
@@ -519,7 +578,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuarios;
-    private javax.swing.JLabel jl_salir;
+    private javax.swing.JMenu jmAcercaDe;
+    private javax.swing.JMenu jmModulos;
+    private javax.swing.JMenu jmSesion;
+    private javax.swing.JMenuBar jmbPrincipal;
+    private javax.swing.JMenuItem jmiAjustes;
+    private javax.swing.JMenuItem jmiCerrarSesion;
+    private javax.swing.JMenuItem jmiInformes;
+    private javax.swing.JMenuItem jmiInmubles;
+    private javax.swing.JMenuItem jmiMuebles;
+    private javax.swing.JMenuItem jmiSispa;
+    private javax.swing.JMenuItem jmiUsuarios;
     private javax.swing.JPanel jpAjustes;
     private javax.swing.JPanel jpInformes;
     private javax.swing.JPanel jpInmuebles;
