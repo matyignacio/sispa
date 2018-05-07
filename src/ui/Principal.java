@@ -113,7 +113,7 @@ public class Principal extends javax.swing.JFrame {
         jlBienvenido.setText("Bienvenido: ");
         jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 200));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 200));
 
         jpAjustes.setBackground(java.awt.SystemColor.controlHighlight);
         jpAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,7 +157,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpPrincipal.add(jpAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 140, 120));
+        jpPrincipal.add(jpAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 140, 120));
 
         jpMuebles.setBackground(java.awt.SystemColor.controlHighlight);
         jpMuebles.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,7 +201,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpPrincipal.add(jpMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 140, 120));
+        jpPrincipal.add(jpMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 140, 120));
 
         jpInmuebles.setBackground(java.awt.SystemColor.controlHighlight);
         jpInmuebles.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,7 +245,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpPrincipal.add(jpInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 140, 120));
+        jpPrincipal.add(jpInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 140, 120));
 
         jpInformes.setBackground(java.awt.SystemColor.controlHighlight);
         jpInformes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,7 +289,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpPrincipal.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 330, 140, 120));
+        jpPrincipal.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 140, 120));
 
         jpUsuarios.setBackground(java.awt.SystemColor.controlHighlight);
         jpUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -333,7 +333,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpPrincipal.add(jpUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 140, 120));
+        jpPrincipal.add(jpUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 140, 120));
 
         dpPrincipal.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -341,7 +341,9 @@ public class Principal extends javax.swing.JFrame {
         dpPrincipal.setLayout(dpPrincipalLayout);
         dpPrincipalLayout.setHorizontalGroup(
             dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1067, Short.MAX_VALUE)
+            .addGroup(dpPrincipalLayout.createSequentialGroup()
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         dpPrincipalLayout.setVerticalGroup(
             dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,6 +374,11 @@ public class Principal extends javax.swing.JFrame {
         jmModulos.add(jmiUsuarios);
 
         jmiAjustes.setText("Ajustes");
+        jmiAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAjustesActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiAjustes);
 
         jmbPrincipal.add(jmModulos);
@@ -433,7 +440,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpAjustesMouseExited
 
     private void jpAjustesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMousePressed
-        // TODO add your handling code here:
+        Ajustes ajustes;
+        try {
+            ajustes = new Ajustes();
+            this.dpPrincipal.add(ajustes);
+            ajustes.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jpAjustesMousePressed
 
     private void jpMueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMouseClicked
@@ -525,6 +539,17 @@ public class Principal extends javax.swing.JFrame {
     private void jmiCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerrarSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
+
+    private void jmiAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAjustesActionPerformed
+        Ajustes ajustes;
+        try {
+            ajustes = new Ajustes();
+            this.dpPrincipal.add(ajustes);
+            ajustes.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmiAjustesActionPerformed
 
     /**
      * @param args the command line arguments

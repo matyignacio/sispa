@@ -5,28 +5,20 @@
  */
 package ui;
 
-import controlador.MuebleControlador;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import ui.grillas.GrillaMuebles;
 
 /**
  *
  * @author Kuky
  */
-public class Muebles extends javax.swing.JInternalFrame {
-
-    GrillaMuebles grillaMuebles;
-    MuebleControlador mc = new MuebleControlador();
+public class Ajustes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Muebles2
      */
-    public Muebles() throws SQLException {
+    public Ajustes() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        grillaMuebles = new GrillaMuebles(mc.extraerTodos());
-        jtMuebles.setModel(grillaMuebles);
     }
 
     /**
@@ -45,8 +37,6 @@ public class Muebles extends javax.swing.JInternalFrame {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtMuebles = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -70,8 +60,8 @@ public class Muebles extends javax.swing.JInternalFrame {
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Muebles");
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
+        jlTituloPrincipal.setText("SISPA - Ajustes");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -90,22 +80,7 @@ public class Muebles extends javax.swing.JInternalFrame {
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 140));
-
-        jtMuebles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jtMuebles);
-
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 960, 320));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 140));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -154,13 +129,11 @@ public class Muebles extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
-    private javax.swing.JTable jtMuebles;
     // End of variables declaration//GEN-END:variables
 }
