@@ -52,9 +52,9 @@ public class ReparticionControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        reparticiones = new ArrayList<>();
         while (rs.next()) {
             reparticion = new Reparticion();
-            reparticiones = new ArrayList<>();
             reparticion.setId(rs.getInt(1));
             reparticion.setNombre(rs.getString(2));
             reparticion.setLocalidad(rs.getString(3));

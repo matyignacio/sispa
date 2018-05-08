@@ -43,11 +43,11 @@ public class MarcaControlador {
 
     public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\"";
+        String consultaSql = "SELECT * FROM public.\"Marcas\" ";
         ps = conn.prepareStatement(consultaSql);
-        ps.execute();
+        ps.executeQuery();
         rs = ps.getResultSet();
-        marcas = new ArrayList<>();
+        marcas = new ArrayList<Marca>();
         while (rs.next()) {
             marca = new Marca();
             marca.setId(rs.getInt(1));
