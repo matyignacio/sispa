@@ -44,10 +44,12 @@ public class MarcaControlador {
     
      public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Marcas";
+        String consultaSql = "SELECT * FROM public.\"Marcas\" ";
         ps = conn.prepareStatement(consultaSql);
-        ps.execute();
+        ps.executeQuery();
         rs = ps.getResultSet();
+        
+        
         while (rs.next()) {
             marca = new Marca();
             marcas = new ArrayList<>();
@@ -76,7 +78,7 @@ public class MarcaControlador {
         conn.close();
     }
       
-      public void modificar(Marca inciso) throws SQLException {
+      public void modificar(Marca marca) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE public.Marcas SET nombre=?, visible=? WHERE id=?"; 
         ps = conn.prepareStatement(consultaSql);
@@ -84,7 +86,7 @@ public class MarcaControlador {
         ps.setBoolean(2, marca.isVisible());
         ps.setInt(3, marca.getId());
         ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, inciso.toString() + " modificado correctamente");
+        JOptionPane.showMessageDialog(null, marca.toString() + " modificado correctamente");
         ps.close();
         conn.close();
     }

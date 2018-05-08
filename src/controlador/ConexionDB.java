@@ -11,7 +11,7 @@ public class ConexionDB {
         Connection conexion = null;
         String connectionString = "jdbc:postgresql://localhost:5432/SISPA";
         String user = "postgres";
-        String pass = "postgres";
+        String pass = "asd";
         //esta clase INTENTA realizar la conexion a la base de datos
         try {
             Class.forName("org.postgresql.Driver");
