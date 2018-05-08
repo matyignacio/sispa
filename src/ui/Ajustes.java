@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ui.ajustes.Marcas;
+import ui.abm.ABMMarcas;
 
 /**
  *
@@ -561,9 +561,9 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpMarcaMouseExited
 
     private void jpMarcaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMousePressed
-        Marcas marcas;
+        ABMMarcas marcas;
         try {
-            marcas = new Marcas();
+            marcas = new ABMMarcas();
             this.desktopPane.add(marcas);
             marcas.show();
         } catch (SQLException ex) {

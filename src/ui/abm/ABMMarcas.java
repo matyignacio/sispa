@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.ajustes;
+package ui.abm;
 
 import controlador.MarcaControlador;
 import ui.*;
@@ -17,7 +17,7 @@ import ui.grillas.GrillaMarcas;
  *
  * @author Kuky
  */
-public class Marcas extends javax.swing.JInternalFrame {
+public class ABMMarcas extends javax.swing.JInternalFrame {
 
     GrillaMarcas grillaMarcas;
     MarcaControlador mc = new MarcaControlador();
@@ -30,7 +30,7 @@ public class Marcas extends javax.swing.JInternalFrame {
         this.desktopPane = desktopPane;
     }
 
-    public Marcas() throws SQLException {
+    public ABMMarcas() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
         grillaMarcas = new GrillaMarcas((ArrayList<Marca>) mc.extraerTodos());
@@ -62,6 +62,7 @@ public class Marcas extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("SISPA - Marcas");
+        setPreferredSize(new java.awt.Dimension(1189, 692));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,7 +162,7 @@ public class Marcas extends javax.swing.JInternalFrame {
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1181, Short.MAX_VALUE)
+            .addGap(0, 1197, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desktopPaneLayout.createSequentialGroup()
                     .addContainerGap()
