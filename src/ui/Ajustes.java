@@ -37,6 +37,18 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jpModelo = new javax.swing.JPanel();
+        jlModelo = new javax.swing.JLabel();
+        jpMarca = new javax.swing.JPanel();
+        jlMarca = new javax.swing.JLabel();
+        jpInciso = new javax.swing.JPanel();
+        jlInciso = new javax.swing.JLabel();
+        jpCodigoPresupuestario = new javax.swing.JPanel();
+        jlCodigoPresupuestario = new javax.swing.JLabel();
+        jpCategoria = new javax.swing.JPanel();
+        jlCategoria = new javax.swing.JLabel();
+        jpEstado = new javax.swing.JPanel();
+        jlEstado = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -81,6 +93,234 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 140));
+
+        jpModelo.setBackground(java.awt.SystemColor.controlHighlight);
+        jpModelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpModeloMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpModeloMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpModeloMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpModeloMousePressed(evt);
+            }
+        });
+
+        jlModelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlModelo.setForeground(new java.awt.Color(33, 150, 243));
+        jlModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlModelo.setText("Modelos");
+        jlModelo.setToolTipText("");
+
+        javax.swing.GroupLayout jpModeloLayout = new javax.swing.GroupLayout(jpModelo);
+        jpModelo.setLayout(jpModeloLayout);
+        jpModeloLayout.setHorizontalGroup(
+            jpModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jpModeloLayout.setVerticalGroup(
+            jpModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpModeloLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 80, 80));
+
+        jpMarca.setBackground(java.awt.SystemColor.controlHighlight);
+        jpMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpMarcaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpMarcaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpMarcaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpMarcaMousePressed(evt);
+            }
+        });
+
+        jlMarca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlMarca.setForeground(new java.awt.Color(33, 150, 243));
+        jlMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlMarca.setText("Marcas");
+        jlMarca.setToolTipText("");
+
+        javax.swing.GroupLayout jpMarcaLayout = new javax.swing.GroupLayout(jpMarca);
+        jpMarca.setLayout(jpMarcaLayout);
+        jpMarcaLayout.setHorizontalGroup(
+            jpMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jpMarcaLayout.setVerticalGroup(
+            jpMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpMarcaLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 80, 80));
+
+        jpInciso.setBackground(java.awt.SystemColor.controlHighlight);
+        jpInciso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpIncisoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpIncisoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpIncisoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpIncisoMousePressed(evt);
+            }
+        });
+
+        jlInciso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlInciso.setForeground(new java.awt.Color(33, 150, 243));
+        jlInciso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlInciso.setText("Incisos");
+        jlInciso.setToolTipText("");
+
+        javax.swing.GroupLayout jpIncisoLayout = new javax.swing.GroupLayout(jpInciso);
+        jpInciso.setLayout(jpIncisoLayout);
+        jpIncisoLayout.setHorizontalGroup(
+            jpIncisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlInciso, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jpIncisoLayout.setVerticalGroup(
+            jpIncisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpIncisoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlInciso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpInciso, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 80, 80));
+
+        jpCodigoPresupuestario.setBackground(java.awt.SystemColor.controlHighlight);
+        jpCodigoPresupuestario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpCodigoPresupuestarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpCodigoPresupuestarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpCodigoPresupuestarioMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpCodigoPresupuestarioMousePressed(evt);
+            }
+        });
+
+        jlCodigoPresupuestario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlCodigoPresupuestario.setForeground(new java.awt.Color(33, 150, 243));
+        jlCodigoPresupuestario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCodigoPresupuestario.setText("Codigos P.");
+        jlCodigoPresupuestario.setToolTipText("");
+
+        javax.swing.GroupLayout jpCodigoPresupuestarioLayout = new javax.swing.GroupLayout(jpCodigoPresupuestario);
+        jpCodigoPresupuestario.setLayout(jpCodigoPresupuestarioLayout);
+        jpCodigoPresupuestarioLayout.setHorizontalGroup(
+            jpCodigoPresupuestarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlCodigoPresupuestario, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jpCodigoPresupuestarioLayout.setVerticalGroup(
+            jpCodigoPresupuestarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCodigoPresupuestarioLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlCodigoPresupuestario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpCodigoPresupuestario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 80, 80));
+
+        jpCategoria.setBackground(java.awt.SystemColor.controlHighlight);
+        jpCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpCategoriaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpCategoriaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpCategoriaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpCategoriaMousePressed(evt);
+            }
+        });
+
+        jlCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlCategoria.setForeground(new java.awt.Color(33, 150, 243));
+        jlCategoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCategoria.setText("Categoria");
+        jlCategoria.setToolTipText("");
+
+        javax.swing.GroupLayout jpCategoriaLayout = new javax.swing.GroupLayout(jpCategoria);
+        jpCategoria.setLayout(jpCategoriaLayout);
+        jpCategoriaLayout.setHorizontalGroup(
+            jpCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jpCategoriaLayout.setVerticalGroup(
+            jpCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCategoriaLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 80, 80));
+
+        jpEstado.setBackground(java.awt.SystemColor.controlHighlight);
+        jpEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpEstadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpEstadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpEstadoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpEstadoMousePressed(evt);
+            }
+        });
+
+        jlEstado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlEstado.setForeground(new java.awt.Color(33, 150, 243));
+        jlEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEstado.setText("Estado");
+        jlEstado.setToolTipText("");
+
+        javax.swing.GroupLayout jpEstadoLayout = new javax.swing.GroupLayout(jpEstado);
+        jpEstado.setLayout(jpEstadoLayout);
+        jpEstadoLayout.setHorizontalGroup(
+            jpEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+        jpEstadoLayout.setVerticalGroup(
+            jpEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpEstadoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 80, 80));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -127,12 +367,120 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jpTituloMousePressed
 
+    private void jpModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpModeloMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpModeloMouseClicked
+
+    private void jpModeloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpModeloMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpModeloMouseEntered
+
+    private void jpModeloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpModeloMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpModeloMouseExited
+
+    private void jpModeloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpModeloMousePressed
+
+    }//GEN-LAST:event_jpModeloMousePressed
+
+    private void jpMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpMarcaMouseClicked
+
+    private void jpMarcaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpMarcaMouseEntered
+
+    private void jpMarcaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpMarcaMouseExited
+
+    private void jpMarcaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpMarcaMousePressed
+
+    private void jpIncisoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpIncisoMouseClicked
+
+    private void jpIncisoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpIncisoMouseEntered
+
+    private void jpIncisoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpIncisoMouseExited
+
+    private void jpIncisoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpIncisoMousePressed
+
+    private void jpCodigoPresupuestarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCodigoPresupuestarioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCodigoPresupuestarioMouseClicked
+
+    private void jpCodigoPresupuestarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCodigoPresupuestarioMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCodigoPresupuestarioMouseEntered
+
+    private void jpCodigoPresupuestarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCodigoPresupuestarioMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCodigoPresupuestarioMouseExited
+
+    private void jpCodigoPresupuestarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCodigoPresupuestarioMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCodigoPresupuestarioMousePressed
+
+    private void jpCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCategoriaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCategoriaMouseClicked
+
+    private void jpCategoriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCategoriaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCategoriaMouseEntered
+
+    private void jpCategoriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCategoriaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCategoriaMouseExited
+
+    private void jpCategoriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCategoriaMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCategoriaMousePressed
+
+    private void jpEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEstadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpEstadoMouseClicked
+
+    private void jpEstadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEstadoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpEstadoMouseEntered
+
+    private void jpEstadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEstadoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpEstadoMouseExited
+
+    private void jpEstadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEstadoMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpEstadoMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlCategoria;
+    private javax.swing.JLabel jlCodigoPresupuestario;
+    private javax.swing.JLabel jlEstado;
+    private javax.swing.JLabel jlInciso;
+    private javax.swing.JLabel jlMarca;
+    private javax.swing.JLabel jlModelo;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
+    private javax.swing.JPanel jpCategoria;
+    private javax.swing.JPanel jpCodigoPresupuestario;
+    private javax.swing.JPanel jpEstado;
+    private javax.swing.JPanel jpInciso;
+    private javax.swing.JPanel jpMarca;
+    private javax.swing.JPanel jpModelo;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     // End of variables declaration//GEN-END:variables
