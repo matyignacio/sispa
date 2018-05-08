@@ -131,7 +131,7 @@ public class MuebleControlador {
         ps.close();
         conn.close();
     }
-    
+
     public void borrar(Mueble mueble) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Muebles WHERE id=?";

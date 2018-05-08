@@ -20,13 +20,12 @@ public class MarcaControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    
-    public Marca extraer (Integer id) throws SQLException
-    {
-     conn = ConexionDB.GetConnection();
-     String consultaSql = "SELECT * FROM public.Marcas WHERE id=?";
-      ps = conn.prepareStatement(consultaSql);
-      ps.setInt(1, id);
+
+    public Marca extraer(Integer id) throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.\"Marcas\" WHERE id=?";
+        ps = conn.prepareStatement(consultaSql);
+        ps.setInt(1, id);
         ps.executeQuery();
         rs = ps.getResultSet();
         while (rs.next()) {
@@ -34,27 +33,26 @@ public class MarcaControlador {
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
             marca.setVisible(rs.getBoolean(3));
-            
+
         }
         rs.close();
         ps.close();
         conn.close();
         return marca;
     }
-    
-     public ArrayList<Marca> extraerTodos() throws SQLException {
+
+    public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Marcas";
+        String consultaSql = "SELECT * FROM public.\"Marcas\"";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        marcas = new ArrayList<>();
         while (rs.next()) {
             marca = new Marca();
-            marcas = new ArrayList<>();
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
             marca.setVisible(rs.getBoolean(3));
-         
             marcas.add(marca);
         }
         rs.close();
@@ -62,10 +60,10 @@ public class MarcaControlador {
         conn.close();
         return marcas;
     }
-    
-      public void insertar(Marca marca) throws SQLException {
+
+    public void insertar(Marca marca) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO public.Marcas (nombre, visible)  VALUES (?,?)";
+        String consultaSql = "INSERT INTO public.\"Marcas\" (nombre, visible)  VALUES (?,?)";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, marca.getNombre());
         ps.setBoolean(2, marca.isVisible());
@@ -75,23 +73,23 @@ public class MarcaControlador {
         ps.close();
         conn.close();
     }
-      
-      public void modificar(Marca inciso) throws SQLException {
+
+    public void modificar(Marca marca) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE public.Marcas SET nombre=?, visible=? WHERE id=?"; 
+        String consultaSql = "UPDATE public.\"Marcas\" SET nombre=?, visible=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, marca.getNombre());
         ps.setBoolean(2, marca.isVisible());
         ps.setInt(3, marca.getId());
         ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, inciso.toString() + " modificado correctamente");
+        JOptionPane.showMessageDialog(null, marca.toString() + " modificado correctamente");
         ps.close();
         conn.close();
     }
-      
-      public void borrar(Marca marca) throws SQLException {
+
+    public void borrar(Marca marca) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM public.Marcas WHERE id=?";
+        String consultaSql = "DELETE FROM public.\"Marcas\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, marca.getId());
         ps.executeUpdate();
@@ -99,6 +97,4 @@ public class MarcaControlador {
         ps.close();
         conn.close();
     }
-    }
-
-
+}

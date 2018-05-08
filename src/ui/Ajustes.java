@@ -7,6 +7,9 @@ package ui;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ui.ajustes.Marcas;
 
 /**
  *
@@ -57,9 +60,11 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlPerfil = new javax.swing.JLabel();
         jpUsuario = new javax.swing.JPanel();
         jlUsuario = new javax.swing.JLabel();
+        jpReparticion1 = new javax.swing.JPanel();
+        jlReparticion1 = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("SISPA - Muebles");
+        setTitle("SISPA - Ajustes");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,7 +143,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 90, 90));
+        jpPrincipal.add(jpModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 90, 90));
 
         jpMarca.setBackground(java.awt.SystemColor.controlHighlight);
         jpMarca.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,7 +181,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 90, 90));
+        jpPrincipal.add(jpMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 90, 90));
 
         jpInciso.setBackground(java.awt.SystemColor.controlHighlight);
         jpInciso.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,7 +219,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpInciso, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 90, 90));
+        jpPrincipal.add(jpInciso, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 90, 90));
 
         jpCodigoPresupuestario.setBackground(java.awt.SystemColor.controlHighlight);
         jpCodigoPresupuestario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -252,7 +257,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpCodigoPresupuestario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 90, 90));
+        jpPrincipal.add(jpCodigoPresupuestario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 90, 90));
 
         jpCategoria.setBackground(java.awt.SystemColor.controlHighlight);
         jpCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,7 +295,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 90, 90));
+        jpPrincipal.add(jpCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 90, 90));
 
         jpEstado.setBackground(java.awt.SystemColor.controlHighlight);
         jpEstado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -328,7 +333,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 90, 90));
+        jpPrincipal.add(jpEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 90, 90));
 
         jpReparticion.setBackground(java.awt.SystemColor.controlHighlight);
         jpReparticion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -366,7 +371,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpReparticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, 90, 90));
+        jpPrincipal.add(jpReparticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 90, 90));
 
         jpPerfil.setBackground(java.awt.SystemColor.controlHighlight);
         jpPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,7 +409,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 90, 90));
+        jpPrincipal.add(jpPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 90, 90));
 
         jpUsuario.setBackground(java.awt.SystemColor.controlHighlight);
         jpUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -442,7 +447,45 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 .addGap(71, 71, 71))
         );
 
-        jpPrincipal.add(jpUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 90, 90));
+        jpPrincipal.add(jpUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 90, 90));
+
+        jpReparticion1.setBackground(java.awt.SystemColor.controlHighlight);
+        jpReparticion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpReparticion1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpReparticion1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpReparticion1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpReparticion1MousePressed(evt);
+            }
+        });
+
+        jlReparticion1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlReparticion1.setForeground(new java.awt.Color(33, 150, 243));
+        jlReparticion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlReparticion1.setText("Tipo Adquisic.");
+        jlReparticion1.setToolTipText("");
+
+        javax.swing.GroupLayout jpReparticion1Layout = new javax.swing.GroupLayout(jpReparticion1);
+        jpReparticion1.setLayout(jpReparticion1Layout);
+        jpReparticion1Layout.setHorizontalGroup(
+            jpReparticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlReparticion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jpReparticion1Layout.setVerticalGroup(
+            jpReparticion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpReparticion1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jlReparticion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+        );
+
+        jpPrincipal.add(jpReparticion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 240, 90, 90));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -518,7 +561,14 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpMarcaMouseExited
 
     private void jpMarcaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMousePressed
-        // TODO add your handling code here:
+        Marcas marcas;
+        try {
+            marcas = new Marcas();
+            this.desktopPane.add(marcas);
+            marcas.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jpMarcaMousePressed
 
     private void jpIncisoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMouseClicked
@@ -633,6 +683,22 @@ public class Ajustes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpUsuarioMousePressed
 
+    private void jpReparticion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpReparticion1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpReparticion1MouseClicked
+
+    private void jpReparticion1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpReparticion1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpReparticion1MouseEntered
+
+    private void jpReparticion1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpReparticion1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpReparticion1MouseExited
+
+    private void jpReparticion1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpReparticion1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpReparticion1MousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jlBienvenido;
@@ -645,6 +711,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlPerfil;
     private javax.swing.JLabel jlReparticion;
+    private javax.swing.JLabel jlReparticion1;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuario;
@@ -657,6 +724,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpPerfil;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpReparticion;
+    private javax.swing.JPanel jpReparticion1;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpUsuario;
     // End of variables declaration//GEN-END:variables
