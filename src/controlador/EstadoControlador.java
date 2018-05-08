@@ -50,9 +50,9 @@ public class EstadoControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+          estados = new ArrayList<>();
         while (rs.next()) {
             estado = new Estado();
-            estados = new ArrayList<>();
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));

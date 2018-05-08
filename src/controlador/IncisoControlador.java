@@ -51,9 +51,9 @@ public class IncisoControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        incisos = new ArrayList<>();
         while (rs.next()) {
             inciso = new Inciso();
-            incisos = new ArrayList<>();
             inciso.setId(rs.getInt(1));
             inciso.setNumero(rs.getInt(2));
             inciso.setPrincipal(rs.getInt(3));

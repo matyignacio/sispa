@@ -52,9 +52,10 @@ public class CategoriaControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        categorias = new ArrayList<>();
         while (rs.next()) {
             categoria = new Categoria();
-            categorias = new ArrayList<>();
+            
             categoria = new Categoria();
             categoria.setId(rs.getInt(1));
             categoria.setNombre(rs.getString(2));

@@ -46,9 +46,9 @@ public class CodigoPresupuestarioControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        codigos = new ArrayList<>();
         while (rs.next()) {
             codigo = new CodigoPresupuestario();
-            codigos = new ArrayList<>();
             codigo.setId(rs.getInt(1));
             codigo.setNumero(rs.getInt(2));
             codigo.setVisible(rs.getBoolean(3));

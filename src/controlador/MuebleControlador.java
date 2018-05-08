@@ -65,9 +65,9 @@ public class MuebleControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        muebles = new ArrayList<>();
         while (rs.next()) {
             mueble = new Mueble();
-            muebles = new ArrayList<>();
             mueble.setId(rs.getInt(1));
             mueble.setNombre(rs.getString(2));
             mueble.setVisible(rs.getBoolean(3));
@@ -131,7 +131,7 @@ public class MuebleControlador {
         ps.close();
         conn.close();
     }
-    
+
     public void borrar(Mueble mueble) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Muebles WHERE id=?";

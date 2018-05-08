@@ -50,6 +50,7 @@ public class PerfilControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        perfiles = new ArrayList<>();
         while (rs.next()) {
             perfil = new Perfil();
             perfil.setId(rs.getInt(1));

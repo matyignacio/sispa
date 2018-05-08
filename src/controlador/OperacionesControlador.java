@@ -47,9 +47,9 @@ public class OperacionesControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        operaciones = new ArrayList<>();
         while (rs.next()) {
             operacion = new Operaciones();
-            operaciones = new ArrayList<>();
             operacion.setId(rs.getInt(1));
             operacion.setNombre(rs.getString(2));
             operacion.setVisible(rs.getBoolean(3));

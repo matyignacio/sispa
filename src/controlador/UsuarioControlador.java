@@ -48,9 +48,9 @@ public class UsuarioControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
+        usuarios = new ArrayList<>();
         while (rs.next()) {
             usuario = new Usuario();
-            usuarios = new ArrayList<>();
             usuario.setId(rs.getInt(1));
             usuario.setNombre(rs.getString(2));
             usuario.setMail(rs.getString(3));
