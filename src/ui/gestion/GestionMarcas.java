@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.ajustes;
+package ui.gestion;
 
 import controlador.MarcaControlador;
 import ui.*;
@@ -17,7 +17,7 @@ import ui.grillas.GrillaMarcas;
  *
  * @author Kuky
  */
-public class Marcas extends javax.swing.JInternalFrame {
+public class GestionMarcas extends javax.swing.JInternalFrame implements Gestionable{
 
     GrillaMarcas grillaMarcas;
     MarcaControlador mc = new MarcaControlador();
@@ -30,7 +30,7 @@ public class Marcas extends javax.swing.JInternalFrame {
         this.desktopPane = desktopPane;
     }
 
-    public Marcas() throws SQLException {
+    public GestionMarcas() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
         grillaMarcas = new GrillaMarcas((ArrayList<Marca>) mc.extraerTodos());
@@ -56,9 +56,9 @@ public class Marcas extends javax.swing.JInternalFrame {
         jlNombreUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMarcas = new javax.swing.JTable();
-        jbAceptar = new javax.swing.JButton();
-        jbAceptar1 = new javax.swing.JButton();
-        jbAceptar2 = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Marcas");
@@ -122,38 +122,38 @@ public class Marcas extends javax.swing.JInternalFrame {
 
         jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1050, 330));
 
-        jbAceptar.setBackground(new java.awt.Color(204, 204, 204));
-        jbAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbAceptar.setForeground(new java.awt.Color(33, 150, 243));
-        jbAceptar.setText("Aceptar");
-        jbAceptar.addActionListener(new java.awt.event.ActionListener() {
+        jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
+        jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAceptarActionPerformed(evt);
+                jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 100, -1));
 
-        jbAceptar1.setBackground(new java.awt.Color(204, 204, 204));
-        jbAceptar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbAceptar1.setForeground(new java.awt.Color(33, 150, 243));
-        jbAceptar1.setText("Aceptar");
-        jbAceptar1.addActionListener(new java.awt.event.ActionListener() {
+        jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
+        jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
+        jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAceptar1ActionPerformed(evt);
+                jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 100, -1));
 
-        jbAceptar2.setBackground(new java.awt.Color(204, 204, 204));
-        jbAceptar2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbAceptar2.setForeground(new java.awt.Color(33, 150, 243));
-        jbAceptar2.setText("Aceptar");
-        jbAceptar2.addActionListener(new java.awt.event.ActionListener() {
+        jbModificar.setBackground(new java.awt.Color(204, 204, 204));
+        jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbModificar.setForeground(new java.awt.Color(33, 150, 243));
+        jbModificar.setText("Modificar");
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAceptar2ActionPerformed(evt);
+                jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -200,24 +200,24 @@ public class Marcas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jpTituloMousePressed
 
-    private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
 
-    }//GEN-LAST:event_jbAceptarActionPerformed
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
-    private void jbAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptar1ActionPerformed
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbAceptar1ActionPerformed
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
-    private void jbAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptar2ActionPerformed
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbAceptar2ActionPerformed
+    }//GEN-LAST:event_jbModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbAceptar;
-    private javax.swing.JButton jbAceptar1;
-    private javax.swing.JButton jbAceptar2;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbModificar;
+    private javax.swing.JButton jbNuevo;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
@@ -226,4 +226,9 @@ public class Marcas extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JTable jtMarcas;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizarGestion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
