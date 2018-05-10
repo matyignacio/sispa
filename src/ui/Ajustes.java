@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ui.abm.ABMMarcas;
+import ui.gestion.GestionMarcas;
 
 /**
  *
@@ -166,6 +166,11 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlMarca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlMarca.setText("Marcas");
         jlMarca.setToolTipText("");
+        jlMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jlMarcaMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpMarcaLayout = new javax.swing.GroupLayout(jpMarca);
         jpMarca.setLayout(jpMarcaLayout);
@@ -561,14 +566,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpMarcaMouseExited
 
     private void jpMarcaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMousePressed
-        ABMMarcas marcas;
-        try {
-            marcas = new ABMMarcas();
-            this.desktopPane.add(marcas);
-            marcas.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }        // TODO add your handling code here:
+        jbMarcaActionPerformed(evt);
     }//GEN-LAST:event_jpMarcaMousePressed
 
     private void jpIncisoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMouseClicked
@@ -698,6 +696,21 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private void jpReparticion1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpReparticion1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpReparticion1MousePressed
+
+    private void jlMarcaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMarcaMousePressed
+        jbMarcaActionPerformed(evt);
+    }//GEN-LAST:event_jlMarcaMousePressed
+
+    private void jbMarcaActionPerformed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+        GestionMarcas gestionMarcas;
+        try {
+            gestionMarcas = new GestionMarcas();
+            this.desktopPane.add(gestionMarcas);
+            gestionMarcas.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
