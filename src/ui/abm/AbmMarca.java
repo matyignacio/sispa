@@ -5,8 +5,11 @@
  */
 package ui.abm;
 
+import controlador.MarcaControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import objeto.Marca;
 import ui.gestion.Gestionable;
@@ -15,7 +18,7 @@ import ui.gestion.Gestionable;
  *
  * @author Kuky
  */
-public class AbmMarca extends javax.swing.JInternalFrame {
+public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
 
     private String operacion;
     private Marca marca;
@@ -76,6 +79,8 @@ public class AbmMarca extends javax.swing.JInternalFrame {
         this.operacion = operacion;
         this.marca = marca;
         this.ventanaGestion = ventanaGestion;
+        inicializacionVentana();
+
     }
 
     public AbmMarca() throws SQLException {
@@ -101,9 +106,7 @@ public class AbmMarca extends javax.swing.JInternalFrame {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
-        jbEliminar = new javax.swing.JButton();
-        jbNuevo = new javax.swing.JButton();
-        jbModificar = new javax.swing.JButton();
+        jbAceptar = new javax.swing.JButton();
         jtfId = new javax.swing.JTextField();
         jlId = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
@@ -156,38 +159,16 @@ public class AbmMarca extends javax.swing.JInternalFrame {
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 140));
 
-        jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
-        jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
-        jbEliminar.setText("Eliminar");
-        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jbAceptar.setBackground(new java.awt.Color(204, 204, 204));
+        jbAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbAceptar.setForeground(new java.awt.Color(33, 150, 243));
+        jbAceptar.setText("Aceptar");
+        jbAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEliminarActionPerformed(evt);
+                jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 100, -1));
-
-        jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
-        jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
-        jbNuevo.setText("Nuevo");
-        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevoActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 100, -1));
-
-        jbModificar.setBackground(new java.awt.Color(204, 204, 204));
-        jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbModificar.setForeground(new java.awt.Color(33, 150, 243));
-        jbModificar.setText("Modificar");
-        jbModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbModificarActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 100, -1));
 
         jtfId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,17 +256,14 @@ public class AbmMarca extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jpTituloMousePressed
 
-    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-
-    }//GEN-LAST:event_jbEliminarActionPerformed
-
-    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbNuevoActionPerformed
-
-    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbModificarActionPerformed
+    private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
+        if (recolectarDatos() == OK) {
+            if (grabar() == OK) {
+                ventanaGestion.actualizarGestion();
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_jbAceptarActionPerformed
 
     private void jtfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdActionPerformed
         // TODO add your handling code here:
@@ -295,11 +273,58 @@ public class AbmMarca extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
 
+    public void inicializacionVentana() {
+        if (!operacion.equals(Gestionable.ABM_ALTA)) {
+            jtfId.setText(String.valueOf(marca.getId()));
+            jtfNombre.setText(marca.getNombre());
+            if (marca.isVisible()) {
+                jrbVisible.setSelected(true);
+            } else {
+                jrbNoVisible.setSelected(true);
+            }
+        }
+    }
+
+    public int recolectarDatos() {
+        marca.setId(Integer.parseInt(jtfId.getText()));
+        marca.setNombre(jtfNombre.getText());
+        if (jrbVisible.isSelected()) {
+            marca.setVisible(true);
+        } else {
+            marca.setVisible(false);
+        }
+        return OK;
+    }
+
+    @Override
+    public int grabar() {
+        MarcaControlador marcaControlador = new MarcaControlador();
+        if (operacion.equals(Gestionable.ABM_ALTA)) {
+            try {
+                marcaControlador.insertar(marca);
+            } catch (SQLException ex) {
+                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (operacion.equals(Gestionable.ABM_BAJA)) {
+            try {
+                marcaControlador.borrar(marca);
+            } catch (SQLException ex) {
+                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (operacion.equals(Gestionable.ABM_MODIFICACION)) {
+            try {
+                marcaControlador.modificar(marca);
+            } catch (SQLException ex) {
+                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return OK;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JButton jbEliminar;
-    private javax.swing.JButton jbModificar;
-    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlId;

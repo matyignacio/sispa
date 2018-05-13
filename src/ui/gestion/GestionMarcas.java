@@ -9,7 +9,10 @@ import controlador.MarcaControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import objeto.Marca;
 import ui.abm.AbmMarca;
 import ui.grillas.GrillaMarcas;
@@ -19,24 +22,23 @@ import ui.grillas.GrillaMarcas;
  * @author Kuky
  */
 public class GestionMarcas extends javax.swing.JInternalFrame implements Gestionable {
-    
+
     GrillaMarcas grillaMarcas;
     MarcaControlador mc = new MarcaControlador();
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-    
+
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-    
+
     public GestionMarcas() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        grillaMarcas = new GrillaMarcas((ArrayList<Marca>) mc.extraerTodos());
-        jtMarcas.setModel(grillaMarcas);
-        
+        actualizarGestion();
+
     }
 
     /**
@@ -202,7 +204,8 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-
+        AbmMarca abmMarca = new AbmMarca(ABM_BAJA, new Marca(), this);
+        abmMarca.setVisible(true);
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -211,7 +214,18 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
+        MarcaControlador marcaControlador = new MarcaControlador();
+        if (jtMarcas.getSelectedRow() > -1) {
+            AbmMarca abmMarca;
+            try {
+                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()), this);
+                abmMarca.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -232,6 +246,12 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
 
     @Override
     public void actualizarGestion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            grillaMarcas = new GrillaMarcas((ArrayList<Marca>) mc.extraerTodos());
+            jtMarcas.setModel(grillaMarcas);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }
