@@ -66,6 +66,8 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         setClosable(true);
         setTitle("SISPA - Marcas");
 
+        desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
+
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,7 +107,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 140));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
         jtMarcas.setBackground(new java.awt.Color(204, 204, 204));
         jtMarcas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -123,7 +125,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         ));
         jScrollPane1.setViewportView(jtMarcas);
 
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1050, 330));
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1020, 330));
 
         jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -164,12 +166,12 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1181, Short.MAX_VALUE)
+            .addGap(0, 1150, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desktopPaneLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(32, Short.MAX_VALUE)))
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,11 +187,11 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -204,13 +206,25 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        AbmMarca abmMarca = new AbmMarca(ABM_BAJA, new Marca(), this);
-        abmMarca.setVisible(true);
+        MarcaControlador marcaControlador = new MarcaControlador();
+        if (jtMarcas.getSelectedRow() > -1) {
+            AbmMarca abmMarca;
+            try {
+                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()), this);
+                this.desktopPane.add(abmMarca);
+                abmMarca.show();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         AbmMarca abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-        abmMarca.setVisible(true);
+        this.desktopPane.add(abmMarca);
+        abmMarca.show();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -219,7 +233,8 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
             AbmMarca abmMarca;
             try {
                 abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()), this);
-                abmMarca.setVisible(true);
+                this.desktopPane.add(abmMarca);
+                abmMarca.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
             }

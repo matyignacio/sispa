@@ -69,7 +69,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISPA");
-        setResizable(false);
 
         dpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         dpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,6 +159,7 @@ public class Principal extends javax.swing.JFrame {
         jpPrincipal.add(jpAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 140, 120));
 
         jpMuebles.setBackground(java.awt.SystemColor.controlHighlight);
+        jpMuebles.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpMuebles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpMueblesMouseClicked(evt);
@@ -189,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
         jpMueblesLayout.setHorizontalGroup(
             jpMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jlIconoMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
         );
         jpMueblesLayout.setVerticalGroup(
             jpMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +289,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpPrincipal.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, 140, 120));
+        jpPrincipal.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 140, 120));
 
         jpUsuarios.setBackground(java.awt.SystemColor.controlHighlight);
         jpUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
