@@ -13,4 +13,15 @@ import java.util.ArrayList;
  */
 public class Perfil extends ObjetoBase{
 
+private ArrayList<Operaciones> operaciones = new ArrayList<>();    
+
+    public ArrayList<Operaciones> getOperaciones() {
+        return operaciones;
+    }
+
+    public void setOperaciones(ArrayList<Operaciones> operaciones) {
+        this.operaciones = operaciones;
+    }
+
+    
 }

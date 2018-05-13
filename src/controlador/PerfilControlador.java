@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import objeto.Operaciones;
 import objeto.Perfil;
 
 /**
@@ -24,6 +25,11 @@ public class PerfilControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
+    private PreparedStatement ps2;
+    private ResultSet rs2;
+    private OperacionesControlador operacionesControlador;
+    private Operaciones operacion;
+    private ArrayList<Operaciones> operaciones;
 
     public Perfil extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
@@ -37,7 +43,21 @@ public class PerfilControlador {
             perfil.setId(rs.getInt(1));
             perfil.setNombre(rs.getString(2));
             perfil.setVisible(rs.getBoolean(3));
+            consultaSql = "SELECT id_operacion FROM \"Operaciones_Perfiles\" WHERE id_perfil= ?";
+            ps2 = conn.prepareStatement(consultaSql);
+            ps2.setInt(1, perfil.getId());
+            ps2.executeQuery();
+            rs2 = ps2.getResultSet();
+            operaciones = new ArrayList<>();
+            while (rs2.next()) {
+                operacion = new Operaciones();
+                operacion=operacionesControlador.extraer(rs2.getInt(1));
+                operaciones.add(operacion);
+            }
+            perfil.setOperaciones(operaciones);
+
         }
+
         rs.close();
         ps.close();
         conn.close();
@@ -105,6 +125,4 @@ public class PerfilControlador {
 
     }
 
-    
-    
 }
