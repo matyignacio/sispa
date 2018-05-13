@@ -19,54 +19,56 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
-
+    
     private String operacion;
     private Marca marca;
     private Gestionable ventanaGestion;
     private boolean estado;
-
+    
     public boolean isEstado() {
         return estado;
     }
-
+    
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     public String getOperacion() {
         return operacion;
     }
-
+    
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-
+    
     public Marca getMarca() {
         return marca;
     }
-
+    
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
-
+    
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-
+    
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-
+    
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-
+    
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-
+    
     public AbmMarca(String operacion, Marca marca, Gestionable ventanaGestion) {
         initComponents();
+        jlId.setVisible(false);
+        jtfId.setVisible(false);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         if (jrbVisible.isSelected()) {
@@ -80,13 +82,13 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         this.marca = marca;
         this.ventanaGestion = ventanaGestion;
         inicializacionVentana();
-
+        
     }
-
+    
     public AbmMarca() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-
+        
     }
 
     /**
@@ -271,9 +273,12 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
-
+    
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
+            jlId.setVisible(true);
+            jtfId.setVisible(true);
+            jtfId.setEditable(false);
             jtfId.setText(String.valueOf(marca.getId()));
             jtfNombre.setText(marca.getNombre());
             if (marca.isVisible()) {
@@ -281,11 +286,20 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
             } else {
                 jrbNoVisible.setSelected(true);
             }
+            if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
+                jtfNombre.setEditable(false);
+                jrbVisible.setEnabled(false);
+                jrbNoVisible.setEnabled(false);
+            }
         }
     }
-
+    
     public int recolectarDatos() {
-        marca.setId(Integer.parseInt(jtfId.getText()));
+        //cargamos los datos en el objeto
+        if (!operacion.equals(Gestionable.ABM_ALTA)) {
+            //Si NO ES un alta, se le pasa el id
+            marca.setId(Integer.parseInt(jtfId.getText()));
+        }
         marca.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             marca.setVisible(true);
@@ -294,7 +308,7 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         }
         return OK;
     }
-
+    
     @Override
     public int grabar() {
         MarcaControlador marcaControlador = new MarcaControlador();

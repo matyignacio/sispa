@@ -69,6 +69,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISPA");
+        setResizable(false);
 
         dpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         dpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,6 +116,7 @@ public class Principal extends javax.swing.JFrame {
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 200));
 
         jpAjustes.setBackground(java.awt.SystemColor.controlHighlight);
+        jpAjustes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpAjustesMouseClicked(evt);
@@ -144,7 +146,7 @@ public class Principal extends javax.swing.JFrame {
         jpAjustesLayout.setHorizontalGroup(
             jpAjustesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jlIconoAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
         );
         jpAjustesLayout.setVerticalGroup(
             jpAjustesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,6 +206,7 @@ public class Principal extends javax.swing.JFrame {
         jpPrincipal.add(jpMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 140, 120));
 
         jpInmuebles.setBackground(java.awt.SystemColor.controlHighlight);
+        jpInmuebles.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpInmuebles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpInmueblesMouseClicked(evt);
@@ -233,7 +236,7 @@ public class Principal extends javax.swing.JFrame {
         jpInmueblesLayout.setHorizontalGroup(
             jpInmueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jlIconoInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
         );
         jpInmueblesLayout.setVerticalGroup(
             jpInmueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,6 +251,7 @@ public class Principal extends javax.swing.JFrame {
         jpPrincipal.add(jpInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 140, 120));
 
         jpInformes.setBackground(java.awt.SystemColor.controlHighlight);
+        jpInformes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpInformes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpInformesMouseClicked(evt);
@@ -277,7 +281,7 @@ public class Principal extends javax.swing.JFrame {
         jpInformesLayout.setHorizontalGroup(
             jpInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoInformes, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jlIconoInformes, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
         );
         jpInformesLayout.setVerticalGroup(
             jpInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,6 +296,7 @@ public class Principal extends javax.swing.JFrame {
         jpPrincipal.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 140, 120));
 
         jpUsuarios.setBackground(java.awt.SystemColor.controlHighlight);
+        jpUsuarios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpUsuariosMouseClicked(evt);
@@ -321,7 +326,7 @@ public class Principal extends javax.swing.JFrame {
         jpUsuariosLayout.setHorizontalGroup(
             jpUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jlUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jlIconoUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
         );
         jpUsuariosLayout.setVerticalGroup(
             jpUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -43,7 +43,7 @@ public class MarcaControlador {
 
     public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" ";
+        String consultaSql = "SELECT * FROM public.\"Marcas\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.executeQuery();
         rs = ps.getResultSet();
@@ -67,7 +67,6 @@ public class MarcaControlador {
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, marca.getNombre());
         ps.setBoolean(2, marca.isVisible());
-
         ps.execute();
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
