@@ -11,31 +11,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JDesktopPane;
 import objeto.Marca;
+import ui.abm.AbmMarca;
 import ui.grillas.GrillaMarcas;
 
 /**
  *
  * @author Kuky
  */
-public class GestionMarcas extends javax.swing.JInternalFrame implements Gestionable{
-
+public class GestionMarcas extends javax.swing.JInternalFrame implements Gestionable {
+    
     GrillaMarcas grillaMarcas;
     MarcaControlador mc = new MarcaControlador();
-
+    
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-
+    
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-
+    
     public GestionMarcas() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
         grillaMarcas = new GrillaMarcas((ArrayList<Marca>) mc.extraerTodos());
         jtMarcas.setModel(grillaMarcas);
-
+        
     }
 
     /**
@@ -205,12 +206,14 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
+        AbmMarca abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
+        abmMarca.setVisible(true);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
