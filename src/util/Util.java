@@ -10,7 +10,5 @@ package util;
  * @author Kuky
  */
 public class Util {
-    public static int ADMINISTRADOR = 0; //Usuario con privilegios de administrador
-    public static int COMUN = 1; //Usuario con privilegios basicos
-    
+
 }
