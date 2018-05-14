@@ -22,54 +22,54 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
-    
+
     private MarcaControlador marcaControlador = new MarcaControlador();
     private DefaultComboBoxModel<Marca> dcbmMarca;
     private String operacion;
     private Modelo modelo;
     private Gestionable ventanaGestion;
     private boolean estado;
-    
+
     public boolean isEstado() {
         return estado;
     }
-    
+
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
+
     public String getOperacion() {
         return operacion;
     }
-    
+
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-    
+
     public Modelo getModelo() {
         return modelo;
     }
-    
+
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
-    
+
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-    
+
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-    
+
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-    
+
     public AbmModelo(String operacion, Modelo modelo, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
@@ -88,11 +88,11 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         jcbMarca.setModel(dcbmMarca);
         inicializacionVentana();
     }
-    
+
     public AbmModelo() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        
+
     }
 
     /**
@@ -304,10 +304,9 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
     private void jtfAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAñoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfAñoActionPerformed
-    
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
-            
             jtfNombre.setText(modelo.getNombre());
             if (modelo.isVisible()) {
                 jrbVisible.setSelected(true);
@@ -325,7 +324,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }
-    
+
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         modelo.setNombre(jtfNombre.getText());
@@ -338,7 +337,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         modelo.setMarca((Marca) jcbMarca.getSelectedItem());
         return OK;
     }
-    
+
     @Override
     public int grabar() {
         ModeloControlador modeloControlador = new ModeloControlador();

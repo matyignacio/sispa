@@ -53,4 +53,29 @@ public class ObjetoBase {
         return this.getNombre();
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ObjetoBase other = (ObjetoBase) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+
 }
