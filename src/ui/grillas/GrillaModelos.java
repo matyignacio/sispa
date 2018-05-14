@@ -7,46 +7,50 @@ package ui.grillas;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import objeto.Marca;
+import objeto.Modelo;
 
 /**
  *
  * @author Kuky
  */
-public class GrillaMarcas extends AbstractTableModel {
+public class GrillaModelos extends AbstractTableModel {
 
-    ArrayList<Marca> marcas;
+    ArrayList<Modelo> modelos;
 
-    public ArrayList<Marca> getMarcas() {
-        return marcas;
+    public ArrayList<Modelo> getMarcas() {
+        return modelos;
     }
 
-    public void setMarcas(ArrayList<Marca> marcas) {
-        this.marcas = marcas;
+    public void setMarcas(ArrayList<Modelo> modelos) {
+        this.modelos = modelos;
     }
 
-    public GrillaMarcas(ArrayList<Marca> marcas) {
-        this.marcas = marcas;
+    public GrillaModelos(ArrayList<Modelo> modelos) {
+        this.modelos = modelos;
     }
 
     @Override
     public int getRowCount() {
-        return marcas.size();
+        return modelos.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 4;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Marca marca = marcas.get(rowIndex);
+        Modelo modelo = modelos.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return marca.getNombre();
+                return modelo.getMarca().getNombre();
             case 1:
-                return marca.isVisible();
+                return modelo.getNombre();
+            case 2:
+                return modelo.getAño();
+            case 3:
+                return modelo.isVisible();
             default:
                 return null;
         }
@@ -56,11 +60,16 @@ public class GrillaMarcas extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "NOMBRE";
+                return "MARCA";
             case 1:
+                return "NOMBRE";
+            case 2:
+                return "AÑO";
+            case 3:
                 return "ESTADO";
             default:
                 return "";
         }
     }
+
 }

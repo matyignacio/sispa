@@ -47,7 +47,7 @@ public class ModeloControlador {
     public ArrayList<Modelo> extraerTodos() throws SQLException {
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Modelos\"";
+        String consultaSql = "SELECT * FROM \"Modelos\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -68,42 +68,48 @@ public class ModeloControlador {
     }
 
     public void insertar(Modelo modelo) throws SQLException {
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, modelo.getNombre());
-        ps.setBoolean(2, modelo.isVisible());
-        ps.setInt(3, modelo.getAño());
-        ps.setInt(4, modelo.getMarca().getId());
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "Insertado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setString(1, modelo.getNombre());
+            ps.setBoolean(2, modelo.isVisible());
+            ps.setInt(3, modelo.getAño());
+            ps.setInt(4, modelo.getMarca().getId());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Insertado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
     public void modificar(Modelo modelo) throws SQLException {
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, modelo.getNombre());
-        ps.setBoolean(2, modelo.isVisible());
-        ps.setInt(3, modelo.getAño());
-        ps.setInt(4, modelo.getMarca().getId());
-        ps.setInt(5, modelo.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, modelo.toString() + " modificado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setString(1, modelo.getNombre());
+            ps.setBoolean(2, modelo.isVisible());
+            ps.setInt(3, modelo.getAño());
+            ps.setInt(4, modelo.getMarca().getId());
+            ps.setInt(5, modelo.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, modelo.toString() + " modificado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
     public void borrar(Modelo modelo) throws SQLException {
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM \"Modelos\" WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setInt(1, modelo.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, modelo.toString() + " eliminado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "DELETE FROM \"Modelos\" WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, modelo.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, modelo.toString() + " eliminado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 }

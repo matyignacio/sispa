@@ -6,66 +6,71 @@
 package ui.abm;
 
 import controlador.MarcaControlador;
+import controlador.ModeloControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
 import objeto.Marca;
+import objeto.Modelo;
 import ui.gestion.Gestionable;
 
 /**
  *
  * @author Kuky
  */
-public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
-
+public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
+    
+    private MarcaControlador marcaControlador = new MarcaControlador();
+    private DefaultComboBoxModel<Marca> dcbmMarca;
     private String operacion;
-    private Marca marca;
+    private Modelo modelo;
     private Gestionable ventanaGestion;
     private boolean estado;
-
+    
     public boolean isEstado() {
         return estado;
     }
-
+    
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     public String getOperacion() {
         return operacion;
     }
-
+    
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-
-    public Marca getMarca() {
-        return marca;
+    
+    public Modelo getModelo() {
+        return modelo;
     }
-
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+    
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
     }
-
+    
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-
+    
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-
+    
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-
+    
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-
-    public AbmMarca(String operacion, Marca marca, Gestionable ventanaGestion) {
+    
+    public AbmModelo(String operacion, Modelo modelo, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
@@ -77,16 +82,17 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         }
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
-        this.marca = marca;
+        this.modelo = modelo;
         this.ventanaGestion = ventanaGestion;
+        dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodos().toArray());
+        jcbMarca.setModel(dcbmMarca);
         inicializacionVentana();
-
     }
-
-    public AbmMarca() throws SQLException {
+    
+    public AbmModelo() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-
+        
     }
 
     /**
@@ -107,14 +113,18 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
+        jlMarca = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
         jrbVisible = new javax.swing.JRadioButton();
+        jlAño = new javax.swing.JLabel();
+        jtfAño = new javax.swing.JTextField();
+        jcbMarca = new javax.swing.JComboBox();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Modelos");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,7 +146,7 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
+        jlTituloPrincipal.setText("SISPA - Modelos");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -168,12 +178,19 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         });
         jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
 
+        jlMarca.setBackground(new java.awt.Color(204, 204, 204));
+        jlMarca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlMarca.setForeground(new java.awt.Color(33, 150, 243));
+        jlMarca.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMarca.setText("Marca: ");
+        jpPrincipal.add(jlMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+
         jlNombre.setBackground(new java.awt.Color(204, 204, 204));
         jlNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNombre.setForeground(new java.awt.Color(33, 150, 243));
         jlNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNombre.setText("Nombre: ");
-        jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
 
         jtfNombre.setBackground(new java.awt.Color(204, 204, 204));
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -183,26 +200,49 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
                 jtfNombreActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
+
+        jlAño.setBackground(new java.awt.Color(204, 204, 204));
+        jlAño.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlAño.setForeground(new java.awt.Color(33, 150, 243));
+        jlAño.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlAño.setText("Año: ");
+        jpPrincipal.add(jlAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 210, 20));
+
+        jtfAño.setBackground(new java.awt.Color(204, 204, 204));
+        jtfAño.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfAño.setForeground(new java.awt.Color(33, 150, 243));
+        jtfAño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfAñoActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 220, -1));
+
+        jcbMarca.setBackground(new java.awt.Color(204, 204, 204));
+        jcbMarca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbMarca.setForeground(new java.awt.Color(33, 150, 243));
+        jcbMarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jpPrincipal.add(jcbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -261,55 +301,66 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
 
+    private void jtfAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfAñoActionPerformed
+    
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
-            jtfNombre.setText(marca.getNombre());
-            if (marca.isVisible()) {
+            
+            jtfNombre.setText(modelo.getNombre());
+            if (modelo.isVisible()) {
                 jrbVisible.setSelected(true);
             } else {
                 jrbNoVisible.setSelected(true);
             }
+            jtfAño.setText(String.valueOf(modelo.getAño()));
+            jcbMarca.setSelectedItem(modelo.getMarca());
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
+                jtfAño.setEnabled(false);
+                jcbMarca.setEnabled(false);
             }
         }
     }
-
+    
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        marca.setNombre(jtfNombre.getText());
+        modelo.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
-            marca.setVisible(true);
+            modelo.setVisible(true);
         } else {
-            marca.setVisible(false);
+            modelo.setVisible(false);
         }
+        modelo.setAño(Integer.parseInt(jtfAño.getText()));
+        modelo.setMarca((Marca) jcbMarca.getSelectedItem());
         return OK;
     }
-
+    
     @Override
     public int grabar() {
-        MarcaControlador marcaControlador = new MarcaControlador();
+        ModeloControlador modeloControlador = new ModeloControlador();
         if (operacion.equals(Gestionable.ABM_ALTA)) {
             try {
-                marcaControlador.insertar(marca);
+                modeloControlador.insertar(modelo);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmModelo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_BAJA)) {
             try {
-                marcaControlador.borrar(marca);
+                modeloControlador.borrar(modelo);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmModelo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_MODIFICACION)) {
             try {
-                marcaControlador.modificar(marca);
+                modeloControlador.modificar(modelo);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmModelo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return OK;
@@ -318,7 +369,10 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
+    private javax.swing.JComboBox jcbMarca;
+    private javax.swing.JLabel jlAño;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlMarca;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
@@ -328,6 +382,7 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JRadioButton jrbNoVisible;
     private javax.swing.JRadioButton jrbVisible;
+    private javax.swing.JTextField jtfAño;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 

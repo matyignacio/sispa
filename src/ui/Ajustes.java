@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ui.gestion.GestionMarcas;
+import ui.gestion.GestionModelos;
 
 /**
  *
@@ -128,6 +129,11 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlModelo.setText("Modelos");
         jlModelo.setToolTipText("");
+        jlModelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jlModeloMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpModeloLayout = new javax.swing.GroupLayout(jpModelo);
         jpModelo.setLayout(jpModeloLayout);
@@ -550,7 +556,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpModeloMouseExited
 
     private void jpModeloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpModeloMousePressed
-
+        jbModeloActionPerformed(evt);
     }//GEN-LAST:event_jpModeloMousePressed
 
     private void jpMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMarcaMouseClicked
@@ -712,6 +718,20 @@ public class Ajustes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbNuevoActionPerformed
 
+    private void jlModeloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModeloMousePressed
+        jbModeloActionPerformed(evt);
+    }//GEN-LAST:event_jlModeloMousePressed
+
+    private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
+        GestionModelos gestionModelos;
+        try {
+            gestionModelos = new GestionModelos();
+            this.desktopPane.add(gestionModelos);
+            gestionModelos.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jlBienvenido;

@@ -213,6 +213,9 @@
                     <Property name="text" type="java.lang.String" value="Modelos"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlModeloMousePressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
