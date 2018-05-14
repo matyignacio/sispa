@@ -62,38 +62,44 @@ public class MarcaControlador {
     }
 
     public void insertar(Marca marca) throws SQLException {
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO public.\"Marcas\" (nombre, visible)  VALUES (?,?)";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, marca.getNombre());
-        ps.setBoolean(2, marca.isVisible());
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "Insertado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "INSERT INTO public.\"Marcas\" (nombre, visible)  VALUES (?,?)";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setString(1, marca.getNombre());
+            ps.setBoolean(2, marca.isVisible());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Insertado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
     public void modificar(Marca marca) throws SQLException {
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE public.\"Marcas\" SET nombre=?, visible=? WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, marca.getNombre());
-        ps.setBoolean(2, marca.isVisible());
-        ps.setInt(3, marca.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, marca.toString() + " modificado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "UPDATE public.\"Marcas\" SET nombre=?, visible=? WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setString(1, marca.getNombre());
+            ps.setBoolean(2, marca.isVisible());
+            ps.setInt(3, marca.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, marca.toString() + " modificado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
     public void borrar(Marca marca) throws SQLException {
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM public.\"Marcas\" WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setInt(1, marca.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, marca.toString() + " eliminado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "DELETE FROM public.\"Marcas\" WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, marca.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, marca.toString() + " eliminado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 }
