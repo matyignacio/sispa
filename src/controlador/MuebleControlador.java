@@ -85,9 +85,38 @@ public class MuebleControlador {
         ps.close();
         conn.close();
         return muebles;
+    } 
+    
+    public ArrayList<Mueble> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.\"Muebles\" where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        muebles = new ArrayList<>();
+        while (rs.next()) {
+            mueble = new Mueble();
+            mueble.setId(rs.getInt(1));
+            mueble.setNombre(rs.getString(2));
+            mueble.setVisible(rs.getBoolean(3));
+            mueble.setExpediente(rs.getString(4));
+            mueble.setCaracteristicas(rs.getString(5));
+            mueble.setObservaciones(rs.getString(6));
+            mueble.setCategoria(c.extraer(rs.getInt(7)));
+            mueble.setEstado(e.extraer(rs.getInt(8)));
+            mueble.setModelo(m.extraer(rs.getInt(9)));
+            mueble.setUsuario(u.extraer(rs.getInt(10)));
+            mueble.setReparticion(r.extraer(rs.getInt(11)));
+            muebles.add(mueble);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return muebles;
     }
 
     public void insertar(Mueble mueble) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO \"Muebles\"( nombre, visible, expediente, caracteristica, observaciones,"
                 + "id_categoria, id_estado, id_modelo, id_usuario, id_reparticion)"
@@ -108,9 +137,11 @@ public class MuebleControlador {
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
+        }
     }
 
     public void modificar(Mueble mueble) throws SQLException {
+         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE \"Muebles\" SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, id_categoria=?,"
                 + "id_estado=?, id_modelo=?, id_usuario=?, id_reparticion=? WHERE id=?";
@@ -130,9 +161,11 @@ public class MuebleControlador {
         JOptionPane.showMessageDialog(null, mueble.toString() + " modificado correctamente");
         ps.close();
         conn.close();
+         }
     }
 
     public void borrar(Mueble mueble) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Muebles WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -141,5 +174,6 @@ public class MuebleControlador {
         JOptionPane.showMessageDialog(null, mueble.toString() + " eliminado correctamente");
         ps.close();
         conn.close();
+    }
     }
 }

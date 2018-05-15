@@ -63,8 +63,29 @@ public class EstadoControlador {
         conn.close();
         return estados;
     }
+    
+    public ArrayList<Estado> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.Estados where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+          estados = new ArrayList<>();
+        while (rs.next()) {
+            estado = new Estado();
+            estado.setId(rs.getInt(1));
+            estado.setNombre(rs.getString(2));
+            estado.setVisible(rs.getBoolean(3));
+            estados.add(estado);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return estados;
+    }
 
     public void insertar(Estado estado) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO public.Estados (nombre, visible)  VALUES (?,?)";
         ps = conn.prepareStatement(consultaSql);
@@ -74,9 +95,10 @@ public class EstadoControlador {
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
-    }
+    }}
 
     public void modificar(Estado estado) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE public.Estados SET nombre=?, visible=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -87,9 +109,11 @@ public class EstadoControlador {
         JOptionPane.showMessageDialog(null, estado.toString() + " modificado correctamente");
         ps.close();
         conn.close();
+        }
     }
 
     public void borrar(Estado estado) throws SQLException {
+         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Estados WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -98,5 +122,6 @@ public class EstadoControlador {
         JOptionPane.showMessageDialog(null, estado.toString() + " eliminado correctamente");
         ps.close();
         conn.close();
+         }
     }
 }

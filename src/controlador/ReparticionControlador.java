@@ -70,7 +70,33 @@ public class ReparticionControlador {
         return reparticiones;
     }
     
+    public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
+        MarcaControlador m = new MarcaControlador();
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM \"Reparticiones\" where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        reparticiones = new ArrayList<>();
+        while (rs.next()) {
+            reparticion = new Reparticion();
+            reparticion.setId(rs.getInt(1));
+            reparticion.setNombre(rs.getString(2));
+            reparticion.setLocalidad(rs.getString(3));
+            reparticion.setDepartamento(rs.getString(4));
+            reparticion.setDomicilio(rs.getString(5));
+             //  reparticion.setReparticionSuperior(reparticion);
+
+            reparticiones.add(reparticion);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return reparticiones;
+    }
+    
     public void insertar(Reparticion reparticion) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO \"Reparticiones\"( nombre, localidad, departamento, domicilio, id_reparticion_superior) VALUES (?, ?, ?, ?, ?)";
         ps = conn.prepareStatement(consultaSql);
@@ -82,9 +108,11 @@ public class ReparticionControlador {
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
+        }
     }
     
     public void modificar(Reparticion reparticion) throws SQLException {
+          if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE \"Reparticiones\" SET nombre=?, localidad=?, departamento=?, domicilio=?, id_reparticion_superior=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -97,8 +125,10 @@ public class ReparticionControlador {
         JOptionPane.showMessageDialog(null, reparticion.toString() + " modificado correctamente");
         ps.close();
         conn.close();
+          }
     }
   public void borrar(Reparticion reparticion) throws SQLException {
+      if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM \"Reparticiones\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -107,5 +137,5 @@ public class ReparticionControlador {
         JOptionPane.showMessageDialog(null, reparticion.toString() + " eliminado correctamente");
         ps.close();
         conn.close();
-    }
+    }}
 }

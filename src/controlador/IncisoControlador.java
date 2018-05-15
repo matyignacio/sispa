@@ -47,7 +47,27 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Incisos";
+        String consultaSql = "SELECT * FROM public.Incisos where id=?";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        incisos = new ArrayList<>();
+        while (rs.next()) {
+            inciso = new Inciso();
+            inciso.setId(rs.getInt(1));
+            inciso.setNumero(rs.getInt(2));
+            inciso.setPrincipal(rs.getInt(3));
+            inciso.setParcial(rs.getInt(4));
+            incisos.add(inciso);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return incisos;
+    }
+     public ArrayList<Inciso> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.Incisos where visible = TRUE order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -67,6 +87,7 @@ public class IncisoControlador {
     }
 
     public void insertar(Inciso inciso) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO public.Incisos (numero, principal, parcial)  VALUES (?,?,?)";
         ps = conn.prepareStatement(consultaSql);
@@ -77,9 +98,11 @@ public class IncisoControlador {
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
+        }
     }
 
     public void modificar(Inciso inciso) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE public.Incisos SET numero=?, principal=?, parcial=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -91,9 +114,11 @@ public class IncisoControlador {
         JOptionPane.showMessageDialog(null, inciso.toString() + " modificado correctamente");
         ps.close();
         conn.close();
+        }
     }
 
     public void borrar(Inciso inciso) throws SQLException {
+         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Incisos WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -102,6 +127,7 @@ public class IncisoControlador {
         JOptionPane.showMessageDialog(null, inciso.toString() + " eliminado correctamente");
         ps.close();
         conn.close();
+         }
     }
 
 }

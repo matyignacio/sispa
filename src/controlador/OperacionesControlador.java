@@ -43,7 +43,27 @@ public class OperacionesControlador {
 
     public ArrayList<Operaciones> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Operaciones\" WHERE id=?";
+        String consultaSql = "SELECT * FROM public.\"Operaciones\" ";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        operaciones = new ArrayList<>();
+        while (rs.next()) {
+            operacion = new Operaciones();
+            operacion.setId(rs.getInt(1));
+            operacion.setNombre(rs.getString(2));
+            operacion.setVisible(rs.getBoolean(3));
+
+           operaciones.add(operacion);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return operaciones;
+    }
+     public ArrayList<Operaciones> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.\"Operaciones\" where visible = TRUE order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -63,6 +83,7 @@ public class OperacionesControlador {
     }
     
     public void insertar(Operaciones operacion) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO public.\"Operaciones\" (nombre, visible)  VALUES (?,?)";
         ps = conn.prepareStatement(consultaSql);
@@ -73,9 +94,11 @@ public class OperacionesControlador {
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
+        }
     }
     
     public void modificar(Operaciones operacion) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE public.\"Operaciones\" SET nombre=?, visible=? WHERE id=?"; 
         ps = conn.prepareStatement(consultaSql);
@@ -86,9 +109,11 @@ public class OperacionesControlador {
         JOptionPane.showMessageDialog(null, operacion.toString() + " modificado correctamente");
         ps.close();
         conn.close();
+        }
     }
     
     public void borrar(Operaciones operacion) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "DELETE FROM public.Marcas WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -97,5 +122,6 @@ public class OperacionesControlador {
         JOptionPane.showMessageDialog(null, operacion.toString() + " eliminado correctamente");
         ps.close();
         conn.close();
+    }
     }
 }

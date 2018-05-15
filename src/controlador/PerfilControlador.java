@@ -83,8 +83,29 @@ public class PerfilControlador {
         conn.close();
         return perfiles;
     }
+    
+    public ArrayList<Perfil> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.\"Perfiles\" where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        perfiles = new ArrayList<>();
+        while (rs.next()) {
+            perfil = new Perfil();
+            perfil.setId(rs.getInt(1));
+            perfil.setNombre(rs.getString(2));
+            perfil.setVisible(rs.getBoolean(3));
+            perfiles.add(perfil);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return perfiles;
+    }
 
     public void insertar(Perfil perfil) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "INSERT INTO public.\"Perfiles\" (nombre, visible)  VALUES (?,?)";
         ps = conn.prepareStatement(consultaSql);
@@ -95,9 +116,11 @@ public class PerfilControlador {
         JOptionPane.showMessageDialog(null, "Insertado correctamente");
         ps.close();
         conn.close();
+        }
     }
 
     public void modificar(Perfil perfil) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultaSql = "UPDATE public.\"Perfiles\" SET nombre=?, visible=? WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -109,10 +132,11 @@ public class PerfilControlador {
         JOptionPane.showMessageDialog(null, perfil.toString() + " modificado correctamente");
         ps.close();
         conn.close();
-
+        }
     }
 
     public void borrar(Perfil perfil) throws SQLException {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
         conn = ConexionDB.GetConnection();
         String consultasql = "DELETE FROM  public.\"Perfiles\" WHERE id=?";
         ps = conn.prepareStatement(consultasql);
@@ -122,6 +146,7 @@ public class PerfilControlador {
 
         ps.close();
         conn.close();
+        }
 
     }
 
