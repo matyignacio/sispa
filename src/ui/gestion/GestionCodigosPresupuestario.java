@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import objeto.CodigoPresupuestario;
+import ui.abm.AbmCodigosPresupuestarios;
 import ui.grillas.GrillaCodigosPresupuestarios;
 
 /**
@@ -62,7 +64,8 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         jbModificar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Codigos Presupuestarios");
+        setToolTipText("");
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
 
@@ -86,8 +89,8 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
+        jlTituloPrincipal.setText("SISPA - Codigos Presupuestarios");
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 530, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,41 +207,41 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        /* MarcaControlador marcaControlador = new MarcaControlador();
+        CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();
         if (jtCodigos.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+            AbmCodigosPresupuestarios abmCodigosPresupuestarios;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraerTodos().get(jtCodigos.getSelectedRow()), this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_BAJA, codigoPresupuestarioControlador.extraerTodos().get(jtCodigos.getSelectedRow()), this);
+                this.desktopPane.add(abmCodigosPresupuestarios);
+                abmCodigosPresupuestarios.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionCodigosPresupuestario.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }*/
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        /*AbmMarca abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-        this.desktopPane.add(abmMarca);
-        abmMarca.show();*/
+        AbmCodigosPresupuestarios abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_ALTA, new CodigoPresupuestario(), this);
+        this.desktopPane.add(abmCodigosPresupuestarios);
+        abmCodigosPresupuestarios.show();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        /*MarcaControlador marcaControlador = new MarcaControlador();
+        CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();
         if (jtCodigos.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+            AbmCodigosPresupuestarios abmCodigosPresupuestarios;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraerTodos().get(jtCodigos.getSelectedRow()), this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_MODIFICACION, codigoPresupuestarioControlador.extraerTodos().get(jtCodigos.getSelectedRow()), this);
+                this.desktopPane.add(abmCodigosPresupuestarios);
+                abmCodigosPresupuestarios.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionCodigosPresupuestario.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }*/
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
 

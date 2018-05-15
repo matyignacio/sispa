@@ -67,6 +67,29 @@ public class ModeloControlador {
         return modelos;
     }
 
+    public ArrayList<Modelo> extraerTodosVisibles() throws SQLException {
+        MarcaControlador m = new MarcaControlador();
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM \"Modelos\" where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        modelos = new ArrayList<>();
+        while (rs.next()) {
+            modelo = new Modelo();
+            modelo.setId(rs.getInt(1));
+            modelo.setNombre(rs.getString(2));
+            modelo.setVisible(rs.getBoolean(3));
+            modelo.setAño(rs.getInt(4));
+            modelo.setMarca(m.extraer(rs.getInt(5)));
+            modelos.add(modelo);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return modelos;
+    }
+
     public void insertar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();

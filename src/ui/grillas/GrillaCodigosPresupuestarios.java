@@ -36,7 +36,7 @@ public class GrillaCodigosPresupuestarios extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -45,6 +45,8 @@ public class GrillaCodigosPresupuestarios extends AbstractTableModel {
         switch (columnIndex) {
             case 0:
                 return codigoPresupuestario.getNumero();
+            case 1:
+                return codigoPresupuestario.isVisible();
             default:
                 return null;
         }
@@ -56,7 +58,7 @@ public class GrillaCodigosPresupuestarios extends AbstractTableModel {
             case 0:
                 return "NUMERO";
             case 1:
-                return "";
+                return "ESTADO";
             default:
                 return null;
         }

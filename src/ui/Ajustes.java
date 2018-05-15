@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ui.gestion.GestionCodigosPresupuestario;
 import ui.gestion.GestionMarcas;
 import ui.gestion.GestionModelos;
 
@@ -253,6 +254,11 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlCodigoPresupuestario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCodigoPresupuestario.setText("Codigos P.");
         jlCodigoPresupuestario.setToolTipText("");
+        jlCodigoPresupuestario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jlCodigoPresupuestarioMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpCodigoPresupuestarioLayout = new javax.swing.GroupLayout(jpCodigoPresupuestario);
         jpCodigoPresupuestario.setLayout(jpCodigoPresupuestarioLayout);
@@ -604,7 +610,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpCodigoPresupuestarioMouseExited
 
     private void jpCodigoPresupuestarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCodigoPresupuestarioMousePressed
-        // TODO add your handling code here:
+        jbCodigosActionPerformed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_jpCodigoPresupuestarioMousePressed
 
     private void jpCategoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCategoriaMouseClicked
@@ -722,12 +728,27 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbModeloActionPerformed(evt);
     }//GEN-LAST:event_jlModeloMousePressed
 
+    private void jlCodigoPresupuestarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCodigoPresupuestarioMousePressed
+        jbCodigosActionPerformed(evt);
+    }//GEN-LAST:event_jlCodigoPresupuestarioMousePressed
+
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
         try {
             gestionModelos = new GestionModelos();
             this.desktopPane.add(gestionModelos);
             gestionModelos.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void jbCodigosActionPerformed(java.awt.event.MouseEvent evt) {
+        GestionCodigosPresupuestario gestionCodigos;
+        try {
+            gestionCodigos = new GestionCodigosPresupuestario();
+            this.desktopPane.add(gestionCodigos);
+            gestionCodigos.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }

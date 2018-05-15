@@ -60,6 +60,26 @@ public class CodigoPresupuestarioControlador {
         return codigos;
     }
 
+    public ArrayList<CodigoPresupuestario> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        codigos = new ArrayList<>();
+        while (rs.next()) {
+            codigo = new CodigoPresupuestario();
+            codigo.setId(rs.getInt(1));
+            codigo.setNumero(rs.getInt(2));
+            codigo.setVisible(rs.getBoolean(3));
+            codigos.add(codigo);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return codigos;
+    }
+
     public void insertar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
