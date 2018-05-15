@@ -84,7 +84,7 @@ public class ModeloControlador {
     }
 
     public void modificar(Modelo modelo) throws SQLException {
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
@@ -101,7 +101,7 @@ public class ModeloControlador {
     }
 
     public void borrar(Modelo modelo) throws SQLException {
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "DELETE FROM \"Modelos\" WHERE id=?";
             ps = conn.prepareStatement(consultaSql);

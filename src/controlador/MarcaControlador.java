@@ -61,6 +61,26 @@ public class MarcaControlador {
         return marcas;
     }
 
+    public ArrayList<Marca> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM public.\"Marcas\" where visible = TRUE order by id";
+        ps = conn.prepareStatement(consultaSql);
+        ps.executeQuery();
+        rs = ps.getResultSet();
+        marcas = new ArrayList<Marca>();
+        while (rs.next()) {
+            marca = new Marca();
+            marca.setId(rs.getInt(1));
+            marca.setNombre(rs.getString(2));
+            marca.setVisible(rs.getBoolean(3));
+            marcas.add(marca);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return marcas;
+    }
+
     public void insertar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
