@@ -47,6 +47,8 @@ public class GrillaMarcas extends AbstractTableModel {
                 return marca.getNombre();
             case 1:
                 return marca.isVisible();
+            case 2:
+                return marca.getUsuario();
             default:
                 return null;
         }
@@ -59,6 +61,8 @@ public class GrillaMarcas extends AbstractTableModel {
                 return "NOMBRE";
             case 1:
                 return "ESTADO";
+            case 2:
+                return "USUARIO";
             default:
                 return "";
         }

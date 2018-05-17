@@ -47,7 +47,7 @@ public class EstadoControlador {
 
     public ArrayList<Estado> extraerTodos() throws SQLException {
         usuarioControlador = new UsuarioControlador(); //HAY QUE INICIALIZARLO PARA PODER USARLO
-        
+
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.Estados order by id";
         ps = conn.prepareStatement(consultaSql);

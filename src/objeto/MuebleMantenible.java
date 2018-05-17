@@ -29,7 +29,5 @@ public class MuebleMantenible extends Mueble {
     public void setChasis(String chasis) {
         this.chasis = chasis;
     }
-    
-    
 
 }
