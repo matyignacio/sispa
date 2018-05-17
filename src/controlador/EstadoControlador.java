@@ -46,6 +46,7 @@ public class EstadoControlador {
     }
 
     public ArrayList<Estado> extraerTodos() throws SQLException {
+        usuarioControlador = new UsuarioControlador(); //HAY QUE INICIALIZARLO PARA PODER USARLO
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.Estados order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -77,8 +78,7 @@ public class EstadoControlador {
             estado = new Estado();
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
-            estado.setVisible(rs.getBoolean(3));
-            
+            estado.setVisible(rs.getBoolean(3));  
             estados.add(estado);
         }
         rs.close();
