@@ -11,23 +11,4 @@ package objeto;
  */
 public class TipoAdquisicion extends ObjetoBase {
 
-    private int tipo;
-    private boolean visible;
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
 }
