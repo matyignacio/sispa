@@ -47,7 +47,7 @@ public class UsuarioControlador {
 
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Usuarios\"";
+        String consultaSql = "SELECT * FROM public.\"Usuarios\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

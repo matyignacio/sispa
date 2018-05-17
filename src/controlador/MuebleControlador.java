@@ -61,7 +61,7 @@ public class MuebleControlador {
 
     public ArrayList<Mueble> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Muebles\"";
+        String consultaSql = "SELECT * FROM public.\"Muebles\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

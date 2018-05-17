@@ -43,7 +43,7 @@ public class OperacionesControlador {
 
     public ArrayList<Operaciones> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Operaciones\" ";
+        String consultaSql = "SELECT * FROM public.\"Operaciones\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

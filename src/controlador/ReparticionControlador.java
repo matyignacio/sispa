@@ -48,7 +48,7 @@ public class ReparticionControlador {
     public ArrayList<Reparticion> extraerTodos() throws SQLException {
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Reparticiones\"";
+        String consultaSql = "SELECT * FROM \"Reparticiones\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

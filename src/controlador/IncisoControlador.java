@@ -47,7 +47,7 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.Incisos where id=?";
+        String consultaSql = "SELECT * FROM public.Incisos order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

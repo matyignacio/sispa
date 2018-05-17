@@ -66,7 +66,7 @@ public class PerfilControlador {
 
     public ArrayList<Perfil> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Perfiles\"";
+        String consultaSql = "SELECT * FROM public.\"Perfiles\" order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
