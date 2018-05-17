@@ -244,7 +244,6 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;

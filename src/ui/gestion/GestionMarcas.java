@@ -222,9 +222,16 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        AbmMarca abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-        this.desktopPane.add(abmMarca);
-        abmMarca.show();
+        AbmMarca abmMarca;
+        try {
+            abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
+            this.desktopPane.add(abmMarca);
+            abmMarca.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -242,7 +249,6 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
     }//GEN-LAST:event_jbModificarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;

@@ -6,12 +6,15 @@
 package ui.abm;
 
 import controlador.MarcaControlador;
+import controlador.UsuarioControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
 import objeto.Marca;
+import objeto.Usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -19,53 +22,55 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
-
+    
+    private UsuarioControlador usuarioControlador = new UsuarioControlador();
+    private DefaultComboBoxModel<Usuario> dcbmUsuario;
     private String operacion;
     private Marca marca;
     private Gestionable ventanaGestion;
     private boolean estado;
-
+    
     public boolean isEstado() {
         return estado;
     }
-
+    
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     public String getOperacion() {
         return operacion;
     }
-
+    
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-
+    
     public Marca getMarca() {
         return marca;
     }
-
+    
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
-
+    
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-
+    
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-
+    
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-
+    
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-
-    public AbmMarca(String operacion, Marca marca, Gestionable ventanaGestion) {
+    
+    public AbmMarca(String operacion, Marca marca, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
@@ -79,14 +84,16 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.marca = marca;
         this.ventanaGestion = ventanaGestion;
+        dcbmUsuario = new DefaultComboBoxModel(usuarioControlador.extraerTodos().toArray());
+        jcbUsuario.setModel(dcbmUsuario);
         inicializacionVentana();
-
+        
     }
-
+    
     public AbmMarca() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-
+        
     }
 
     /**
@@ -112,6 +119,8 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
         jrbVisible = new javax.swing.JRadioButton();
+        jlUsuario = new javax.swing.JLabel();
+        jcbUsuario = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("SISPA - Marcas");
@@ -204,6 +213,19 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
 
+        jlUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        jlUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlUsuario.setForeground(new java.awt.Color(33, 150, 243));
+        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlUsuario.setText("Usuario: ");
+        jpPrincipal.add(jlUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 210, 20));
+
+        jcbUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        jcbUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbUsuario.setForeground(new java.awt.Color(33, 150, 243));
+        jcbUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jpPrincipal.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, -1));
+
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -241,13 +263,13 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
-
+        
     }//GEN-LAST:event_jpTituloMouseDragged
-
+    
     private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
-
+        
     }//GEN-LAST:event_jpTituloMousePressed
-
+    
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         if (recolectarDatos() == OK) {
             if (grabar() == OK) {
@@ -256,11 +278,11 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }//GEN-LAST:event_jbAceptarActionPerformed
-
+    
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
-
+    
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(marca.getNombre());
@@ -269,14 +291,16 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
             } else {
                 jrbNoVisible.setSelected(true);
             }
+            jcbUsuario.setSelectedItem(marca.getUsuario());
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
+                jcbUsuario.setEnabled(false);
             }
         }
     }
-
+    
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         marca.setNombre(jtfNombre.getText());
@@ -287,7 +311,7 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         }
         return OK;
     }
-
+    
     @Override
     public int grabar() {
         MarcaControlador marcaControlador = new MarcaControlador();
@@ -318,11 +342,13 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
+    private javax.swing.JComboBox jcbUsuario;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
+    private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jlVisible;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;

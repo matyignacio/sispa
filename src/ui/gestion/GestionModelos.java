@@ -247,7 +247,6 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;

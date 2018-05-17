@@ -65,7 +65,8 @@ public class IncisoControlador {
         conn.close();
         return incisos;
     }
-     public ArrayList<Inciso> extraerTodosVisibles() throws SQLException {
+
+    public ArrayList<Inciso> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.Incisos where visible = TRUE order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -87,47 +88,47 @@ public class IncisoControlador {
     }
 
     public void insertar(Inciso inciso) throws SQLException {
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO public.Incisos (numero, principal, parcial)  VALUES (?,?,?)";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setInt(1, inciso.getNumero());
-        ps.setInt(2, inciso.getPrincipal());
-        ps.setInt(3, inciso.getParcial());
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "Insertado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "INSERT INTO public.Incisos (numero, principal, parcial)  VALUES (?,?,?)";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, inciso.getNumero());
+            ps.setInt(2, inciso.getPrincipal());
+            ps.setInt(3, inciso.getParcial());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Insertado correctamente");
+            ps.close();
+            conn.close();
         }
     }
 
     public void modificar(Inciso inciso) throws SQLException {
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE public.Incisos SET numero=?, principal=?, parcial=? WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setInt(1, inciso.getNumero());
-        ps.setInt(2, inciso.getPrincipal());
-        ps.setInt(3, inciso.getParcial());
-        ps.setInt(4, inciso.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, inciso.toString() + " modificado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "UPDATE public.Incisos SET numero=?, principal=?, parcial=? WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, inciso.getNumero());
+            ps.setInt(2, inciso.getPrincipal());
+            ps.setInt(3, inciso.getParcial());
+            ps.setInt(4, inciso.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, inciso.toString() + " modificado correctamente");
+            ps.close();
+            conn.close();
         }
     }
 
     public void borrar(Inciso inciso) throws SQLException {
-         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM public.Incisos WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setInt(1, inciso.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, inciso.toString() + " eliminado correctamente");
-        ps.close();
-        conn.close();
-         }
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "DELETE FROM public.Incisos WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, inciso.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, inciso.toString() + " eliminado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
 }

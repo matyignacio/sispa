@@ -15,7 +15,6 @@ public class Adquisicion extends ObjetoBase {
 
     private Date fecha;
     private float monto;
-    private BienPatrimonial bienPatrimonial;
     private TipoAdquisicion tipoAdquisicion;
 
     public Date getFecha() {
@@ -32,22 +31,6 @@ public class Adquisicion extends ObjetoBase {
 
     public void setMonto(float monto) {
         this.monto = monto;
-    }
-
-    public BienPatrimonial getBienPatrimonial() {
-        return bienPatrimonial;
-    }
-
-    public void setBienPatrimonial(BienPatrimonial bienPatrimonial) {
-        this.bienPatrimonial = bienPatrimonial;
-    }
-
-    public BienPatrimonial getMueble() {
-        return bienPatrimonial;
-    }
-
-    public void setMueble(BienPatrimonial bienPatrimonial) {
-        this.bienPatrimonial = bienPatrimonial;
     }
 
     public TipoAdquisicion getTipoAdquisicion() {
