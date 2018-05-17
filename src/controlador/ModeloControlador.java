@@ -84,8 +84,6 @@ public class ModeloControlador {
             modelo.setNombre(rs.getString(2));
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
-          
-            
             modelos.add(modelo);
         }
         rs.close();

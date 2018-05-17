@@ -47,21 +47,21 @@ public class CategoriaControlador {
     public ArrayList<Categoria> extraerTodos() throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
+        UsuarioControlador usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Categorias\"";
+        String consultaSql = "SELECT * FROM \"Categorias\" order by";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
         categorias = new ArrayList<>();
         while (rs.next()) {
             categoria = new Categoria();
-            
-            categoria = new Categoria();
             categoria.setId(rs.getInt(1));
             categoria.setNombre(rs.getString(2));
             categoria.setVisible(rs.getBoolean(3));
             categoria.setInciso(i.extraer(rs.getInt(4)));
             categoria.setCodigoPresupuestaro(c.extraer(rs.getInt(5)));
+            categoria.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
             categorias.add(categoria);
         }
         rs.close();
@@ -69,7 +69,7 @@ public class CategoriaControlador {
         conn.close();
         return categorias;
     }
-    
+
     public ArrayList<Categoria> extraerTodosVisibles() throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
@@ -81,8 +81,6 @@ public class CategoriaControlador {
         categorias = new ArrayList<>();
         while (rs.next()) {
             categoria = new Categoria();
-            
-            categoria = new Categoria();
             categoria.setId(rs.getInt(1));
             categoria.setNombre(rs.getString(2));
             categoria.setVisible(rs.getBoolean(3));
@@ -95,55 +93,53 @@ public class CategoriaControlador {
         conn.close();
         return categorias;
     }
-    
-    
-    
-    
 
     public void insertar(Categoria modelo) throws SQLException {
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario) VALUES (?, ?, ?, ?)";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, categoria.getNombre());
-        ps.setBoolean(2, categoria.isVisible());
-        ps.setInt(3, categoria.getInciso().getId());
-        ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
-        ps.execute();
-        JOptionPane.showMessageDialog(null, "Insertado correctamente");
-        ps.close();
-        conn.close();
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario, id_usuario) VALUES (?, ?, ?, ?, ?)";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setString(1, categoria.getNombre());
+            ps.setBoolean(2, categoria.isVisible());
+            ps.setInt(3, categoria.getInciso().getId());
+            ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
+            ps.setInt(5, categoria.getUsuario().getId());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Insertado correctamente");
+            ps.close();
+            conn.close();
         }
     }
 
     public void modificar(Categoria categoria) throws SQLException {
-          if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=? WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setString(1, categoria.getNombre());
-        ps.setBoolean(2, categoria.isVisible());
-        ps.setInt(3, categoria.getInciso().getId());
-        ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
-        ps.setInt(5, categoria.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, categoria.toString() + " modificado correctamente");
-        ps.close();
-        conn.close();
-          }
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=?, id_perfil=? WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setString(1, categoria.getNombre());
+            ps.setBoolean(2, categoria.isVisible());
+            ps.setInt(3, categoria.getInciso().getId());
+            ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
+            ps.setInt(5, categoria.getUsuario().getId());
+            ps.setInt(6, categoria.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, categoria.toString() + " modificado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
     public void borrar(Categoria categoria) throws SQLException {
-         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0){
-        conn = ConexionDB.GetConnection();
-        String consultaSql = "DELETE FROM \"Categorias\" WHERE id=?";
-        ps = conn.prepareStatement(consultaSql);
-        ps.setInt(1, categoria.getId());
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, categoria.toString() + " eliminado correctamente");
-        ps.close();
-        conn.close();
-         }
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
+            conn = ConexionDB.GetConnection();
+            String consultaSql = "DELETE FROM \"Categorias\" WHERE id=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, categoria.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, categoria.toString() + " eliminado correctamente");
+            ps.close();
+            conn.close();
+        }
     }
 
 }
