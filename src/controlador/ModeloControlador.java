@@ -20,10 +20,11 @@ public class ModeloControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
+    MarcaControlador marcaControlador = new MarcaControlador();
+    private UsuarioControlador usuarioControlador ;
 
     public Modelo extraer(Integer id) throws SQLException {
 
-        MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -36,7 +37,8 @@ public class ModeloControlador {
             modelo.setNombre(rs.getString(2));
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
-            modelo.setMarca(m.extraer(rs.getInt(5)));
+            modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
+
         }
         rs.close();
         ps.close();
@@ -45,7 +47,7 @@ public class ModeloControlador {
     }
 
     public ArrayList<Modelo> extraerTodos() throws SQLException {
-        MarcaControlador m = new MarcaControlador();
+
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -58,7 +60,8 @@ public class ModeloControlador {
             modelo.setNombre(rs.getString(2));
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
-            modelo.setMarca(m.extraer(rs.getInt(5)));
+            modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
+            modelo.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
             modelos.add(modelo);
         }
         rs.close();
@@ -68,7 +71,7 @@ public class ModeloControlador {
     }
 
     public ArrayList<Modelo> extraerTodosVisibles() throws SQLException {
-        MarcaControlador m = new MarcaControlador();
+
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" where visible = TRUE order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -81,7 +84,8 @@ public class ModeloControlador {
             modelo.setNombre(rs.getString(2));
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
-            modelo.setMarca(m.extraer(rs.getInt(5)));
+          
+            
             modelos.add(modelo);
         }
         rs.close();
@@ -99,6 +103,7 @@ public class ModeloControlador {
             ps.setBoolean(2, modelo.isVisible());
             ps.setInt(3, modelo.getAño());
             ps.setInt(4, modelo.getMarca().getId());
+            ps.setInt(5, modelo.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -115,7 +120,8 @@ public class ModeloControlador {
             ps.setBoolean(2, modelo.isVisible());
             ps.setInt(3, modelo.getAño());
             ps.setInt(4, modelo.getMarca().getId());
-            ps.setInt(5, modelo.getId());
+            ps.setInt(5, modelo.getUsuario().getId());
+            ps.setInt(6, modelo.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, modelo.toString() + " modificado correctamente");
             ps.close();

@@ -20,10 +20,11 @@ public class MarcaControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
+    private UsuarioControlador usuarioControlador;
 
     public Marca extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" WHERE id=?";
+        String consultaSql = "SELECT * FROM public.\"Marcas\" WHERE id=? ";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -53,6 +54,8 @@ public class MarcaControlador {
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
             marca.setVisible(rs.getBoolean(3));
+            marca.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
+
             marcas.add(marca);
         }
         rs.close();
@@ -73,6 +76,7 @@ public class MarcaControlador {
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
             marca.setVisible(rs.getBoolean(3));
+
             marcas.add(marca);
         }
         rs.close();
@@ -88,6 +92,7 @@ public class MarcaControlador {
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
+            ps.setInt(3, marca.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -103,6 +108,7 @@ public class MarcaControlador {
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
             ps.setInt(3, marca.getId());
+            ps.setInt(3, marca.getUsuario().getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, marca.toString() + " modificado correctamente");
             ps.close();
