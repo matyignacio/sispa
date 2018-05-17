@@ -14,6 +14,7 @@ public class Inmueble extends BienPatrimonial {
     private String domicilio;
     private Categoria categoria;
 
+    
     public String getDomicilio() {
         return domicilio;
     }
