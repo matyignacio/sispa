@@ -21,7 +21,7 @@ public class ModeloControlador {
     private PreparedStatement ps;
     private ResultSet rs;
     MarcaControlador marcaControlador = new MarcaControlador();
-    private UsuarioControlador usuarioControlador ;
+    private UsuarioControlador usuarioControlador;
 
     public Modelo extraer(Integer id) throws SQLException {
 
@@ -47,7 +47,7 @@ public class ModeloControlador {
     }
 
     public ArrayList<Modelo> extraerTodos() throws SQLException {
-
+        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -84,8 +84,7 @@ public class ModeloControlador {
             modelo.setNombre(rs.getString(2));
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
-          
-            
+
             modelos.add(modelo);
         }
         rs.close();
@@ -97,7 +96,7 @@ public class ModeloControlador {
     public void insertar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca, id_usuario) VALUES (?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());
@@ -114,7 +113,7 @@ public class ModeloControlador {
     public void modificar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
+            String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=?, id_usuario=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());

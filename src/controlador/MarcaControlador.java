@@ -43,6 +43,7 @@ public class MarcaControlador {
     }
 
     public ArrayList<Marca> extraerTodos() throws SQLException {
+        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Marcas\" order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -88,7 +89,7 @@ public class MarcaControlador {
     public void insertar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Marcas\" (nombre, visible)  VALUES (?,?)";
+            String consultaSql = "INSERT INTO public.\"Marcas\" (nombre, visible, id_usuario)  VALUES (?,?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
@@ -103,7 +104,7 @@ public class MarcaControlador {
     public void modificar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Marcas\" SET nombre=?, visible=? WHERE id=?";
+            String consultaSql = "UPDATE public.\"Marcas\" SET nombre=?, visible=?, id_usuario=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
