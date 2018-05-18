@@ -54,6 +54,7 @@ public class MarcaControlador {
             marca = new Marca();
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
+            marca.setVisible(rs.getBoolean(3));
             marcas.add(marca);
         }
         rs.close();
@@ -73,6 +74,7 @@ public class MarcaControlador {
             marca = new Marca();
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
+            marca.setVisible(rs.getBoolean(3));
             marcas.add(marca);
         }
         rs.close();
