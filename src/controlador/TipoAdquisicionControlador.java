@@ -47,7 +47,7 @@ public class TipoAdquisicionControlador {
         usuarioControlador = new UsuarioControlador();
         
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"tipo_adquisicion\" order by id";
+        String consultaSql = "SELECT * FROM public.\"tipo_adquisicion\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -70,7 +70,7 @@ public class TipoAdquisicionControlador {
         usuarioControlador = new UsuarioControlador();
         
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"tipo_adquisicion\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"tipo_adquisicion\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

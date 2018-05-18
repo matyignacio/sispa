@@ -45,7 +45,7 @@ public class OperacionesControlador {
     public ArrayList<Operaciones> extraerTodos() throws SQLException {
         usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Operaciones\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Operaciones\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -67,7 +67,7 @@ public class OperacionesControlador {
 
     public ArrayList<Operaciones> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Operaciones\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"Operaciones\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

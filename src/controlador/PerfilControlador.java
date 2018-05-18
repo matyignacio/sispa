@@ -67,7 +67,7 @@ public class PerfilControlador {
 
     public ArrayList<Perfil> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Perfiles\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Perfiles\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -87,7 +87,7 @@ public class PerfilControlador {
 
     public ArrayList<Perfil> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Perfiles\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"Perfiles\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
