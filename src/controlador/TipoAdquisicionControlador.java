@@ -35,6 +35,7 @@ public class TipoAdquisicionControlador {
             tipo.setId(rs.getInt(1));
             tipo.setNombre(rs.getString(2));
             tipo.setVisible(rs.getBoolean(3));
+            tipo.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
         }
         rs.close();
         ps.close();
@@ -56,7 +57,7 @@ public class TipoAdquisicionControlador {
             tipo.setId(rs.getInt(1));
             tipo.setNombre(rs.getString(2));
             tipo.setVisible(rs.getBoolean(3));
-            tipo.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
+            
             tipos.add(tipo);
         }
         rs.close();

@@ -20,8 +20,10 @@ public class CategoriaControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
+    private UsuarioControlador usuarioControlador;
 
     public Categoria extraer(Integer id) throws SQLException {
+        usuarioControlador = new UsuarioControlador();
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
@@ -37,6 +39,7 @@ public class CategoriaControlador {
             categoria.setVisible(rs.getBoolean(3));
             categoria.setInciso(i.extraer(rs.getInt(4)));
             categoria.setCodigoPresupuestaro(c.extraer(rs.getInt(5)));
+            categoria.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
         }
         rs.close();
         ps.close();
@@ -61,7 +64,7 @@ public class CategoriaControlador {
             categoria.setVisible(rs.getBoolean(3));
             categoria.setInciso(i.extraer(rs.getInt(4)));
             categoria.setCodigoPresupuestaro(c.extraer(rs.getInt(5)));
-            categoria.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
+           
             categorias.add(categoria);
         }
         rs.close();

@@ -49,6 +49,7 @@ public class InmuebleControlador {
             inmueble.setObservaciones(rs.getString(6));
             inmueble.setDomicilio(rs.getString(7));
             inmueble.setCategoria(categoriaControlador.extraer(rs.getInt(8)));
+            inmueble.setUsuario(usuarioControlador.extraer(rs.getInt(9)));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(10)));
 
         }
@@ -79,7 +80,6 @@ public class InmuebleControlador {
             inmueble.setObservaciones(rs.getString(6));
             inmueble.setDomicilio(rs.getString(7));
             inmueble.setCategoria(categoriaControlador.extraer(rs.getInt(8)));
-            inmueble.setUsuario(usuarioControlador.extraer(rs.getInt(9)));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(10)));
             inmuebles.add(inmueble);
         }
@@ -167,7 +167,7 @@ public class InmuebleControlador {
             conn.close();
         }
     }
-    
+
     public void borrar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
