@@ -71,7 +71,7 @@ public class MuebleControlador {
         usuarioControlador = new UsuarioControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Muebles\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Muebles\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -98,7 +98,7 @@ public class MuebleControlador {
 
     public ArrayList<Mueble> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Muebles\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"Muebles\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

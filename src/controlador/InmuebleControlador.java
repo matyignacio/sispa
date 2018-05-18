@@ -64,7 +64,7 @@ public class InmuebleControlador {
         usuarioControlador = new UsuarioControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Inmuebles\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Inmuebles\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -94,7 +94,7 @@ public class InmuebleControlador {
         usuarioControlador = new UsuarioControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Inmuebles\" where visible = TRUE order by id ";
+        String consultaSql = "SELECT * FROM public.\"Inmuebles\" where visible = TRUE order by nombre ";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

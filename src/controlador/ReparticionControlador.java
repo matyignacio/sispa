@@ -48,7 +48,7 @@ public class ReparticionControlador {
     public ArrayList<Reparticion> extraerTodos() throws SQLException {
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Reparticiones\" order by id";
+        String consultaSql = "SELECT * FROM \"Reparticiones\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -73,7 +73,7 @@ public class ReparticionControlador {
     public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Reparticiones\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM \"Reparticiones\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
