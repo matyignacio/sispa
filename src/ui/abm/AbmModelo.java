@@ -115,7 +115,6 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         jlNombreUsuario = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
         jlMarca = new javax.swing.JLabel();
-        jlNombre = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
@@ -123,6 +122,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         jlAño = new javax.swing.JLabel();
         jtfAño = new javax.swing.JTextField();
         jcbMarca = new javax.swing.JComboBox();
+        jlNombre1 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("SISPA - Modelos");
@@ -186,13 +186,6 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         jlMarca.setText("Marca: ");
         jpPrincipal.add(jlMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
 
-        jlNombre.setBackground(new java.awt.Color(204, 204, 204));
-        jlNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlNombre.setForeground(new java.awt.Color(33, 150, 243));
-        jlNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlNombre.setText("Nombre: ");
-        jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
-
         jtfNombre.setBackground(new java.awt.Color(204, 204, 204));
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfNombre.setForeground(new java.awt.Color(33, 150, 243));
@@ -244,6 +237,13 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         jcbMarca.setForeground(new java.awt.Color(33, 150, 243));
         jcbMarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jpPrincipal.add(jcbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+
+        jlNombre1.setBackground(new java.awt.Color(204, 204, 204));
+        jlNombre1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlNombre1.setForeground(new java.awt.Color(33, 150, 243));
+        jlNombre1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlNombre1.setText("Nombre: ");
+        jpPrincipal.add(jlNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -374,7 +374,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JLabel jlAño;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlMarca;
-    private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlNombre1;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;

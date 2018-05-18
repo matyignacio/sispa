@@ -95,7 +95,7 @@ public class CategoriaControlador {
         return categorias;
     }
 
-    public void insertar(Categoria modelo) throws SQLException {
+    public void insertar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario, id_usuario) VALUES (?, ?, ?, ?, ?)";
@@ -103,7 +103,7 @@ public class CategoriaControlador {
             ps.setString(1, categoria.getNombre());
             ps.setBoolean(2, categoria.isVisible());
             ps.setInt(3, categoria.getInciso().getId());
-            ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
+            ps.setInt(4, categoria.getCodigoPresupuestario().getId());
             ps.setInt(5, categoria.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
@@ -115,12 +115,12 @@ public class CategoriaControlador {
     public void modificar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=?, id_perfil=? WHERE id=?";
+            String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=?, id_usuario=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, categoria.getNombre());
             ps.setBoolean(2, categoria.isVisible());
             ps.setInt(3, categoria.getInciso().getId());
-            ps.setInt(4, categoria.getCodigoPresupuestaro().getId());
+            ps.setInt(4, categoria.getCodigoPresupuestario().getId());
             ps.setInt(5, categoria.getUsuario().getId());
             ps.setInt(6, categoria.getId());
             ps.executeUpdate();

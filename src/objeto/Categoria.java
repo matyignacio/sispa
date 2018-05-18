@@ -22,7 +22,7 @@ public class Categoria extends ObjetoBase {
         this.inciso = inciso;
     }
 
-    public CodigoPresupuestario getCodigoPresupuestaro() {
+    public CodigoPresupuestario getCodigoPresupuestario() {
         return codigoPresupuestaro;
     }
 

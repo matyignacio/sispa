@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import objeto.Categoria;
+import ui.abm.AbmCategoria;
 import ui.abm.AbmMarca;
 import ui.grillas.GrillaCategorias;
 
@@ -207,49 +208,48 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        /* if (jtCategorias.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+        if (jtCategorias.getSelectedRow() > -1) {
+            AbmCategoria abmCategoria;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, categoriaControlador.extraer(categoriaControlador.extraerTodos().
-                        get(jtCategorias.getSelectedRow()).getId()),
-                        this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                abmCategoria = new AbmCategoria(ABM_BAJA, categoriaControlador.extraer(categoriaControlador.extraerTodos().
+                        get(jtCategorias.getSelectedRow()).getId()), this);
+                this.desktopPane.add(abmCategoria);
+                abmCategoria.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionCategorias.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }*/
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        /*AbmMarca abmMarca;
+        AbmCategoria abmCategoria;
         try {
-            abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-            this.desktopPane.add(abmMarca);
-            abmMarca.show();
+            abmCategoria = new AbmCategoria(ABM_ALTA, new Categoria(), this);
+            this.desktopPane.add(abmCategoria);
+            abmCategoria.show();
         } catch (SQLException ex) {
             Logger.getLogger(GestionCategorias.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
+
 
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        /* if (jtCategorias.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+        if (jtCategorias.getSelectedRow() > -1) {
+            AbmCategoria abmCategoria;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, categoriaControlador.extraer(categoriaControlador.extraerTodos().
+                abmCategoria = new AbmCategoria(ABM_MODIFICACION, categoriaControlador.extraer(categoriaControlador.extraerTodos().
                         get(jtCategorias.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                this.desktopPane.add(abmCategoria);
+                abmCategoria.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionCategorias.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }*/
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

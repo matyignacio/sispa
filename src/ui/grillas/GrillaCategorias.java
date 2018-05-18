@@ -46,7 +46,7 @@ public class GrillaCategorias extends AbstractTableModel {
             case 0:
                 return categoria.getNombre();
             case 1:
-                return categoria.getCodigoPresupuestaro();
+                return categoria.getCodigoPresupuestario();
             case 2:
                 return categoria.getInciso();
             case 3:

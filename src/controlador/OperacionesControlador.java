@@ -23,6 +23,7 @@ public class OperacionesControlador {
     private UsuarioControlador usuarioControlador;
 
     public Operaciones extraer(Integer id) throws SQLException {
+        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Operaciones\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -34,7 +35,7 @@ public class OperacionesControlador {
             operacion.setId(rs.getInt(1));
             operacion.setNombre(rs.getString(2));
             operacion.setVisible(rs.getBoolean(3));
-            operacion.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
+//            operacion.setUsuario(usuarioControlador.extraer(rs.getInt(4))); HAY QUE ARREGLAR ESTA LINEA
         }
         rs.close();
         ps.close();
@@ -55,8 +56,6 @@ public class OperacionesControlador {
             operacion.setId(rs.getInt(1));
             operacion.setNombre(rs.getString(2));
             operacion.setVisible(rs.getBoolean(3));
-            
-
             operaciones.add(operacion);
         }
         rs.close();
@@ -77,7 +76,6 @@ public class OperacionesControlador {
             operacion.setId(rs.getInt(1));
             operacion.setNombre(rs.getString(2));
             operacion.setVisible(rs.getBoolean(3));
-
             operaciones.add(operacion);
         }
         rs.close();
