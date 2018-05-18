@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ui.gestion.GestionCategorias;
 import ui.gestion.GestionCodigosPresupuestario;
 import ui.gestion.GestionIncisos;
 import ui.gestion.GestionMarcas;
@@ -111,6 +112,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 140));
 
         jpModelo.setBackground(java.awt.SystemColor.controlHighlight);
+        jpModelo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpModelo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpModeloMouseClicked(evt);
@@ -141,7 +143,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpModelo.setLayout(jpModeloLayout);
         jpModeloLayout.setHorizontalGroup(
             jpModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpModeloLayout.setVerticalGroup(
             jpModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,6 +156,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 90, 90));
 
         jpMarca.setBackground(java.awt.SystemColor.controlHighlight);
+        jpMarca.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpMarcaMouseClicked(evt);
@@ -184,7 +187,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpMarca.setLayout(jpMarcaLayout);
         jpMarcaLayout.setHorizontalGroup(
             jpMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpMarcaLayout.setVerticalGroup(
             jpMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,6 +200,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 90, 90));
 
         jpInciso.setBackground(java.awt.SystemColor.controlHighlight);
+        jpInciso.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpInciso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpIncisoMouseClicked(evt);
@@ -227,7 +231,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpInciso.setLayout(jpIncisoLayout);
         jpIncisoLayout.setHorizontalGroup(
             jpIncisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlInciso, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlInciso, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpIncisoLayout.setVerticalGroup(
             jpIncisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,6 +244,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpInciso, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 90, 90));
 
         jpCodigoPresupuestario.setBackground(java.awt.SystemColor.controlHighlight);
+        jpCodigoPresupuestario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpCodigoPresupuestario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpCodigoPresupuestarioMouseClicked(evt);
@@ -270,7 +275,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpCodigoPresupuestario.setLayout(jpCodigoPresupuestarioLayout);
         jpCodigoPresupuestarioLayout.setHorizontalGroup(
             jpCodigoPresupuestarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlCodigoPresupuestario, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlCodigoPresupuestario, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpCodigoPresupuestarioLayout.setVerticalGroup(
             jpCodigoPresupuestarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,6 +288,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpCodigoPresupuestario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 90, 90));
 
         jpCategoria.setBackground(java.awt.SystemColor.controlHighlight);
+        jpCategoria.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpCategoriaMouseClicked(evt);
@@ -303,12 +309,17 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlCategoria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCategoria.setText("Categoria");
         jlCategoria.setToolTipText("");
+        jlCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jlCategoriaMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpCategoriaLayout = new javax.swing.GroupLayout(jpCategoria);
         jpCategoria.setLayout(jpCategoriaLayout);
         jpCategoriaLayout.setHorizontalGroup(
             jpCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpCategoriaLayout.setVerticalGroup(
             jpCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,6 +332,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 90, 90));
 
         jpEstado.setBackground(java.awt.SystemColor.controlHighlight);
+        jpEstado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpEstado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpEstadoMouseClicked(evt);
@@ -346,7 +358,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpEstado.setLayout(jpEstadoLayout);
         jpEstadoLayout.setHorizontalGroup(
             jpEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpEstadoLayout.setVerticalGroup(
             jpEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,6 +371,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 90, 90));
 
         jpReparticion.setBackground(java.awt.SystemColor.controlHighlight);
+        jpReparticion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpReparticion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpReparticionMouseClicked(evt);
@@ -397,6 +410,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpReparticion, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 90, 90));
 
         jpPerfil.setBackground(java.awt.SystemColor.controlHighlight);
+        jpPerfil.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpPerfilMouseClicked(evt);
@@ -422,7 +436,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPerfil.setLayout(jpPerfilLayout);
         jpPerfilLayout.setHorizontalGroup(
             jpPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpPerfilLayout.setVerticalGroup(
             jpPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,6 +449,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 90, 90));
 
         jpUsuario.setBackground(java.awt.SystemColor.controlHighlight);
+        jpUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpUsuarioMouseClicked(evt);
@@ -460,7 +475,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpUsuario.setLayout(jpUsuarioLayout);
         jpUsuarioLayout.setHorizontalGroup(
             jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(jlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
         );
         jpUsuarioLayout.setVerticalGroup(
             jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,6 +488,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jpPrincipal.add(jpUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 90, 90));
 
         jpReparticion1.setBackground(java.awt.SystemColor.controlHighlight);
+        jpReparticion1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpReparticion1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jpReparticion1MouseClicked(evt);
@@ -632,7 +648,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpCategoriaMouseExited
 
     private void jpCategoriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCategoriaMousePressed
-        // TODO add your handling code here:
+        jbCategoriasActionPerformed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_jpCategoriaMousePressed
 
     private void jpEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpEstadoMouseClicked
@@ -742,6 +758,10 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbIncisosActionPerformed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_jlIncisoMousePressed
 
+    private void jlCategoriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCategoriaMousePressed
+        jbCategoriasActionPerformed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_jlCategoriaMousePressed
+
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
         try {
@@ -770,6 +790,17 @@ public class Ajustes extends javax.swing.JInternalFrame {
             gestionIncisos = new GestionIncisos();
             this.desktopPane.add(gestionIncisos);
             gestionIncisos.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void jbCategoriasActionPerformed(java.awt.event.MouseEvent evt) {
+        GestionCategorias gestionCategorias;
+        try {
+            gestionCategorias = new GestionCategorias();
+            this.desktopPane.add(gestionCategorias);
+            gestionCategorias.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }

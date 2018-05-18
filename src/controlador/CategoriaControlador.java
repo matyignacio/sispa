@@ -50,9 +50,8 @@ public class CategoriaControlador {
     public ArrayList<Categoria> extraerTodos() throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
-        UsuarioControlador usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Categorias\" order by";
+        String consultaSql = "SELECT * FROM public.\"Categorias\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -64,7 +63,6 @@ public class CategoriaControlador {
             categoria.setVisible(rs.getBoolean(3));
             categoria.setInciso(i.extraer(rs.getInt(4)));
             categoria.setCodigoPresupuestaro(c.extraer(rs.getInt(5)));
-           
             categorias.add(categoria);
         }
         rs.close();
@@ -77,7 +75,7 @@ public class CategoriaControlador {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Categorias\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM \"Categorias\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

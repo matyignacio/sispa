@@ -42,7 +42,7 @@ public class CodigoPresupuestarioControlador {
 
     public ArrayList<CodigoPresupuestario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -62,7 +62,7 @@ public class CodigoPresupuestarioControlador {
 
     public ArrayList<CodigoPresupuestario> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" where visible = TRUE order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();

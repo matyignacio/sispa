@@ -48,7 +48,7 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Incisos\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Incisos\" order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -70,7 +70,7 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Incisos\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"Incisos\" where visible = TRUE order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -135,5 +135,4 @@ public class IncisoControlador {
             conn.close();
         }
     }
-
 }

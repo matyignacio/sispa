@@ -45,7 +45,7 @@ public class MarcaControlador {
 
     public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" order by id";
+        String consultaSql = "SELECT * FROM public.\"Marcas\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.executeQuery();
         rs = ps.getResultSet();
@@ -65,7 +65,7 @@ public class MarcaControlador {
 
     public ArrayList<Marca> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" where visible = TRUE order by id";
+        String consultaSql = "SELECT * FROM public.\"Marcas\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.executeQuery();
         rs = ps.getResultSet();
