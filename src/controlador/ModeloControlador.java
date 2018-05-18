@@ -24,7 +24,8 @@ public class ModeloControlador {
     private UsuarioControlador usuarioControlador;
 
     public Modelo extraer(Integer id) throws SQLException {
-
+        marcaControlador = new MarcaControlador();
+        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -38,7 +39,7 @@ public class ModeloControlador {
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
             modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
-
+            modelo.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
         }
         rs.close();
         ps.close();
@@ -47,7 +48,7 @@ public class ModeloControlador {
     }
 
     public ArrayList<Modelo> extraerTodos() throws SQLException {
-        usuarioControlador = new UsuarioControlador();
+        marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -61,7 +62,6 @@ public class ModeloControlador {
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
             modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
-            modelo.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
             modelos.add(modelo);
         }
         rs.close();
@@ -71,7 +71,7 @@ public class ModeloControlador {
     }
 
     public ArrayList<Modelo> extraerTodosVisibles() throws SQLException {
-
+        marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" where visible = TRUE order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -84,7 +84,7 @@ public class ModeloControlador {
             modelo.setNombre(rs.getString(2));
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
-
+            modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
             modelos.add(modelo);
         }
         rs.close();

@@ -209,7 +209,9 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
         if (jtModelos.getSelectedRow() > -1) {
             AbmModelo abmModelo;
             try {
-                abmModelo = new AbmModelo(ABM_BAJA, modeloControlador.extraerTodos().get(jtModelos.getSelectedRow()), this);
+                abmModelo = new AbmModelo(ABM_BAJA, modeloControlador.extraer(modeloControlador.extraerTodos().
+                        get(jtModelos.getSelectedRow()).getId()),
+                        this);
                 this.desktopPane.add(abmModelo);
                 abmModelo.show();
             } catch (SQLException ex) {
@@ -236,7 +238,8 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
         if (jtModelos.getSelectedRow() > -1) {
             AbmModelo abmModelo;
             try {
-                abmModelo = new AbmModelo(ABM_MODIFICACION, modeloControlador.extraerTodos().get(jtModelos.getSelectedRow()), this);
+                abmModelo = new AbmModelo(ABM_MODIFICACION, modeloControlador.extraer(modeloControlador.extraerTodos().
+                        get(jtModelos.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmModelo);
                 abmModelo.show();
             } catch (SQLException ex) {
