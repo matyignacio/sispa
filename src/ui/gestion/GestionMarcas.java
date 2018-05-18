@@ -210,7 +210,8 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         if (jtMarcas.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()), this);
+                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()).getId()),
+                        this);
                 this.desktopPane.add(abmMarca);
                 abmMarca.show();
             } catch (SQLException ex) {
@@ -239,7 +240,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         if (jtMarcas.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()), this);
+                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodos().get(jtMarcas.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMarca);
                 abmMarca.show();
             } catch (SQLException ex) {

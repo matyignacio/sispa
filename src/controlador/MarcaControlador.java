@@ -23,6 +23,7 @@ public class MarcaControlador {
     private UsuarioControlador usuarioControlador;
 
     public Marca extraer(Integer id) throws SQLException {
+        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Marcas\" WHERE id=? ";
         ps = conn.prepareStatement(consultaSql);
@@ -34,7 +35,7 @@ public class MarcaControlador {
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
             marca.setVisible(rs.getBoolean(3));
-
+            marca.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
         }
         rs.close();
         ps.close();
@@ -43,7 +44,6 @@ public class MarcaControlador {
     }
 
     public ArrayList<Marca> extraerTodos() throws SQLException {
-        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Marcas\" order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -54,9 +54,6 @@ public class MarcaControlador {
             marca = new Marca();
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
-            marca.setVisible(rs.getBoolean(3));
-            marca.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
-
             marcas.add(marca);
         }
         rs.close();
@@ -76,8 +73,6 @@ public class MarcaControlador {
             marca = new Marca();
             marca.setId(rs.getInt(1));
             marca.setNombre(rs.getString(2));
-            marca.setVisible(rs.getBoolean(3));
-
             marcas.add(marca);
         }
         rs.close();
