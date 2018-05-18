@@ -24,13 +24,18 @@ public class MuebleControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    CategoriaControlador c = new CategoriaControlador();
-    EstadoControlador e = new EstadoControlador();
-    ModeloControlador m = new ModeloControlador();
-    UsuarioControlador u = new UsuarioControlador();
-    ReparticionControlador r = new ReparticionControlador();
+    CategoriaControlador categoriaControlador = new CategoriaControlador();
+    EstadoControlador estadoControlador = new EstadoControlador();
+    ModeloControlador modeloControlador = new ModeloControlador();
+    UsuarioControlador usuarioControlador = new UsuarioControlador();
+    ReparticionControlador reparticionControlador = new ReparticionControlador();
 
     public Mueble extraer(Integer id) throws SQLException {
+        categoriaControlador = new CategoriaControlador();
+        estadoControlador = new EstadoControlador();
+        modeloControlador = new ModeloControlador();
+        usuarioControlador = new UsuarioControlador();
+        reparticionControlador = new ReparticionControlador();
 
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.Muebles WHERE id=?";
@@ -46,11 +51,10 @@ public class MuebleControlador {
             mueble.setExpediente(rs.getString(4));
             mueble.setCaracteristicas(rs.getString(5));
             mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(c.extraer(rs.getInt(7)));
-            mueble.setEstado(e.extraer(rs.getInt(8)));
-            mueble.setModelo(m.extraer(rs.getInt(9)));
-            mueble.setUsuario(u.extraer(rs.getInt(10)));
-            mueble.setReparticion(r.extraer(rs.getInt(11)));
+            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
+            mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
+            mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
+            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(11)));
 
         }
         rs.close();
@@ -60,6 +64,11 @@ public class MuebleControlador {
     }
 
     public ArrayList<Mueble> extraerTodos() throws SQLException {
+        categoriaControlador = new CategoriaControlador();
+        estadoControlador = new EstadoControlador();
+        modeloControlador = new ModeloControlador();
+        usuarioControlador = new UsuarioControlador();
+        reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Muebles\" order by id";
         ps = conn.prepareStatement(consultaSql);
@@ -74,11 +83,11 @@ public class MuebleControlador {
             mueble.setExpediente(rs.getString(4));
             mueble.setCaracteristicas(rs.getString(5));
             mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(c.extraer(rs.getInt(7)));
-            mueble.setEstado(e.extraer(rs.getInt(8)));
-            mueble.setModelo(m.extraer(rs.getInt(9)));
-            mueble.setUsuario(u.extraer(rs.getInt(10)));
-            mueble.setReparticion(r.extraer(rs.getInt(11)));
+            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
+            mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
+            mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
+            mueble.setUsuario(usuarioControlador.extraer(rs.getInt(10)));
+            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(11)));
             muebles.add(mueble);
         }
         rs.close();
@@ -102,11 +111,10 @@ public class MuebleControlador {
             mueble.setExpediente(rs.getString(4));
             mueble.setCaracteristicas(rs.getString(5));
             mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(c.extraer(rs.getInt(7)));
-            mueble.setEstado(e.extraer(rs.getInt(8)));
-            mueble.setModelo(m.extraer(rs.getInt(9)));
-            mueble.setUsuario(u.extraer(rs.getInt(10)));
-            mueble.setReparticion(r.extraer(rs.getInt(11)));
+            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
+            mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
+            mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
+            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(10)));
             muebles.add(mueble);
         }
         rs.close();
