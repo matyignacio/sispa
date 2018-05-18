@@ -34,6 +34,7 @@ public class OperacionesControlador {
             operacion.setId(rs.getInt(1));
             operacion.setNombre(rs.getString(2));
             operacion.setVisible(rs.getBoolean(3));
+            operacion.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
         }
         rs.close();
         ps.close();
@@ -54,7 +55,7 @@ public class OperacionesControlador {
             operacion.setId(rs.getInt(1));
             operacion.setNombre(rs.getString(2));
             operacion.setVisible(rs.getBoolean(3));
-            operacion.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
+            
 
             operaciones.add(operacion);
         }

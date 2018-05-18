@@ -38,6 +38,7 @@ public class IncisoControlador {
             inciso.setNumero(rs.getInt(2));
             inciso.setPrincipal(rs.getInt(3));
             inciso.setParcial(rs.getInt(4));
+            
         }
         rs.close();
         ps.close();

@@ -38,6 +38,7 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
+            estado.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
         }
         rs.close();
         ps.close();
@@ -59,7 +60,7 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
-            estado.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
+            
             estados.add(estado);
         }
         rs.close();

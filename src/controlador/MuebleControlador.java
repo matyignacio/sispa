@@ -54,6 +54,7 @@ public class MuebleControlador {
             mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
             mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
             mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
+            mueble.setUsuario(usuarioControlador.extraer(rs.getInt(10)));
             mueble.setReparticion(reparticionControlador.extraer(rs.getInt(11)));
 
         }
@@ -86,7 +87,6 @@ public class MuebleControlador {
             mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
             mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
             mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
-            mueble.setUsuario(usuarioControlador.extraer(rs.getInt(10)));
             mueble.setReparticion(reparticionControlador.extraer(rs.getInt(11)));
             muebles.add(mueble);
         }
@@ -114,7 +114,7 @@ public class MuebleControlador {
             mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
             mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
             mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
-            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(10)));
+            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(11)));
             muebles.add(mueble);
         }
         rs.close();
