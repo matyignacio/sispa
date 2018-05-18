@@ -5,7 +5,7 @@
  */
 package ui.gestion;
 
-import controlador.MarcaControlador;
+import controlador.IncisoControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,18 +13,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import objeto.Marca;
-import ui.abm.AbmMarca;
-import ui.grillas.GrillaMarcas;
+import objeto.Inciso;
+import ui.abm.AbmInciso;
+import ui.grillas.GrillaIncisos;
 
 /**
  *
  * @author Kuky
  */
-public class GestionMarcas extends javax.swing.JInternalFrame implements Gestionable {
+public class GestionIncisos extends javax.swing.JInternalFrame implements Gestionable {
 
-    GrillaMarcas grillaMarcas;
-    MarcaControlador marcaControlador = new MarcaControlador();
+    GrillaIncisos grillaIncisos;
+    IncisoControlador incisoControlador = new IncisoControlador();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -34,7 +34,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         this.desktopPane = desktopPane;
     }
 
-    public GestionMarcas() throws SQLException {
+    public GestionIncisos() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
@@ -58,13 +58,13 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtMarcas = new javax.swing.JTable();
+        jtIncisos = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Incisos");
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
 
@@ -88,7 +88,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
+        jlTituloPrincipal.setText("SISPA - Incisos");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -109,10 +109,10 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
-        jtMarcas.setBackground(new java.awt.Color(204, 204, 204));
-        jtMarcas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jtMarcas.setForeground(new java.awt.Color(33, 150, 243));
-        jtMarcas.setModel(new javax.swing.table.DefaultTableModel(
+        jtIncisos.setBackground(new java.awt.Color(204, 204, 204));
+        jtIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtIncisos.setForeground(new java.awt.Color(33, 150, 243));
+        jtIncisos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +123,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtMarcas);
+        jScrollPane1.setViewportView(jtIncisos);
 
         jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1020, 330));
 
@@ -206,16 +206,16 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        if (jtMarcas.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+        if (jtIncisos.getSelectedRow() > -1) {
+            AbmInciso abmInciso;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodos().
-                        get(jtMarcas.getSelectedRow()).getId()),
+                abmInciso = new AbmInciso(ABM_BAJA, incisoControlador.extraerTodos().
+                        get(jtIncisos.getSelectedRow()),
                         this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                this.desktopPane.add(abmInciso);
+                abmInciso.show();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GestionIncisos.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
@@ -223,28 +223,29 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        AbmMarca abmMarca;
+        AbmInciso abmInciso;
         try {
-            abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-            this.desktopPane.add(abmMarca);
-            abmMarca.show();
+            abmInciso = new AbmInciso(ABM_ALTA, new Inciso(), this);
+            this.desktopPane.add(abmInciso);
+            abmInciso.show();
         } catch (SQLException ex) {
-            Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionIncisos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        if (jtMarcas.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+        if (jtIncisos.getSelectedRow() > -1) {
+            AbmInciso abmInciso;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodos().
-                        get(jtMarcas.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                abmInciso = new AbmInciso(ABM_MODIFICACION, incisoControlador.extraerTodos().
+                        get(jtIncisos.getSelectedRow()),
+                        this);
+                this.desktopPane.add(abmInciso);
+                abmInciso.show();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GestionIncisos.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
@@ -263,16 +264,16 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
-    private javax.swing.JTable jtMarcas;
+    private javax.swing.JTable jtIncisos;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actualizarGestion() {
         try {
-            grillaMarcas = new GrillaMarcas((ArrayList<Marca>) marcaControlador.extraerTodos());
-            jtMarcas.setModel(grillaMarcas);
+            grillaIncisos = new GrillaIncisos((ArrayList<Inciso>) incisoControlador.extraerTodos());
+            jtIncisos.setModel(grillaIncisos);
         } catch (SQLException ex) {
-            Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionIncisos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

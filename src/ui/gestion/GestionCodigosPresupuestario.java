@@ -24,7 +24,7 @@ import ui.grillas.GrillaCodigosPresupuestarios;
 public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame implements Gestionable {
 
     GrillaCodigosPresupuestarios grillaCodigosPresupuestarios;
-    CodigoPresupuestarioControlador cpc = new CodigoPresupuestarioControlador();
+    CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -207,11 +207,11 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();
         if (jtCodigos.getSelectedRow() > -1) {
             AbmCodigosPresupuestarios abmCodigosPresupuestarios;
             try {
-                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_BAJA, codigoPresupuestarioControlador.extraerTodos().get(jtCodigos.getSelectedRow()), this);
+                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_BAJA, codigoPresupuestarioControlador.extraerTodos().
+                        get(jtCodigos.getSelectedRow()), this);
                 this.desktopPane.add(abmCodigosPresupuestarios);
                 abmCodigosPresupuestarios.show();
             } catch (SQLException ex) {
@@ -229,11 +229,11 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();
         if (jtCodigos.getSelectedRow() > -1) {
             AbmCodigosPresupuestarios abmCodigosPresupuestarios;
             try {
-                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_MODIFICACION, codigoPresupuestarioControlador.extraerTodos().get(jtCodigos.getSelectedRow()), this);
+                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_MODIFICACION, codigoPresupuestarioControlador.extraerTodos().
+                        get(jtCodigos.getSelectedRow()), this);
                 this.desktopPane.add(abmCodigosPresupuestarios);
                 abmCodigosPresupuestarios.show();
             } catch (SQLException ex) {
@@ -262,7 +262,7 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     @Override
     public void actualizarGestion() {
         try {
-            grillaCodigosPresupuestarios = new GrillaCodigosPresupuestarios((ArrayList<CodigoPresupuestario>) cpc.extraerTodos());
+            grillaCodigosPresupuestarios = new GrillaCodigosPresupuestarios((ArrayList<CodigoPresupuestario>) codigoPresupuestarioControlador.extraerTodos());
             jtCodigos.setModel(grillaCodigosPresupuestarios);
         } catch (SQLException ex) {
             Logger.getLogger(GestionCodigosPresupuestario.class.getName()).log(Level.SEVERE, null, ex);

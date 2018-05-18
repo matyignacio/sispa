@@ -15,6 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
 import objeto.Marca;
 import objeto.Modelo;
+import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -327,6 +328,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
+        modelo.setUsuario(usuario);
         modelo.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             modelo.setVisible(true);

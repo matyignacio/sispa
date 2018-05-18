@@ -5,73 +5,67 @@
  */
 package ui.abm;
 
-import controlador.MarcaControlador;
-import controlador.UsuarioControlador;
+import controlador.IncisoControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
-import objeto.Marca;
-import objeto.Usuario;
-import static ui.Login.usuario;
+import objeto.Inciso;
 import ui.gestion.Gestionable;
 
 /**
  *
  * @author Kuky
  */
-public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
-    
-    private UsuarioControlador usuarioControlador = new UsuarioControlador();
-    private DefaultComboBoxModel<Usuario> dcbmUsuario;
+public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
+
     private String operacion;
-    private Marca marca;
+    private Inciso inciso;
     private Gestionable ventanaGestion;
     private boolean estado;
-    
+
     public boolean isEstado() {
         return estado;
     }
-    
+
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
+
     public String getOperacion() {
         return operacion;
     }
-    
+
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-    
-    public Marca getMarca() {
-        return marca;
+
+    public Inciso getInciso() {
+        return inciso;
     }
-    
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+
+    public void setInciso(Inciso inciso) {
+        this.inciso = inciso;
     }
-    
+
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-    
+
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-    
+
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-    
-    public AbmMarca(String operacion, Marca marca, Gestionable ventanaGestion) throws SQLException {
+
+    public AbmInciso(String operacion, Inciso inciso, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
@@ -83,18 +77,16 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         }
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
-        this.marca = marca;
+        this.inciso = inciso;
         this.ventanaGestion = ventanaGestion;
-        dcbmUsuario = new DefaultComboBoxModel(usuarioControlador.extraerTodos().toArray());
-        jcbUsuario.setModel(dcbmUsuario);
         inicializacionVentana();
-        
+
     }
-    
-    public AbmMarca() throws SQLException {
+
+    public AbmInciso() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        
+
     }
 
     /**
@@ -115,16 +107,19 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
-        jlNombre = new javax.swing.JLabel();
-        jtfNombre = new javax.swing.JTextField();
+        jlNumero = new javax.swing.JLabel();
+        jtfNumero = new javax.swing.JTextField();
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
         jrbVisible = new javax.swing.JRadioButton();
-        jlUsuario = new javax.swing.JLabel();
-        jcbUsuario = new javax.swing.JComboBox();
+        jlPrincipal = new javax.swing.JLabel();
+        jtfPrincipal = new javax.swing.JTextField();
+        jtfParcial = new javax.swing.JTextField();
+        jlParcial = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Incisos");
+        setToolTipText("");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,7 +141,7 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
+        jlTituloPrincipal.setText("SISPA - Incisos");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -178,54 +173,75 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
         });
         jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
 
-        jlNombre.setBackground(new java.awt.Color(204, 204, 204));
-        jlNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlNombre.setForeground(new java.awt.Color(33, 150, 243));
-        jlNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlNombre.setText("Nombre: ");
-        jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jlNumero.setBackground(new java.awt.Color(204, 204, 204));
+        jlNumero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlNumero.setForeground(new java.awt.Color(33, 150, 243));
+        jlNumero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlNumero.setText("Numero: ");
+        jpPrincipal.add(jlNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
 
-        jtfNombre.setBackground(new java.awt.Color(204, 204, 204));
-        jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfNombre.setForeground(new java.awt.Color(33, 150, 243));
-        jtfNombre.addActionListener(new java.awt.event.ActionListener() {
+        jtfNumero.setBackground(new java.awt.Color(204, 204, 204));
+        jtfNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfNumero.setForeground(new java.awt.Color(33, 150, 243));
+        jtfNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNombreActionPerformed(evt);
+                jtfNumeroActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
-        jlUsuario.setBackground(new java.awt.Color(204, 204, 204));
-        jlUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlUsuario.setForeground(new java.awt.Color(33, 150, 243));
-        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlUsuario.setText("Usuario: ");
-        jpPrincipal.add(jlUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 210, 20));
+        jlPrincipal.setBackground(new java.awt.Color(204, 204, 204));
+        jlPrincipal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlPrincipal.setForeground(new java.awt.Color(33, 150, 243));
+        jlPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlPrincipal.setText("Principal: ");
+        jpPrincipal.add(jlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
 
-        jcbUsuario.setBackground(new java.awt.Color(204, 204, 204));
-        jcbUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jcbUsuario.setForeground(new java.awt.Color(33, 150, 243));
-        jcbUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpPrincipal.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, -1));
+        jtfPrincipal.setBackground(new java.awt.Color(204, 204, 204));
+        jtfPrincipal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfPrincipal.setForeground(new java.awt.Color(33, 150, 243));
+        jtfPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfPrincipalActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, -1));
+
+        jtfParcial.setBackground(new java.awt.Color(204, 204, 204));
+        jtfParcial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfParcial.setForeground(new java.awt.Color(33, 150, 243));
+        jtfParcial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfParcialActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfParcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 220, -1));
+
+        jlParcial.setBackground(new java.awt.Color(204, 204, 204));
+        jlParcial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlParcial.setForeground(new java.awt.Color(33, 150, 243));
+        jlParcial.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlParcial.setText("Parcial: ");
+        jpPrincipal.add(jlParcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 210, 20));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -264,13 +280,13 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
-        
+
     }//GEN-LAST:event_jpTituloMouseDragged
-    
+
     private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
-        
+
     }//GEN-LAST:event_jpTituloMousePressed
-    
+
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         if (recolectarDatos() == OK) {
             if (grabar() == OK) {
@@ -279,63 +295,74 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }//GEN-LAST:event_jbAceptarActionPerformed
-    
-    private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
+
+    private void jtfNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumeroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNombreActionPerformed
-    
+    }//GEN-LAST:event_jtfNumeroActionPerformed
+
+    private void jtfPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPrincipalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfPrincipalActionPerformed
+
+    private void jtfParcialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfParcialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfParcialActionPerformed
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
-            jtfNombre.setText(marca.getNombre());
-            if (marca.isVisible()) {
+            jtfNumero.setText(String.valueOf(inciso.getNumero()));
+            jtfPrincipal.setText(String.valueOf(inciso.getPrincipal()));
+            jtfParcial.setText(String.valueOf(inciso.getParcial()));
+            if (inciso.isVisible()) {
                 jrbVisible.setSelected(true);
             } else {
                 jrbNoVisible.setSelected(true);
             }
-            jcbUsuario.setSelectedItem(marca.getUsuario());
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
-                jtfNombre.setEditable(false);
+                jtfNumero.setEditable(false);
+                jtfPrincipal.setEditable(false);
+                jtfParcial.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
-                jcbUsuario.setEnabled(false);
             }
         }
     }
-    
+
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        marca.setUsuario(usuario);
-        marca.setNombre(jtfNombre.getText());
+        inciso.setNumero(Integer.parseInt(jtfNumero.getText()));
+        inciso.setPrincipal(Integer.parseInt(jtfPrincipal.getText()));
+        inciso.setParcial(Integer.parseInt(jtfParcial.getText()));
         if (jrbVisible.isSelected()) {
-            marca.setVisible(true);
+            inciso.setVisible(true);
         } else {
-            marca.setVisible(false);
+            inciso.setVisible(false);
         }
         return OK;
     }
-    
+
     @Override
     public int grabar() {
-        MarcaControlador marcaControlador = new MarcaControlador();
+        IncisoControlador incisoControlador = new IncisoControlador();
         if (operacion.equals(Gestionable.ABM_ALTA)) {
             try {
-                marcaControlador.insertar(marca);
+                incisoControlador.insertar(inciso);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmInciso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_BAJA)) {
             try {
-                marcaControlador.borrar(marca);
+                incisoControlador.borrar(inciso);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmInciso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_MODIFICACION)) {
             try {
-                marcaControlador.modificar(marca);
+                incisoControlador.modificar(inciso);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmMarca.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmInciso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return OK;
@@ -344,19 +371,21 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
-    private javax.swing.JComboBox jcbUsuario;
     private javax.swing.JLabel jlBienvenido;
-    private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlNombreUsuario;
+    private javax.swing.JLabel jlNumero;
+    private javax.swing.JLabel jlParcial;
+    private javax.swing.JLabel jlPrincipal;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
-    private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jlVisible;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JRadioButton jrbNoVisible;
     private javax.swing.JRadioButton jrbVisible;
-    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfNumero;
+    private javax.swing.JTextField jtfParcial;
+    private javax.swing.JTextField jtfPrincipal;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ui.gestion.GestionCodigosPresupuestario;
+import ui.gestion.GestionIncisos;
 import ui.gestion.GestionMarcas;
 import ui.gestion.GestionModelos;
 
@@ -216,6 +217,11 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlInciso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlInciso.setText("Incisos");
         jlInciso.setToolTipText("");
+        jlInciso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jlIncisoMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpIncisoLayout = new javax.swing.GroupLayout(jpInciso);
         jpInciso.setLayout(jpIncisoLayout);
@@ -594,7 +600,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jpIncisoMouseExited
 
     private void jpIncisoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpIncisoMousePressed
-        // TODO add your handling code here:
+        jbIncisosActionPerformed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_jpIncisoMousePressed
 
     private void jpCodigoPresupuestarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCodigoPresupuestarioMouseClicked
@@ -732,6 +738,10 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbCodigosActionPerformed(evt);
     }//GEN-LAST:event_jlCodigoPresupuestarioMousePressed
 
+    private void jlIncisoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIncisoMousePressed
+        jbIncisosActionPerformed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_jlIncisoMousePressed
+
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
         try {
@@ -749,6 +759,17 @@ public class Ajustes extends javax.swing.JInternalFrame {
             gestionCodigos = new GestionCodigosPresupuestario();
             this.desktopPane.add(gestionCodigos);
             gestionCodigos.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void jbIncisosActionPerformed(java.awt.event.MouseEvent evt) {
+        GestionIncisos gestionIncisos;
+        try {
+            gestionIncisos = new GestionIncisos();
+            this.desktopPane.add(gestionIncisos);
+            gestionIncisos.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -46,7 +46,11 @@ public class GrillaCodigosPresupuestarios extends AbstractTableModel {
             case 0:
                 return codigoPresupuestario.getNumero();
             case 1:
-                return codigoPresupuestario.isVisible();
+                if (codigoPresupuestario.isVisible()) {
+                    return "Visible";
+                } else {
+                    return "No visible";
+                }
             default:
                 return null;
         }

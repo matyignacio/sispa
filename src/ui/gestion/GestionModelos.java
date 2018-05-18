@@ -24,7 +24,7 @@ import ui.grillas.GrillaModelos;
 public class GestionModelos extends javax.swing.JInternalFrame implements Gestionable {
 
     GrillaModelos grillaModelos;
-    ModeloControlador mc = new ModeloControlador();
+    ModeloControlador modeloControlador = new ModeloControlador();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -205,7 +205,6 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        ModeloControlador modeloControlador = new ModeloControlador();
         if (jtModelos.getSelectedRow() > -1) {
             AbmModelo abmModelo;
             try {
@@ -234,7 +233,6 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        ModeloControlador modeloControlador = new ModeloControlador();
         if (jtModelos.getSelectedRow() > -1) {
             AbmModelo abmModelo;
             try {
@@ -268,7 +266,7 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
     @Override
     public void actualizarGestion() {
         try {
-            grillaModelos = new GrillaModelos((ArrayList<Modelo>) mc.extraerTodos());
+            grillaModelos = new GrillaModelos((ArrayList<Modelo>) modeloControlador.extraerTodos());
             jtModelos.setModel(grillaModelos);
         } catch (SQLException ex) {
             Logger.getLogger(GestionModelos.class.getName()).log(Level.SEVERE, null, ex);

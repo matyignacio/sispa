@@ -105,8 +105,8 @@ public class MarcaControlador {
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
-            ps.setInt(3, marca.getId());
             ps.setInt(3, marca.getUsuario().getId());
+            ps.setInt(4, marca.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, marca.toString() + " modificado correctamente");
             ps.close();

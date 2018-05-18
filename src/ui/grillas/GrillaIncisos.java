@@ -7,31 +7,31 @@ package ui.grillas;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import objeto.Modelo;
+import objeto.Inciso;
 
 /**
  *
  * @author Kuky
  */
-public class GrillaModelos extends AbstractTableModel {
+public class GrillaIncisos extends AbstractTableModel {
 
-    ArrayList<Modelo> modelos;
+    ArrayList<Inciso> incisos;
 
-    public ArrayList<Modelo> getMarcas() {
-        return modelos;
+    public ArrayList<Inciso> getIncisos() {
+        return incisos;
     }
 
-    public void setMarcas(ArrayList<Modelo> modelos) {
-        this.modelos = modelos;
+    public void setIncisos(ArrayList<Inciso> incisos) {
+        this.incisos = incisos;
     }
 
-    public GrillaModelos(ArrayList<Modelo> modelos) {
-        this.modelos = modelos;
+    public GrillaIncisos(ArrayList<Inciso> incisos) {
+        this.incisos = incisos;
     }
 
     @Override
     public int getRowCount() {
-        return modelos.size();
+        return incisos.size();
     }
 
     @Override
@@ -41,16 +41,17 @@ public class GrillaModelos extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Modelo modelo = modelos.get(rowIndex);
+        Inciso marca = incisos.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return modelo.getMarca().getNombre();
+                return marca.getNumero();
             case 1:
-                return modelo.getNombre();
+                return marca.getPrincipal();
             case 2:
-                return modelo.getAño();
+                return marca.getParcial();
+
             case 3:
-                if (modelo.isVisible()) {
+                if (marca.isVisible()) {
                     return "Visible";
                 } else {
                     return "No visible";
@@ -64,16 +65,15 @@ public class GrillaModelos extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "MARCA";
-            case 1:
                 return "NOMBRE";
+            case 1:
+                return "PRINCIPAL";
             case 2:
-                return "AÑO";
+                return "PARCIAL";
             case 3:
                 return "ESTADO";
             default:
                 return "";
         }
     }
-
 }

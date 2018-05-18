@@ -319,6 +319,9 @@
                     <Property name="text" type="java.lang.String" value="Incisos"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlIncisoMousePressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

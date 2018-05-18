@@ -46,7 +46,11 @@ public class GrillaMarcas extends AbstractTableModel {
             case 0:
                 return marca.getNombre();
             case 1:
-                return marca.isVisible();
+                if (marca.isVisible()) {
+                    return "Visible";
+                } else {
+                    return "No visible";
+                }
             default:
                 return null;
         }
