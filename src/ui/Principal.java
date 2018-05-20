@@ -8,6 +8,7 @@ package ui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,21 +41,11 @@ public class Principal extends javax.swing.JFrame {
         jlTituloPrincipal = new javax.swing.JLabel();
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
-        jpAjustes = new javax.swing.JPanel();
-        jlAjustes = new javax.swing.JLabel();
-        jlIconoAjustes = new javax.swing.JLabel();
-        jpMuebles = new javax.swing.JPanel();
-        jlMuebles = new javax.swing.JLabel();
-        jlIconoMuebles = new javax.swing.JLabel();
-        jpInmuebles = new javax.swing.JPanel();
-        jlInmuebles = new javax.swing.JLabel();
-        jlIconoInmuebles = new javax.swing.JLabel();
-        jpInformes = new javax.swing.JPanel();
-        jlInformes = new javax.swing.JLabel();
-        jlIconoInformes = new javax.swing.JLabel();
-        jpUsuarios = new javax.swing.JPanel();
-        jlUsuarios = new javax.swing.JLabel();
-        jlIconoUsuarios = new javax.swing.JLabel();
+        jbInmuebles = new javax.swing.JButton();
+        jbMuebles = new javax.swing.JButton();
+        jbAjustes = new javax.swing.JButton();
+        jbUsuarios = new javax.swing.JButton();
+        jbInformes = new javax.swing.JButton();
         jmbPrincipal = new javax.swing.JMenuBar();
         jmModulos = new javax.swing.JMenu();
         jmiMuebles = new javax.swing.JMenuItem();
@@ -115,230 +106,70 @@ public class Principal extends javax.swing.JFrame {
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 200));
 
-        jpAjustes.setBackground(java.awt.SystemColor.controlHighlight);
-        jpAjustes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jpAjustes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpAjustesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpAjustesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpAjustesMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpAjustesMousePressed(evt);
+        jbInmuebles.setBackground(new java.awt.Color(204, 204, 204));
+        jbInmuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInmuebles.setForeground(new java.awt.Color(33, 150, 243));
+        jbInmuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_inmueble.png"))); // NOI18N
+        jbInmuebles.setText("Inmuebles");
+        jbInmuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInmuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInmueblesActionPerformed(evt);
             }
         });
+        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 210, 90));
 
-        jlAjustes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jlAjustes.setForeground(new java.awt.Color(33, 150, 243));
-        jlAjustes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAjustes.setText("Ajustes");
-        jlAjustes.setToolTipText("");
-
-        jlIconoAjustes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconoAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes.png"))); // NOI18N
-
-        javax.swing.GroupLayout jpAjustesLayout = new javax.swing.GroupLayout(jpAjustes);
-        jpAjustes.setLayout(jpAjustesLayout);
-        jpAjustesLayout.setHorizontalGroup(
-            jpAjustesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-        );
-        jpAjustesLayout.setVerticalGroup(
-            jpAjustesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAjustesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jlIconoAjustes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlAjustes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpPrincipal.add(jpAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 140, 120));
-
-        jpMuebles.setBackground(java.awt.SystemColor.controlHighlight);
-        jpMuebles.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jpMuebles.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpMueblesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpMueblesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpMueblesMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpMueblesMousePressed(evt);
+        jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
+        jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbMuebles.setForeground(new java.awt.Color(33, 150, 243));
+        jbMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe.png"))); // NOI18N
+        jbMuebles.setText("Muebles");
+        jbMuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMueblesActionPerformed(evt);
             }
         });
+        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 210, 90));
 
-        jlMuebles.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jlMuebles.setForeground(new java.awt.Color(33, 150, 243));
-        jlMuebles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlMuebles.setText("Muebles");
-        jlMuebles.setToolTipText("");
-
-        jlIconoMuebles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconoMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
-
-        javax.swing.GroupLayout jpMueblesLayout = new javax.swing.GroupLayout(jpMuebles);
-        jpMuebles.setLayout(jpMueblesLayout);
-        jpMueblesLayout.setHorizontalGroup(
-            jpMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-        );
-        jpMueblesLayout.setVerticalGroup(
-            jpMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMueblesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jlIconoMuebles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlMuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpPrincipal.add(jpMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 140, 120));
-
-        jpInmuebles.setBackground(java.awt.SystemColor.controlHighlight);
-        jpInmuebles.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jpInmuebles.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpInmueblesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpInmueblesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpInmueblesMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpInmueblesMousePressed(evt);
+        jbAjustes.setBackground(new java.awt.Color(204, 204, 204));
+        jbAjustes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbAjustes.setForeground(new java.awt.Color(33, 150, 243));
+        jbAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes.png"))); // NOI18N
+        jbAjustes.setText("Ajustes");
+        jbAjustes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAjustesActionPerformed(evt);
             }
         });
+        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 210, 90));
 
-        jlInmuebles.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jlInmuebles.setForeground(new java.awt.Color(33, 150, 243));
-        jlInmuebles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlInmuebles.setText("Inmuebles");
-        jlInmuebles.setToolTipText("");
-
-        jlIconoInmuebles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconoInmuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_inmueble.png"))); // NOI18N
-
-        javax.swing.GroupLayout jpInmueblesLayout = new javax.swing.GroupLayout(jpInmuebles);
-        jpInmuebles.setLayout(jpInmueblesLayout);
-        jpInmueblesLayout.setHorizontalGroup(
-            jpInmueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-        );
-        jpInmueblesLayout.setVerticalGroup(
-            jpInmueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpInmueblesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jlIconoInmuebles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlInmuebles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpPrincipal.add(jpInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 140, 120));
-
-        jpInformes.setBackground(java.awt.SystemColor.controlHighlight);
-        jpInformes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jpInformes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpInformesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpInformesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpInformesMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpInformesMousePressed(evt);
+        jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
+        jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbUsuarios.setForeground(new java.awt.Color(33, 150, 243));
+        jbUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_usuarios.png"))); // NOI18N
+        jbUsuarios.setText("Usuarios");
+        jbUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbUsuariosActionPerformed(evt);
             }
         });
+        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 210, 90));
 
-        jlInformes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jlInformes.setForeground(new java.awt.Color(33, 150, 243));
-        jlInformes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlInformes.setText("Informes");
-        jlInformes.setToolTipText("");
-
-        jlIconoInformes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconoInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe.png"))); // NOI18N
-
-        javax.swing.GroupLayout jpInformesLayout = new javax.swing.GroupLayout(jpInformes);
-        jpInformes.setLayout(jpInformesLayout);
-        jpInformesLayout.setHorizontalGroup(
-            jpInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoInformes, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-        );
-        jpInformesLayout.setVerticalGroup(
-            jpInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpInformesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jlIconoInformes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpPrincipal.add(jpInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 140, 120));
-
-        jpUsuarios.setBackground(java.awt.SystemColor.controlHighlight);
-        jpUsuarios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jpUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jpUsuariosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpUsuariosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpUsuariosMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpUsuariosMousePressed(evt);
+        jbInformes.setBackground(new java.awt.Color(204, 204, 204));
+        jbInformes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInformes.setForeground(new java.awt.Color(33, 150, 243));
+        jbInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe.png"))); // NOI18N
+        jbInformes.setText("Informes");
+        jbInformes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInformes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInformesActionPerformed(evt);
             }
         });
-
-        jlUsuarios.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jlUsuarios.setForeground(new java.awt.Color(33, 150, 243));
-        jlUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlUsuarios.setText("Usuarios");
-        jlUsuarios.setToolTipText("");
-
-        jlIconoUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconoUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_usuarios.png"))); // NOI18N
-
-        javax.swing.GroupLayout jpUsuariosLayout = new javax.swing.GroupLayout(jpUsuarios);
-        jpUsuarios.setLayout(jpUsuariosLayout);
-        jpUsuariosLayout.setHorizontalGroup(
-            jpUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jlIconoUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-        );
-        jpUsuariosLayout.setVerticalGroup(
-            jpUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpUsuariosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jlIconoUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpPrincipal.add(jpUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 140, 120));
+        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 210, 90));
 
         dpPrincipal.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -432,103 +263,6 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jpTituloMousePressed
 
-    private void jpAjustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpAjustesMouseClicked
-
-    private void jpAjustesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpAjustesMouseEntered
-
-    private void jpAjustesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpAjustesMouseExited
-
-    private void jpAjustesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpAjustesMousePressed
-        Ajustes ajustes;
-        try {
-            ajustes = new Ajustes();
-            this.dpPrincipal.add(ajustes);
-            ajustes.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jpAjustesMousePressed
-
-    private void jpMueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpMueblesMouseClicked
-
-    private void jpMueblesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpMueblesMouseEntered
-
-    private void jpMueblesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpMueblesMouseExited
-
-    private void jpMueblesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpMueblesMousePressed
-        Muebles muebles;
-        try {
-            muebles = new Muebles();
-            this.dpPrincipal.add(muebles);
-            muebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jpMueblesMousePressed
-
-    private void jpInmueblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInmueblesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInmueblesMouseClicked
-
-    private void jpInmueblesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInmueblesMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInmueblesMouseEntered
-
-    private void jpInmueblesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInmueblesMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInmueblesMouseExited
-
-    private void jpInmueblesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInmueblesMousePressed
-        Inmuebles inmuebles;
-        inmuebles = new Inmuebles();
-        inmuebles.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jpInmueblesMousePressed
-
-    private void jpInformesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInformesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInformesMouseClicked
-
-    private void jpInformesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInformesMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInformesMouseEntered
-
-    private void jpInformesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInformesMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInformesMouseExited
-
-    private void jpInformesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpInformesMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpInformesMousePressed
-
-    private void jpUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpUsuariosMouseClicked
-
-    private void jpUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpUsuariosMouseEntered
-
-    private void jpUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpUsuariosMouseExited
-
-    private void jpUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jpUsuariosMousePressed
-
     private void jmiMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMueblesActionPerformed
         Muebles muebles;
         try {
@@ -555,6 +289,43 @@ public class Principal extends javax.swing.JFrame {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jmiAjustesActionPerformed
+
+    private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
+        /* Inmuebles inmuebles;
+        inmuebles = new Inmuebles();
+        inmuebles.setVisible(true);
+        this.dispose();  */      // TODO add your handling code here:
+    }//GEN-LAST:event_jbInmueblesActionPerformed
+
+    private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
+        Muebles muebles;
+        try {
+            muebles = new Muebles();
+            this.dpPrincipal.add(muebles);
+            muebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jbMueblesActionPerformed
+
+    private void jbAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAjustesActionPerformed
+        Ajustes ajustes;
+        try {
+            ajustes = new Ajustes();
+            this.dpPrincipal.add(ajustes);
+            ajustes.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_jbAjustesActionPerformed
+
+    private void jbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbUsuariosActionPerformed
+
+    private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbInformesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -594,20 +365,15 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpPrincipal;
-    private javax.swing.JLabel jlAjustes;
+    private javax.swing.JButton jbAjustes;
+    private javax.swing.JButton jbInformes;
+    private javax.swing.JButton jbInmuebles;
+    private javax.swing.JButton jbMuebles;
+    private javax.swing.JButton jbUsuarios;
     private javax.swing.JLabel jlBienvenido;
-    private javax.swing.JLabel jlIconoAjustes;
-    private javax.swing.JLabel jlIconoInformes;
-    private javax.swing.JLabel jlIconoInmuebles;
-    private javax.swing.JLabel jlIconoMuebles;
-    private javax.swing.JLabel jlIconoUsuarios;
-    private javax.swing.JLabel jlInformes;
-    private javax.swing.JLabel jlInmuebles;
-    private javax.swing.JLabel jlMuebles;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
-    private javax.swing.JLabel jlUsuarios;
     private javax.swing.JMenu jmAcercaDe;
     private javax.swing.JMenu jmModulos;
     private javax.swing.JMenu jmSesion;
@@ -619,12 +385,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiMuebles;
     private javax.swing.JMenuItem jmiSispa;
     private javax.swing.JMenuItem jmiUsuarios;
-    private javax.swing.JPanel jpAjustes;
-    private javax.swing.JPanel jpInformes;
-    private javax.swing.JPanel jpInmuebles;
-    private javax.swing.JPanel jpMuebles;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
-    private javax.swing.JPanel jpUsuarios;
     // End of variables declaration//GEN-END:variables
 }
