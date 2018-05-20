@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ui.gestion.GestionCategorias;
 import ui.gestion.GestionCodigosPresupuestario;
+import ui.gestion.GestionEstados;
 import ui.gestion.GestionIncisos;
 import ui.gestion.GestionMarcas;
 import ui.gestion.GestionModelos;
@@ -116,7 +117,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbMarcasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 120, 90));
+        jpPrincipal.add(jbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 90));
 
         jbCodigos.setBackground(new java.awt.Color(204, 204, 204));
         jbCodigos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -134,7 +135,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCodigosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 120, 90));
+        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 120, 90));
 
         jbModelos.setBackground(new java.awt.Color(204, 204, 204));
         jbModelos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -152,7 +153,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbModelosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 120, 90));
+        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 120, 90));
 
         jbIncisos.setBackground(new java.awt.Color(204, 204, 204));
         jbIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -170,12 +171,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbIncisosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 120, 90));
+        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 120, 90));
 
         jbEstados.setBackground(new java.awt.Color(204, 204, 204));
         jbEstados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbEstados.setForeground(new java.awt.Color(33, 150, 243));
-        jbEstados.setText("Estado");
+        jbEstados.setText("Estados");
         jbEstados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbEstados.setPreferredSize(new java.awt.Dimension(90, 121));
         jbEstados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,7 +189,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbEstadosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 120, 90));
+        jpPrincipal.add(jbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 120, 90));
 
         jbCategorias.setBackground(new java.awt.Color(204, 204, 204));
         jbCategorias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -206,7 +207,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCategoriasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 120, 90));
+        jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 120, 90));
 
         Reparticiones.setBackground(new java.awt.Color(204, 204, 204));
         Reparticiones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -224,7 +225,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 ReparticionesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(Reparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 120, 90));
+        jpPrincipal.add(Reparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 120, 90));
 
         jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -242,7 +243,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbUsuariosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 120, 90));
+        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 120, 90));
 
         jbPerfiles.setBackground(new java.awt.Color(204, 204, 204));
         jbPerfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -260,10 +261,10 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbPerfilesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 120, 90));
+        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 120, 90));
 
         jbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
-        jbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
         jbTipoAdquisicion.setText("Tipo Adq.");
         jbTipoAdquisicion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -278,7 +279,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbTipoAdquisicionActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 240, 120, 90));
+        jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 240, 120, 90));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -372,7 +373,14 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEstadosMousePressed
 
     private void jbEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEstadosActionPerformed
-        // TODO add your handling code here:
+        GestionEstados gestionEstados;
+        try {
+            gestionEstados = new GestionEstados();
+            this.desktopPane.add(gestionEstados);
+            gestionEstados.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbEstadosActionPerformed
 
     private void jbCategoriasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCategoriasMousePressed
@@ -458,6 +466,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Reparticiones;
     private javax.swing.JDesktopPane desktopPane;
