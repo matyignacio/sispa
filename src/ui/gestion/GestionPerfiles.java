@@ -5,26 +5,25 @@
  */
 package ui.gestion;
 
-import controlador.MarcaControlador;
+import controlador.PerfilControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
-import objeto.Marca;
-import ui.abm.AbmMarca;
-import ui.grillas.GrillaMarcas;
+import objeto.Perfil;
+import ui.abm.AbmPerfil;
+import ui.grillas.GrillaPerfiles;
 
 /**
  *
  * @author Kuky
  */
-public class GestionMarcas extends javax.swing.JInternalFrame implements Gestionable {
+public class GestionPerfiles extends javax.swing.JInternalFrame implements Gestionable {
 
-    GrillaMarcas grillaMarcas;
-    MarcaControlador marcaControlador = new MarcaControlador();
+    GrillaPerfiles grillaPerfiles;
+    PerfilControlador perfilControlador = new PerfilControlador();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -34,7 +33,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         this.desktopPane = desktopPane;
     }
 
-    public GestionMarcas() throws SQLException {
+    public GestionPerfiles() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
@@ -58,7 +57,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtMarcas = new javax.swing.JTable();
+        jtPerfiles = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
@@ -109,10 +108,10 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
-        jtMarcas.setBackground(new java.awt.Color(204, 204, 204));
-        jtMarcas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jtMarcas.setForeground(new java.awt.Color(33, 150, 243));
-        jtMarcas.setModel(new javax.swing.table.DefaultTableModel(
+        jtPerfiles.setBackground(new java.awt.Color(204, 204, 204));
+        jtPerfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtPerfiles.setForeground(new java.awt.Color(33, 150, 243));
+        jtPerfiles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +122,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtMarcas);
+        jScrollPane1.setViewportView(jtPerfiles);
 
         jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1020, 330));
 
@@ -206,48 +205,48 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        if (jtMarcas.getSelectedRow() > -1) {
+        /* if (jtPerfiles.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodos().
-                        get(jtMarcas.getSelectedRow()).getId()),
+                abmMarca = new AbmMarca(ABM_BAJA, perfilControlador.extraer(perfilControlador.extraerTodos().
+                        get(jtPerfiles.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmMarca);
                 abmMarca.show();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GestionPerfiles.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }
+        }*/
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        AbmMarca abmMarca;
+        AbmPerfil abmPerfil;
         try {
-            abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-            this.desktopPane.add(abmMarca);
-            abmMarca.show();
+            abmPerfil = new AbmPerfil(ABM_ALTA, new Perfil(), this);
+            this.desktopPane.add(abmPerfil);
+            abmPerfil.show();
         } catch (SQLException ex) {
-            Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionPerfiles.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        if (jtMarcas.getSelectedRow() > -1) {
+        /* if (jtPerfiles.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodos().
-                        get(jtMarcas.getSelectedRow()).getId()), this);
+                abmMarca = new AbmMarca(ABM_MODIFICACION, perfilControlador.extraer(perfilControlador.extraerTodos().
+                        get(jtPerfiles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMarca);
                 abmMarca.show();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GestionPerfiles.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }
+        }*/
     }//GEN-LAST:event_jbModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -262,16 +261,16 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
-    private javax.swing.JTable jtMarcas;
+    private javax.swing.JTable jtPerfiles;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actualizarGestion() {
         try {
-            grillaMarcas = new GrillaMarcas((ArrayList<Marca>) marcaControlador.extraerTodos());
-            jtMarcas.setModel(grillaMarcas);
+            grillaPerfiles = new GrillaPerfiles((ArrayList<Perfil>) perfilControlador.extraerTodos());
+            jtPerfiles.setModel(grillaPerfiles);
         } catch (SQLException ex) {
-            Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionPerfiles.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

@@ -15,7 +15,6 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import objeto.Estado;
 import ui.abm.AbmEstado;
-import ui.abm.AbmMarca;
 import ui.grillas.GrillaEstados;
 
 /**
@@ -232,7 +231,6 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         } catch (SQLException ex) {
             Logger.getLogger(GestionEstados.class.getName()).log(Level.SEVERE, null, ex);
         }
-
 
     }//GEN-LAST:event_jbNuevoActionPerformed
 

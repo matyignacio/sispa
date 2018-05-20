@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.AdquisicionMueble;
 
-
 public class AdquisicionMuebleControlador {
 
     private AdquisicionMueble AdquisicionMueble;
@@ -161,7 +160,7 @@ public class AdquisicionMuebleControlador {
             conn.close();
         }
     }
-    
+
     public void borrar(AdquisicionMueble adquisicionmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();

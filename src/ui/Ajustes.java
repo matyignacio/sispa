@@ -15,6 +15,7 @@ import ui.gestion.GestionEstados;
 import ui.gestion.GestionIncisos;
 import ui.gestion.GestionMarcas;
 import ui.gestion.GestionModelos;
+import ui.gestion.GestionPerfiles;
 
 /**
  *
@@ -412,7 +413,14 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbPerfilesMousePressed
 
     private void jbPerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilesActionPerformed
-        // TODO add your handling code here:
+        GestionPerfiles gestionPerfiles;
+        try {
+            gestionPerfiles = new GestionPerfiles();
+            this.desktopPane.add(gestionPerfiles);
+            gestionPerfiles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbPerfilesActionPerformed
 
     private void jbTipoAdquisicionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbTipoAdquisicionMousePressed

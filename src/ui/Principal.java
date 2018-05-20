@@ -8,8 +8,6 @@ package ui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.AbstractButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +59,11 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISPA");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         dpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         dpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -326,6 +329,10 @@ public class Principal extends javax.swing.JFrame {
     private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbInformesActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

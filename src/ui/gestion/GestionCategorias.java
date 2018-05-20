@@ -233,7 +233,6 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
             Logger.getLogger(GestionCategorias.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed

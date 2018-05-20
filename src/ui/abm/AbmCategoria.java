@@ -8,8 +8,6 @@ package ui.abm;
 import controlador.CategoriaControlador;
 import controlador.CodigoPresupuestarioControlador;
 import controlador.IncisoControlador;
-import controlador.MarcaControlador;
-import controlador.UsuarioControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,8 +17,6 @@ import javax.swing.JDesktopPane;
 import objeto.Categoria;
 import objeto.CodigoPresupuestario;
 import objeto.Inciso;
-import objeto.Marca;
-import objeto.Usuario;
 import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
@@ -37,15 +33,6 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Categoria categoria;
     private Gestionable ventanaGestion;
-    private boolean estado;
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 
     public String getOperacion() {
         return operacion;
@@ -83,12 +70,6 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
-        if (jrbVisible.isSelected()) {
-            estado = true;
-        }
-        if (jrbNoVisible.isSelected()) {
-            estado = false;
-        }
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
         this.categoria = categoria;

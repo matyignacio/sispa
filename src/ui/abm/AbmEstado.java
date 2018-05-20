@@ -22,17 +22,8 @@ import ui.gestion.Gestionable;
 public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
 
     private String operacion;
-    private Estado estadoDelBien;
+    private Estado estado;
     private Gestionable ventanaGestion;
-    private boolean estado;
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 
     public String getOperacion() {
         return operacion;
@@ -43,11 +34,11 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
     }
 
     public Estado getEstadoDelBien() {
-        return estadoDelBien;
+        return estado;
     }
 
     public void setEstadoDelBien(Estado estadoDelBien) {
-        this.estadoDelBien = estadoDelBien;
+        this.estado = estadoDelBien;
     }
 
     public Gestionable getVentanaGestion() {
@@ -70,15 +61,9 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
-        if (jrbVisible.isSelected()) {
-            estado = true;
-        }
-        if (jrbNoVisible.isSelected()) {
-            estado = false;
-        }
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
-        this.estadoDelBien = estadoDelBien;
+        this.estado = estadoDelBien;
         this.ventanaGestion = ventanaGestion;
         inicializacionVentana();
 
@@ -264,8 +249,8 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
 
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
-            jtfNombre.setText(estadoDelBien.getNombre());
-            if (estadoDelBien.isVisible()) {
+            jtfNombre.setText(estado.getNombre());
+            if (estado.isVisible()) {
                 jrbVisible.setSelected(true);
             } else {
                 jrbNoVisible.setSelected(true);
@@ -280,12 +265,12 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        estadoDelBien.setUsuario(usuario);
-        estadoDelBien.setNombre(jtfNombre.getText());
+        estado.setUsuario(usuario);
+        estado.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
-            estadoDelBien.setVisible(true);
+            estado.setVisible(true);
         } else {
-            estadoDelBien.setVisible(false);
+            estado.setVisible(false);
         }
         return OK;
     }
@@ -295,21 +280,21 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
         EstadoControlador estadoControlador = new EstadoControlador();
         if (operacion.equals(Gestionable.ABM_ALTA)) {
             try {
-                estadoControlador.insertar(estadoDelBien);
+                estadoControlador.insertar(estado);
             } catch (SQLException ex) {
                 Logger.getLogger(AbmEstado.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_BAJA)) {
             try {
-                estadoControlador.borrar(estadoDelBien);
+                estadoControlador.borrar(estado);
             } catch (SQLException ex) {
                 Logger.getLogger(AbmEstado.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_MODIFICACION)) {
             try {
-                estadoControlador.modificar(estadoDelBien);
+                estadoControlador.modificar(estado);
             } catch (SQLException ex) {
                 Logger.getLogger(AbmEstado.class.getName()).log(Level.SEVERE, null, ex);
             }

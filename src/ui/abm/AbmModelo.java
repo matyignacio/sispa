@@ -29,15 +29,6 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Modelo modelo;
     private Gestionable ventanaGestion;
-    private boolean estado;
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 
     public String getOperacion() {
         return operacion;
@@ -75,12 +66,6 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
-        if (jrbVisible.isSelected()) {
-            estado = true;
-        }
-        if (jrbNoVisible.isSelected()) {
-            estado = false;
-        }
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
         this.modelo = modelo;

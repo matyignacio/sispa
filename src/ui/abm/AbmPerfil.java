@@ -5,23 +5,24 @@
  */
 package ui.abm;
 
-import controlador.CodigoPresupuestarioControlador;
+import controlador.PerfilControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
-import objeto.CodigoPresupuestario;
+import objeto.Perfil;
+import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
  *
  * @author Kuky
  */
-public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implements IAbm {
+public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
 
     private String operacion;
-    private CodigoPresupuestario codigoPresupuestario;
+    private Perfil perfil;
     private Gestionable ventanaGestion;
 
     public String getOperacion() {
@@ -32,12 +33,12 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         this.operacion = operacion;
     }
 
-    public CodigoPresupuestario getCodigoPresupuestario() {
-        return codigoPresupuestario;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setCodigoPresupuestario(CodigoPresupuestario codigoPresupuestario) {
-        this.codigoPresupuestario = codigoPresupuestario;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     public Gestionable getVentanaGestion() {
@@ -56,19 +57,40 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         this.desktopPane = desktopPane;
     }
 
-    public AbmCodigosPresupuestarios(String operacion, CodigoPresupuestario codigoPresupuestario, Gestionable ventanaGestion) {
+    public AbmPerfil(String operacion, Perfil perfil, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
-        this.codigoPresupuestario = codigoPresupuestario;
+        this.perfil = perfil;
         this.ventanaGestion = ventanaGestion;
+        if (!jcbAjustes.isSelected()) {
+            jcbMarcas.setEnabled(false);
+            jcbModelos.setEnabled(false);
+            jcbIncisos.setEnabled(false);
+            jcbCodigoPresupuestario.setEnabled(false);
+            jcbCategorias.setEnabled(false);
+            jcbEstados.setEnabled(false);
+            jcbPerfiles.setEnabled(false);
+            jcbReparticiones.setEnabled(false);
+            jcbTipoAdquisicion.setEnabled(false);
+        } else {
+            jcbMarcas.setEnabled(true);
+            jcbModelos.setEnabled(true);
+            jcbIncisos.setEnabled(true);
+            jcbCodigoPresupuestario.setEnabled(true);
+            jcbCategorias.setEnabled(true);
+            jcbEstados.setEnabled(true);
+            jcbPerfiles.setEnabled(true);
+            jcbReparticiones.setEnabled(true);
+            jcbTipoAdquisicion.setEnabled(true);
+        }
         inicializacionVentana();
 
     }
 
-    public AbmCodigosPresupuestarios() throws SQLException {
+    public AbmPerfil() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
 
@@ -92,11 +114,24 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
-        jlNumero = new javax.swing.JLabel();
-        jtfNumero = new javax.swing.JTextField();
+        jlNombre1 = new javax.swing.JLabel();
+        jtfNombre = new javax.swing.JTextField();
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
         jrbVisible = new javax.swing.JRadioButton();
+        jlOperaciones = new javax.swing.JLabel();
+        jcbAjustes = new javax.swing.JCheckBox();
+        jcbInformes = new javax.swing.JCheckBox();
+        jcbEstados = new javax.swing.JCheckBox();
+        jcbUsuarios = new javax.swing.JCheckBox();
+        jcbModelos = new javax.swing.JCheckBox();
+        jcbCodigoPresupuestario = new javax.swing.JCheckBox();
+        jcbMarcas = new javax.swing.JCheckBox();
+        jcbCategorias = new javax.swing.JCheckBox();
+        jcbIncisos = new javax.swing.JCheckBox();
+        jcbPerfiles = new javax.swing.JCheckBox();
+        jcbReparticiones = new javax.swing.JCheckBox();
+        jcbTipoAdquisicion = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("SISPA - Marcas");
@@ -153,41 +188,121 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         });
         jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
 
-        jlNumero.setBackground(new java.awt.Color(204, 204, 204));
-        jlNumero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlNumero.setForeground(new java.awt.Color(33, 150, 243));
-        jlNumero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlNumero.setText("Numero: ");
-        jpPrincipal.add(jlNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jlNombre1.setBackground(new java.awt.Color(204, 204, 204));
+        jlNombre1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlNombre1.setForeground(new java.awt.Color(33, 150, 243));
+        jlNombre1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlNombre1.setText("Nombre: ");
+        jpPrincipal.add(jlNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 210, 20));
 
-        jtfNumero.setBackground(new java.awt.Color(204, 204, 204));
-        jtfNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfNumero.setForeground(new java.awt.Color(33, 150, 243));
-        jtfNumero.addActionListener(new java.awt.event.ActionListener() {
+        jtfNombre.setBackground(new java.awt.Color(204, 204, 204));
+        jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfNombre.setForeground(new java.awt.Color(33, 150, 243));
+        jtfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfNumeroActionPerformed(evt);
+                jtfNombreActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
+
+        jlOperaciones.setBackground(new java.awt.Color(204, 204, 204));
+        jlOperaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlOperaciones.setForeground(new java.awt.Color(33, 150, 243));
+        jlOperaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlOperaciones.setText("Operaciones: ");
+        jpPrincipal.add(jlOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 210, 20));
+
+        jcbAjustes.setBackground(new java.awt.Color(204, 204, 204));
+        jcbAjustes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbAjustes.setForeground(new java.awt.Color(33, 150, 243));
+        jcbAjustes.setSelected(true);
+        jcbAjustes.setText("Ajustes");
+        jpPrincipal.add(jcbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
+
+        jcbInformes.setBackground(new java.awt.Color(204, 204, 204));
+        jcbInformes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbInformes.setForeground(new java.awt.Color(33, 150, 243));
+        jcbInformes.setText("Informes");
+        jpPrincipal.add(jcbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, -1, -1));
+
+        jcbEstados.setBackground(new java.awt.Color(204, 204, 204));
+        jcbEstados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbEstados.setForeground(new java.awt.Color(33, 150, 243));
+        jcbEstados.setText("Estados");
+        jpPrincipal.add(jcbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, -1, -1));
+
+        jcbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
+        jcbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbUsuarios.setForeground(new java.awt.Color(33, 150, 243));
+        jcbUsuarios.setText("Usuarios");
+        jpPrincipal.add(jcbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
+
+        jcbModelos.setBackground(new java.awt.Color(204, 204, 204));
+        jcbModelos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbModelos.setForeground(new java.awt.Color(33, 150, 243));
+        jcbModelos.setText("Modelos");
+        jpPrincipal.add(jcbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, -1, -1));
+
+        jcbCodigoPresupuestario.setBackground(new java.awt.Color(204, 204, 204));
+        jcbCodigoPresupuestario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbCodigoPresupuestario.setForeground(new java.awt.Color(33, 150, 243));
+        jcbCodigoPresupuestario.setText("Cod. Presup.");
+        jpPrincipal.add(jcbCodigoPresupuestario, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, -1, -1));
+
+        jcbMarcas.setBackground(new java.awt.Color(204, 204, 204));
+        jcbMarcas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbMarcas.setForeground(new java.awt.Color(33, 150, 243));
+        jcbMarcas.setText("Marcas");
+        jpPrincipal.add(jcbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, -1, -1));
+
+        jcbCategorias.setBackground(new java.awt.Color(204, 204, 204));
+        jcbCategorias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbCategorias.setForeground(new java.awt.Color(33, 150, 243));
+        jcbCategorias.setText("Categorias");
+        jpPrincipal.add(jcbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
+
+        jcbIncisos.setBackground(new java.awt.Color(204, 204, 204));
+        jcbIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbIncisos.setForeground(new java.awt.Color(33, 150, 243));
+        jcbIncisos.setText("Incisos");
+        jpPrincipal.add(jcbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, -1, -1));
+
+        jcbPerfiles.setBackground(new java.awt.Color(204, 204, 204));
+        jcbPerfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbPerfiles.setForeground(new java.awt.Color(33, 150, 243));
+        jcbPerfiles.setText("Perfiles");
+        jpPrincipal.add(jcbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 370, -1, -1));
+
+        jcbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
+        jcbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbReparticiones.setForeground(new java.awt.Color(33, 150, 243));
+        jcbReparticiones.setText("Reparticiones");
+        jpPrincipal.add(jcbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 370, -1, -1));
+
+        jcbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jcbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jcbTipoAdquisicion.setText("Tipo de Adquisicion");
+        jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -242,20 +357,20 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         }
     }//GEN-LAST:event_jbAceptarActionPerformed
 
-    private void jtfNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNumeroActionPerformed
+    private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfNumeroActionPerformed
+    }//GEN-LAST:event_jtfNombreActionPerformed
 
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
-            jtfNumero.setText(String.valueOf(codigoPresupuestario.getNumero()));
-            if (codigoPresupuestario.isVisible()) {
+            jtfNombre.setText(perfil.getNombre());
+            if (perfil.isVisible()) {
                 jrbVisible.setSelected(true);
             } else {
                 jrbNoVisible.setSelected(true);
             }
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
-                jtfNumero.setEditable(false);
+                jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
             }
@@ -264,37 +379,38 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        codigoPresupuestario.setNumero(Integer.parseInt(jtfNumero.getText()));
+        perfil.setUsuario(usuario);
+        perfil.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
-            codigoPresupuestario.setVisible(true);
+            perfil.setVisible(true);
         } else {
-            codigoPresupuestario.setVisible(false);
+            perfil.setVisible(false);
         }
         return OK;
     }
 
     @Override
     public int grabar() {
-        CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();
+        PerfilControlador perfilControlador = new PerfilControlador();
         if (operacion.equals(Gestionable.ABM_ALTA)) {
             try {
-                codigoPresupuestarioControlador.insertar(codigoPresupuestario);
+                perfilControlador.insertar(perfil);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmCodigosPresupuestarios.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmPerfil.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_BAJA)) {
             try {
-                codigoPresupuestarioControlador.borrar(codigoPresupuestario);
+                perfilControlador.borrar(perfil);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmCodigosPresupuestarios.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmPerfil.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (operacion.equals(Gestionable.ABM_MODIFICACION)) {
             try {
-                codigoPresupuestarioControlador.modificar(codigoPresupuestario);
+                perfilControlador.modificar(perfil);
             } catch (SQLException ex) {
-                Logger.getLogger(AbmCodigosPresupuestarios.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AbmPerfil.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return OK;
@@ -303,9 +419,22 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
+    private javax.swing.JCheckBox jcbAjustes;
+    private javax.swing.JCheckBox jcbCategorias;
+    private javax.swing.JCheckBox jcbCodigoPresupuestario;
+    private javax.swing.JCheckBox jcbEstados;
+    private javax.swing.JCheckBox jcbIncisos;
+    private javax.swing.JCheckBox jcbInformes;
+    private javax.swing.JCheckBox jcbMarcas;
+    private javax.swing.JCheckBox jcbModelos;
+    private javax.swing.JCheckBox jcbPerfiles;
+    private javax.swing.JCheckBox jcbReparticiones;
+    private javax.swing.JCheckBox jcbTipoAdquisicion;
+    private javax.swing.JCheckBox jcbUsuarios;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlNombre1;
     private javax.swing.JLabel jlNombreUsuario;
-    private javax.swing.JLabel jlNumero;
+    private javax.swing.JLabel jlOperaciones;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlVisible;
@@ -313,7 +442,7 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JRadioButton jrbNoVisible;
     private javax.swing.JRadioButton jrbVisible;
-    private javax.swing.JTextField jtfNumero;
+    private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
 }

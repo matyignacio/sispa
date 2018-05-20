@@ -60,7 +60,7 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
-            
+
             estados.add(estado);
         }
         rs.close();

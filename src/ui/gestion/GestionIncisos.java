@@ -232,7 +232,6 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
             Logger.getLogger(GestionIncisos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed

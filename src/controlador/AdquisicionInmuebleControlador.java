@@ -139,10 +139,10 @@ public class AdquisicionInmuebleControlador {
     public void modificar(AdquisicionInmueble adquisicionInmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Adquisicion_Inmuebles\"\n" +
-"   SET id=?, nombre=?, visible=?, fecha=?, monto=?, id_inmueble=?, id_tipo_adquisicion=?, \n" +
-"       id_usuario=?\n" +
-" WHERE id=?";
+            String consultaSql = "UPDATE \"Adquisicion_Inmuebles\"\n"
+                    + "   SET id=?, nombre=?, visible=?, fecha=?, monto=?, id_inmueble=?, id_tipo_adquisicion=?, \n"
+                    + "       id_usuario=?\n"
+                    + " WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, adquisicionInmueble.getNombre());
             ps.setBoolean(2, adquisicionInmueble.isVisible());
@@ -158,8 +158,8 @@ public class AdquisicionInmuebleControlador {
             conn.close();
         }
     }
-    
-     public void borrar(AdquisicionInmueble adquisicionInmueble) throws SQLException {
+
+    public void borrar(AdquisicionInmueble adquisicionInmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "DELETE \"Adquisicion_Inmuebles\" WHERE id=?";
