@@ -48,7 +48,7 @@ public class UsuarioControlador {
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         perfilcontrolador = new PerfilControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Usuarios\" where id!=0 order by nombre";
+        String consultaSql = "SELECT * FROM public.\"Usuarios\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -72,7 +72,7 @@ public class UsuarioControlador {
     public ArrayList<Usuario> extraerTodosVisibles() throws SQLException {
         perfilcontrolador = new PerfilControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Usuarios\" where where id!=0 AND visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM public.\"Usuarios\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
