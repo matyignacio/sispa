@@ -61,12 +61,6 @@ public class UsuarioControlador {
             usuario.setClave(rs.getString(4));
             usuario.setVisible(rs.getBoolean(5));
             usuario.setPerfil(perfilcontrolador.extraer(rs.getInt(6)));
-            if (rs.getInt(7) != 0) {
-                Usuario usuarioSuperior = new Usuario();
-                UsuarioControlador usuarioControlador = new UsuarioControlador();
-                usuarioSuperior = usuarioControlador.extraer(rs.getInt(7));
-                usuario.setUsuario(usuarioSuperior);
-            }
             usuarios.add(usuario);
         }
         rs.close();
@@ -103,14 +97,13 @@ public class UsuarioControlador {
 
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Usuarios\" ( nombre, mail, clave, visible, id_perfil, id_usuario) VALUES (?, ?, ?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO public.\"Usuarios\" ( nombre, mail, clave, visible, id_perfil) VALUES (?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getMail());
             ps.setString(3, usuario.getClave());
             ps.setBoolean(4, usuario.isVisible());
             ps.setInt(5, usuario.getPerfil().getId());
-            ps.setInt(6, usuario.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -121,15 +114,14 @@ public class UsuarioControlador {
     public void modificar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Usuarios\" SET nombre=?, mail=?, clave=?, visible=?, id_perfil=?, id_usuario=? WHERE id=?";
+            String consultaSql = "UPDATE public.\"Usuarios\" SET nombre=?, mail=?, clave=?, visible=?, id_perfil=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getMail());
             ps.setString(3, usuario.getClave());
             ps.setBoolean(4, usuario.isVisible());
             ps.setInt(5, usuario.getPerfil().getId());
-            ps.setInt(6, usuario.getUsuario().getId());
-            ps.setInt(7, usuario.getId());
+            ps.setInt(6, usuario.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, usuario.toString() + " modificado correctamente");
             ps.close();
