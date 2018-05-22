@@ -20,10 +20,8 @@ public class CategoriaControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    private UsuarioControlador usuarioControlador;
 
     public Categoria extraer(Integer id) throws SQLException {
-        usuarioControlador = new UsuarioControlador();
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
@@ -39,7 +37,6 @@ public class CategoriaControlador {
             categoria.setVisible(rs.getBoolean(3));
             categoria.setInciso(i.extraer(rs.getInt(4)));
             categoria.setCodigoPresupuestaro(c.extraer(rs.getInt(5)));
-            categoria.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
         }
         rs.close();
         ps.close();
@@ -98,13 +95,12 @@ public class CategoriaControlador {
     public void insertar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario, id_usuario) VALUES (?, ?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario) VALUES (?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, categoria.getNombre());
             ps.setBoolean(2, categoria.isVisible());
             ps.setInt(3, categoria.getInciso().getId());
             ps.setInt(4, categoria.getCodigoPresupuestario().getId());
-            ps.setInt(5, categoria.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -115,14 +111,13 @@ public class CategoriaControlador {
     public void modificar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=?, id_usuario=? WHERE id=?";
+            String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, categoria.getNombre());
             ps.setBoolean(2, categoria.isVisible());
             ps.setInt(3, categoria.getInciso().getId());
             ps.setInt(4, categoria.getCodigoPresupuestario().getId());
-            ps.setInt(5, categoria.getUsuario().getId());
-            ps.setInt(6, categoria.getId());
+            ps.setInt(5, categoria.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, categoria.toString() + " modificado correctamente");
             ps.close();

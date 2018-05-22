@@ -20,10 +20,8 @@ public class OperacionesControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    private UsuarioControlador usuarioControlador;
 
     public Operaciones extraer(Integer id) throws SQLException {
-        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Operaciones\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -44,7 +42,6 @@ public class OperacionesControlador {
     }
 
     public ArrayList<Operaciones> extraerTodos() throws SQLException {
-        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Operaciones\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -87,12 +84,10 @@ public class OperacionesControlador {
     public void insertar(Operaciones operacion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Operaciones\" (nombre, visible, id_usuario)  VALUES (?,?,?)";
+            String consultaSql = "INSERT INTO public.\"Operaciones\" (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, operacion.getNombre());
             ps.setBoolean(2, operacion.isVisible());
-            ps.setInt(3, operacion.getUsuario().getId());
-
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -103,12 +98,11 @@ public class OperacionesControlador {
     public void modificar(Operaciones operacion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Operaciones\" SET nombre=?, visible=?, id_usuario=? WHERE id=?";
+            String consultaSql = "UPDATE public.\"Operaciones\" SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, operacion.getNombre());
             ps.setBoolean(2, operacion.isVisible());
-            ps.setInt(3, operacion.getUsuario().getId());
-            ps.setInt(4, operacion.getId());
+            ps.setInt(3, operacion.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, operacion.toString() + " modificado correctamente");
             ps.close();

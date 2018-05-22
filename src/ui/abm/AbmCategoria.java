@@ -312,7 +312,6 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        categoria.setUsuario(usuario);
         categoria.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             categoria.setVisible(true);

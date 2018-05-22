@@ -379,7 +379,6 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        perfil.setUsuario(usuario);
         perfil.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             perfil.setVisible(true);

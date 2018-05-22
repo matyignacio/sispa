@@ -265,7 +265,6 @@ public class AbmMarca extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        marca.setUsuario(usuario);
         marca.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             marca.setVisible(true);

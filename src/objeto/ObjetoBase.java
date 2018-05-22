@@ -14,7 +14,6 @@ public class ObjetoBase {
     private int id;
     private String nombre;
     private boolean visible;
-    private Usuario usuario;
 
     public int getId() {
         return id;
@@ -38,14 +37,6 @@ public class ObjetoBase {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     @Override

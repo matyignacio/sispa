@@ -265,7 +265,6 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        estado.setUsuario(usuario);
         estado.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             estado.setVisible(true);

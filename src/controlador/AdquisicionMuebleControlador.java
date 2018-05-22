@@ -22,17 +22,12 @@ public class AdquisicionMuebleControlador {
     private ResultSet rs;
     private MuebleControlador muebleControlador;
     private TipoAdquisicionControlador tipoAdquisicionControlador;
-    private UsuarioControlador usuarioControlador;
 
     public AdquisicionMueble extraer(Integer id) throws SQLException {
-
         muebleControlador = new MuebleControlador();
         tipoAdquisicionControlador = new TipoAdquisicionControlador();
-        usuarioControlador = new UsuarioControlador();
-
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT id, nombre, visible, fecha, monto, id_mueble, id_tipo_adquisicion, "
-                + "       id_usuario"
+        String consultaSql = "SELECT id, nombre, visible, fecha, monto, id_mueble, id_tipo_adquisicion "
                 + "  FROM \"Adquisicion_Muebles\"";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
@@ -47,8 +42,6 @@ public class AdquisicionMuebleControlador {
             AdquisicionMueble.setMonto(rs.getFloat(5));
             AdquisicionMueble.setMueble(muebleControlador.extraer(rs.getInt(6)));
             AdquisicionMueble.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(7)));
-            AdquisicionMueble.setUsuario(usuarioControlador.extraer(rs.getInt(8)));
-
         }
         rs.close();
         ps.close();
@@ -59,7 +52,6 @@ public class AdquisicionMuebleControlador {
     public ArrayList<AdquisicionMueble> extraerTodos() throws SQLException {
         muebleControlador = new MuebleControlador();
         tipoAdquisicionControlador = new TipoAdquisicionControlador();
-
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Adquisicion_Muebles\" order bye nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -76,7 +68,6 @@ public class AdquisicionMuebleControlador {
             AdquisicionMueble.setMonto(rs.getFloat(5));
             AdquisicionMueble.setMueble(muebleControlador.extraer(rs.getInt(6)));
             AdquisicionMueble.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(7)));
-
             adquisicionMuebles.add(AdquisicionMueble);
         }
         rs.close();
@@ -88,7 +79,6 @@ public class AdquisicionMuebleControlador {
     public ArrayList<AdquisicionMueble> extraerTodosVisibles() throws SQLException {
         muebleControlador = new MuebleControlador();
         tipoAdquisicionControlador = new TipoAdquisicionControlador();
-
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Adquisicion_Muebles\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -105,7 +95,6 @@ public class AdquisicionMuebleControlador {
             AdquisicionMueble.setMonto(rs.getFloat(5));
             AdquisicionMueble.setMueble(muebleControlador.extraer(rs.getInt(6)));
             AdquisicionMueble.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(7)));
-
             adquisicionMuebles.add(AdquisicionMueble);
         }
         rs.close();
@@ -118,10 +107,8 @@ public class AdquisicionMuebleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "INSERT INTO \"Adquisicion_Muebles\""
-                    + "            (nombre, visible, fecha, monto, id_mueble, id_tipo_adquisicion,"
-                    + "            id_usuario)"
-                    + "    VALUES (?, ?, ?, ?, ?, ?,"
-                    + "            ?)";
+                    + "            (nombre, visible, fecha, monto, id_mueble, id_tipo_adquisicion)"
+                    + "    VALUES (?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, adquisicionmueble.getNombre());
             ps.setBoolean(2, adquisicionmueble.isVisible());
@@ -129,8 +116,6 @@ public class AdquisicionMuebleControlador {
             ps.setFloat(4, adquisicionmueble.getMonto());
             ps.setInt(5, adquisicionmueble.getMueble().getId());
             ps.setInt(6, adquisicionmueble.getTipoAdquisicion().getId());
-            ps.setInt(7, adquisicionmueble.getUsuario().getId());
-
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -142,8 +127,7 @@ public class AdquisicionMuebleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE \"Adquisicion_Muebles\"\n"
-                    + "   SET id=?, nombre=?, visible=?, fecha=?, monto=?, id_mueble=?, id_tipo_adquisicion=?, \n"
-                    + "       id_usuario=?\n"
+                    + "   SET id=?, nombre=?, visible=?, fecha=?, monto=?, id_mueble=?, id_tipo_adquisicion=?"
                     + " WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, adquisicionmueble.getNombre());
@@ -152,8 +136,7 @@ public class AdquisicionMuebleControlador {
             ps.setFloat(4, adquisicionmueble.getMonto());
             ps.setInt(5, adquisicionmueble.getMueble().getId());
             ps.setInt(6, adquisicionmueble.getTipoAdquisicion().getId());
-            ps.setInt(7, adquisicionmueble.getUsuario().getId());
-            ps.setInt(8, adquisicionmueble.getId());
+            ps.setInt(7, adquisicionmueble.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, adquisicionmueble.toString() + " modificado correctamente");
             ps.close();

@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import objeto.Estado;
 import objeto.TipoAdquisicion;
 
 public class TipoAdquisicionControlador {
@@ -21,7 +20,6 @@ public class TipoAdquisicionControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    private UsuarioControlador usuarioControlador;
 
     public TipoAdquisicion extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
@@ -35,7 +33,6 @@ public class TipoAdquisicionControlador {
             tipo.setId(rs.getInt(1));
             tipo.setNombre(rs.getString(2));
             tipo.setVisible(rs.getBoolean(3));
-            tipo.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
         }
         rs.close();
         ps.close();
@@ -44,8 +41,6 @@ public class TipoAdquisicionControlador {
     }
 
     public ArrayList<TipoAdquisicion> extraerTodos() throws SQLException {
-        usuarioControlador = new UsuarioControlador();
-
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"tipo_adquisicion\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -57,7 +52,6 @@ public class TipoAdquisicionControlador {
             tipo.setId(rs.getInt(1));
             tipo.setNombre(rs.getString(2));
             tipo.setVisible(rs.getBoolean(3));
-
             tipos.add(tipo);
         }
         rs.close();
@@ -67,8 +61,6 @@ public class TipoAdquisicionControlador {
     }
 
     public ArrayList<TipoAdquisicion> extraerTodosVisible() throws SQLException {
-        usuarioControlador = new UsuarioControlador();
-
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"tipo_adquisicion\" where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -91,11 +83,10 @@ public class TipoAdquisicionControlador {
     public void insertar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"tipo_adquisicion\" (nombre, visible, id_usuario)  VALUES (?,?,?)";
+            String consultaSql = "INSERT INTO public.\"tipo_adquisicion\" (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, tipo.getNombre());
             ps.setBoolean(2, tipo.isVisible());
-            ps.setInt(3, tipo.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -106,12 +97,11 @@ public class TipoAdquisicionControlador {
     public void modificar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"tipo_adquisicion\" SET nombre=?, visible=?, id_usuario=? WHERE id=?";
+            String consultaSql = "UPDATE public.\"tipo_adquisicion\" SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, tipo.getNombre());
             ps.setBoolean(2, tipo.isVisible());
-            ps.setInt(3, tipo.getUsuario().getId());
-            ps.setInt(4, tipo.getId());
+            ps.setInt(3, tipo.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, tipo.toString() + " modificado correctamente");
             ps.close();

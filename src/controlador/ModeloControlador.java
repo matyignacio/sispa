@@ -21,11 +21,9 @@ public class ModeloControlador {
     private PreparedStatement ps;
     private ResultSet rs;
     MarcaControlador marcaControlador = new MarcaControlador();
-    private UsuarioControlador usuarioControlador;
 
     public Modelo extraer(Integer id) throws SQLException {
         marcaControlador = new MarcaControlador();
-        usuarioControlador = new UsuarioControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM \"Modelos\" WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -39,7 +37,6 @@ public class ModeloControlador {
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
             modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
-            modelo.setUsuario(usuarioControlador.extraer(rs.getInt(6)));
         }
         rs.close();
         ps.close();
@@ -96,13 +93,12 @@ public class ModeloControlador {
     public void insertar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca, id_usuario) VALUES (?, ?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());
             ps.setInt(3, modelo.getAño());
             ps.setInt(4, modelo.getMarca().getId());
-            ps.setInt(5, modelo.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -113,14 +109,13 @@ public class ModeloControlador {
     public void modificar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=?, id_usuario=? WHERE id=?";
+            String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());
             ps.setInt(3, modelo.getAño());
             ps.setInt(4, modelo.getMarca().getId());
-            ps.setInt(5, modelo.getUsuario().getId());
-            ps.setInt(6, modelo.getId());
+            ps.setInt(5, modelo.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, modelo.toString() + " modificado correctamente");
             ps.close();

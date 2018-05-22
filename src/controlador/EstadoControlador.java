@@ -24,7 +24,6 @@ public class EstadoControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
-    private UsuarioControlador usuarioControlador;
 
     public Estado extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
@@ -38,7 +37,6 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
-            estado.setUsuario(usuarioControlador.extraer(rs.getInt(4)));
         }
         rs.close();
         ps.close();
@@ -47,8 +45,6 @@ public class EstadoControlador {
     }
 
     public ArrayList<Estado> extraerTodos() throws SQLException {
-        usuarioControlador = new UsuarioControlador(); //HAY QUE INICIALIZARLO PARA PODER USARLO
-
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM public.\"Estados\" order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -60,7 +56,6 @@ public class EstadoControlador {
             estado.setId(rs.getInt(1));
             estado.setNombre(rs.getString(2));
             estado.setVisible(rs.getBoolean(3));
-
             estados.add(estado);
         }
         rs.close();
@@ -92,11 +87,10 @@ public class EstadoControlador {
     public void insertar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Estados\" (nombre, visible, id_usuario)  VALUES (?,?,?)";
+            String consultaSql = "INSERT INTO public.\"Estados\" (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, estado.getNombre());
             ps.setBoolean(2, estado.isVisible());
-            ps.setInt(3, estado.getUsuario().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -107,12 +101,11 @@ public class EstadoControlador {
     public void modificar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Estados\" SET nombre=?, visible=?, id_usuario=? WHERE id=?";
+            String consultaSql = "UPDATE public.\"Estados\" SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, estado.getNombre());
             ps.setBoolean(2, estado.isVisible());
-            ps.setInt(3, estado.getUsuario().getId());
-            ps.setInt(4, estado.getId());
+            ps.setInt(3, estado.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, estado.toString() + " modificado correctamente");
             ps.close();

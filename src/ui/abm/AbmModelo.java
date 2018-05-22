@@ -313,7 +313,6 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
 
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        modelo.setUsuario(usuario);
         modelo.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             modelo.setVisible(true);
