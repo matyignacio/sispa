@@ -43,7 +43,7 @@ public class PerfilControlador {
             perfil.setId(rs.getInt(1));
             perfil.setNombre(rs.getString(2));
             perfil.setVisible(rs.getBoolean(3));
-            consultaSql = "SELECT id_operacion FROM perfiles WHERE id_perfil= ?";
+            consultaSql = "SELECT id_operacion FROM operaciones_perfiles WHERE id_perfil= ?";
             ps2 = conn.prepareStatement(consultaSql);
             ps2.setInt(1, perfil.getId());
             ps2.executeQuery();

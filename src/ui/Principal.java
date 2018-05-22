@@ -8,6 +8,7 @@ package ui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import objeto.Operaciones;
 
 /**
  *
@@ -19,8 +20,22 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal2
      */
     public Principal() {
+        int i;
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
+        for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
+            Operaciones operaciones1 = new Operaciones();
+            operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
+            if (operaciones1.getId() == 3) {
+                jbAjustes.setEnabled(true);
+            }
+            if (operaciones1.getId() == 4) {
+                jbUsuarios.setEnabled(true);
+            }
+            if (operaciones1.getId() == 5) {
+                jbInformes.setEnabled(true);
+            }
+        }
     }
 
     /**
@@ -141,6 +156,7 @@ public class Principal extends javax.swing.JFrame {
         jbAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes.png"))); // NOI18N
         jbAjustes.setText("Ajustes");
         jbAjustes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAjustes.setEnabled(false);
         jbAjustes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAjustesActionPerformed(evt);
@@ -154,6 +170,7 @@ public class Principal extends javax.swing.JFrame {
         jbUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_usuarios.png"))); // NOI18N
         jbUsuarios.setText("Usuarios");
         jbUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbUsuarios.setEnabled(false);
         jbUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbUsuariosActionPerformed(evt);
@@ -167,6 +184,7 @@ public class Principal extends javax.swing.JFrame {
         jbInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe.png"))); // NOI18N
         jbInformes.setText("Informes");
         jbInformes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInformes.setEnabled(false);
         jbInformes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbInformesActionPerformed(evt);

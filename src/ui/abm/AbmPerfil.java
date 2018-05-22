@@ -5,14 +5,16 @@
  */
 package ui.abm;
 
+import controlador.OperacionesControlador;
 import controlador.PerfilControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import objeto.Operaciones;
 import objeto.Perfil;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -21,6 +23,7 @@ import ui.gestion.Gestionable;
  */
 public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
 
+    OperacionesControlador operacionesControlador;
     private String operacion;
     private Perfil perfil;
     private Gestionable ventanaGestion;
@@ -65,29 +68,8 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.perfil = perfil;
         this.ventanaGestion = ventanaGestion;
-        if (!jcbAjustes.isSelected()) {
-            jcbMarcas.setEnabled(false);
-            jcbModelos.setEnabled(false);
-            jcbIncisos.setEnabled(false);
-            jcbCodigoPresupuestario.setEnabled(false);
-            jcbCategorias.setEnabled(false);
-            jcbEstados.setEnabled(false);
-            jcbPerfiles.setEnabled(false);
-            jcbReparticiones.setEnabled(false);
-            jcbTipoAdquisicion.setEnabled(false);
-        } else {
-            jcbMarcas.setEnabled(true);
-            jcbModelos.setEnabled(true);
-            jcbIncisos.setEnabled(true);
-            jcbCodigoPresupuestario.setEnabled(true);
-            jcbCategorias.setEnabled(true);
-            jcbEstados.setEnabled(true);
-            jcbPerfiles.setEnabled(true);
-            jcbReparticiones.setEnabled(true);
-            jcbTipoAdquisicion.setEnabled(true);
-        }
+        validarCheckBox();
         inicializacionVentana();
-
     }
 
     public AbmPerfil() throws SQLException {
@@ -132,6 +114,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         jcbPerfiles = new javax.swing.JCheckBox();
         jcbReparticiones = new javax.swing.JCheckBox();
         jcbTipoAdquisicion = new javax.swing.JCheckBox();
+        jcbPermisos = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("SISPA - Marcas");
@@ -234,8 +217,12 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         jcbAjustes.setBackground(new java.awt.Color(204, 204, 204));
         jcbAjustes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbAjustes.setForeground(new java.awt.Color(33, 150, 243));
-        jcbAjustes.setSelected(true);
         jcbAjustes.setText("Ajustes");
+        jcbAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAjustesActionPerformed(evt);
+            }
+        });
         jpPrincipal.add(jcbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
 
         jcbInformes.setBackground(new java.awt.Color(204, 204, 204));
@@ -304,6 +291,12 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         jcbTipoAdquisicion.setText("Tipo de Adquisicion");
         jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, -1, -1));
 
+        jcbPermisos.setBackground(new java.awt.Color(204, 204, 204));
+        jcbPermisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbPermisos.setForeground(new java.awt.Color(33, 150, 243));
+        jcbPermisos.setText("Permisos de Usuario");
+        jpPrincipal.add(jcbPermisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
+
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -361,8 +354,56 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
 
+    private void jcbAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAjustesActionPerformed
+        validarCheckBox();// TODO add your handling code here:
+    }//GEN-LAST:event_jcbAjustesActionPerformed
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
+            int i;
+            for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
+                Operaciones operaciones1 = new Operaciones();
+                operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
+                if (operaciones1.getId() == 3) {
+                    jcbAjustes.setSelected(true);
+                }
+                if (operaciones1.getId() == 4) {
+                    jcbUsuarios.setSelected(true);
+                }
+                if (operaciones1.getId() == 5) {
+                    jcbInformes.setSelected(true);
+                }
+                if (operaciones1.getId() == 6) {
+                    jcbMarcas.setSelected(true);
+                }
+                if (operaciones1.getId() == 7) {
+                    jcbModelos.setSelected(true);
+                }
+                if (operaciones1.getId() == 8) {
+                    jcbCategorias.setSelected(true);
+                }
+                if (operaciones1.getId() == 9) {
+                    jcbIncisos.setSelected(true);
+                }
+                if (operaciones1.getId() == 10) {
+                    jcbCodigoPresupuestario.setSelected(true);
+                }
+                if (operaciones1.getId() == 11) {
+                    jcbEstados.setSelected(true);
+                }
+                if (operaciones1.getId() == 12) {
+                    jcbPerfiles.setSelected(true);
+                }
+                if (operaciones1.getId() == 13) {
+                    jcbReparticiones.setSelected(true);
+                }
+                if (operaciones1.getId() == 14) {
+                    jcbTipoAdquisicion.setSelected(true);
+                }
+                if (operaciones1.getId() == 15) {
+                    jcbPermisos.setSelected(true);
+                }
+            }
             jtfNombre.setText(perfil.getNombre());
             if (perfil.isVisible()) {
                 jrbVisible.setSelected(true);
@@ -384,6 +425,11 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
             perfil.setVisible(true);
         } else {
             perfil.setVisible(false);
+        }
+        try {
+            perfil.setOperaciones(asigarOperaciones());
+        } catch (SQLException ex) {
+            Logger.getLogger(AbmPerfil.class.getName()).log(Level.SEVERE, null, ex);
         }
         return OK;
     }
@@ -414,6 +460,98 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         }
         return OK;
     }
+
+    public void validarCheckBox() {
+        if (!jcbAjustes.isSelected()) {
+            jcbMarcas.setEnabled(false);
+            jcbModelos.setEnabled(false);
+            jcbIncisos.setEnabled(false);
+            jcbCodigoPresupuestario.setEnabled(false);
+            jcbCategorias.setEnabled(false);
+            jcbEstados.setEnabled(false);
+            jcbPerfiles.setEnabled(false);
+            jcbReparticiones.setEnabled(false);
+            jcbTipoAdquisicion.setEnabled(false);
+            jcbPermisos.setEnabled(false);
+        } else {
+            jcbMarcas.setEnabled(true);
+            jcbModelos.setEnabled(true);
+            jcbIncisos.setEnabled(true);
+            jcbCodigoPresupuestario.setEnabled(true);
+            jcbCategorias.setEnabled(true);
+            jcbEstados.setEnabled(true);
+            jcbPerfiles.setEnabled(true);
+            jcbReparticiones.setEnabled(true);
+            jcbTipoAdquisicion.setEnabled(true);
+            jcbPermisos.setEnabled(true);
+        }
+    }
+
+    public ArrayList<Operaciones> asigarOperaciones() throws SQLException {
+        operacionesControlador = new OperacionesControlador();
+        ArrayList<Operaciones> operaciones = new ArrayList<>();
+        Operaciones operaciones1 = new Operaciones();
+        //-----------------------------------------------------------------------------------
+        // SIEMPRE VA A PODER EDITAR MUEBLES E INMUEBLES
+        operaciones1 = operacionesControlador.extraer(1);
+        operaciones.add(operaciones1);
+        operaciones1 = operacionesControlador.extraer(2);
+        operaciones.add(operaciones1);
+        //-----------------------------------------------------------------------------------
+        if (jcbAjustes.isSelected()) {
+            operaciones1 = operacionesControlador.extraer(3);//EL 3 ES EQUIVALENTE A AJUSTES
+            operaciones.add(operaciones1);
+            if (jcbMarcas.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(6);
+                operaciones.add(operaciones1);
+            }
+            if (jcbModelos.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(7);
+                operaciones.add(operaciones1);
+            }
+            if (jcbIncisos.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(9);
+                operaciones.add(operaciones1);
+            }
+            if (jcbCodigoPresupuestario.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(10);
+                operaciones.add(operaciones1);
+            }
+            if (jcbCategorias.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(8);
+                operaciones.add(operaciones1);
+            }
+            if (jcbEstados.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(11);
+                operaciones.add(operaciones1);
+            }
+            if (jcbPerfiles.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(12);
+                operaciones.add(operaciones1);
+            }
+            if (jcbReparticiones.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(13);
+                operaciones.add(operaciones1);
+            }
+            if (jcbTipoAdquisicion.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(14);
+                operaciones.add(operaciones1);
+            }
+            if (jcbPermisos.isSelected()) {
+                operaciones1 = operacionesControlador.extraer(15);
+                operaciones.add(operaciones1);
+            }
+        }
+        if (jcbUsuarios.isSelected()) {
+            operaciones1 = operacionesControlador.extraer(4);//EL 4 ES EQUIVALENTE A USUARIOS
+            operaciones.add(operaciones1);
+        }
+        if (jcbInformes.isSelected()) {
+            operaciones1 = operacionesControlador.extraer(5);//EL 5 ES EQUIVALENTE A USUARIOS
+            operaciones.add(operaciones1);
+        }
+        return operaciones;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbAceptar;
@@ -427,6 +565,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JCheckBox jcbMarcas;
     private javax.swing.JCheckBox jcbModelos;
     private javax.swing.JCheckBox jcbPerfiles;
+    private javax.swing.JCheckBox jcbPermisos;
     private javax.swing.JCheckBox jcbReparticiones;
     private javax.swing.JCheckBox jcbTipoAdquisicion;
     private javax.swing.JCheckBox jcbUsuarios;

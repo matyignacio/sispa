@@ -20,7 +20,7 @@ import objeto.Usuario;
 public class Login extends javax.swing.JFrame {
 
     public static Usuario usuario = new Usuario();
-    public static UsuarioControlador usuarioControlador = new UsuarioControlador();
+    public static UsuarioControlador usuarioControlador;
 
     public Login() {
         initComponents();
@@ -264,19 +264,17 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void ValidarUsuario() {
+        usuarioControlador = new UsuarioControlador();
         usuario.setMail(jtfUsuario.getText());
         usuario.setClave(jtfClave.getText());
         try {
             usuario = usuarioControlador.validarUsuario(usuario);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (usuario.getId() != 0) {
             Principal principal;
             principal = new Principal();
             principal.setVisible(true);
             this.dispose();
-        } else {
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
         }
     }

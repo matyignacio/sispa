@@ -143,6 +143,7 @@ public class UsuarioControlador {
     }
 
     public Usuario validarUsuario(Usuario usuario) throws SQLException {
+        perfilcontrolador = new PerfilControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "select * from usuarios where mail like ? AND clave like ? AND visible = TRUE";
         ps = conn.prepareStatement(consultaSql);
@@ -156,6 +157,7 @@ public class UsuarioControlador {
             usuario.setMail(rs.getString(3));
             usuario.setClave(rs.getString(4));
             usuario.setVisible(rs.getBoolean(5));
+            usuario.setPerfil(perfilcontrolador.extraer(rs.getInt(6)));
         }
         return usuario;
     }

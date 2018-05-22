@@ -5,10 +5,10 @@
  */
 package ui;
 
-import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import objeto.Operaciones;
 import ui.gestion.GestionCategorias;
 import ui.gestion.GestionCodigosPresupuestario;
 import ui.gestion.GestionEstados;
@@ -28,7 +28,42 @@ public class Ajustes extends javax.swing.JInternalFrame {
      */
     public Ajustes() throws SQLException {
         initComponents();
+        int i;
         jlNombreUsuario.setText(Login.usuario.toString());
+        for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
+            Operaciones operaciones1 = new Operaciones();
+            operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
+            if (operaciones1.getId() == 6) {
+                jbMarcas.setEnabled(true);
+            }
+            if (operaciones1.getId() == 7) {
+                jbModelos.setEnabled(true);
+            }
+            if (operaciones1.getId() == 8) {
+                jbCategorias.setEnabled(true);
+            }
+            if (operaciones1.getId() == 9) {
+                jbIncisos.setEnabled(true);
+            }
+            if (operaciones1.getId() == 10) {
+                jbCodigos.setEnabled(true);
+            }
+            if (operaciones1.getId() == 11) {
+                jbEstados.setEnabled(true);
+            }
+            if (operaciones1.getId() == 12) {
+                jbPerfiles.setEnabled(true);
+            }
+            if (operaciones1.getId() == 13) {
+                jbReparticiones.setEnabled(true);
+            }
+            if (operaciones1.getId() == 14) {
+                jbTipoAdquisicion.setEnabled(true);
+            }
+            if (operaciones1.getId() == 15) {
+                jbUsuarios.setEnabled(true);
+            }
+        }
     }
 
     /**
@@ -53,7 +88,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbIncisos = new javax.swing.JButton();
         jbEstados = new javax.swing.JButton();
         jbCategorias = new javax.swing.JButton();
-        Reparticiones = new javax.swing.JButton();
+        jbReparticiones = new javax.swing.JButton();
         jbUsuarios = new javax.swing.JButton();
         jbPerfiles = new javax.swing.JButton();
         jbTipoAdquisicion = new javax.swing.JButton();
@@ -107,6 +142,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbMarcas.setForeground(new java.awt.Color(33, 150, 243));
         jbMarcas.setText("Marcas");
         jbMarcas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMarcas.setEnabled(false);
         jbMarcas.setPreferredSize(new java.awt.Dimension(90, 121));
         jbMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -125,6 +161,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbCodigos.setForeground(new java.awt.Color(33, 150, 243));
         jbCodigos.setText("C. Presup.");
         jbCodigos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbCodigos.setEnabled(false);
         jbCodigos.setPreferredSize(new java.awt.Dimension(90, 121));
         jbCodigos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -143,6 +180,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbModelos.setForeground(new java.awt.Color(33, 150, 243));
         jbModelos.setText("Modelos");
         jbModelos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbModelos.setEnabled(false);
         jbModelos.setPreferredSize(new java.awt.Dimension(90, 121));
         jbModelos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -161,6 +199,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbIncisos.setForeground(new java.awt.Color(33, 150, 243));
         jbIncisos.setText("Incisos");
         jbIncisos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbIncisos.setEnabled(false);
         jbIncisos.setPreferredSize(new java.awt.Dimension(90, 121));
         jbIncisos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -179,6 +218,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbEstados.setForeground(new java.awt.Color(33, 150, 243));
         jbEstados.setText("Estados");
         jbEstados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbEstados.setEnabled(false);
         jbEstados.setPreferredSize(new java.awt.Dimension(90, 121));
         jbEstados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -197,6 +237,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbCategorias.setForeground(new java.awt.Color(33, 150, 243));
         jbCategorias.setText("Categorias");
         jbCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbCategorias.setEnabled(false);
         jbCategorias.setPreferredSize(new java.awt.Dimension(90, 121));
         jbCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -210,29 +251,31 @@ public class Ajustes extends javax.swing.JInternalFrame {
         });
         jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 120, 90));
 
-        Reparticiones.setBackground(new java.awt.Color(204, 204, 204));
-        Reparticiones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Reparticiones.setForeground(new java.awt.Color(33, 150, 243));
-        Reparticiones.setText("Reparticiones");
-        Reparticiones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Reparticiones.setPreferredSize(new java.awt.Dimension(90, 121));
-        Reparticiones.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
+        jbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbReparticiones.setForeground(new java.awt.Color(33, 150, 243));
+        jbReparticiones.setText("Reparticiones");
+        jbReparticiones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbReparticiones.setEnabled(false);
+        jbReparticiones.setPreferredSize(new java.awt.Dimension(90, 121));
+        jbReparticiones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ReparticionesMousePressed(evt);
+                jbReparticionesMousePressed(evt);
             }
         });
-        Reparticiones.addActionListener(new java.awt.event.ActionListener() {
+        jbReparticiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReparticionesActionPerformed(evt);
+                jbReparticionesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(Reparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 120, 90));
+        jpPrincipal.add(jbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 120, 90));
 
         jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbUsuarios.setForeground(new java.awt.Color(33, 150, 243));
         jbUsuarios.setText("Usuarios");
         jbUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbUsuarios.setEnabled(false);
         jbUsuarios.setPreferredSize(new java.awt.Dimension(90, 121));
         jbUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -251,6 +294,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbPerfiles.setForeground(new java.awt.Color(33, 150, 243));
         jbPerfiles.setText("Perfiles");
         jbPerfiles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbPerfiles.setEnabled(false);
         jbPerfiles.setPreferredSize(new java.awt.Dimension(90, 121));
         jbPerfiles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -269,6 +313,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
         jbTipoAdquisicion.setText("Tipo Adq.");
         jbTipoAdquisicion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbTipoAdquisicion.setEnabled(false);
         jbTipoAdquisicion.setPreferredSize(new java.awt.Dimension(90, 121));
         jbTipoAdquisicion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -392,13 +437,13 @@ public class Ajustes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbCategoriasActionPerformed
 
-    private void ReparticionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReparticionesMousePressed
+    private void jbReparticionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbReparticionesMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ReparticionesMousePressed
+    }//GEN-LAST:event_jbReparticionesMousePressed
 
-    private void ReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReparticionesActionPerformed
+    private void jbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReparticionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ReparticionesActionPerformed
+    }//GEN-LAST:event_jbReparticionesActionPerformed
 
     private void jbUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbUsuariosMousePressed
         // TODO add your handling code here:
@@ -476,7 +521,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Reparticiones;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbCategorias;
     private javax.swing.JButton jbCodigos;
@@ -485,6 +529,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbMarcas;
     private javax.swing.JButton jbModelos;
     private javax.swing.JButton jbPerfiles;
+    private javax.swing.JButton jbReparticiones;
     private javax.swing.JButton jbTipoAdquisicion;
     private javax.swing.JButton jbUsuarios;
     private javax.swing.JLabel jlBienvenido;
