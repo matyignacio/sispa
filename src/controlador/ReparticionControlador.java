@@ -25,7 +25,7 @@ public class ReparticionControlador {
 
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Reparticiones\" WHERE id=?";
+        String consultaSql = "SELECT * FROM reparticiones WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -48,7 +48,7 @@ public class ReparticionControlador {
     public ArrayList<Reparticion> extraerTodos() throws SQLException {
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Reparticiones\" order by nombre";
+        String consultaSql = "SELECT * FROM reparticiones order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -73,7 +73,7 @@ public class ReparticionControlador {
     public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
         MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Reparticiones\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM reparticiones where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -98,7 +98,7 @@ public class ReparticionControlador {
     public void insertar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Reparticiones\"( nombre, localidad, departamento, domicilio, id_reparticion_superior) VALUES (?, ?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO reparticiones ( nombre, localidad, departamento, domicilio, id_reparticion_superior) VALUES (?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, reparticion.getNombre());
             ps.setString(2, reparticion.getLocalidad());
@@ -114,7 +114,7 @@ public class ReparticionControlador {
     public void modificar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Reparticiones\" SET nombre=?, localidad=?, departamento=?, domicilio=?, id_reparticion_superior=? WHERE id=?";
+            String consultaSql = "UPDATE reparticiones SET nombre=?, localidad=?, departamento=?, domicilio=?, id_reparticion_superior=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, reparticion.getNombre());
             ps.setString(2, reparticion.getLocalidad());
@@ -131,7 +131,7 @@ public class ReparticionControlador {
     public void borrar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM \"Reparticiones\" WHERE id=?";
+            String consultaSql = "DELETE FROM reparticiones WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, reparticion.getId());
             ps.executeUpdate();

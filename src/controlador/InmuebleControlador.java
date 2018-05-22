@@ -31,7 +31,7 @@ public class InmuebleControlador {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Muebles\" WHERE id=?";
+        String consultaSql = "SELECT * FROM inmuebles WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -58,7 +58,7 @@ public class InmuebleControlador {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Inmuebles\" order by nombre";
+        String consultaSql = "SELECT * FROM inmuebles order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -87,7 +87,7 @@ public class InmuebleControlador {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Inmuebles\" where visible = TRUE order by nombre ";
+        String consultaSql = "SELECT * FROM inmuebles where visible = TRUE order by nombre ";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -115,7 +115,7 @@ public class InmuebleControlador {
     public void insertar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Inmuebles\"(nombre, visible, expediente, caracteristica, observaciones, \n"
+            String consultaSql = "INSERT INTO inmuebles (nombre, visible, expediente, caracteristica, observaciones, \n"
                     + "            domicilio, id_categoria, id_reparticion)\n"
                     + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
             ps = conn.prepareStatement(consultaSql);
@@ -137,7 +137,7 @@ public class InmuebleControlador {
     public void modificar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Inmuebles\""
+            String consultaSql = "UPDATE inmuebles"
                     + "   SET id=?, nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, "
                     + "       domicilio=?, id_categoria=?, id_reparticion=?"
                     + " WHERE id=?";
@@ -161,7 +161,7 @@ public class InmuebleControlador {
     public void borrar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM public.\"Inmuebles\" WHERE id=?";
+            String consultaSql = "DELETE FROM inmuebles WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, inmueble.getId());
             ps.executeUpdate();

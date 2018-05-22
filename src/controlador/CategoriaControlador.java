@@ -25,7 +25,7 @@ public class CategoriaControlador {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Categorias\" WHERE id=?";
+        String consultaSql = "SELECT * FROM categorias WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -48,7 +48,7 @@ public class CategoriaControlador {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Categorias\" order by nombre";
+        String consultaSql = "SELECT * FROM categorias order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -72,7 +72,7 @@ public class CategoriaControlador {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Categorias\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM categorias where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -95,7 +95,7 @@ public class CategoriaControlador {
     public void insertar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Categorias\"(nombre, visible, id_inciso, id_codigo_presupuestario) VALUES (?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO categorias (nombre, visible, id_inciso, id_codigo_presupuestario) VALUES (?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, categoria.getNombre());
             ps.setBoolean(2, categoria.isVisible());
@@ -111,7 +111,7 @@ public class CategoriaControlador {
     public void modificar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Categorias\" SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=? WHERE id=?";
+            String consultaSql = "UPDATE categorias SET nombre=?, visible=?, id_inciso=?, id_codigo_presupuestario=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, categoria.getNombre());
             ps.setBoolean(2, categoria.isVisible());
@@ -128,7 +128,7 @@ public class CategoriaControlador {
     public void borrar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM \"Categorias\" WHERE id=?";
+            String consultaSql = "DELETE FROM categorias WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, categoria.getId());
             ps.executeUpdate();

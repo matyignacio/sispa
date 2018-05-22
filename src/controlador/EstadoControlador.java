@@ -27,7 +27,7 @@ public class EstadoControlador {
 
     public Estado extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Estados\" WHERE id=?";
+        String consultaSql = "SELECT * FROM estados WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -46,7 +46,7 @@ public class EstadoControlador {
 
     public ArrayList<Estado> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Estados\" order by nombre";
+        String consultaSql = "SELECT * FROM estados order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -66,7 +66,7 @@ public class EstadoControlador {
 
     public ArrayList<Estado> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Estados\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM estados where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -87,7 +87,7 @@ public class EstadoControlador {
     public void insertar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Estados\" (nombre, visible)  VALUES (?,?)";
+            String consultaSql = "INSERT INTO estados (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, estado.getNombre());
             ps.setBoolean(2, estado.isVisible());
@@ -101,7 +101,7 @@ public class EstadoControlador {
     public void modificar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Estados\" SET nombre=?, visible=? WHERE id=?";
+            String consultaSql = "UPDATE estados SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, estado.getNombre());
             ps.setBoolean(2, estado.isVisible());
@@ -116,7 +116,7 @@ public class EstadoControlador {
     public void borrar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM public.\"Estados\" WHERE id=?";
+            String consultaSql = "DELETE FROM estados WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, estado.getId());
             ps.executeUpdate();

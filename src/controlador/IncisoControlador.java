@@ -27,7 +27,7 @@ public class IncisoControlador {
 
     public Inciso extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Incisos\" WHERE id=?";
+        String consultaSql = "SELECT * FROM incisos WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -48,7 +48,7 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Incisos\" order by numero";
+        String consultaSql = "SELECT * FROM incisos order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -70,7 +70,7 @@ public class IncisoControlador {
 
     public ArrayList<Inciso> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Incisos\" where visible = TRUE order by numero";
+        String consultaSql = "SELECT * FROM incisos where visible = TRUE order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -93,7 +93,7 @@ public class IncisoControlador {
     public void insertar(Inciso inciso) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Incisos\" (numero, principal, parcial, visible)  VALUES (?,?,?,?)";
+            String consultaSql = "INSERT INTO incisos (numero, principal, parcial, visible)  VALUES (?,?,?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, inciso.getNumero());
             ps.setInt(2, inciso.getPrincipal());
@@ -109,7 +109,7 @@ public class IncisoControlador {
     public void modificar(Inciso inciso) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Incisos\" SET numero=?, principal=?, parcial=?, visible=? WHERE id=?";
+            String consultaSql = "UPDATE incisos SET numero=?, principal=?, parcial=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, inciso.getNumero());
             ps.setInt(2, inciso.getPrincipal());
@@ -126,7 +126,7 @@ public class IncisoControlador {
     public void borrar(Inciso inciso) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM public.\"Incisos\" WHERE id=?";
+            String consultaSql = "DELETE FROM incisos WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, inciso.getId());
             ps.executeUpdate();

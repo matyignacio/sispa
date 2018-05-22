@@ -25,7 +25,7 @@ public class ModeloControlador {
     public Modelo extraer(Integer id) throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Modelos\" WHERE id=?";
+        String consultaSql = "SELECT * FROM modelos WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -47,7 +47,7 @@ public class ModeloControlador {
     public ArrayList<Modelo> extraerTodos() throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Modelos\" order by nombre";
+        String consultaSql = "SELECT * FROM modelos order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -70,7 +70,7 @@ public class ModeloControlador {
     public ArrayList<Modelo> extraerTodosVisibles() throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM \"Modelos\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM modelos where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -93,7 +93,7 @@ public class ModeloControlador {
     public void insertar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO \"Modelos\" (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO modelos (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());
@@ -109,7 +109,7 @@ public class ModeloControlador {
     public void modificar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE \"Modelos\" SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
+            String consultaSql = "UPDATE modelos SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());
@@ -126,7 +126,7 @@ public class ModeloControlador {
     public void borrar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM \"Modelos\" WHERE id=?";
+            String consultaSql = "DELETE FROM modelos WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, modelo.getId());
             ps.executeUpdate();

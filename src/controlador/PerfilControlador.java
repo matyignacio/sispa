@@ -33,7 +33,7 @@ public class PerfilControlador {
 
     public Perfil extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Perfiles\" where id=?";
+        String consultaSql = "SELECT * FROM perfiles where id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -43,7 +43,7 @@ public class PerfilControlador {
             perfil.setId(rs.getInt(1));
             perfil.setNombre(rs.getString(2));
             perfil.setVisible(rs.getBoolean(3));
-            consultaSql = "SELECT id_operacion FROM \"Operaciones_Perfiles\" WHERE id_perfil= ?";
+            consultaSql = "SELECT id_operacion FROM perfiles WHERE id_perfil= ?";
             ps2 = conn.prepareStatement(consultaSql);
             ps2.setInt(1, perfil.getId());
             ps2.executeQuery();
@@ -67,7 +67,7 @@ public class PerfilControlador {
 
     public ArrayList<Perfil> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Perfiles\" order by nombre";
+        String consultaSql = "SELECT * FROM perfiles order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -87,7 +87,7 @@ public class PerfilControlador {
 
     public ArrayList<Perfil> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Perfiles\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM perfiles where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -108,7 +108,7 @@ public class PerfilControlador {
     public void insertar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Perfiles\" (nombre, visible)  VALUES (?,?)";
+            String consultaSql = "INSERT INTO perfiles (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, perfil.getNombre());
             ps.setBoolean(2, perfil.isVisible());
@@ -123,7 +123,7 @@ public class PerfilControlador {
     public void modificar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Perfiles\" SET nombre=?, visible=? WHERE id=?";
+            String consultaSql = "UPDATE perfiles SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, perfil.getNombre());
             ps.setBoolean(2, true);
@@ -139,7 +139,7 @@ public class PerfilControlador {
     public void borrar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultasql = "DELETE FROM  public.\"Perfiles\" WHERE id=?";
+            String consultasql = "DELETE FROM  perfiles WHERE id=?";
             ps = conn.prepareStatement(consultasql);
             ps.setInt(1, perfil.getId());
             ps.executeUpdate();

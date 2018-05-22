@@ -9,12 +9,12 @@ public class ConexionDB {
 
     public static Connection GetConnection() {
         Connection conexion = null;
-        String connectionString = "jdbc:postgresql://localhost:5432/SISPA";
-        String user = "postgres";
-        String pass = "asd";
+        String connectionString = "jdbc:mysql://localhost:3306/sispa";
+        String user = "root";
+        String pass = "root";
         //esta clase INTENTA realizar la conexion a la base de datos
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection(connectionString, user, pass);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error  en la Conexión con la BD " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);

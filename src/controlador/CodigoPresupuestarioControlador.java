@@ -23,7 +23,7 @@ public class CodigoPresupuestarioControlador {
 
     public CodigoPresupuestario extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" WHERE id=?";
+        String consultaSql = "SELECT * FROM codigos_presupuestarios WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -42,7 +42,7 @@ public class CodigoPresupuestarioControlador {
 
     public ArrayList<CodigoPresupuestario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" order by numero";
+        String consultaSql = "SELECT * FROM codigos_presupuestarios order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -62,7 +62,7 @@ public class CodigoPresupuestarioControlador {
 
     public ArrayList<CodigoPresupuestario> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Codigos_Presupuestarios\" where visible = TRUE order by numero";
+        String consultaSql = "SELECT * FROM codigos_presupuestarios where visible = TRUE order by numero";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -83,7 +83,7 @@ public class CodigoPresupuestarioControlador {
     public void insertar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Codigos_Presupuestarios\" (numero, visible)  VALUES (?,?)";
+            String consultaSql = "INSERT INTO codigos_presupuestarios (numero, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, codigo.getNumero());
             ps.setBoolean(2, codigo.isVisible());
@@ -97,7 +97,7 @@ public class CodigoPresupuestarioControlador {
     public void modificar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Codigos_Presupuestarios\" SET numero=?, visible=? WHERE id=?";
+            String consultaSql = "UPDATE codigos_presupuestarios SET numero=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, codigo.getNumero());
             ps.setBoolean(2, codigo.isVisible());
@@ -112,7 +112,7 @@ public class CodigoPresupuestarioControlador {
     public void borrar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM public.\"Codigos_Presupuestarios\" WHERE id=?";
+            String consultaSql = "DELETE FROM codigos_presupuestarios WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, codigo.getId());
             ps.executeUpdate();

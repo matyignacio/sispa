@@ -23,7 +23,7 @@ public class MarcaControlador {
 
     public Marca extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" WHERE id=? ";
+        String consultaSql = "SELECT * FROM marcas WHERE id=? ";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -42,7 +42,7 @@ public class MarcaControlador {
 
     public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" order by nombre";
+        String consultaSql = "SELECT * FROM marcas order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.executeQuery();
         rs = ps.getResultSet();
@@ -62,7 +62,7 @@ public class MarcaControlador {
 
     public ArrayList<Marca> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Marcas\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM marcas where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.executeQuery();
         rs = ps.getResultSet();
@@ -83,7 +83,7 @@ public class MarcaControlador {
     public void insertar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Marcas\" (nombre, visible)  VALUES (?,?)";
+            String consultaSql = "INSERT INTO marcas (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
@@ -97,7 +97,7 @@ public class MarcaControlador {
     public void modificar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Marcas\" SET nombre=?, visible=? WHERE id=?";
+            String consultaSql = "UPDATE marcas SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, marca.getNombre());
             ps.setBoolean(2, marca.isVisible());
@@ -112,7 +112,7 @@ public class MarcaControlador {
     public void borrar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM public.\"Marcas\" WHERE id=?";
+            String consultaSql = "DELETE FROM marcas WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, marca.getId());
             ps.executeUpdate();

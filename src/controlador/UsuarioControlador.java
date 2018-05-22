@@ -25,7 +25,7 @@ public class UsuarioControlador {
     public Usuario extraer(Integer id) throws SQLException {
         perfilcontrolador = new PerfilControlador(); //HAY QUE INICIALIZARLO PARA PODER USARLO
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Usuarios\" where id=?";
+        String consultaSql = "SELECT * FROM usuarios where id=?";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -48,7 +48,7 @@ public class UsuarioControlador {
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         perfilcontrolador = new PerfilControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Usuarios\" order by nombre";
+        String consultaSql = "SELECT * FROM usuarios order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -72,7 +72,7 @@ public class UsuarioControlador {
     public ArrayList<Usuario> extraerTodosVisibles() throws SQLException {
         perfilcontrolador = new PerfilControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM public.\"Usuarios\" where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM usuarios where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -97,7 +97,7 @@ public class UsuarioControlador {
 
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO public.\"Usuarios\" ( nombre, mail, clave, visible, id_perfil) VALUES (?, ?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO usuarios ( nombre, mail, clave, visible, id_perfil) VALUES (?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getMail());
@@ -114,7 +114,7 @@ public class UsuarioControlador {
     public void modificar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE public.\"Usuarios\" SET nombre=?, mail=?, clave=?, visible=?, id_perfil=? WHERE id=?";
+            String consultaSql = "UPDATE usuarios SET nombre=?, mail=?, clave=?, visible=?, id_perfil=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getMail());
@@ -132,7 +132,7 @@ public class UsuarioControlador {
     public void borrar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM public.\"Usuarios\" WHERE id=?";
+            String consultaSql = "DELETE FROM usuarios WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, usuario.getId());
             ps.executeUpdate();
@@ -144,7 +144,7 @@ public class UsuarioControlador {
 
     public Usuario validarUsuario(Usuario usuario) throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "select * from public.\"Usuarios\" where mail like ? AND clave like ? AND visible = TRUE";
+        String consultaSql = "select * from usuarios where mail like ? AND clave like ? AND visible = TRUE";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, usuario.getMail());
         ps.setString(2, usuario.getClave());
