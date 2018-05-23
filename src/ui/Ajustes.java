@@ -9,13 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objeto.Operaciones;
-import ui.gestion.GestionCategorias;
-import ui.gestion.GestionCodigosPresupuestario;
-import ui.gestion.GestionEstados;
-import ui.gestion.GestionIncisos;
-import ui.gestion.GestionMarcas;
-import ui.gestion.GestionModelos;
-import ui.gestion.GestionPerfiles;
+import ui.gestion.*;
 
 /**
  *
@@ -327,8 +321,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
         });
         jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 240, 120, 90));
 
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
@@ -349,6 +341,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                     .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addContainerGap()))
         );
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -383,9 +376,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbNuevoActionPerformed
 
-    private void jbMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMarcasActionPerformed
-    }//GEN-LAST:event_jbMarcasActionPerformed
-
     private void jbCodigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCodigosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbCodigosActionPerformed
@@ -393,10 +383,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private void jbModelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModelosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbModelosActionPerformed
-
-    private void jbMarcasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMarcasMousePressed
-        jbMarcaActionPerformed(evt);// TODO add your handling code here:
-    }//GEN-LAST:event_jbMarcasMousePressed
 
     private void jbModelosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModelosMousePressed
         jbModeloActionPerformed(evt);   // TODO add your handling code here:
@@ -473,8 +459,24 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbTipoAdquisicionMousePressed
 
     private void jbTipoAdquisicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTipoAdquisicionActionPerformed
-        // TODO add your handling code here:
+        GestionTipoAdquisiciones gestionTipoAdquisiciones;
+        try {
+            gestionTipoAdquisiciones = new GestionTipoAdquisiciones();
+            this.desktopPane.add(gestionTipoAdquisiciones);
+            gestionTipoAdquisiciones.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ajustes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbTipoAdquisicionActionPerformed
+
+    private void jbMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMarcasActionPerformed
+
+
+    }//GEN-LAST:event_jbMarcasActionPerformed
+
+    private void jbMarcasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMarcasMousePressed
+        jbMarcaActionPerformed(evt);// TODO add your handling code here:
+    }//GEN-LAST:event_jbMarcasMousePressed
 
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
@@ -518,7 +520,9 @@ public class Ajustes extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
