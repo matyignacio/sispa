@@ -56,9 +56,7 @@ public class PerfilControlador {
                 operaciones.add(operacion);
             }
             perfil.setOperaciones(operaciones);
-
         }
-
         rs.close();
         ps.close();
         conn.close();
@@ -112,12 +110,40 @@ public class PerfilControlador {
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, perfil.getNombre());
             ps.setBoolean(2, perfil.isVisible());
-
             ps.execute();
+            insertarOperacionesPerfiles(extraerNuevoId(conn), perfil.getOperaciones(), conn);
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
             conn.close();
         }
+    }
+
+    public void insertarOperacionesPerfiles(Integer id, ArrayList<Operaciones> operaciones, Connection conn) throws SQLException {
+        int i;
+        for (i = 0; i < operaciones.size(); i++) {
+            String consultaSql = "INSERT INTO operaciones_perfiles (id_perfil, id_operacion)  VALUES (?,?)";
+            ps2 = conn.prepareStatement(consultaSql);
+            ps2.setInt(1, id);
+            ps2.setInt(2, operaciones.get(i).getId());
+            ps2.execute();
+        }
+        ps2.close();
+    }
+
+    public int extraerNuevoId(Connection conn) throws SQLException {
+        ResultSet rs3;
+        PreparedStatement ps3;
+        int id = 0;
+        String consultaSql = "SELECT id FROM perfiles ORDER BY id DESC LIMIT 1";
+        ps3 = conn.prepareStatement(consultaSql);
+        ps3.executeQuery();
+        rs3 = ps3.getResultSet();
+        while (rs3.next()) {
+            id = rs3.getInt(1);
+        }
+        rs3.close();
+        ps3.close();
+        return id;
     }
 
     public void modificar(Perfil perfil) throws SQLException {
