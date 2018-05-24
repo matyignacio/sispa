@@ -102,7 +102,6 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlNombreUsuario = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
         jlEmail = new javax.swing.JLabel();
-        jtfClave = new javax.swing.JTextField();
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
         jrbVisible = new javax.swing.JRadioButton();
@@ -112,6 +111,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlEmail2 = new javax.swing.JLabel();
         jcbPerfiles = new javax.swing.JComboBox();
         jtfNombre = new javax.swing.JTextField();
+        jtfClave = new javax.swing.JPasswordField();
 
         setClosable(true);
         setTitle("SISPA - Marcas");
@@ -174,16 +174,6 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlEmail.setText("Perfil:");
         jpPrincipal.add(jlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, 20));
-
-        jtfClave.setBackground(new java.awt.Color(204, 204, 204));
-        jtfClave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfClave.setForeground(new java.awt.Color(33, 150, 243));
-        jtfClave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfClaveActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jtfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -256,6 +246,14 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         });
         jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
 
+        jtfClave.setBackground(new java.awt.Color(204, 204, 204));
+        jtfClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtfClave.setForeground(new java.awt.Color(33, 150, 243));
+        jtfClave.setText("jPasswordField1");
+        jpPrincipal.add(jtfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 220, -1));
+
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
@@ -275,7 +273,6 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
                     .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -307,10 +304,6 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }//GEN-LAST:event_jbAceptarActionPerformed
-
-    private void jtfClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfClaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfClaveActionPerformed
 
     private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
         // TODO add your handling code here:
@@ -404,7 +397,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JRadioButton jrbNoVisible;
     private javax.swing.JRadioButton jrbVisible;
-    private javax.swing.JTextField jtfClave;
+    private javax.swing.JPasswordField jtfClave;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
