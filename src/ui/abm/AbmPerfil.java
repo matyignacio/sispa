@@ -414,6 +414,19 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
+                jcbAjustes.setEnabled(false);
+                jcbInformes.setEnabled(false);
+                jcbUsuarios.setEnabled(false);
+                jcbMarcas.setEnabled(false);
+                jcbModelos.setEnabled(false);
+                jcbIncisos.setEnabled(false);
+                jcbCodigoPresupuestario.setEnabled(false);
+                jcbCategorias.setEnabled(false);
+                jcbEstados.setEnabled(false);
+                jcbPerfiles.setEnabled(false);
+                jcbReparticiones.setEnabled(false);
+                jcbTipoAdquisicion.setEnabled(false);
+                jcbPermisos.setEnabled(false);
             }
         }
     }
