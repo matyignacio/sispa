@@ -83,7 +83,7 @@ public class TipoAdquisicionControlador {
     public void insertar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO tipo_adquisicion (nombre, visible)  VALUES (?,?)";
+            String consultaSql = "INSERT INTO \"tipo_adquisicion\" (nombre, visible)  VALUES (?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, tipo.getNombre());
             ps.setBoolean(2, tipo.isVisible());
@@ -91,7 +91,7 @@ public class TipoAdquisicionControlador {
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
             conn.close();
-        }
+        } 
     }
 
     public void modificar(TipoAdquisicion tipo) throws SQLException {
