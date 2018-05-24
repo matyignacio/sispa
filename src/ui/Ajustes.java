@@ -27,35 +27,27 @@ public class Ajustes extends javax.swing.JInternalFrame {
         for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
             Operaciones operaciones1 = new Operaciones();
             operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
-            if (operaciones1.getId() == 6) {
-                jbMarcas.setEnabled(true);
-            }
-            if (operaciones1.getId() == 7) {
-                jbModelos.setEnabled(true);
-            }
-            if (operaciones1.getId() == 8) {
-                jbCategorias.setEnabled(true);
-            }
-            if (operaciones1.getId() == 9) {
-                jbIncisos.setEnabled(true);
-            }
-            if (operaciones1.getId() == 10) {
-                jbCodigos.setEnabled(true);
-            }
-            if (operaciones1.getId() == 11) {
-                jbEstados.setEnabled(true);
-            }
-            if (operaciones1.getId() == 12) {
-                jbPerfiles.setEnabled(true);
-            }
-            if (operaciones1.getId() == 13) {
-                jbReparticiones.setEnabled(true);
-            }
-            if (operaciones1.getId() == 14) {
-                jbTipoAdquisicion.setEnabled(true);
-            }
-            if (operaciones1.getId() == 15) {
-                jbUsuarios.setEnabled(true);
+            switch (operaciones1.getId()) {
+                case 6:
+                    jbMarcas.setEnabled(true);
+                case 7:
+                    jbModelos.setEnabled(true);
+                case 8:
+                    jbCategorias.setEnabled(true);
+                case 9:
+                    jbIncisos.setEnabled(true);
+                case 10:
+                    jbCodigos.setEnabled(true);
+                case 11:
+                    jbEstados.setEnabled(true);
+                case 12:
+                    jbPerfiles.setEnabled(true);
+                case 13:
+                    jbReparticiones.setEnabled(true);
+                case 14:
+                    jbTipoAdquisicion.setEnabled(true);
+                case 15:
+                    jbUsuarios.setEnabled(true);
             }
         }
     }

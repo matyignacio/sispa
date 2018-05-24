@@ -26,14 +26,13 @@ public class Principal extends javax.swing.JFrame {
         for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
             Operaciones operaciones1 = new Operaciones();
             operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
-            if (operaciones1.getId() == 3) {
-                jbAjustes.setEnabled(true);
-            }
-            if (operaciones1.getId() == 4) {
-                jbUsuarios.setEnabled(true);
-            }
-            if (operaciones1.getId() == 5) {
-                jbInformes.setEnabled(true);
+            switch (operaciones1.getId()) {
+                case 3:
+                    jbAjustes.setEnabled(true);
+                case 4:
+                    jbUsuarios.setEnabled(true);
+                case 5:
+                    jbInformes.setEnabled(true);
             }
         }
     }
