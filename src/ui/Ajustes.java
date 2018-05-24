@@ -436,7 +436,14 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbUsuariosMousePressed
 
     private void jbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuariosActionPerformed
-        // TODO add your handling code here:
+   GestionUsuarios gestionUsuarios;
+        try {
+            gestionUsuarios = new GestionUsuarios();
+            this.desktopPane.add(gestionUsuarios);
+            gestionUsuarios.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ajustes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbUsuariosActionPerformed
 
     private void jbPerfilesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbPerfilesMousePressed
