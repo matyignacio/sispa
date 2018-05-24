@@ -334,7 +334,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
                 jrbNoVisible.setEnabled(false);
                 jtfEmail.setEnabled(false);
                 jtfClave.setEditable(false);
-                jcbPerfiles.setEditable(false);
+                jcbPerfiles.setEnabled(false);
             }
         }
     }

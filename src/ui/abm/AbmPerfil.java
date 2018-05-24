@@ -68,7 +68,6 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.perfil = perfil;
         this.ventanaGestion = ventanaGestion;
-        validarCheckBox();
         inicializacionVentana();
     }
 
@@ -359,11 +358,12 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
     }//GEN-LAST:event_jcbAjustesActionPerformed
 
     public void inicializacionVentana() {
+        validarCheckBox();
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             int i;
-            for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
+            for (i = 0; i < perfil.getOperaciones().size(); i++) {
                 Operaciones operaciones1 = new Operaciones();
-                operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
+                operaciones1 = perfil.getOperaciones().get(i);
                 if (operaciones1.getId() == 3) {
                     jcbAjustes.setSelected(true);
                 }
@@ -403,6 +403,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
                 if (operaciones1.getId() == 15) {
                     jcbPermisos.setSelected(true);
                 }
+                validarCheckBox();
             }
             jtfNombre.setText(perfil.getNombre());
             if (perfil.isVisible()) {

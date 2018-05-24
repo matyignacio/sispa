@@ -36,7 +36,7 @@ public class GrillaUsuarios extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 4;
     }
 
     @Override
@@ -54,8 +54,6 @@ public class GrillaUsuarios extends AbstractTableModel {
             case 2:
                 return usuario.getMail();
             case 3:
-                return usuario.getClave();
-            case 4:
                 return usuario.getPerfil();
             default:
                 return null;
@@ -72,8 +70,6 @@ public class GrillaUsuarios extends AbstractTableModel {
             case 2:
                 return "E-MAIL";
             case 3:
-                return "Clave";
-            case 4:
                 return "Perfil";
             default:
                 return "";

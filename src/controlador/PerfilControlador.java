@@ -149,13 +149,18 @@ public class PerfilControlador {
     public void modificar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE perfiles SET nombre=?, visible=? WHERE id=?";
+            String consultaSql = "DELETE FROM operaciones_perfiles WHERE id_perfil=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, perfil.getId());
+            ps.executeUpdate();
+            // PRIMERO ELIMINO LAS OPERACIONES DEL PERFIL
+            consultaSql = "UPDATE perfiles SET nombre=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, perfil.getNombre());
-            ps.setBoolean(2, true);
+            ps.setBoolean(2, perfil.isVisible());
             ps.setInt(3, perfil.getId());
-
             ps.executeUpdate();
+            insertarOperacionesPerfiles(perfil.getId(), perfil.getOperaciones(), conn);
             JOptionPane.showMessageDialog(null, perfil.toString() + " modificado correctamente");
             ps.close();
             conn.close();
@@ -164,15 +169,23 @@ public class PerfilControlador {
 
     public void borrar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
-            conn = ConexionDB.GetConnection();
-            String consultasql = "DELETE FROM  perfiles WHERE id=?";
-            ps = conn.prepareStatement(consultasql);
-            ps.setInt(1, perfil.getId());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, perfil.toString() + " eliminado correctamente");
+            try {
+                conn = ConexionDB.GetConnection();
+                String consultasql = "DELETE FROM perfiles WHERE id=?";
+                ps = conn.prepareStatement(consultasql);
+                ps.setInt(1, perfil.getId());
+                ps.executeUpdate();
+                consultasql = "DELETE FROM operaciones_perfiles WHERE id_perfil=?";
+                ps = conn.prepareStatement(consultasql);
+                ps.setInt(1, perfil.getId());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, perfil.toString() + " eliminado correctamente");
+                ps.close();
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            }
 
-            ps.close();
-            conn.close();
         }
 
     }
