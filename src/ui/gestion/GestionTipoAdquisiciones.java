@@ -235,7 +235,7 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtTipoAdquisiciones.getSelectedRow() > -1) {
-           AbmTipoAdquisiciones abmTipoAdquisiciones;
+            AbmTipoAdquisiciones abmTipoAdquisiciones;
             try {
                 abmTipoAdquisiciones = new AbmTipoAdquisiciones(ABM_MODIFICACION, tipoAdquisicionControlador.extraer(tipoAdquisicionControlador.extraerTodos().
                         get(jtTipoAdquisiciones.getSelectedRow()).getId()), this);

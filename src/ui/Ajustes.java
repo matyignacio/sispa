@@ -436,7 +436,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbUsuariosMousePressed
 
     private void jbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuariosActionPerformed
-   GestionUsuarios gestionUsuarios;
+        GestionUsuarios gestionUsuarios;
         try {
             gestionUsuarios = new GestionUsuarios();
             this.desktopPane.add(gestionUsuarios);
@@ -477,7 +477,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbTipoAdquisicionActionPerformed
 
     private void jbMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMarcasActionPerformed
-
 
     }//GEN-LAST:event_jbMarcasActionPerformed
 
@@ -529,7 +528,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
         }
 
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;

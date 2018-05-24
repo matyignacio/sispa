@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import objeto.TipoAdquisicion;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**

@@ -73,7 +73,7 @@ public class GrillaUsuarios extends AbstractTableModel {
                 return "E-MAIL";
             case 3:
                 return "Clave";
-            case 4: 
+            case 4:
                 return "Perfil";
             default:
                 return "";
