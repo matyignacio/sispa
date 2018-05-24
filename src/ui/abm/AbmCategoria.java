@@ -218,6 +218,11 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         jcbIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbIncisos.setForeground(new java.awt.Color(33, 150, 243));
         jcbIncisos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbIncisos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbIncisosActionPerformed(evt);
+            }
+        });
         jpPrincipal.add(jcbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 220, -1));
 
         jlCodigo.setBackground(new java.awt.Color(204, 204, 204));
@@ -232,8 +237,6 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         jcbCodigo.setForeground(new java.awt.Color(33, 150, 243));
         jcbCodigo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jpPrincipal.add(jcbCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, -1));
-
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
@@ -254,6 +257,7 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
                     .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addContainerGap()))
         );
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,6 +293,10 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
+
+    private void jcbIncisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbIncisosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbIncisosActionPerformed
 
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
