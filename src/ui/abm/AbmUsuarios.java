@@ -114,7 +114,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jtfClave = new javax.swing.JPasswordField();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Usuario");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,7 +136,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
+        jlTituloPrincipal.setText("SISPA - Usuario");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N

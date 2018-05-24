@@ -99,7 +99,7 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
         jrbVisible = new javax.swing.JRadioButton();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Tipo de Adquisicion");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,8 +121,8 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
+        jlTituloPrincipal.setText("SISPA - Tipo de Adquisicion");
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 470, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,6 +189,8 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
 
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
@@ -208,7 +210,6 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
                     .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

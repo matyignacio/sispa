@@ -3,7 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="SISPA - Marcas"/>
+    <Property name="title" type="java.lang.String" value="SISPA - Tipos de Adquisicion"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -112,11 +112,11 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/ic_ajustes_blanco.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="SISPA - Marcas"/>
+                    <Property name="text" type="java.lang.String" value="SISPA - Tipos de Adquisicion"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="0" width="340" height="70"/>
+                      <AbsoluteConstraints x="120" y="0" width="490" height="70"/>
                     </Constraint>
                   </Constraints>
                 </Component>
