@@ -111,14 +111,19 @@ public class CodigoPresupuestarioControlador {
 
     public void borrar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
-            conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM codigos_presupuestarios WHERE id=?";
-            ps = conn.prepareStatement(consultaSql);
-            ps.setInt(1, codigo.getId());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, codigo.toString() + " eliminado correctamente");
-            ps.close();
-            conn.close();
+            try {
+
+                conn = ConexionDB.GetConnection();
+                String consultaSql = "DELETE FROM codigos_presupuestarios WHERE id=?";
+                ps = conn.prepareStatement(consultaSql);
+                ps.setInt(1, codigo.getId());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, codigo.toString() + " eliminado correctamente");
+                ps.close();
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ package ui.grillas;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import objeto.Marca;
 import objeto.Mueble;
 
 /**
@@ -31,17 +32,70 @@ public class GrillaMuebles extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return muebles.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 9;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Mueble mueble = muebles.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return mueble.getNombre();
+            case 1:
+                if (mueble.isVisible()) {
+                    return "Visible";
+                } else {
+                    return "No visible";
+                }
+            case 2:
+                return mueble.getExpediente();
+            case 3:
+                return mueble.getCaracteristicas();
+            case 4:
+                return mueble.getObservaciones();
+            case 5:
+                return mueble.getReparticion();
+            case 6:
+                return mueble.getEstado();
+            case 7:
+                return mueble.getCategoria();
+            case 8:
+                return mueble.getModelo();
+
+            default:
+                return null;
+        }
     }
 
+    @Override
+    public String getColumnName(int column) {
+        switch (column) {
+            case 0:
+                return "NOMBRE";
+            case 1:
+                return "ESTADO";
+            case 2:
+                return "EXPEDIENTE";
+            case 3:
+                return "CARACTERISTICAS";
+            case 4:
+                return "OBSERVACIONES";
+            case 5:
+                return "REPARTICION";
+            case 6:
+                return "ESTADO";
+            case 7:
+                return "CATEGORIA";
+            case 8:
+                return "MODELO";
+
+            default:
+                return "";
+        }
+    }
 }

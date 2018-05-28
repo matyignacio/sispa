@@ -111,14 +111,18 @@ public class TipoAdquisicionControlador {
 
     public void borrar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
-            conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM tipo_adquisicion WHERE id=?";
-            ps = conn.prepareStatement(consultaSql);
-            ps.setInt(1, tipo.getId());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, tipo.toString() + " eliminado correctamente");
-            ps.close();
-            conn.close();
+            try {
+
+                conn = ConexionDB.GetConnection();
+                String consultaSql = "DELETE FROM tipo_adquisicion WHERE id=?";
+                ps = conn.prepareStatement(consultaSql);
+                ps.setInt(1, tipo.getId());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, tipo.toString() + " eliminado correctamente");
+                ps.close();
+                conn.close();
+            } catch (SQLException ex) {
+            }
         }
     }
 }

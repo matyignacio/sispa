@@ -115,14 +115,19 @@ public class EstadoControlador {
 
     public void borrar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
-            conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM estados WHERE id=?";
-            ps = conn.prepareStatement(consultaSql);
-            ps.setInt(1, estado.getId());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, estado.toString() + " eliminado correctamente");
-            ps.close();
-            conn.close();
+            try {
+
+                conn = ConexionDB.GetConnection();
+                String consultaSql = "DELETE FROM estados WHERE id=?";
+                ps = conn.prepareStatement(consultaSql);
+                ps.setInt(1, estado.getId());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, estado.toString() + " eliminado correctamente");
+                ps.close();
+                conn.close();
+            } catch (SQLException ex) {
+                 JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }
