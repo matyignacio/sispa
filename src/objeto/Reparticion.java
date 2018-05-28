@@ -22,6 +22,22 @@ public class Reparticion {
     private Reparticion reparticionSuperior;
     private boolean visible;
 
+    public Reparticion() {
+    }
+
+    public Reparticion(int id, String nombre, Reparticion reparticionSuperior, boolean visible) {
+        // HAGO ESTE CONSTRUCTOR PARA PODER CREAR LA REPARTICION "CERO" EN EL COMBOBOX
+        this.id = id;
+        this.nombre = nombre;
+        this.reparticionSuperior = reparticionSuperior;
+        this.visible = visible;
+    }
+
+    public Reparticion(int id) {
+        // ESTE CONSTRUCTOR LO HAGO EN EL ELSE DE LOS EXTRAERTODOS
+        this.id = id;
+    }
+
     public boolean isVisible() {
         return visible;
     }

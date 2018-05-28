@@ -185,9 +185,6 @@ public class PerfilControlador {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
             }
-
         }
-
     }
-
 }
