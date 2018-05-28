@@ -23,7 +23,6 @@ public class ReparticionControlador {
 
     public Reparticion extraer(Integer id) throws SQLException {
 
-        MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -37,7 +36,12 @@ public class ReparticionControlador {
             reparticion.setLocalidad(rs.getString(3));
             reparticion.setDepartamento(rs.getString(4));
             reparticion.setDomicilio(rs.getString(5));
-            //  reparticion.setReparticionSuperior(reparticion);
+            if (rs.getInt(6) != 0) {
+                Reparticion repSuperior = new Reparticion();
+                ReparticionControlador reparticionControlador = new ReparticionControlador();
+                repSuperior = reparticionControlador.extraer(rs.getInt(3));
+                reparticion.setReparticionSuperior(repSuperior);
+            }
         }
         rs.close();
         ps.close();
@@ -46,7 +50,6 @@ public class ReparticionControlador {
     }
 
     public ArrayList<Reparticion> extraerTodos() throws SQLException {
-        MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -60,8 +63,15 @@ public class ReparticionControlador {
             reparticion.setLocalidad(rs.getString(3));
             reparticion.setDepartamento(rs.getString(4));
             reparticion.setDomicilio(rs.getString(5));
-            //  reparticion.setReparticionSuperior(reparticion);
-
+            if (rs.getInt(6) != 0) {
+                Reparticion repSuperior = new Reparticion();
+                ReparticionControlador reparticionControlador = new ReparticionControlador();
+                repSuperior = reparticionControlador.extraer(rs.getInt(3));
+                reparticion.setReparticionSuperior(repSuperior);
+            } else {
+                Reparticion repSuperior = new Reparticion(0);
+                reparticion.setReparticionSuperior(repSuperior);
+            }
             reparticiones.add(reparticion);
         }
         rs.close();
@@ -71,7 +81,6 @@ public class ReparticionControlador {
     }
 
     public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
-        MarcaControlador m = new MarcaControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);
@@ -85,8 +94,6 @@ public class ReparticionControlador {
             reparticion.setLocalidad(rs.getString(3));
             reparticion.setDepartamento(rs.getString(4));
             reparticion.setDomicilio(rs.getString(5));
-            //  reparticion.setReparticionSuperior(reparticion);
-
             reparticiones.add(reparticion);
         }
         rs.close();
@@ -104,6 +111,11 @@ public class ReparticionControlador {
             ps.setString(2, reparticion.getLocalidad());
             ps.setString(3, reparticion.getDepartamento());
             ps.setString(4, reparticion.getDomicilio());
+            if (reparticion.getReparticionSuperior().getId() > 0) {
+                ps.setInt(5, reparticion.getReparticionSuperior().getId());
+            } else {
+                ps.setInt(5, 0);
+            }
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -120,7 +132,12 @@ public class ReparticionControlador {
             ps.setString(2, reparticion.getLocalidad());
             ps.setString(3, reparticion.getDepartamento());
             ps.setString(4, reparticion.getDomicilio());
-            ps.setInt(5, reparticion.getId());
+            if (reparticion.getReparticionSuperior().getId() > 0) {
+                ps.setInt(5, reparticion.getReparticionSuperior().getId());
+            } else {
+                ps.setInt(5, 0);
+            }
+            ps.setInt(6, reparticion.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, reparticion.toString() + " modificado correctamente");
             ps.close();
