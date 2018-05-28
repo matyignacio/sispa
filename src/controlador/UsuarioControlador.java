@@ -131,14 +131,19 @@ public class UsuarioControlador {
 
     public void borrar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
-            conn = ConexionDB.GetConnection();
-            String consultaSql = "DELETE FROM usuarios WHERE id=?";
-            ps = conn.prepareStatement(consultaSql);
-            ps.setInt(1, usuario.getId());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, usuario.toString() + " eliminado correctamente");
-            ps.close();
-            conn.close();
+            try {
+
+                conn = ConexionDB.GetConnection();
+                String consultaSql = "DELETE FROM usuarios WHERE id=?";
+                ps = conn.prepareStatement(consultaSql);
+                ps.setInt(1, usuario.getId());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, usuario.toString() + " eliminado correctamente");
+                ps.close();
+                conn.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
