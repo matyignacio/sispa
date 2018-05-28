@@ -80,10 +80,10 @@ public class MuebleControlador {
             mueble.setExpediente(rs.getString(4));
             mueble.setCaracteristicas(rs.getString(5));
             mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(7)));
-            mueble.setEstado(estadoControlador.extraer(rs.getInt(8)));
-            mueble.setModelo(modeloControlador.extraer(rs.getInt(9)));
-            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(10)));
+            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
+            mueble.setEstado(estadoControlador.extraer(rs.getInt(10)));
+            mueble.setModelo(modeloControlador.extraer(rs.getInt(11)));
+            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
             muebles.add(mueble);
         }
         rs.close();

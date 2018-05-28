@@ -59,7 +59,7 @@ public class GrillaMuebles extends AbstractTableModel {
             case 4:
                 return mueble.getObservaciones();
             case 5:
-                return mueble.getReparticion();
+               // return mueble.getReparticion();
             case 6:
                 return mueble.getEstado();
             case 7:

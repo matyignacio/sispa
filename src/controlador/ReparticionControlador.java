@@ -22,7 +22,6 @@ public class ReparticionControlador {
     private ResultSet rs;
 
     public Reparticion extraer(Integer id) throws SQLException {
-
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -66,7 +65,7 @@ public class ReparticionControlador {
             if (rs.getInt(6) != 0) {
                 Reparticion repSuperior = new Reparticion();
                 ReparticionControlador reparticionControlador = new ReparticionControlador();
-                repSuperior = reparticionControlador.extraer(rs.getInt(3));
+                repSuperior = reparticionControlador.extraer(rs.getInt(6));
                 reparticion.setReparticionSuperior(repSuperior);
             } else {
                 Reparticion repSuperior = new Reparticion(0);
