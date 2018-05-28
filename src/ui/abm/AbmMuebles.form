@@ -7,7 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="SISPA - Marcas"/>
+    <Property name="title" type="java.lang.String" value="SISPA - Muebles"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -305,6 +305,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbReparticionesActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="470" y="480" width="220" height="-1"/>

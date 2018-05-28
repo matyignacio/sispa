@@ -145,7 +145,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jcbCategoria = new javax.swing.JComboBox();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Muebles");
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,6 +239,11 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jcbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbReparticiones.setForeground(new java.awt.Color(33, 150, 243));
         jcbReparticiones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbReparticiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbReparticionesActionPerformed(evt);
+            }
+        });
         jpPrincipal.add(jcbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 220, -1));
 
         jlExpediente.setBackground(new java.awt.Color(204, 204, 204));
@@ -338,6 +343,8 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jpPrincipal.add(jcbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 580, 220, -1));
 
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
@@ -354,7 +361,6 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
                 .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -402,6 +408,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private void jtfCaracteristicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCaracteristicasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCaracteristicasActionPerformed
+
+    private void jcbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbReparticionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbReparticionesActionPerformed
     
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {

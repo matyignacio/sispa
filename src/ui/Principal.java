@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objeto.Operaciones;
+import ui.gestion.GestionMuebles;
 
 /**
  *
@@ -318,11 +319,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbInmueblesActionPerformed
 
     private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
-        Muebles muebles;
+        GestionMuebles gestionMuebles;
         try {
-            muebles = new Muebles();
-            this.dpPrincipal.add(muebles);
-            muebles.show();
+            gestionMuebles = new GestionMuebles();
+            this.dpPrincipal.add(gestionMuebles);
+            gestionMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }        // TODO add your handling code here:

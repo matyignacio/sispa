@@ -6,16 +6,18 @@
 package ui.gestion;
 
 import controlador.MarcaControlador;
+import controlador.MuebleControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
 import objeto.Marca;
-import ui.abm.AbmMarca;
+import objeto.Mueble;
+import ui.abm.AbmMuebles;
 import ui.grillas.GrillaMarcas;
+import ui.grillas.GrillaMuebles;
 
 /**
  *
@@ -23,8 +25,8 @@ import ui.grillas.GrillaMarcas;
  */
 public class GestionMuebles extends javax.swing.JInternalFrame implements Gestionable {
 
-    GrillaMarcas grillaMarcas;
-    MarcaControlador marcaControlador = new MarcaControlador();
+    GrillaMuebles grillaMuebles;
+    MuebleControlador muebleControlador = new MuebleControlador();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -64,7 +66,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jbModificar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Muebles");
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
 
@@ -160,6 +162,8 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         });
         jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
 
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
@@ -180,7 +184,6 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                     .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,7 +208,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        if (jtMuebles.getSelectedRow() > -1) {
+        /*if (jtMuebles.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
                 abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodos().
@@ -218,15 +221,15 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }
+        }*/
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        AbmMarca abmMarca;
+        AbmMuebles abmMuebles;
         try {
-            abmMarca = new AbmMarca(ABM_ALTA, new Marca(), this);
-            this.desktopPane.add(abmMarca);
-            abmMarca.show();
+            abmMuebles = new AbmMuebles(ABM_ALTA, new Mueble(), this);
+            this.desktopPane.add(abmMuebles);
+            abmMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -234,7 +237,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        if (jtMuebles.getSelectedRow() > -1) {
+        /*if (jtMuebles.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
                 abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodos().
@@ -246,7 +249,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }
+        }*/
     }//GEN-LAST:event_jbModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,8 +270,8 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     @Override
     public void actualizarGestion() {
         try {
-            grillaMarcas = new GrillaMarcas((ArrayList<Marca>) marcaControlador.extraerTodos());
-            jtMuebles.setModel(grillaMarcas);
+            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodos());
+            jtMuebles.setModel(grillaMuebles);
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }

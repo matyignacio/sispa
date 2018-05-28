@@ -38,7 +38,7 @@ public class ReparticionControlador {
             if (rs.getInt(6) != 0) {
                 Reparticion repSuperior = new Reparticion();
                 ReparticionControlador reparticionControlador = new ReparticionControlador();
-                repSuperior = reparticionControlador.extraer(rs.getInt(3));
+                repSuperior = reparticionControlador.extraer(rs.getInt(6));
                 reparticion.setReparticionSuperior(repSuperior);
             }
         }
