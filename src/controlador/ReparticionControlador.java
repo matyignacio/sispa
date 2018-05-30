@@ -41,6 +41,7 @@ public class ReparticionControlador {
                 repSuperior = reparticionControlador.extraer(rs.getInt(6));
                 reparticion.setReparticionSuperior(repSuperior);
             }
+            reparticion.setVisible(rs.getBoolean(7));
         }
         rs.close();
         ps.close();
@@ -50,7 +51,7 @@ public class ReparticionControlador {
 
     public ArrayList<Reparticion> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM reparticiones order by nombre";
+        String consultaSql = "SELECT * FROM reparticiones order by id";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -71,6 +72,7 @@ public class ReparticionControlador {
                 Reparticion repSuperior = new Reparticion(0);
                 reparticion.setReparticionSuperior(repSuperior);
             }
+            reparticion.setVisible(rs.getBoolean(7));
             reparticiones.add(reparticion);
         }
         rs.close();
@@ -79,9 +81,9 @@ public class ReparticionControlador {
         return reparticiones;
     }
 
-    public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
+    public ArrayList<Reparticion> extraerTodosSinNinguna() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM reparticiones where visible = TRUE order by nombre";
+        String consultaSql = "SELECT * FROM reparticiones WHERE id>0 order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.execute();
         rs = ps.getResultSet();
@@ -93,6 +95,48 @@ public class ReparticionControlador {
             reparticion.setLocalidad(rs.getString(3));
             reparticion.setDepartamento(rs.getString(4));
             reparticion.setDomicilio(rs.getString(5));
+            if (rs.getInt(6) != 0) {
+                Reparticion repSuperior = new Reparticion();
+                ReparticionControlador reparticionControlador = new ReparticionControlador();
+                repSuperior = reparticionControlador.extraer(rs.getInt(6));
+                reparticion.setReparticionSuperior(repSuperior);
+            } else {
+                Reparticion repSuperior = new Reparticion(0);
+                reparticion.setReparticionSuperior(repSuperior);
+            }
+            reparticion.setVisible(rs.getBoolean(7));
+            reparticiones.add(reparticion);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return reparticiones;
+    }
+
+    public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM reparticiones WHERE visible = true AND id>0  order by nombre";
+        ps = conn.prepareStatement(consultaSql);
+        ps.execute();
+        rs = ps.getResultSet();
+        reparticiones = new ArrayList<>();
+        while (rs.next()) {
+            reparticion = new Reparticion();
+            reparticion.setId(rs.getInt(1));
+            reparticion.setNombre(rs.getString(2));
+            reparticion.setLocalidad(rs.getString(3));
+            reparticion.setDepartamento(rs.getString(4));
+            reparticion.setDomicilio(rs.getString(5));
+            if (rs.getInt(6) != 0) {
+                Reparticion repSuperior = new Reparticion();
+                ReparticionControlador reparticionControlador = new ReparticionControlador();
+                repSuperior = reparticionControlador.extraer(rs.getInt(6));
+                reparticion.setReparticionSuperior(repSuperior);
+            } else {
+                Reparticion repSuperior = new Reparticion(0);
+                reparticion.setReparticionSuperior(repSuperior);
+            }
+            reparticion.setVisible(rs.getBoolean(7));
             reparticiones.add(reparticion);
         }
         rs.close();
@@ -104,7 +148,7 @@ public class ReparticionControlador {
     public void insertar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO reparticiones ( nombre, localidad, departamento, domicilio, id_reparticion_superior) VALUES (?, ?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO reparticiones ( nombre, localidad, departamento, domicilio, id_reparticion_superior, visible) VALUES (?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, reparticion.getNombre());
             ps.setString(2, reparticion.getLocalidad());
@@ -115,6 +159,7 @@ public class ReparticionControlador {
             } else {
                 ps.setInt(5, 0);
             }
+            ps.setBoolean(6, reparticion.isVisible());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -125,7 +170,7 @@ public class ReparticionControlador {
     public void modificar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE reparticiones SET nombre=?, localidad=?, departamento=?, domicilio=?, id_reparticion_superior=? WHERE id=?";
+            String consultaSql = "UPDATE reparticiones SET nombre=?, localidad=?, departamento=?, domicilio=?, id_reparticion_superior=?, visible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, reparticion.getNombre());
             ps.setString(2, reparticion.getLocalidad());
@@ -136,7 +181,8 @@ public class ReparticionControlador {
             } else {
                 ps.setInt(5, 0);
             }
-            ps.setInt(6, reparticion.getId());
+            ps.setBoolean(6, reparticion.isVisible());
+            ps.setInt(7, reparticion.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, reparticion.toString() + " modificado correctamente");
             ps.close();
@@ -147,7 +193,6 @@ public class ReparticionControlador {
     public void borrar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {
-
                 conn = ConexionDB.GetConnection();
                 String consultaSql = "DELETE FROM reparticiones WHERE id=?";
                 ps = conn.prepareStatement(consultaSql);

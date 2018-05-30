@@ -6,6 +6,7 @@
 package objeto;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -100,6 +101,38 @@ public class Reparticion {
 
     public void setReparticionSuperior(Reparticion reparticionSuperior) {
         this.reparticionSuperior = reparticionSuperior;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reparticion other = (Reparticion) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return true;
     }
 
 }

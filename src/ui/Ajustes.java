@@ -420,7 +420,14 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbReparticionesMousePressed
 
     private void jbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReparticionesActionPerformed
-        // TODO add your handling code here:
+        GestionReparticiones gestionReparticiones;
+        try {
+            gestionReparticiones = new GestionReparticiones();
+            this.desktopPane.add(gestionReparticiones);
+            gestionReparticiones.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ajustes.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jbReparticionesActionPerformed
 
     private void jbUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbUsuariosMousePressed
