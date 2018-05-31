@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import objeto.Reparticion;
 import objeto.Usuario;
 
 public class UsuarioControlador {
@@ -20,7 +21,12 @@ public class UsuarioControlador {
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
+    private PreparedStatement ps2;
+    private ResultSet rs2;
     private PerfilControlador perfilcontrolador;
+    private Reparticion reparticion;
+    private ReparticionControlador reparticionControlador;
+    private ArrayList<Reparticion> reparticiones;
 
     public Usuario extraer(Integer id) throws SQLException {
         perfilcontrolador = new PerfilControlador(); //HAY QUE INICIALIZARLO PARA PODER USARLO
@@ -38,7 +44,22 @@ public class UsuarioControlador {
             usuario.setClave(rs.getString(4));
             usuario.setVisible(rs.getBoolean(5));
             usuario.setPerfil(perfilcontrolador.extraer(rs.getInt(6)));
+            /*consultaSql = "SELECT id_reparticion FROM reparticion_usuarios WHERE id_usuario= ?";
+            ps2 = conn.prepareStatement(consultaSql);
+            ps2.setInt(1, usuario.getId());
+            ps2.executeQuery();
+            rs2 = ps2.getResultSet();
+            reparticiones = new ArrayList<>();
+            reparticionControlador = new ReparticionControlador();
+            while (rs2.next()) {
+                reparticion = new Reparticion();
+                reparticion = reparticionControlador.extraer(rs2.getInt(1));
+                reparticiones.add(reparticion);
+            }
+            usuario.setReparticiones(reparticiones);*/
         }
+        //rs2.close();
+        //ps2.close();
         rs.close();
         ps.close();
         conn.close();
@@ -105,16 +126,49 @@ public class UsuarioControlador {
             ps.setBoolean(4, usuario.isVisible());
             ps.setInt(5, usuario.getPerfil().getId());
             ps.execute();
+            //insertarReparticionUsuarios(extraerNuevoId(conn), usuario.getReparticiones(), conn);
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
             conn.close();
         }
     }
 
+    /*public void insertarReparticionUsuarios(Integer id, ArrayList<Reparticion> reparticiones, Connection conn) throws SQLException {
+        int i;
+        for (i = 0; i < reparticiones.size(); i++) {
+            String consultaSql = "INSERT INTO reparticion_usuarios (id_usuario, id_reparticion)  VALUES (?,?)";
+            ps2 = conn.prepareStatement(consultaSql);
+            ps2.setInt(1, id);
+            ps2.setInt(2, reparticiones.get(i).getId());
+            ps2.execute();
+        }
+        ps2.close();
+    }*/
+
+ /*public int extraerNuevoId(Connection conn) throws SQLException {
+        ResultSet rs3;
+        PreparedStatement ps3;
+        int id = 0;
+        String consultaSql = "SELECT id FROM usuarios perfiles ORDER BY id DESC LIMIT 1";
+        ps3 = conn.prepareStatement(consultaSql);
+        ps3.executeQuery();
+        rs3 = ps3.getResultSet();
+        while (rs3.next()) {
+            id = rs3.getInt(1);
+        }
+        rs3.close();
+        ps3.close();
+        return id;
+    }*/
     public void modificar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE usuarios SET nombre=?, mail=?, clave=?, visible=?, id_perfil=? WHERE id=?";
+            String consultaSql = "DELETE FROM reparticion_usuarios WHERE id_usuario=?";
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, usuario.getId());
+            ps.executeUpdate();
+            // PRIMERO ELIMINO LAS REPARTICIONES DEL USUARIO
+            consultaSql = "UPDATE usuarios SET nombre=?, mail=?, clave=?, visible=?, id_perfil=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getMail());
@@ -123,6 +177,7 @@ public class UsuarioControlador {
             ps.setInt(5, usuario.getPerfil().getId());
             ps.setInt(6, usuario.getId());
             ps.executeUpdate();
+            //insertarReparticionUsuarios(usuario.getId(), usuario.getReparticiones(), conn);
             JOptionPane.showMessageDialog(null, usuario.toString() + " modificado correctamente");
             ps.close();
             conn.close();
