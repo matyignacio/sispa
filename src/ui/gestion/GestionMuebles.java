@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import objeto.Marca;
 import objeto.Mueble;
 import ui.abm.AbmMuebles;
@@ -208,20 +209,19 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        /*if (jtMuebles.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+        if (jtMuebles.getSelectedRow() > -1) {
+            AbmMuebles abmMuebles;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodos().
-                        get(jtMuebles.getSelectedRow()).getId()),
-                        this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodos().
+                        get(jtMuebles.getSelectedRow()).getId()),this);
+                this.desktopPane.add(abmMuebles);
+                abmMuebles.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }*/
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -237,19 +237,19 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        /*if (jtMuebles.getSelectedRow() > -1) {
-            AbmMarca abmMarca;
+        if (jtMuebles.getSelectedRow() > -1) {
+             AbmMuebles abmMuebles;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodos().
-                        get(jtMuebles.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmMarca);
-                abmMarca.show();
+                 abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodos().
+                        get(jtMuebles.getSelectedRow()).getId()),this);
+                this.desktopPane.add(abmMuebles);
+                abmMuebles.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }*/
+        }
     }//GEN-LAST:event_jbModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
