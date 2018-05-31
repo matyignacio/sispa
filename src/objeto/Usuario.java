@@ -5,6 +5,7 @@
  */
 package objeto;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -16,6 +17,15 @@ public class Usuario extends ObjetoBase {
     private String mail;
     private String clave;
     private Perfil perfil;
+    private Reparticion reparticion;
+
+    public Reparticion getReparticion() {
+        return reparticion;
+    }
+
+    public void setReparticion(Reparticion reparticion) {
+        this.reparticion = reparticion;
+    }
 
     public String getMail() {
         return mail;

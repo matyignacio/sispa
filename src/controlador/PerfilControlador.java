@@ -57,6 +57,8 @@ public class PerfilControlador {
             }
             perfil.setOperaciones(operaciones);
         }
+        rs2.close();
+        ps2.close();
         rs.close();
         ps.close();
         conn.close();
