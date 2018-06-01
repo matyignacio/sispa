@@ -7,6 +7,7 @@ package ui.abm;
 
 import controlador.UsuarioControlador;
 import controlador.PerfilControlador;
+import controlador.ReparticionControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
 import objeto.Usuario;
 import objeto.Perfil;
+import objeto.Reparticion;
 import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
@@ -23,45 +25,47 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
-
+    
     private PerfilControlador perfilControlador = new PerfilControlador();
+    private ReparticionControlador reparticionControlador = new ReparticionControlador();
     private DefaultComboBoxModel dcbmPerfiles;
+    private DefaultComboBoxModel dcbmReparticiones;
     private String operacion;
     private Usuario usuario;
     private Gestionable ventanaGestion;
-
+    
     public String getOperacion() {
         return operacion;
     }
-
+    
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-
+    
     public Usuario getUsuario() {
         return usuario;
     }
-
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
+    
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-
+    
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-
+    
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-
+    
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-
+    
     public AbmUsuarios(String operacion, Usuario usuario, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
@@ -70,17 +74,18 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.usuario = usuario;
         this.ventanaGestion = ventanaGestion;
-        dcbmPerfiles = new DefaultComboBoxModel(perfilControlador.extraerTodos().toArray());
+        dcbmPerfiles = new DefaultComboBoxModel(perfilControlador.extraerTodosVisibles().toArray());
         jcbPerfiles.setModel(dcbmPerfiles);
-
+        dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosVisibles().toArray());
+        jcbReparticiones.setModel(dcbmReparticiones);
         inicializacionVentana();
-
+        
     }
-
+    
     public AbmUsuarios() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-
+        
     }
 
     /**
@@ -101,20 +106,33 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
-        jlEmail = new javax.swing.JLabel();
+        jlPerfil = new javax.swing.JLabel();
         jlVisible = new javax.swing.JLabel();
         jrbNoVisible = new javax.swing.JRadioButton();
         jrbVisible = new javax.swing.JRadioButton();
         jlNombre2 = new javax.swing.JLabel();
         jtfEmail = new javax.swing.JTextField();
-        jlEmail1 = new javax.swing.JLabel();
-        jlEmail2 = new javax.swing.JLabel();
+        jlEmail = new javax.swing.JLabel();
+        jlClave = new javax.swing.JLabel();
         jcbPerfiles = new javax.swing.JComboBox();
         jtfNombre = new javax.swing.JTextField();
         jtfClave = new javax.swing.JPasswordField();
+        jlReparticiones = new javax.swing.JLabel();
+        jcbReparticiones = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("SISPA - Usuario");
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+        );
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,12 +186,12 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         });
         jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
 
-        jlEmail.setBackground(new java.awt.Color(204, 204, 204));
-        jlEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlEmail.setForeground(new java.awt.Color(33, 150, 243));
-        jlEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlEmail.setText("Perfil:");
-        jpPrincipal.add(jlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, 20));
+        jlPerfil.setBackground(new java.awt.Color(204, 204, 204));
+        jlPerfil.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlPerfil.setForeground(new java.awt.Color(33, 150, 243));
+        jlPerfil.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlPerfil.setText("Perfil:");
+        jpPrincipal.add(jlPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, 20));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -211,19 +229,19 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         });
         jpPrincipal.add(jtfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, -1));
 
-        jlEmail1.setBackground(new java.awt.Color(204, 204, 204));
-        jlEmail1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlEmail1.setForeground(new java.awt.Color(33, 150, 243));
-        jlEmail1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlEmail1.setText("Corre Electronico: ");
-        jpPrincipal.add(jlEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 210, 20));
+        jlEmail.setBackground(new java.awt.Color(204, 204, 204));
+        jlEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlEmail.setForeground(new java.awt.Color(33, 150, 243));
+        jlEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlEmail.setText("Corre Electronico: ");
+        jpPrincipal.add(jlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 210, 20));
 
-        jlEmail2.setBackground(new java.awt.Color(204, 204, 204));
-        jlEmail2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlEmail2.setForeground(new java.awt.Color(33, 150, 243));
-        jlEmail2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlEmail2.setText("Clave:");
-        jpPrincipal.add(jlEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 20));
+        jlClave.setBackground(new java.awt.Color(204, 204, 204));
+        jlClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlClave.setForeground(new java.awt.Color(33, 150, 243));
+        jlClave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlClave.setText("Clave:");
+        jpPrincipal.add(jlClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 20));
 
         jcbPerfiles.setBackground(new java.awt.Color(204, 204, 204));
         jcbPerfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -249,40 +267,40 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jtfClave.setBackground(new java.awt.Color(204, 204, 204));
         jtfClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jtfClave.setForeground(new java.awt.Color(33, 150, 243));
-        jtfClave.setText("jPasswordField1");
         jpPrincipal.add(jtfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 220, -1));
 
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jlReparticiones.setBackground(new java.awt.Color(204, 204, 204));
+        jlReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlReparticiones.setForeground(new java.awt.Color(33, 150, 243));
+        jlReparticiones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlReparticiones.setText("Reparticion:");
+        jpPrincipal.add(jlReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 210, 20));
 
-        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
-        desktopPane.setLayout(desktopPaneLayout);
-        desktopPaneLayout.setHorizontalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1098, Short.MAX_VALUE)
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)))
-        );
-        desktopPaneLayout.setVerticalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
+        jcbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
+        jcbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbReparticiones.setForeground(new java.awt.Color(33, 150, 243));
+        jcbReparticiones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbReparticiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbReparticionesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jcbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(desktopPane))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(desktopPane)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
         );
 
         pack();
@@ -317,6 +335,10 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
 
+    private void jcbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbReparticionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbReparticionesActionPerformed
+    
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(usuario.getNombre());
@@ -328,6 +350,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
             jtfEmail.setText(usuario.getMail());
             jtfClave.setText(usuario.getClave());
             jcbPerfiles.setSelectedItem(usuario.getPerfil());
+            jcbReparticiones.setSelectedItem(usuario.getReparticion());
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
@@ -335,10 +358,11 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
                 jtfEmail.setEnabled(false);
                 jtfClave.setEditable(false);
                 jcbPerfiles.setEnabled(false);
+                jcbReparticiones.setEnabled(false);
             }
         }
     }
-
+    
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         usuario.setNombre(jtfNombre.getText());
@@ -350,9 +374,10 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         usuario.setMail(jtfEmail.getText());
         usuario.setClave(jtfClave.getText());
         usuario.setPerfil((Perfil) jcbPerfiles.getSelectedItem());
+        usuario.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
         return OK;
     }
-
+    
     @Override
     public int grabar() {
         UsuarioControlador usuarioControlador = new UsuarioControlador();
@@ -384,12 +409,14 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JComboBox jcbPerfiles;
+    private javax.swing.JComboBox jcbReparticiones;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlClave;
     private javax.swing.JLabel jlEmail;
-    private javax.swing.JLabel jlEmail1;
-    private javax.swing.JLabel jlEmail2;
     private javax.swing.JLabel jlNombre2;
     private javax.swing.JLabel jlNombreUsuario;
+    private javax.swing.JLabel jlPerfil;
+    private javax.swing.JLabel jlReparticiones;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlVisible;
