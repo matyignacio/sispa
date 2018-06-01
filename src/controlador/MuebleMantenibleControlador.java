@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.Mueble;
+import ui.Login;
 
 /**
  *
@@ -67,8 +68,9 @@ public class MuebleMantenibleControlador {
         modeloControlador = new ModeloControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM muebles WHERE mantenible=1 order by nombre";
+        String consultaSql = "SELECT * FROM muebles WHERE mantenible=1 AND id_reparticion=? order by nombre";
         ps = conn.prepareStatement(consultaSql);
+        ps.setInt(1, Login.usuario.getReparticion().getId());
         ps.execute();
         rs = ps.getResultSet();
         muebles = new ArrayList<>();
@@ -94,8 +96,9 @@ public class MuebleMantenibleControlador {
 
     public ArrayList<Mueble> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=1 order by nombre";
+        String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=1 AND id_reparticion=? order by nombre";
         ps = conn.prepareStatement(consultaSql);
+        ps.setInt(1, Login.usuario.getReparticion().getId());
         ps.execute();
         rs = ps.getResultSet();
         muebles = new ArrayList<>();

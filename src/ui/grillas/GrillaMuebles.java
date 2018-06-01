@@ -7,7 +7,6 @@ package ui.grillas;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import objeto.Marca;
 import objeto.Mueble;
 
 /**
@@ -59,7 +58,7 @@ public class GrillaMuebles extends AbstractTableModel {
             case 4:
                 return mueble.getObservaciones();
             case 5:
-               return mueble.getReparticion();
+                return mueble.getReparticion();
             case 6:
                 return mueble.getEstado();
             case 7:
