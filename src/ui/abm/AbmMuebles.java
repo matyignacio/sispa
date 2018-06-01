@@ -29,13 +29,13 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
-    
+
     private MuebleControlador muebleControlador = new MuebleControlador();
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
     private EstadoControlador estadoControlador = new EstadoControlador();
     private CategoriaControlador categoriaControlador = new CategoriaControlador();
     private ModeloControlador modeloControlador = new ModeloControlador();
-    
+
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmEstado;
     private DefaultComboBoxModel dcbmCategoria;
@@ -43,39 +43,39 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Mueble mueble;
     private Gestionable ventanaGestion;
-    
+
     public String getOperacion() {
         return operacion;
     }
-    
+
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-    
+
     public Mueble getMueble() {
         return mueble;
     }
-    
+
     public void setMarca(Mueble mueble) {
         this.mueble = mueble;
     }
-    
+
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-    
+
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-    
+
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-    
+
     public AbmMuebles(String operacion, Mueble mueble, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
@@ -84,27 +84,27 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.mueble = mueble;
         this.ventanaGestion = ventanaGestion;
-        
+
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodos().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
-        
+
         dcbmEstado = new DefaultComboBoxModel(estadoControlador.extraerTodos().toArray());
         jcbEstado.setModel(dcbmEstado);
-        
+
         dcbmCategoria = new DefaultComboBoxModel(categoriaControlador.extraerTodos().toArray());
         jcbCategoria.setModel(dcbmCategoria);
-        
+
         dcbmModelo = new DefaultComboBoxModel(modeloControlador.extraerTodos().toArray());
         jcbModelo.setModel(dcbmModelo);
-        
+
         inicializacionVentana();
-        
+
     }
-    
+
     public AbmMuebles() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        
+
     }
 
     /**
@@ -413,7 +413,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private void jcbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbReparticionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbReparticionesActionPerformed
-    
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(mueble.getNombre());
@@ -429,7 +429,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
             jcbEstado.setSelectedItem(mueble.getEstado());
             jcbCategoria.setSelectedItem(mueble.getCategoria());
             jcbModelo.setSelectedItem(mueble.getModelo());
-            
+
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
@@ -443,7 +443,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }
-    
+
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         mueble.setNombre(jtfNombre.getText());
@@ -461,7 +461,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         mueble.setModelo((Modelo) jcbModelo.getSelectedItem());
         return OK;
     }
-    
+
     @Override
     public int grabar() {
         MuebleControlador muebleControlador = new MuebleControlador();
