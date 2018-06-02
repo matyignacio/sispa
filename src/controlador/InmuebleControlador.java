@@ -45,7 +45,7 @@ public class InmuebleControlador {
             inmueble.setCaracteristicas(rs.getString(5));
             inmueble.setObservaciones(rs.getString(6));
             inmueble.setDomicilio(rs.getString(7));
-            inmueble.setCategoria(categoriaControlador.extraer(rs.getInt(8)));
+            inmueble.setTipo(rs.getString(8));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(9)));
         }
         rs.close();
@@ -73,7 +73,7 @@ public class InmuebleControlador {
             inmueble.setCaracteristicas(rs.getString(5));
             inmueble.setObservaciones(rs.getString(6));
             inmueble.setDomicilio(rs.getString(7));
-            inmueble.setCategoria(categoriaControlador.extraer(rs.getInt(8)));
+            inmueble.setTipo(rs.getString(8));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(9)));
             inmuebles.add(inmueble);
         }
@@ -102,7 +102,7 @@ public class InmuebleControlador {
             inmueble.setCaracteristicas(rs.getString(5));
             inmueble.setObservaciones(rs.getString(6));
             inmueble.setDomicilio(rs.getString(7));
-            inmueble.setCategoria(categoriaControlador.extraer(rs.getInt(8)));
+            inmueble.setTipo(rs.getString(8));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(9)));
             inmuebles.add(inmueble);
         }
@@ -116,8 +116,8 @@ public class InmuebleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "INSERT INTO inmuebles (nombre, visible, expediente, caracteristica, observaciones, \n"
-                    + "            domicilio, id_categoria, id_reparticion)\n"
-                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    + "            domicilio, tipo, id_reparticion)\n"
+                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, inmueble.getNombre());
             ps.setBoolean(2, inmueble.isVisible());
@@ -125,7 +125,7 @@ public class InmuebleControlador {
             ps.setString(4, inmueble.getCaracteristicas());
             ps.setString(5, inmueble.getObservaciones());
             ps.setString(6, inmueble.getDomicilio());
-            ps.setInt(7, inmueble.getCategoria().getId());
+            ps.setString(7, inmueble.getTipo());
             ps.setInt(8, inmueble.getReparticion().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
@@ -138,8 +138,8 @@ public class InmuebleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE inmuebles"
-                    + "   SET id=?, nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, "
-                    + "       domicilio=?, id_categoria=?, id_reparticion=?"
+                    + "   SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, "
+                    + "       domicilio=?, tipo=?, id_reparticion=?"
                     + " WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, inmueble.getNombre());
@@ -148,7 +148,7 @@ public class InmuebleControlador {
             ps.setString(4, inmueble.getCaracteristicas());
             ps.setString(5, inmueble.getObservaciones());
             ps.setString(6, inmueble.getDomicilio());
-            ps.setInt(7, inmueble.getCategoria().getId());
+            ps.setString(7, inmueble.getTipo());
             ps.setInt(8, inmueble.getReparticion().getId());
             ps.setInt(9, inmueble.getId());
             ps.executeUpdate();

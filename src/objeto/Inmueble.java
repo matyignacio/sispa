@@ -12,7 +12,15 @@ package objeto;
 public class Inmueble extends BienPatrimonial {
 
     private String domicilio;
-    private Categoria categoria;
+    private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     public String getDomicilio() {
         return domicilio;
@@ -20,14 +28,6 @@ public class Inmueble extends BienPatrimonial {
 
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
 }

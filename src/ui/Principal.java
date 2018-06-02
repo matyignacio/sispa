@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objeto.Operaciones;
-import ui.gestion.GestionMuebles;
+import ui.gestion.*;
 
 /**
  *
@@ -285,15 +285,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jmiMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMueblesActionPerformed
-        Muebles muebles;
-        try {
-            muebles = new Muebles();
-            this.dpPrincipal.add(muebles);
-            muebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+    
     }//GEN-LAST:event_jmiMueblesActionPerformed
 
     private void jmiCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerrarSesionActionPerformed
@@ -312,21 +304,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAjustesActionPerformed
 
     private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
-        /* Inmuebles inmuebles;
-        inmuebles = new Inmuebles();
-        inmuebles.setVisible(true);
-        this.dispose();  */      // TODO add your handling code here:
+         GestionInmuebles gestionInmuebles;
+        try {
+            gestionInmuebles = new GestionInmuebles();
+            this.dpPrincipal.add(gestionInmuebles);
+            gestionInmuebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+              
     }//GEN-LAST:event_jbInmueblesActionPerformed
 
     private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
-        GestionMuebles gestionMuebles;
+ GestionMuebles gestionMuebles;
         try {
             gestionMuebles = new GestionMuebles();
             this.dpPrincipal.add(gestionMuebles);
             gestionMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }        // TODO add your handling code here:
+        }               // TODO add your handling code here:
     }//GEN-LAST:event_jbMueblesActionPerformed
 
     private void jbAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAjustesActionPerformed
