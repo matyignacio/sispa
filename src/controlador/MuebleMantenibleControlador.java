@@ -18,7 +18,7 @@ import ui.Login;
  *
  * @author Kuky
  */
-public class MuebleControlador {
+public class MuebleMantenibleControlador {
 
     private Mueble mueble;
     private ArrayList<Mueble> muebles = new ArrayList<>();
@@ -35,8 +35,9 @@ public class MuebleControlador {
         estadoControlador = new EstadoControlador();
         modeloControlador = new ModeloControlador();
         reparticionControlador = new ReparticionControlador();
+
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM muebles WHERE id=? AND mantenible=0";
+        String consultaSql = "SELECT * FROM muebles WHERE id=? AND mantenible=1";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, id);
         ps.executeQuery();
@@ -67,7 +68,7 @@ public class MuebleControlador {
         modeloControlador = new ModeloControlador();
         reparticionControlador = new ReparticionControlador();
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM muebles WHERE mantenible=0 AND id_reparticion=? order by nombre";
+        String consultaSql = "SELECT * FROM muebles WHERE mantenible=1 AND id_reparticion=? order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, Login.usuario.getReparticion().getId());
         ps.execute();
@@ -95,7 +96,7 @@ public class MuebleControlador {
 
     public ArrayList<Mueble> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=0 AND id_reparticion=? order by nombre";
+        String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=1 AND id_reparticion=? order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, Login.usuario.getReparticion().getId());
         ps.execute();
@@ -137,7 +138,7 @@ public class MuebleControlador {
             ps.setInt(7, mueble.getEstado().getId());
             ps.setInt(8, mueble.getModelo().getId());
             ps.setInt(9, mueble.getReparticion().getId());
-            ps.setInt(10, 0);
+            ps.setInt(10, 1);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -160,7 +161,7 @@ public class MuebleControlador {
             ps.setInt(7, mueble.getEstado().getId());
             ps.setInt(8, mueble.getModelo().getId());
             ps.setInt(9, mueble.getReparticion().getId());
-            ps.setInt(10, 0);
+            ps.setInt(10, 1);
             ps.setInt(11, mueble.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, mueble.toString() + " modificado correctamente");
