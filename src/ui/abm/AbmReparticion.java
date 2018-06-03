@@ -164,14 +164,14 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
                 jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 100, -1));
 
         jlNombre1.setBackground(new java.awt.Color(204, 204, 204));
         jlNombre1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNombre1.setForeground(new java.awt.Color(33, 150, 243));
         jlNombre1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNombre1.setText("Nombre: ");
-        jpPrincipal.add(jlNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jpPrincipal.add(jlNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 210, 20));
 
         jtfNombre.setBackground(new java.awt.Color(204, 204, 204));
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -181,33 +181,33 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
                 jtfNombreActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
         jlDepartamento.setBackground(new java.awt.Color(204, 204, 204));
         jlDepartamento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlDepartamento.setForeground(new java.awt.Color(33, 150, 243));
         jlDepartamento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlDepartamento.setText("Departamento: ");
-        jpPrincipal.add(jlDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 210, 20));
 
         jtfDepartamento.setBackground(new java.awt.Color(204, 204, 204));
         jtfDepartamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -217,14 +217,14 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
                 jtfDepartamentoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, -1));
+        jpPrincipal.add(jtfDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 220, -1));
 
         jlLocalidad.setBackground(new java.awt.Color(204, 204, 204));
         jlLocalidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlLocalidad.setForeground(new java.awt.Color(33, 150, 243));
         jlLocalidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlLocalidad.setText("Localidad: ");
-        jpPrincipal.add(jlLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 210, 20));
+        jpPrincipal.add(jlLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
 
         jtfLocalidad.setBackground(new java.awt.Color(204, 204, 204));
         jtfLocalidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -234,14 +234,14 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
                 jtfLocalidadActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 220, -1));
+        jpPrincipal.add(jtfLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
 
         jlDomicilio.setBackground(new java.awt.Color(204, 204, 204));
         jlDomicilio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlDomicilio.setForeground(new java.awt.Color(33, 150, 243));
         jlDomicilio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlDomicilio.setText("Domicilio: ");
-        jpPrincipal.add(jlDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 210, 20));
+        jpPrincipal.add(jlDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
 
         jtfDomicilio.setBackground(new java.awt.Color(204, 204, 204));
         jtfDomicilio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -251,20 +251,20 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
                 jtfDomicilioActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, 220, -1));
+        jpPrincipal.add(jtfDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, -1));
 
         jlReparticionSuperior.setBackground(new java.awt.Color(204, 204, 204));
         jlReparticionSuperior.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlReparticionSuperior.setForeground(new java.awt.Color(33, 150, 243));
         jlReparticionSuperior.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlReparticionSuperior.setText("Depende de: ");
-        jpPrincipal.add(jlReparticionSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 210, 20));
+        jpPrincipal.add(jlReparticionSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 210, 20));
 
         jcbReparticionSuperior.setBackground(new java.awt.Color(204, 204, 204));
         jcbReparticionSuperior.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbReparticionSuperior.setForeground(new java.awt.Color(33, 150, 243));
         jcbReparticionSuperior.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpPrincipal.add(jcbReparticionSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 220, -1));
+        jpPrincipal.add(jcbReparticionSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 220, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

@@ -151,14 +151,14 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
                 jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 100, -1));
 
         jlNumero.setBackground(new java.awt.Color(204, 204, 204));
         jlNumero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNumero.setForeground(new java.awt.Color(33, 150, 243));
         jlNumero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNumero.setText("Numero: ");
-        jpPrincipal.add(jlNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jpPrincipal.add(jlNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 210, 20));
 
         jtfNumero.setBackground(new java.awt.Color(204, 204, 204));
         jtfNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -168,26 +168,26 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
                 jtfNumeroActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

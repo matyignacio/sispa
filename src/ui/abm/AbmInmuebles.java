@@ -129,9 +129,13 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
 
         setClosable(true);
         setTitle("SISPA - Muebles");
+        setPreferredSize(new java.awt.Dimension(1100, 712));
+
+        desktopPane.setPreferredSize(new java.awt.Dimension(1098, 690));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(1090, 493));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
@@ -180,7 +184,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 530, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 100, -1));
 
         jtfExpediente.setBackground(new java.awt.Color(204, 204, 204));
         jtfExpediente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -190,26 +194,26 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfExpedienteActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 220, -1));
+        jpPrincipal.add(jtfExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, 30));
 
         jcbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jcbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -220,21 +224,21 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jcbReparticionesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jcbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 220, -1));
+        jpPrincipal.add(jcbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 220, -1));
 
         jlExpediente.setBackground(new java.awt.Color(204, 204, 204));
         jlExpediente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlExpediente.setForeground(new java.awt.Color(33, 150, 243));
         jlExpediente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlExpediente.setText("Expediente:");
-        jpPrincipal.add(jlExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 210, 20));
+        jpPrincipal.add(jlExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 210, 20));
 
         jlObservaciones.setBackground(new java.awt.Color(204, 204, 204));
         jlObservaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlObservaciones.setText("Observaciones:");
-        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 210, 20));
+        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 210, 20));
 
         jtfObservaciones.setBackground(new java.awt.Color(204, 204, 204));
         jtfObservaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -244,14 +248,14 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfObservacionesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 220, -1));
+        jpPrincipal.add(jtfObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 220, -1));
 
         jlReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jlReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlReparticiones.setForeground(new java.awt.Color(33, 150, 243));
         jlReparticiones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlReparticiones.setText("Reparticiones:");
-        jpPrincipal.add(jlReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 210, 20));
+        jpPrincipal.add(jlReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 210, 20));
 
         jtfNombre.setBackground(new java.awt.Color(204, 204, 204));
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -261,14 +265,14 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfNombreActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 220, -1));
 
         jlCaracteristicas1.setBackground(new java.awt.Color(204, 204, 204));
         jlCaracteristicas1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlCaracteristicas1.setForeground(new java.awt.Color(33, 150, 243));
         jlCaracteristicas1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlCaracteristicas1.setText("Caracteristicas:");
-        jpPrincipal.add(jlCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 210, 20));
+        jpPrincipal.add(jlCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 210, 20));
 
         jtfCaracteristicas.setBackground(new java.awt.Color(204, 204, 204));
         jtfCaracteristicas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -278,28 +282,28 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfCaracteristicasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 220, -1));
+        jpPrincipal.add(jtfCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 220, -1));
 
         jlNombre.setBackground(new java.awt.Color(204, 204, 204));
         jlNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNombre.setForeground(new java.awt.Color(33, 150, 243));
         jlNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNombre.setText("Nombre: ");
-        jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 210, 20));
 
         jlDomicilio.setBackground(new java.awt.Color(204, 204, 204));
         jlDomicilio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlDomicilio.setForeground(new java.awt.Color(33, 150, 243));
         jlDomicilio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlDomicilio.setText("Domicilio:");
-        jpPrincipal.add(jlDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 210, 20));
+        jpPrincipal.add(jlDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 210, 20));
 
         jlTipo.setBackground(new java.awt.Color(204, 204, 204));
         jlTipo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlTipo.setForeground(new java.awt.Color(33, 150, 243));
         jlTipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlTipo.setText("Tipo:");
-        jpPrincipal.add(jlTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 210, 20));
+        jpPrincipal.add(jlTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 210, 20));
 
         jtfTipo.setBackground(new java.awt.Color(204, 204, 204));
         jtfTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -309,7 +313,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfTipoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 220, -1));
+        jpPrincipal.add(jtfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 220, -1));
 
         jtfDomicilio.setBackground(new java.awt.Color(204, 204, 204));
         jtfDomicilio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -319,7 +323,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfDomicilioActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 220, -1));
+        jpPrincipal.add(jtfDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 220, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -336,7 +340,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -344,12 +348,14 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        getAccessibleContext().setAccessibleName("SISPA - Inmuebles");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

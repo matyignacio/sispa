@@ -156,14 +156,14 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
                 jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 100, -1));
 
         jlNumero.setBackground(new java.awt.Color(204, 204, 204));
         jlNumero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlNumero.setForeground(new java.awt.Color(33, 150, 243));
         jlNumero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNumero.setText("Numero: ");
-        jpPrincipal.add(jlNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
+        jpPrincipal.add(jlNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 210, 20));
 
         jtfNumero.setBackground(new java.awt.Color(204, 204, 204));
         jtfNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -173,33 +173,33 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
                 jtfNumeroActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
+        jpPrincipal.add(jtfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 220, -1));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlVisible.setForeground(new java.awt.Color(33, 150, 243));
         jlVisible.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlVisible.setText("Estado: ");
-        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 210, 20));
+        jpPrincipal.add(jlVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
 
         jrbNoVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbNoVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbNoVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbNoVisible.setText("No Visible");
-        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
+        jpPrincipal.add(jrbNoVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
 
         jlPrincipal.setBackground(new java.awt.Color(204, 204, 204));
         jlPrincipal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlPrincipal.setForeground(new java.awt.Color(33, 150, 243));
         jlPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlPrincipal.setText("Principal: ");
-        jpPrincipal.add(jlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 210, 20));
+        jpPrincipal.add(jlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 210, 20));
 
         jtfPrincipal.setBackground(new java.awt.Color(204, 204, 204));
         jtfPrincipal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -209,7 +209,7 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
                 jtfPrincipalActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 220, -1));
+        jpPrincipal.add(jtfPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 220, -1));
 
         jtfParcial.setBackground(new java.awt.Color(204, 204, 204));
         jtfParcial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -219,14 +219,14 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
                 jtfParcialActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfParcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 220, -1));
+        jpPrincipal.add(jtfParcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 220, -1));
 
         jlParcial.setBackground(new java.awt.Color(204, 204, 204));
         jlParcial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlParcial.setForeground(new java.awt.Color(33, 150, 243));
         jlParcial.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlParcial.setText("Parcial: ");
-        jpPrincipal.add(jlParcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 210, 20));
+        jpPrincipal.add(jlParcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 20));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
