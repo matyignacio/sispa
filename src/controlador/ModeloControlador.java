@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import objeto.Marca;
 import objeto.Modelo;
 
 public class ModeloControlador {
@@ -82,6 +83,30 @@ public class ModeloControlador {
             modelo.setVisible(rs.getBoolean(3));
             modelo.setAño(rs.getInt(4));
             modelo.setMarca(marcaControlador.extraer(rs.getInt(5)));
+            modelos.add(modelo);
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return modelos;
+    }
+
+    public ArrayList<Modelo> extraerTodosVisiblesPorMarca(Marca marca) throws SQLException {
+        marcaControlador = new MarcaControlador();
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM modelos where visible = TRUE AND id_marca=? order by nombre";
+        ps = conn.prepareStatement(consultaSql);
+        ps.setInt(1, marca.getId());
+        ps.execute();
+        rs = ps.getResultSet();
+        modelos = new ArrayList<>();
+        while (rs.next()) {
+            modelo = new Modelo();
+            modelo.setId(rs.getInt(1));
+            modelo.setNombre(rs.getString(2));
+            modelo.setVisible(rs.getBoolean(3));
+            modelo.setAño(rs.getInt(4));
+            modelo.setMarca(marca);
             modelos.add(modelo);
         }
         rs.close();
