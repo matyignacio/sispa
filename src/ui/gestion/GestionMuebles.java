@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import objeto.Marca;
 import objeto.Mueble;
 import ui.abm.AbmMuebles;
+import ui.abm.VistaMuebles;
 import ui.grillas.GrillaMarcas;
 import ui.grillas.GrillaMuebles;
 
@@ -65,6 +66,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
+        jbVer = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -134,23 +136,25 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
         jbEliminar.setText("Eliminar");
+        jbEliminar.setPreferredSize(new java.awt.Dimension(92, 33));
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 590, 100, -1));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
         jbNuevo.setText("Nuevo");
+        jbNuevo.setPreferredSize(new java.awt.Dimension(92, 33));
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 100, -1));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -161,7 +165,20 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 100, -1));
+
+        jbVer.setBackground(new java.awt.Color(204, 204, 204));
+        jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVer.setForeground(new java.awt.Color(33, 150, 243));
+        jbVer.setText("Ver");
+        jbVer.setPreferredSize(new java.awt.Dimension(92, 33));
+        jbVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVerActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 100, -1));
+        jbVer.getAccessibleContext().setAccessibleName("Ver");
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -213,7 +230,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             AbmMuebles abmMuebles;
             try {
                 abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodos().
-                        get(jtMuebles.getSelectedRow()).getId()),this);
+                        get(jtMuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebles);
                 abmMuebles.show();
             } catch (SQLException ex) {
@@ -238,10 +255,10 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtMuebles.getSelectedRow() > -1) {
-             AbmMuebles abmMuebles;
+            AbmMuebles abmMuebles;
             try {
-                 abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodos().
-                        get(jtMuebles.getSelectedRow()).getId()),this);
+                abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodos().
+                        get(jtMuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebles);
                 abmMuebles.show();
             } catch (SQLException ex) {
@@ -252,12 +269,29 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
+    private void jbVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerActionPerformed
+        if (jtMuebles.getSelectedRow() > -1) {
+            VistaMuebles vistaMuebles;
+            try {
+                vistaMuebles = new VistaMuebles(muebleControlador.extraer(muebleControlador.extraerTodos().
+                        get(jtMuebles.getSelectedRow()).getId()));
+                this.desktopPane.add(vistaMuebles);
+                vistaMuebles.show();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
+        }
+    }//GEN-LAST:event_jbVerActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbVer;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
