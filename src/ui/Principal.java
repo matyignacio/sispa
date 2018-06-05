@@ -8,6 +8,7 @@ package ui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import objeto.Operaciones;
 import ui.gestion.*;
 
@@ -285,11 +286,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jmiMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMueblesActionPerformed
-    
+
     }//GEN-LAST:event_jmiMueblesActionPerformed
 
     private void jmiCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerrarSesionActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar sesión?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+        dispose();
+        Login login;
+        login = new Login();
+        login.show();
+        }
+    
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
 
     private void jmiAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAjustesActionPerformed
@@ -304,7 +311,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAjustesActionPerformed
 
     private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
-         GestionInmuebles gestionInmuebles;
+        GestionInmuebles gestionInmuebles;
         try {
             gestionInmuebles = new GestionInmuebles();
             this.dpPrincipal.add(gestionInmuebles);
@@ -312,12 +319,12 @@ public class Principal extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-              
+
+
     }//GEN-LAST:event_jbInmueblesActionPerformed
 
     private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
- GestionMuebles gestionMuebles;
+        GestionMuebles gestionMuebles;
         try {
             gestionMuebles = new GestionMuebles();
             this.dpPrincipal.add(gestionMuebles);
