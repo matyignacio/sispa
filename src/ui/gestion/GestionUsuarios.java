@@ -209,7 +209,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
         if (jtUsuario.getSelectedRow() > -1) {
             AbmUsuarios abmUsuarios;
             try {
-                abmUsuarios = new AbmUsuarios(ABM_BAJA, usuarioControlador.extraer(usuarioControlador.extraerTodos().
+                abmUsuarios = new AbmUsuarios(ABM_BAJA, usuarioControlador.extraer(usuarioControlador.extraerTodosVisibles().
                         get(jtUsuario.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmUsuarios);
@@ -238,7 +238,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
         if (jtUsuario.getSelectedRow() > -1) {
             AbmUsuarios abmUsuarios;
             try {
-                abmUsuarios = new AbmUsuarios(ABM_MODIFICACION, usuarioControlador.extraer(usuarioControlador.extraerTodos().
+                abmUsuarios = new AbmUsuarios(ABM_MODIFICACION, usuarioControlador.extraer(usuarioControlador.extraerTodosVisibles().
                         get(jtUsuario.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmUsuarios);
                 abmUsuarios.show();
@@ -268,7 +268,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
     @Override
     public void actualizarGestion() {
         try {
-            grillaUsuarios = new GrillaUsuarios((ArrayList<Usuario>) usuarioControlador.extraerTodos());
+            grillaUsuarios = new GrillaUsuarios((ArrayList<Usuario>) usuarioControlador.extraerTodosVisibles());
             jtUsuario.setModel(grillaUsuarios);
         } catch (SQLException ex) {
             Logger.getLogger(GestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);

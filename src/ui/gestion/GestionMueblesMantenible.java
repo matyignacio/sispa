@@ -209,7 +209,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         if (jtMuebles.getSelectedRow() > -1) {
             AbmMuebles abmMuebles;
             try {
-                abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodos().
+                abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
                         get(jtMuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebles);
                 abmMuebles.show();
@@ -237,7 +237,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         if (jtMuebles.getSelectedRow() > -1) {
             AbmMuebles abmMuebles;
             try {
-                abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodos().
+                abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
                         get(jtMuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebles);
                 abmMuebles.show();
@@ -267,7 +267,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     @Override
     public void actualizarGestion() {
         try {
-            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodos());
+            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodosVisibles());
             jtMuebles.setModel(grillaMuebles);
         } catch (SQLException ex) {
             Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);

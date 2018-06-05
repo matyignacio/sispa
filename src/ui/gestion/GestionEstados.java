@@ -208,7 +208,7 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         if (jtEstados.getSelectedRow() > -1) {
             AbmEstado abmEstado;
             try {
-                abmEstado = new AbmEstado(ABM_BAJA, estadoControlador.extraer(estadoControlador.extraerTodos().
+                abmEstado = new AbmEstado(ABM_BAJA, estadoControlador.extraer(estadoControlador.extraerTodosVisibles().
                         get(jtEstados.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmEstado);
@@ -237,7 +237,7 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         if (jtEstados.getSelectedRow() > -1) {
             AbmEstado abmEstado;
             try {
-                abmEstado = new AbmEstado(ABM_MODIFICACION, estadoControlador.extraer(estadoControlador.extraerTodos().
+                abmEstado = new AbmEstado(ABM_MODIFICACION, estadoControlador.extraer(estadoControlador.extraerTodosVisibles().
                         get(jtEstados.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmEstado);
                 abmEstado.show();
@@ -267,7 +267,7 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
     @Override
     public void actualizarGestion() {
         try {
-            grillaEstados = new GrillaEstados((ArrayList<Estado>) estadoControlador.extraerTodos());
+            grillaEstados = new GrillaEstados((ArrayList<Estado>) estadoControlador.extraerTodosVisibles());
             jtEstados.setModel(grillaEstados);
         } catch (SQLException ex) {
             Logger.getLogger(GestionEstados.class.getName()).log(Level.SEVERE, null, ex);

@@ -209,7 +209,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         if (jtMarcas.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
-                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodos().
+                abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodosVisibles().
                         get(jtMarcas.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmMarca);
@@ -238,7 +238,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         if (jtMarcas.getSelectedRow() > -1) {
             AbmMarca abmMarca;
             try {
-                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodos().
+                abmMarca = new AbmMarca(ABM_MODIFICACION, marcaControlador.extraer(marcaControlador.extraerTodosVisibles().
                         get(jtMarcas.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMarca);
                 abmMarca.show();
@@ -268,7 +268,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     @Override
     public void actualizarGestion() {
         try {
-            grillaMarcas = new GrillaMarcas((ArrayList<Marca>) marcaControlador.extraerTodos());
+            grillaMarcas = new GrillaMarcas((ArrayList<Marca>) marcaControlador.extraerTodosVisibles());
             jtMarcas.setModel(grillaMarcas);
         } catch (SQLException ex) {
             Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);

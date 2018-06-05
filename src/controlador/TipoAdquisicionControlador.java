@@ -60,7 +60,7 @@ public class TipoAdquisicionControlador {
         return tipos;
     }
 
-    public ArrayList<TipoAdquisicion> extraerTodosVisible() throws SQLException {
+    public ArrayList<TipoAdquisicion> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM tipo_adquisicion where visible = TRUE order by nombre";
         ps = conn.prepareStatement(consultaSql);

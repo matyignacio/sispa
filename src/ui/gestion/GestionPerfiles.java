@@ -209,7 +209,7 @@ public class GestionPerfiles extends javax.swing.JInternalFrame implements Gesti
         if (jtPerfiles.getSelectedRow() > -1) {
             AbmPerfil abmPerfil;
             try {
-                abmPerfil = new AbmPerfil(ABM_BAJA, perfilControlador.extraer(perfilControlador.extraerTodos().
+                abmPerfil = new AbmPerfil(ABM_BAJA, perfilControlador.extraer(perfilControlador.extraerTodosVisibles().
                         get(jtPerfiles.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmPerfil);
@@ -238,7 +238,7 @@ public class GestionPerfiles extends javax.swing.JInternalFrame implements Gesti
         if (jtPerfiles.getSelectedRow() > -1) {
             AbmPerfil abmPerfil;
             try {
-                abmPerfil = new AbmPerfil(ABM_MODIFICACION, perfilControlador.extraer(perfilControlador.extraerTodos().
+                abmPerfil = new AbmPerfil(ABM_MODIFICACION, perfilControlador.extraer(perfilControlador.extraerTodosVisibles().
                         get(jtPerfiles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmPerfil);
                 abmPerfil.show();
@@ -268,7 +268,7 @@ public class GestionPerfiles extends javax.swing.JInternalFrame implements Gesti
     @Override
     public void actualizarGestion() {
         try {
-            grillaPerfiles = new GrillaPerfiles((ArrayList<Perfil>) perfilControlador.extraerTodos());
+            grillaPerfiles = new GrillaPerfiles((ArrayList<Perfil>) perfilControlador.extraerTodosVisibles());
             jtPerfiles.setModel(grillaPerfiles);
         } catch (SQLException ex) {
             Logger.getLogger(GestionPerfiles.class.getName()).log(Level.SEVERE, null, ex);

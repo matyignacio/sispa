@@ -208,7 +208,7 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
         if (jtModelos.getSelectedRow() > -1) {
             AbmModelo abmModelo;
             try {
-                abmModelo = new AbmModelo(ABM_BAJA, modeloControlador.extraer(modeloControlador.extraerTodos().
+                abmModelo = new AbmModelo(ABM_BAJA, modeloControlador.extraer(modeloControlador.extraerTodosVisibles().
                         get(jtModelos.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmModelo);
@@ -236,7 +236,7 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
         if (jtModelos.getSelectedRow() > -1) {
             AbmModelo abmModelo;
             try {
-                abmModelo = new AbmModelo(ABM_MODIFICACION, modeloControlador.extraer(modeloControlador.extraerTodos().
+                abmModelo = new AbmModelo(ABM_MODIFICACION, modeloControlador.extraer(modeloControlador.extraerTodosVisibles().
                         get(jtModelos.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmModelo);
                 abmModelo.show();
@@ -266,7 +266,7 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
     @Override
     public void actualizarGestion() {
         try {
-            grillaModelos = new GrillaModelos((ArrayList<Modelo>) modeloControlador.extraerTodos());
+            grillaModelos = new GrillaModelos((ArrayList<Modelo>) modeloControlador.extraerTodosVisibles());
             jtModelos.setModel(grillaModelos);
         } catch (SQLException ex) {
             Logger.getLogger(GestionModelos.class.getName()).log(Level.SEVERE, null, ex);

@@ -209,7 +209,7 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
         if (jtIncisos.getSelectedRow() > -1) {
             AbmInciso abmInciso;
             try {
-                abmInciso = new AbmInciso(ABM_BAJA, incisoControlador.extraerTodos().
+                abmInciso = new AbmInciso(ABM_BAJA, incisoControlador.extraerTodosVisibles().
                         get(jtIncisos.getSelectedRow()),
                         this);
                 this.desktopPane.add(abmInciso);
@@ -238,7 +238,7 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
         if (jtIncisos.getSelectedRow() > -1) {
             AbmInciso abmInciso;
             try {
-                abmInciso = new AbmInciso(ABM_MODIFICACION, incisoControlador.extraerTodos().
+                abmInciso = new AbmInciso(ABM_MODIFICACION, incisoControlador.extraerTodosVisibles().
                         get(jtIncisos.getSelectedRow()),
                         this);
                 this.desktopPane.add(abmInciso);
@@ -269,7 +269,7 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
     @Override
     public void actualizarGestion() {
         try {
-            grillaIncisos = new GrillaIncisos((ArrayList<Inciso>) incisoControlador.extraerTodos());
+            grillaIncisos = new GrillaIncisos((ArrayList<Inciso>) incisoControlador.extraerTodosVisibles());
             jtIncisos.setModel(grillaIncisos);
         } catch (SQLException ex) {
             Logger.getLogger(GestionIncisos.class.getName()).log(Level.SEVERE, null, ex);

@@ -210,7 +210,7 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         if (jtCodigos.getSelectedRow() > -1) {
             AbmCodigosPresupuestarios abmCodigosPresupuestarios;
             try {
-                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_BAJA, codigoPresupuestarioControlador.extraerTodos().
+                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_BAJA, codigoPresupuestarioControlador.extraerTodosVisibles().
                         get(jtCodigos.getSelectedRow()), this);
                 this.desktopPane.add(abmCodigosPresupuestarios);
                 abmCodigosPresupuestarios.show();
@@ -232,7 +232,7 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         if (jtCodigos.getSelectedRow() > -1) {
             AbmCodigosPresupuestarios abmCodigosPresupuestarios;
             try {
-                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_MODIFICACION, codigoPresupuestarioControlador.extraerTodos().
+                abmCodigosPresupuestarios = new AbmCodigosPresupuestarios(ABM_MODIFICACION, codigoPresupuestarioControlador.extraerTodosVisibles().
                         get(jtCodigos.getSelectedRow()), this);
                 this.desktopPane.add(abmCodigosPresupuestarios);
                 abmCodigosPresupuestarios.show();
@@ -262,7 +262,7 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     @Override
     public void actualizarGestion() {
         try {
-            grillaCodigosPresupuestarios = new GrillaCodigosPresupuestarios((ArrayList<CodigoPresupuestario>) codigoPresupuestarioControlador.extraerTodos());
+            grillaCodigosPresupuestarios = new GrillaCodigosPresupuestarios((ArrayList<CodigoPresupuestario>) codigoPresupuestarioControlador.extraerTodosVisibles());
             jtCodigos.setModel(grillaCodigosPresupuestarios);
         } catch (SQLException ex) {
             Logger.getLogger(GestionCodigosPresupuestario.class.getName()).log(Level.SEVERE, null, ex);

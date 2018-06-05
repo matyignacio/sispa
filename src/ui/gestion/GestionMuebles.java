@@ -229,7 +229,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         if (jtMuebles.getSelectedRow() > -1) {
             AbmMuebles abmMuebles;
             try {
-                abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodos().
+                abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
                         get(jtMuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebles);
                 abmMuebles.show();
@@ -257,7 +257,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         if (jtMuebles.getSelectedRow() > -1) {
             AbmMuebles abmMuebles;
             try {
-                abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodos().
+                abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
                         get(jtMuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebles);
                 abmMuebles.show();
@@ -273,7 +273,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         if (jtMuebles.getSelectedRow() > -1) {
             VistaMuebles vistaMuebles;
             try {
-                vistaMuebles = new VistaMuebles(muebleControlador.extraer(muebleControlador.extraerTodos().
+                vistaMuebles = new VistaMuebles(muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
                         get(jtMuebles.getSelectedRow()).getId()));
                 this.desktopPane.add(vistaMuebles);
                 vistaMuebles.show();
@@ -304,7 +304,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     @Override
     public void actualizarGestion() {
         try {
-            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodos());
+            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodosVisibles());
             jtMuebles.setModel(grillaMuebles);
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);

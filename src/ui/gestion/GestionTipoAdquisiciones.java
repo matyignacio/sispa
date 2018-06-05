@@ -209,7 +209,7 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
         if (jtTipoAdquisiciones.getSelectedRow() > -1) {
             AbmTipoAdquisiciones abmTipoAdquisiciones;
             try {
-                abmTipoAdquisiciones = new AbmTipoAdquisiciones(ABM_BAJA, tipoAdquisicionControlador.extraer(tipoAdquisicionControlador.extraerTodos().
+                abmTipoAdquisiciones = new AbmTipoAdquisiciones(ABM_BAJA, tipoAdquisicionControlador.extraer(tipoAdquisicionControlador.extraerTodosVisibles().
                         get(jtTipoAdquisiciones.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmTipoAdquisiciones);
@@ -238,7 +238,7 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
         if (jtTipoAdquisiciones.getSelectedRow() > -1) {
             AbmTipoAdquisiciones abmTipoAdquisiciones;
             try {
-                abmTipoAdquisiciones = new AbmTipoAdquisiciones(ABM_MODIFICACION, tipoAdquisicionControlador.extraer(tipoAdquisicionControlador.extraerTodos().
+                abmTipoAdquisiciones = new AbmTipoAdquisiciones(ABM_MODIFICACION, tipoAdquisicionControlador.extraer(tipoAdquisicionControlador.extraerTodosVisibles().
                         get(jtTipoAdquisiciones.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmTipoAdquisiciones);
                 abmTipoAdquisiciones.show();
@@ -268,7 +268,7 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
     @Override
     public void actualizarGestion() {
         try {
-            grillaTipoAdquisiciones = new GrillaTipoAdquisiciones((ArrayList<TipoAdquisicion>) tipoAdquisicionControlador.extraerTodos());
+            grillaTipoAdquisiciones = new GrillaTipoAdquisiciones((ArrayList<TipoAdquisicion>) tipoAdquisicionControlador.extraerTodosVisibles());
             jtTipoAdquisiciones.setModel(grillaTipoAdquisiciones);
         } catch (SQLException ex) {
             Logger.getLogger(GestionTipoAdquisiciones.class.getName()).log(Level.SEVERE, null, ex);

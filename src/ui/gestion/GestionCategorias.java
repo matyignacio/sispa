@@ -211,7 +211,7 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
         if (jtCategorias.getSelectedRow() > -1) {
             AbmCategoria abmCategoria;
             try {
-                abmCategoria = new AbmCategoria(ABM_BAJA, categoriaControlador.extraer(categoriaControlador.extraerTodos().
+                abmCategoria = new AbmCategoria(ABM_BAJA, categoriaControlador.extraer(categoriaControlador.extraerTodosVisibles().
                         get(jtCategorias.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmCategoria);
                 abmCategoria.show();
@@ -239,7 +239,7 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
         if (jtCategorias.getSelectedRow() > -1) {
             AbmCategoria abmCategoria;
             try {
-                abmCategoria = new AbmCategoria(ABM_MODIFICACION, categoriaControlador.extraer(categoriaControlador.extraerTodos().
+                abmCategoria = new AbmCategoria(ABM_MODIFICACION, categoriaControlador.extraer(categoriaControlador.extraerTodosVisibles().
                         get(jtCategorias.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmCategoria);
                 abmCategoria.show();
@@ -269,7 +269,7 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
     @Override
     public void actualizarGestion() {
         try {
-            grillaCategorias = new GrillaCategorias((ArrayList<Categoria>) categoriaControlador.extraerTodos());
+            grillaCategorias = new GrillaCategorias((ArrayList<Categoria>) categoriaControlador.extraerTodosVisibles());
             jtCategorias.setModel(grillaCategorias);
         } catch (SQLException ex) {
             Logger.getLogger(GestionCategorias.class.getName()).log(Level.SEVERE, null, ex);
