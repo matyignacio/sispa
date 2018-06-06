@@ -89,16 +89,16 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         this.mueble = mueble;
         this.ventanaGestion = ventanaGestion;
 
-        dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodos().toArray());
+        dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosVisibles().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
 
-        dcbmEstado = new DefaultComboBoxModel(estadoControlador.extraerTodos().toArray());
+        dcbmEstado = new DefaultComboBoxModel(estadoControlador.extraerTodosVisibles().toArray());
         jcbEstado.setModel(dcbmEstado);
 
-        dcbmCategoria = new DefaultComboBoxModel(categoriaControlador.extraerTodos().toArray());
+        dcbmCategoria = new DefaultComboBoxModel(categoriaControlador.extraerTodosVisibles().toArray());
         jcbCategoria.setModel(dcbmCategoria);
 
-        dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodos().toArray());
+        dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodosVisibles().toArray());
         jcbMarca.setModel(dcbmMarca);
 
         inicializarComboModelos();
