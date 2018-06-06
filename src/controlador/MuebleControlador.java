@@ -137,7 +137,7 @@ public class MuebleControlador {
             ps.setInt(7, mueble.getEstado().getId());
             ps.setInt(8, mueble.getModelo().getId());
             ps.setInt(9, mueble.getReparticion().getId());
-            ps.setInt(10, 0);
+            ps.setInt(10, util.Util.MUEBLE_NO_MANTENIBLE);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -160,7 +160,7 @@ public class MuebleControlador {
             ps.setInt(7, mueble.getEstado().getId());
             ps.setInt(8, mueble.getModelo().getId());
             ps.setInt(9, mueble.getReparticion().getId());
-            ps.setInt(10, 0);
+            ps.setInt(10, util.Util.MUEBLE_NO_MANTENIBLE);
             ps.setInt(11, mueble.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, mueble.toString() + " modificado correctamente");

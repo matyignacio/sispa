@@ -36,7 +36,7 @@ public class GrillaMuebles extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 9;
+        return 6;
     }
 
     @Override
@@ -46,25 +46,15 @@ public class GrillaMuebles extends AbstractTableModel {
             case 0:
                 return mueble.getNombre();
             case 1:
-                if (mueble.isVisible()) {
-                    return "Visible";
-                } else {
-                    return "No visible";
-                }
-            case 2:
                 return mueble.getExpediente();
-            case 3:
-                return mueble.getCaracteristicas();
-            case 4:
-                return mueble.getObservaciones();
-            case 5:
-                return mueble.getReparticion();
-            case 6:
-                return mueble.getEstado();
-            case 7:
+            case 2:
                 return mueble.getCategoria();
-            case 8:
+            case 3:
+                return mueble.getModelo().getMarca();
+            case 4:
                 return mueble.getModelo();
+            case 5:
+                return mueble.getCaracteristicas();
 
             default:
                 return null;
@@ -77,21 +67,15 @@ public class GrillaMuebles extends AbstractTableModel {
             case 0:
                 return "NOMBRE";
             case 1:
-                return "ESTADO";
-            case 2:
                 return "EXPEDIENTE";
-            case 3:
-                return "CARACTERISTICAS";
-            case 4:
-                return "OBSERVACIONES";
-            case 5:
-                return "REPARTICION";
-            case 6:
-                return "ESTADO";
-            case 7:
+            case 2:
                 return "CATEGORIA";
-            case 8:
+            case 3:
+                return "MARCA";
+            case 4:
                 return "MODELO";
+            case 5:
+                return "CARACTERISTICAS";
 
             default:
                 return "";

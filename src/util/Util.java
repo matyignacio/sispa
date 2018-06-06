@@ -10,5 +10,8 @@ package util;
  * @author Kuky
  */
 public class Util {
+    
+    public static int MUEBLE_MANTENIBLE=1;
+    public static int MUEBLE_NO_MANTENIBLE=0;
 
 }
