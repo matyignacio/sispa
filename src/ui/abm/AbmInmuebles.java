@@ -130,6 +130,11 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         setClosable(true);
         setTitle("SISPA - Muebles");
         setPreferredSize(new java.awt.Dimension(1100, 712));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1098, 690));
 
@@ -404,6 +409,10 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     private void jtfDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDomicilioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfDomicilioActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        
+    }//GEN-LAST:event_formMousePressed
 
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {

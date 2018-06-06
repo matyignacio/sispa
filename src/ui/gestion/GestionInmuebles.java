@@ -209,7 +209,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         if (jtInmuebles.getSelectedRow() > -1) {
             AbmInmuebles abmInmuebles;
             try {
-                abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodos().
+                abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
                         get(jtInmuebles.getSelectedRow()).getId()),this);
                 this.desktopPane.add(abmInmuebles);
                 abmInmuebles.show();
@@ -237,7 +237,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         if (jtInmuebles.getSelectedRow() > -1) {
              AbmInmuebles abmInuebles;
             try {
-                 abmInuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodos().
+                 abmInuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
                         get(jtInmuebles.getSelectedRow()).getId()),this);
                 this.desktopPane.add(abmInuebles);
                 abmInuebles.show();
@@ -267,7 +267,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
     @Override
     public void actualizarGestion() {
         try {
-            grillaInmuebles = new GrillaInmuebles((ArrayList<Inmueble>) inmuebleControlador.extraerTodos());
+            grillaInmuebles = new GrillaInmuebles((ArrayList<Inmueble>) inmuebleControlador.extraerTodosVisibles());
             jtInmuebles.setModel(grillaInmuebles);
         } catch (SQLException ex) {
             Logger.getLogger(GestionInmuebles.class.getName()).log(Level.SEVERE, null, ex);
