@@ -141,7 +141,7 @@ public class Principal extends javax.swing.JFrame {
         jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
         jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbMuebles.setForeground(new java.awt.Color(33, 150, 243));
-        jbMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe.png"))); // NOI18N
+        jbMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
         jbMuebles.setText("Muebles");
         jbMuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbMuebles.addActionListener(new java.awt.event.ActionListener() {

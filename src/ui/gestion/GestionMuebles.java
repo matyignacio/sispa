@@ -62,13 +62,13 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jbmueblesMantenibles = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMuebles = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
         jbVer = new javax.swing.JButton();
-        jbmueblesMantenibles = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -94,7 +94,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble_blanco.png"))); // NOI18N
         jlTituloPrincipal.setText("SISPA - Muebles");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
@@ -113,6 +113,18 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
+
+        jbmueblesMantenibles.setBackground(new java.awt.Color(204, 204, 204));
+        jbmueblesMantenibles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbmueblesMantenibles.setForeground(new java.awt.Color(33, 150, 243));
+        jbmueblesMantenibles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
+        jbmueblesMantenibles.setText("Automotores");
+        jbmueblesMantenibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbmueblesManteniblesActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 200, 60));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
@@ -180,14 +192,6 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             }
         });
         jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 100, -1));
-
-        jbmueblesMantenibles.setText("Automotores");
-        jbmueblesMantenibles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbmueblesManteniblesActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 580, -1, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

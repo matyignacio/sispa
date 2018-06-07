@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import objeto.MuebleMantenible;
 import ui.Login;
@@ -56,6 +57,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            muebleMantenible.setFecha(rs.getTimestamp(14));
 
         }
         rs.close();
@@ -155,24 +157,28 @@ public class MuebleMantenibleControlador {
     }
 
     public void modificar(MuebleMantenible muebleMantenible) throws SQLException {
+        java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+        JOptionPane.showMessageDialog(null, currentTimestamp);
+//        JOptionPane.showMessageDialog(null, (java.sql.Date) now);
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE muebles SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, dominio=?, chasis=?, id_categoria=?,"
-                    + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=? WHERE id=?";
+                    + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=?, fecha=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, muebleMantenible.getNombre());
             ps.setBoolean(2, muebleMantenible.isVisible());
             ps.setString(3, muebleMantenible.getExpediente());
             ps.setString(4, muebleMantenible.getCaracteristicas());
             ps.setString(5, muebleMantenible.getObservaciones());
-             ps.setString(6, muebleMantenible.getDominio());
+            ps.setString(6, muebleMantenible.getDominio());
             ps.setString(7, muebleMantenible.getChasis());
             ps.setInt(8, muebleMantenible.getCategoria().getId());
             ps.setInt(9, muebleMantenible.getEstado().getId());
             ps.setInt(10, muebleMantenible.getModelo().getId());
             ps.setInt(11, muebleMantenible.getReparticion().getId());
             ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
-            ps.setInt(13, muebleMantenible.getId());
+            ps.setTimestamp(13,currentTimestamp);
+            ps.setInt(14, muebleMantenible.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, muebleMantenible.toString() + " modificado correctamente");
             ps.close();

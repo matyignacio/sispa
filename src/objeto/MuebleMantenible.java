@@ -5,6 +5,8 @@
  */
 package objeto;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Kuky
@@ -13,6 +15,15 @@ public class MuebleMantenible extends Mueble {
 
     private String dominio;
     private String chasis;
+    private Timestamp fecha;
+
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
+    }
 
     public String getDominio() {
         return dominio;

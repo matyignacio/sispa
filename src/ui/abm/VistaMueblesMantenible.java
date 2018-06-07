@@ -9,12 +9,13 @@ import ui.*;
 import java.sql.SQLException;
 import javax.swing.JDesktopPane;
 import objeto.Mueble;
+import objeto.MuebleMantenible;
 
 /**
  *
  * @author Kuky
  */
-public class VistaMuebles extends javax.swing.JInternalFrame {
+public class VistaMueblesMantenible extends javax.swing.JInternalFrame {
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -24,28 +25,28 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         this.desktopPane = desktopPane;
     }
 
-    public VistaMuebles(Mueble mueble) throws SQLException {
+    public VistaMueblesMantenible(MuebleMantenible muebleMantenible) throws SQLException {
         initComponents();
-        jtfNombre.setText(mueble.getNombre());
-        jtfMarca.setText(mueble.getModelo().getMarca().getNombre());
-        jtfModelo.setText(mueble.getModelo().getNombre());
-        if (mueble.isVisible() == true) {
+        jtfNombre.setText(muebleMantenible.getNombre());
+        jtfMarca.setText(muebleMantenible.getModelo().getMarca().getNombre());
+        jtfModelo.setText(muebleMantenible.getModelo().getNombre());
+        if (muebleMantenible.isVisible() == true) {
             jtfEstado.setText("Visible");
         } else {
             jtfEstado.setText("No Visible");
         }
-        jtfCaracteristicas.setText(mueble.getCaracteristicas());
-        jtfExpediente.setText(mueble.getExpediente());
-        jtfReparticion.setText(mueble.getReparticion().getNombre());
-        jtfCategoria.setText(mueble.getCategoria().getNombre());
-        jtfInciso.setText(mueble.getCategoria().getInciso().toString());
-        jtfCodigo.setText(mueble.getCategoria().getCodigoPresupuestario().toString());
-        jtaObservaciones.setText(mueble.getObservaciones());
+        jtfCaracteristicas.setText(muebleMantenible.getCaracteristicas());
+        jtfExpediente.setText(muebleMantenible.getExpediente());
+        jtfReparticion.setText(muebleMantenible.getReparticion().getNombre());
+        jtfCategoria.setText(muebleMantenible.getCategoria().getNombre());
+        jtfInciso.setText(muebleMantenible.getCategoria().getInciso().toString());
+        jtfCodigo.setText(muebleMantenible.getCategoria().getCodigoPresupuestario().toString());
+        jtaObservaciones.setText(muebleMantenible.getObservaciones());
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
 
-    public VistaMuebles() throws SQLException {
+    public VistaMueblesMantenible() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
 
@@ -93,7 +94,7 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         jtaObservaciones = new javax.swing.JTextArea();
 
         setClosable(true);
-        setTitle("SISPA - Mueble");
+        setTitle("SISPA - Automotores");
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
@@ -125,9 +126,9 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Mueble");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores_blanco.png"))); // NOI18N
+        jlTituloPrincipal.setText("SISPA - Automotores");
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));

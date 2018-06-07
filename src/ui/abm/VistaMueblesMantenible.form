@@ -7,7 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="SISPA - Mueble"/>
+    <Property name="title" type="java.lang.String" value="SISPA - Automotores"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -101,13 +101,13 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/ic_mueble_blanco.png"/>
+                  <Image iconType="3" name="/imagenes/ic_automotores_blanco.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="SISPA - Mueble"/>
+                <Property name="text" type="java.lang.String" value="SISPA - Automotores"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="120" y="0" width="340" height="70"/>
+                  <AbsoluteConstraints x="120" y="0" width="440" height="70"/>
                 </Constraint>
               </Constraints>
             </Component>

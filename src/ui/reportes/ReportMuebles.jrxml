@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="021920b2-2c81-441a-b197-609d4dde79a1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      muebles.`nombre` AS muebles_nombre,
@@ -27,19 +30,16 @@ FROM
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="9643c521-5e1c-4802-86aa-d4d25c34e650"/>
 				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="96220b69-edae-48e8-9230-fff395f9ebc9"/>
+					<reportElement x="20" y="20" width="350" height="43" forecolor="#FFFFFF" uuid="96220b69-edae-48e8-9230-fff395f9ebc9"/>
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TITLE]]></text>
+					<text><![CDATA[Reporte Muebles]]></text>
 				</staticText>
-				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="0901108f-cc74-4a5a-8759-471204f404b3"/>
-					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Add a description here]]></text>
-				</staticText>
+				<image>
+					<reportElement x="501" y="0" width="72" height="72" uuid="92afaeb4-009c-42de-8ad8-41a7c25ef1cc"/>
+					<imageExpression><![CDATA["C:\\Users\\Kuky\\Documents\\NetBeansProjects\\Sispa\\sispa\\src\\imagenes\\ic_informe_blanco.png"]]></imageExpression>
+				</image>
 			</frame>
 		</band>
 	</title>
@@ -166,7 +166,7 @@ FROM
 			<textField>
 				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="2e31b307-31f0-45e3-ac38-6ed031997ac2"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="adf7c55e-14dc-4ef2-bda5-5accfd8634a0"/>
