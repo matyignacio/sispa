@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import objeto.Mueble;
+import objeto.MuebleMantenible;
 import ui.Login;
 
 /**
@@ -20,8 +20,8 @@ import ui.Login;
  */
 public class MuebleMantenibleControlador {
 
-    private Mueble mueble;
-    private ArrayList<Mueble> muebles = new ArrayList<>();
+    private MuebleMantenible muebleMantenible;
+    private ArrayList<MuebleMantenible> mueblesMatenibles = new ArrayList<>();
     private Connection conn;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -30,7 +30,7 @@ public class MuebleMantenibleControlador {
     ModeloControlador modeloControlador = new ModeloControlador();
     ReparticionControlador reparticionControlador = new ReparticionControlador();
 
-    public Mueble extraer(Integer id) throws SQLException {
+    public MuebleMantenible extraer(Integer id) throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
         modeloControlador = new ModeloControlador();
@@ -43,26 +43,28 @@ public class MuebleMantenibleControlador {
         ps.executeQuery();
         rs = ps.getResultSet();
         while (rs.next()) {
-            mueble = new Mueble();
-            mueble.setId(rs.getInt(1));
-            mueble.setNombre(rs.getString(2));
-            mueble.setVisible(rs.getBoolean(3));
-            mueble.setExpediente(rs.getString(4));
-            mueble.setCaracteristicas(rs.getString(5));
-            mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
-            mueble.setEstado(estadoControlador.extraer(rs.getInt(10)));
-            mueble.setModelo(modeloControlador.extraer(rs.getInt(11)));
-            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            muebleMantenible = new MuebleMantenible();
+            muebleMantenible.setId(rs.getInt(1));
+            muebleMantenible.setNombre(rs.getString(2));
+            muebleMantenible.setVisible(rs.getBoolean(3));
+            muebleMantenible.setExpediente(rs.getString(4));
+            muebleMantenible.setCaracteristicas(rs.getString(5));
+            muebleMantenible.setObservaciones(rs.getString(6));
+            muebleMantenible.setDominio(rs.getString(7));
+            muebleMantenible.setChasis(rs.getString(8));
+            muebleMantenible.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
+            muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
+            muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
+            muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
 
         }
         rs.close();
         ps.close();
         conn.close();
-        return mueble;
+        return muebleMantenible;
     }
 
-    public ArrayList<Mueble> extraerTodos() throws SQLException {
+    public ArrayList<MuebleMantenible> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
         modeloControlador = new ModeloControlador();
@@ -73,72 +75,78 @@ public class MuebleMantenibleControlador {
         ps.setInt(1, Login.usuario.getReparticion().getId());
         ps.execute();
         rs = ps.getResultSet();
-        muebles = new ArrayList<>();
+        mueblesMatenibles = new ArrayList<>();
         while (rs.next()) {
-            mueble = new Mueble();
-            mueble.setId(rs.getInt(1));
-            mueble.setNombre(rs.getString(2));
-            mueble.setVisible(rs.getBoolean(3));
-            mueble.setExpediente(rs.getString(4));
-            mueble.setCaracteristicas(rs.getString(5));
-            mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
-            mueble.setEstado(estadoControlador.extraer(rs.getInt(10)));
-            mueble.setModelo(modeloControlador.extraer(rs.getInt(11)));
-            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
-            muebles.add(mueble);
+            muebleMantenible = new MuebleMantenible();
+            muebleMantenible.setId(rs.getInt(1));
+            muebleMantenible.setNombre(rs.getString(2));
+            muebleMantenible.setVisible(rs.getBoolean(3));
+            muebleMantenible.setExpediente(rs.getString(4));
+            muebleMantenible.setCaracteristicas(rs.getString(5));
+            muebleMantenible.setObservaciones(rs.getString(6));
+            muebleMantenible.setDominio(rs.getString(7));
+            muebleMantenible.setChasis(rs.getString(8));
+            muebleMantenible.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
+            muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
+            muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
+            muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            mueblesMatenibles.add(muebleMantenible);
         }
         rs.close();
         ps.close();
         conn.close();
-        return muebles;
+        return mueblesMatenibles;
     }
 
-    public ArrayList<Mueble> extraerTodosVisibles() throws SQLException {
+    public ArrayList<MuebleMantenible> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=1 AND id_reparticion=? order by nombre";
         ps = conn.prepareStatement(consultaSql);
         ps.setInt(1, Login.usuario.getReparticion().getId());
         ps.execute();
         rs = ps.getResultSet();
-        muebles = new ArrayList<>();
+        mueblesMatenibles = new ArrayList<>();
         while (rs.next()) {
-            mueble = new Mueble();
-            mueble.setId(rs.getInt(1));
-            mueble.setNombre(rs.getString(2));
-            mueble.setVisible(rs.getBoolean(3));
-            mueble.setExpediente(rs.getString(4));
-            mueble.setCaracteristicas(rs.getString(5));
-            mueble.setObservaciones(rs.getString(6));
-            mueble.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
-            mueble.setEstado(estadoControlador.extraer(rs.getInt(10)));
-            mueble.setModelo(modeloControlador.extraer(rs.getInt(11)));
-            mueble.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
-            muebles.add(mueble);
+            muebleMantenible = new MuebleMantenible();
+            muebleMantenible.setId(rs.getInt(1));
+            muebleMantenible.setNombre(rs.getString(2));
+            muebleMantenible.setVisible(rs.getBoolean(3));
+            muebleMantenible.setExpediente(rs.getString(4));
+            muebleMantenible.setCaracteristicas(rs.getString(5));
+            muebleMantenible.setObservaciones(rs.getString(6));
+            muebleMantenible.setDominio(rs.getString(7));
+            muebleMantenible.setChasis(rs.getString(8));
+            muebleMantenible.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
+            muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
+            muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
+            muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            mueblesMatenibles.add(muebleMantenible);
         }
         rs.close();
         ps.close();
         conn.close();
-        return muebles;
+        return mueblesMatenibles;
     }
 
-    public void insertar(Mueble mueble) throws SQLException {
+    public void insertar(MuebleMantenible muebleMantenible) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO muebles ( nombre, visible, expediente, caracteristica, observaciones,"
+            String consultaSql = "INSERT INTO muebles ( nombre, visible, expediente, caracteristica, observaciones,dominio,chasis,"
                     + "id_categoria, id_estado, id_modelo, id_reparticion, mantenible)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
             ps = conn.prepareStatement(consultaSql);
-            ps.setString(1, mueble.getNombre());
-            ps.setBoolean(2, mueble.isVisible());
-            ps.setString(3, mueble.getExpediente());
-            ps.setString(4, mueble.getCaracteristicas());
-            ps.setString(5, mueble.getObservaciones());
-            ps.setInt(6, mueble.getCategoria().getId());
-            ps.setInt(7, mueble.getEstado().getId());
-            ps.setInt(8, mueble.getModelo().getId());
-            ps.setInt(9, mueble.getReparticion().getId());
-            ps.setInt(10, 1);
+            ps.setString(1, muebleMantenible.getNombre());
+            ps.setBoolean(2, muebleMantenible.isVisible());
+            ps.setString(3, muebleMantenible.getExpediente());
+            ps.setString(4, muebleMantenible.getCaracteristicas());
+            ps.setString(5, muebleMantenible.getObservaciones());
+            ps.setString(6, muebleMantenible.getDominio());
+            ps.setString(7, muebleMantenible.getChasis());
+            ps.setInt(8, muebleMantenible.getCategoria().getId());
+            ps.setInt(9, muebleMantenible.getEstado().getId());
+            ps.setInt(10, muebleMantenible.getModelo().getId());
+            ps.setInt(11, muebleMantenible.getReparticion().getId());
+            ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -146,39 +154,41 @@ public class MuebleMantenibleControlador {
         }
     }
 
-    public void modificar(Mueble mueble) throws SQLException {
+    public void modificar(MuebleMantenible muebleMantenible) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE muebles SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, id_categoria=?,"
+            String consultaSql = "UPDATE muebles SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, dominio=?, chasis=?, id_categoria=?,"
                     + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
-            ps.setString(1, mueble.getNombre());
-            ps.setBoolean(2, mueble.isVisible());
-            ps.setString(3, mueble.getExpediente());
-            ps.setString(4, mueble.getCaracteristicas());
-            ps.setString(5, mueble.getObservaciones());
-            ps.setInt(6, mueble.getCategoria().getId());
-            ps.setInt(7, mueble.getEstado().getId());
-            ps.setInt(8, mueble.getModelo().getId());
-            ps.setInt(9, mueble.getReparticion().getId());
-            ps.setInt(10, 1);
-            ps.setInt(11, mueble.getId());
+            ps.setString(1, muebleMantenible.getNombre());
+            ps.setBoolean(2, muebleMantenible.isVisible());
+            ps.setString(3, muebleMantenible.getExpediente());
+            ps.setString(4, muebleMantenible.getCaracteristicas());
+            ps.setString(5, muebleMantenible.getObservaciones());
+             ps.setString(6, muebleMantenible.getDominio());
+            ps.setString(7, muebleMantenible.getChasis());
+            ps.setInt(8, muebleMantenible.getCategoria().getId());
+            ps.setInt(9, muebleMantenible.getEstado().getId());
+            ps.setInt(10, muebleMantenible.getModelo().getId());
+            ps.setInt(11, muebleMantenible.getReparticion().getId());
+            ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
+            ps.setInt(13, muebleMantenible.getId());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, mueble.toString() + " modificado correctamente");
+            JOptionPane.showMessageDialog(null, muebleMantenible.toString() + " modificado correctamente");
             ps.close();
             conn.close();
         }
     }
 
-    public void borrar(Mueble mueble) throws SQLException {
+    public void borrar(MuebleMantenible muebleMantenible) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {
                 conn = ConexionDB.GetConnection();
                 String consultaSql = "DELETE FROM muebles WHERE id=?";
                 ps = conn.prepareStatement(consultaSql);
-                ps.setInt(1, mueble.getId());
+                ps.setInt(1, muebleMantenible.getId());
                 ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, mueble.toString() + " eliminado correctamente");
+                JOptionPane.showMessageDialog(null, muebleMantenible.toString() + " eliminado correctamente");
                 ps.close();
                 conn.close();
             } catch (SQLException ex) {

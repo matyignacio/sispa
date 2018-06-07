@@ -5,7 +5,7 @@
  */
 package ui.gestion;
 
-import controlador.MuebleControlador;
+import controlador.MuebleMantenibleControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import objeto.Mueble;
-import ui.abm.AbmMuebles;
-import ui.grillas.GrillaMuebles;
+import objeto.MuebleMantenible;
+import ui.grillas.GrillaMueblesMantenibles;
+import ui.abm.AbmMuebleMantenible;
 
 /**
  *
@@ -23,8 +23,8 @@ import ui.grillas.GrillaMuebles;
  */
 public class GestionMueblesMantenible extends javax.swing.JInternalFrame implements Gestionable {
 
-    GrillaMuebles grillaMuebles;
-    MuebleControlador muebleControlador = new MuebleControlador();
+    GrillaMueblesMantenibles grillaMueblesMantenibles;
+    MuebleMantenibleControlador muebleMantenibleControlador = new MuebleMantenibleControlador();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -58,7 +58,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtMuebles = new javax.swing.JTable();
+        jtMueblesMantenibles = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
@@ -109,10 +109,10 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
-        jtMuebles.setBackground(new java.awt.Color(204, 204, 204));
-        jtMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jtMuebles.setForeground(new java.awt.Color(33, 150, 243));
-        jtMuebles.setModel(new javax.swing.table.DefaultTableModel(
+        jtMueblesMantenibles.setBackground(new java.awt.Color(204, 204, 204));
+        jtMueblesMantenibles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtMueblesMantenibles.setForeground(new java.awt.Color(33, 150, 243));
+        jtMueblesMantenibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +123,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtMuebles);
+        jScrollPane1.setViewportView(jtMueblesMantenibles);
 
         jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1020, 330));
 
@@ -206,13 +206,13 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        if (jtMuebles.getSelectedRow() > -1) {
-            AbmMuebles abmMuebles;
+        if (jtMueblesMantenibles.getSelectedRow() > -1) {
+            AbmMuebleMantenible abmMueblesAbmMuebleMantenible;
             try {
-                abmMuebles = new AbmMuebles(ABM_BAJA, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
-                        get(jtMuebles.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmMuebles);
-                abmMuebles.show();
+                abmMueblesAbmMuebleMantenible = new AbmMuebleMantenible(ABM_BAJA, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
+                        get(jtMueblesMantenibles.getSelectedRow()).getId()), this);
+                this.desktopPane.add(abmMueblesAbmMuebleMantenible);
+                abmMueblesAbmMuebleMantenible.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -222,11 +222,11 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        AbmMuebles abmMuebles;
+        AbmMuebleMantenible abmMuebleMantenible;
         try {
-            abmMuebles = new AbmMuebles(ABM_ALTA, new Mueble(), this);
-            this.desktopPane.add(abmMuebles);
-            abmMuebles.show();
+            abmMuebleMantenible = new AbmMuebleMantenible(ABM_ALTA, new MuebleMantenible(), this);
+            this.desktopPane.add(abmMuebleMantenible);
+            abmMuebleMantenible.show();
         } catch (SQLException ex) {
             Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -234,13 +234,13 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        if (jtMuebles.getSelectedRow() > -1) {
-            AbmMuebles abmMuebles;
+        if (jtMueblesMantenibles.getSelectedRow() > -1) {
+            AbmMuebleMantenible abmMuebleMantenible;
             try {
-                abmMuebles = new AbmMuebles(ABM_MODIFICACION, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
-                        get(jtMuebles.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmMuebles);
-                abmMuebles.show();
+                abmMuebleMantenible = new AbmMuebleMantenible(ABM_MODIFICACION, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
+                        get(jtMueblesMantenibles.getSelectedRow()).getId()), this);
+                this.desktopPane.add(abmMuebleMantenible);
+                abmMuebleMantenible.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -261,16 +261,16 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
-    private javax.swing.JTable jtMuebles;
+    private javax.swing.JTable jtMueblesMantenibles;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actualizarGestion() {
         try {
-            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodosVisibles());
-            jtMuebles.setModel(grillaMuebles);
+            grillaMueblesMantenibles = new GrillaMueblesMantenibles((ArrayList<MuebleMantenible>) muebleMantenibleControlador.extraerTodosVisibles());
+            jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
         } catch (SQLException ex) {
-            Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

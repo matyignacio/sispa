@@ -20,6 +20,7 @@ import ui.abm.AbmMuebles;
 import ui.abm.VistaMuebles;
 import ui.grillas.GrillaMarcas;
 import ui.grillas.GrillaMuebles;
+import ui.gestion.GestionMueblesMantenible;
 
 /**
  *
@@ -67,6 +68,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
         jbVer = new javax.swing.JButton();
+        jbmueblesMantenibles = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -178,7 +180,14 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             }
         });
         jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 100, -1));
-        jbVer.getAccessibleContext().setAccessibleName("Ver");
+
+        jbmueblesMantenibles.setText("Automotores");
+        jbmueblesMantenibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbmueblesManteniblesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 580, -1, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -285,6 +294,18 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         }
     }//GEN-LAST:event_jbVerActionPerformed
 
+    private void jbmueblesManteniblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmueblesManteniblesActionPerformed
+        GestionMueblesMantenible gestionMueblesMantenible;
+        try {
+            gestionMueblesMantenible = new GestionMueblesMantenible();
+            this.desktopPane.add(gestionMueblesMantenible);
+            gestionMueblesMantenible.show();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbmueblesManteniblesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
@@ -292,6 +313,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbVer;
+    private javax.swing.JButton jbmueblesMantenibles;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
