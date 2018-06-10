@@ -7,6 +7,7 @@ package util;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -18,25 +19,21 @@ import objeto.MuebleMantenible;
  */
 public class MiRender extends DefaultTableCellRenderer {
 
-    java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-
+//    java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+//    int i = 0;
     public Component getTableCellRendererComponent(JTable table,
-            MuebleMantenible muebleMantenible,
+            Object object,
             boolean isSelected,
             boolean hasFocus,
             int row,
             int column) {
-        super.getTableCellRendererComponent(table, muebleMantenible, isSelected, hasFocus, row, column);
-        if (currentTimestamp.compareTo(muebleMantenible.getFecha()) > 0) {
-            this.setOpaque(true);
-            this.setBackground(Color.RED);
-            this.setForeground(Color.YELLOW);
-        } else {
-            this.setOpaque(true);
-            this.setBackground(Color.RED);
-            this.setForeground(Color.YELLOW);
-        }
-
+        super.getTableCellRendererComponent(table, object, isSelected, hasFocus, row, column);
+//        if (String.valueOf(table.getValueAt(row, column)).equals("FORD")) {
+//            this.setOpaque(true);
+//            this.setForeground(Color.RED);
+//        } else {
+//
+//        }
         return this;
     }
 }
