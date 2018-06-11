@@ -24,9 +24,9 @@ import objeto.MuebleMantenible;
  */
 public class MiRender extends DefaultTableCellRenderer {
 
-    MuebleMantenible muebleMantenible = new MuebleMantenible();
+    MuebleMantenible muebleMantenible;
     MuebleMantenibleControlador mantenibleControlador = new MuebleMantenibleControlador();
-
+    int i = 0;
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
 
     public Component getTableCellRendererComponent(JTable table,
@@ -36,27 +36,25 @@ public class MiRender extends DefaultTableCellRenderer {
             int row,
             int column) {
         super.getTableCellRendererComponent(table, object, isSelected, hasFocus, row, column);
-        try {
-            muebleMantenible = mantenibleControlador.extraerDeTabla(
-                    String.valueOf(table.getValueAt(row, 0)),
-                    String.valueOf(table.getValueAt(row, 1)),
-                    String.valueOf(table.getValueAt(row, 2)),
-                    String.valueOf(table.getValueAt(row, 3)),
-                    Integer.parseInt(String.valueOf(table.getValueAt(row, 4))));
-            JOptionPane.showMessageDialog(table, (muebleMantenible.getNombre()));
-//            if (currentTimestamp-muebleMantenible.getFecha()) {
-//
+        for (i = 0; i < 3; i++) {
+            muebleMantenible = new MuebleMantenible();
+            try {
+                muebleMantenible = mantenibleControlador.extraerDeTabla(
+                        String.valueOf(table.getValueAt(i, 0)),
+                        String.valueOf(table.getValueAt(i, 1)),
+                        String.valueOf(table.getValueAt(i, 2)),
+                        String.valueOf(table.getValueAt(i, 3)),
+                        Integer.parseInt(String.valueOf(table.getValueAt(i, 5))));
+//            if (currentTimestamp.compareTo(muebleMantenible.getFecha()) < 0) {
+//                this.setOpaque(true);
+//                this.setForeground(Color.RED);
 //            }
-//        if (String.valueOf(table.getValueAt(row, column)).equals("FORD")) {
-//            this.setOpaque(true);
-//            this.setForeground(Color.RED);
-//        } else {
-//
-//        }
-            //JOptionPane.showMessageDialog(table, String.valueOf(table.getValueAt(row, 5)));
-        } catch (SQLException ex) {
-            Logger.getLogger(MiRender.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(MiRender.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(muebleMantenible.getFecha());
         }
+
         return this;
     }
 }

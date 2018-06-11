@@ -74,8 +74,8 @@ public class MuebleMantenibleControlador {
         reparticionControlador = new ReparticionControlador();
 
         conn = ConexionDB.GetConnection();
-        String consultaSql = "SELECT * FROM muebles WHERE nombre=?, expediente=?, dominio=?,"
-                + "chasis=?, id_modelo=? AND mantenible=1";
+        String consultaSql = "SELECT * FROM muebles WHERE nombre=? AND expediente=? AND dominio=? "
+                + "AND chasis=? AND id_modelo=? AND mantenible=1";
         ps = conn.prepareStatement(consultaSql);
         ps.setString(1, nombre);
         ps.setString(2, expediente);
