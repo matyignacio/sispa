@@ -66,6 +66,46 @@ public class MuebleMantenibleControlador {
         return muebleMantenible;
     }
 
+    public MuebleMantenible extraerDeTabla(String nombre, String expediente, String dominio,
+            String chasis, Integer modelo) throws SQLException {
+        categoriaControlador = new CategoriaControlador();
+        estadoControlador = new EstadoControlador();
+        modeloControlador = new ModeloControlador();
+        reparticionControlador = new ReparticionControlador();
+
+        conn = ConexionDB.GetConnection();
+        String consultaSql = "SELECT * FROM muebles WHERE nombre=?, expediente=?, dominio=?,"
+                + "chasis=?, id_modelo=? AND mantenible=1";
+        ps = conn.prepareStatement(consultaSql);
+        ps.setString(1, nombre);
+        ps.setString(2, expediente);
+        ps.setString(3, dominio);
+        ps.setString(4, chasis);
+        ps.setInt(5, modelo);
+        ps.executeQuery();
+        rs = ps.getResultSet();
+        while (rs.next()) {
+            muebleMantenible = new MuebleMantenible();
+            muebleMantenible.setId(rs.getInt(1));
+            muebleMantenible.setNombre(rs.getString(2));
+            muebleMantenible.setVisible(rs.getBoolean(3));
+            muebleMantenible.setExpediente(rs.getString(4));
+            muebleMantenible.setCaracteristicas(rs.getString(5));
+            muebleMantenible.setObservaciones(rs.getString(6));
+            muebleMantenible.setDominio(rs.getString(7));
+            muebleMantenible.setChasis(rs.getString(8));
+            muebleMantenible.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
+            muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
+            muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
+            muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            muebleMantenible.setFecha(rs.getTimestamp(14));
+        }
+        rs.close();
+        ps.close();
+        conn.close();
+        return muebleMantenible;
+    }
+
     public ArrayList<MuebleMantenible> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
@@ -177,7 +217,7 @@ public class MuebleMantenibleControlador {
             ps.setInt(10, muebleMantenible.getModelo().getId());
             ps.setInt(11, muebleMantenible.getReparticion().getId());
             ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
-            ps.setTimestamp(13,currentTimestamp);
+            ps.setTimestamp(13, currentTimestamp);
             ps.setInt(14, muebleMantenible.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, muebleMantenible.toString() + " modificado correctamente");
