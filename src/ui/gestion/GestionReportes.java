@@ -5,9 +5,19 @@
  */
 package ui.gestion;
 
+import controlador.ConexionDB;
+import java.sql.Connection;
 import ui.*;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -15,6 +25,7 @@ import javax.swing.JDesktopPane;
  */
 public class GestionReportes extends javax.swing.JInternalFrame {
 
+    private Connection conn;
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -46,6 +57,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jbMuebles = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Reportes");
@@ -93,6 +105,19 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
+        jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
+        jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbMuebles.setForeground(new java.awt.Color(33, 150, 243));
+        jbMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
+        jbMuebles.setText("Muebles");
+        jbMuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMueblesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 90));
+
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -138,8 +163,28 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jpTituloMousePressed
 
+    private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
+
+        try {
+            conn = ConexionDB.GetConnection();
+            JasperReport reporte = (JasperReport) JRLoader.loadObject("src\\ui\\reportes\\MuebleReport.jasper");
+            JasperPrint jasperPrint;
+            jasperPrint = JasperFillManager.fillReport(reporte, null, conn);
+            JasperViewer jv = new JasperViewer(jasperPrint);
+            jv.show();
+//            JRExporter exporter = new JRPdfExporter();
+//
+//            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+//            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("reportePDF.pdf"));
+//            exporter.exportReport();
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbMueblesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JButton jbMuebles;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;

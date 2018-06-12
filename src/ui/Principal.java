@@ -291,12 +291,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmiCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerrarSesionActionPerformed
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar sesión?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
-        dispose();
-        Login login;
-        login = new Login();
-        login.show();
+            dispose();
+            Login login;
+            login = new Login();
+            login.show();
         }
-    
+
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
 
     private void jmiAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAjustesActionPerformed
@@ -350,7 +350,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbUsuariosActionPerformed
 
     private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
-        // TODO add your handling code here:
+        GestionReportes gestionReportes;
+        try {
+            gestionReportes = new GestionReportes();
+            this.dpPrincipal.add(gestionReportes);
+            gestionReportes.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbInformesActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
