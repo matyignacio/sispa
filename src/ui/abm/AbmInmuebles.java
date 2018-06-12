@@ -242,7 +242,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlObservaciones.setText("Observaciones:");
-        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 210, 20));
+        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 210, 20));
 
         jlReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jlReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -323,7 +323,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jtaObservaciones.setRows(5);
         jScrollPane1.setViewportView(jtaObservaciones);
 
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 600, -1));
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 600, -1));
 
         jlValor.setBackground(new java.awt.Color(204, 204, 204));
         jlValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
