@@ -14,6 +14,15 @@ public class Mueble extends BienPatrimonial {
     private Estado estado;
     private Categoria categoria;
     private Modelo modelo;
+    private int cantidad;
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public Estado getEstado() {
         return estado;

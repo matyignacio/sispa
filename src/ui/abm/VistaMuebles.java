@@ -41,6 +41,8 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         jtfInciso.setText(mueble.getCategoria().getInciso().toString());
         jtfCodigo.setText(mueble.getCategoria().getCodigoPresupuestario().toString());
         jtaObservaciones.setText(mueble.getObservaciones());
+        jtfValor.setText(String.valueOf(mueble.getValor()));
+        jtfCantidad.setText(String.valueOf( mueble.getCantidad()));
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
@@ -91,6 +93,10 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         jtfCodigo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaObservaciones = new javax.swing.JTextArea();
+        jlCantidad = new javax.swing.JLabel();
+        jtfCantidad = new javax.swing.JTextField();
+        jlValor = new javax.swing.JLabel();
+        jtfValor = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("SISPA - Mueble");
@@ -194,7 +200,7 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlObservaciones.setText("Observaciones: ");
-        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 210, 20));
+        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 210, 20));
 
         jlReparticion.setBackground(new java.awt.Color(204, 204, 204));
         jlReparticion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -342,7 +348,43 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         jtaObservaciones.setEnabled(false);
         jScrollPane1.setViewportView(jtaObservaciones);
 
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 660, 210));
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 660, 210));
+
+        jlCantidad.setBackground(new java.awt.Color(204, 204, 204));
+        jlCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlCantidad.setForeground(new java.awt.Color(33, 150, 243));
+        jlCantidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlCantidad.setText("Cantidad: ");
+        jpPrincipal.add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 210, 20));
+
+        jtfCantidad.setBackground(new java.awt.Color(204, 204, 204));
+        jtfCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfCantidad.setForeground(new java.awt.Color(33, 150, 243));
+        jtfCantidad.setEnabled(false);
+        jtfCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCantidadActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 220, -1));
+
+        jlValor.setBackground(new java.awt.Color(204, 204, 204));
+        jlValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlValor.setForeground(new java.awt.Color(33, 150, 243));
+        jlValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlValor.setText("Valor: ");
+        jpPrincipal.add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 210, 20));
+
+        jtfValor.setBackground(new java.awt.Color(204, 204, 204));
+        jtfValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfValor.setForeground(new java.awt.Color(33, 150, 243));
+        jtfValor.setEnabled(false);
+        jtfValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfValorActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -411,12 +453,21 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCodigoActionPerformed
 
+    private void jtfCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCantidadActionPerformed
+
+    private void jtfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlCantidad;
     private javax.swing.JLabel jlCaracteristicas;
     private javax.swing.JLabel jlCategoria;
     private javax.swing.JLabel jlCodigo;
@@ -431,9 +482,11 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlReparticion;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
+    private javax.swing.JLabel jlValor;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JTextArea jtaObservaciones;
+    private javax.swing.JTextField jtfCantidad;
     private javax.swing.JTextField jtfCaracteristicas;
     private javax.swing.JTextField jtfCategoria;
     private javax.swing.JTextField jtfCodigo;
@@ -444,6 +497,7 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfModelo;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfReparticion;
+    private javax.swing.JTextField jtfValor;
     // End of variables declaration//GEN-END:variables
 
 }

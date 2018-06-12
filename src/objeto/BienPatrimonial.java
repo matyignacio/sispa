@@ -15,6 +15,15 @@ public class BienPatrimonial extends ObjetoBase {
     private String caracteristicas;
     private String observaciones;
     private Reparticion reparticion;
+    private float valor;
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 
     public String getExpediente() {
         return expediente;

@@ -16,6 +16,15 @@ public class MuebleMantenible extends Mueble {
     private String dominio;
     private String chasis;
     private Timestamp fecha;
+    private int cantidad;
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public Timestamp getFecha() {
         return fecha;

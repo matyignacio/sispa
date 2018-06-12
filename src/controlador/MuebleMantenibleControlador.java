@@ -58,6 +58,8 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
             muebleMantenible.setFecha(rs.getTimestamp(14));
+            muebleMantenible.setCantidad(rs.getInt(15));
+            muebleMantenible.setValor(rs.getFloat(16));
 
         }
         rs.close();
@@ -99,6 +101,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
             muebleMantenible.setFecha(rs.getTimestamp(14));
+        
         }
         rs.close();
         ps.close();
@@ -132,6 +135,9 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            muebleMantenible.setCantidad(rs.getInt(15));
+            muebleMantenible.setValor(rs.getFloat(16));
+
             mueblesMatenibles.add(muebleMantenible);
         }
         rs.close();
@@ -162,6 +168,9 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            muebleMantenible.setCantidad(rs.getInt(15));
+            muebleMantenible.setValor(rs.getFloat(16));
+
             mueblesMatenibles.add(muebleMantenible);
         }
         rs.close();
@@ -174,8 +183,8 @@ public class MuebleMantenibleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "INSERT INTO muebles ( nombre, visible, expediente, caracteristica, observaciones,dominio,chasis,"
-                    + "id_categoria, id_estado, id_modelo, id_reparticion, mantenible)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+                    + "id_categoria, id_estado, id_modelo, id_reparticion, mantenible, cantidad, valor)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, muebleMantenible.getNombre());
             ps.setBoolean(2, muebleMantenible.isVisible());
@@ -189,6 +198,8 @@ public class MuebleMantenibleControlador {
             ps.setInt(10, muebleMantenible.getModelo().getId());
             ps.setInt(11, muebleMantenible.getReparticion().getId());
             ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
+            ps.setInt(13, muebleMantenible.getCantidad());
+            ps.setFloat(14, muebleMantenible.getValor());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -203,7 +214,7 @@ public class MuebleMantenibleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE muebles SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, dominio=?, chasis=?, id_categoria=?,"
-                    + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=?, fecha=? WHERE id=?";
+                    + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=?, fecha=?, cantidad=?, valor=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, muebleMantenible.getNombre());
             ps.setBoolean(2, muebleMantenible.isVisible());
@@ -218,7 +229,9 @@ public class MuebleMantenibleControlador {
             ps.setInt(11, muebleMantenible.getReparticion().getId());
             ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
             ps.setTimestamp(13, currentTimestamp);
-            ps.setInt(14, muebleMantenible.getId());
+            ps.setInt(14, muebleMantenible.getCantidad());
+            ps.setFloat(15, muebleMantenible.getValor());
+            ps.setInt(16, muebleMantenible.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, muebleMantenible.toString() + " modificado correctamente");
             ps.close();
