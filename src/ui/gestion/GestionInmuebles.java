@@ -62,6 +62,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
+        jbVerInmueble = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -147,7 +148,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 100, -1));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -159,6 +160,17 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
             }
         });
         jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
+
+        jbVerInmueble.setBackground(new java.awt.Color(204, 204, 204));
+        jbVerInmueble.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVerInmueble.setForeground(new java.awt.Color(33, 150, 243));
+        jbVerInmueble.setText("Ver");
+        jbVerInmueble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVerInmuebleActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbVerInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 100, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -249,12 +261,17 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
+    private void jbVerInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerInmuebleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVerInmuebleActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbVerInmueble;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;

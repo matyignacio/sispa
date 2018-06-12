@@ -5,7 +5,6 @@
  */
 package ui.abm;
 
-
 import controlador.ReparticionControlador;
 import controlador.CategoriaControlador;
 import controlador.InmuebleControlador;
@@ -27,7 +26,6 @@ import ui.gestion.Gestionable;
 public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
 
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
-
 
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmCategoria;
@@ -79,8 +77,6 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosSinNinguna().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
 
-        
-
         inicializacionVentana();
 
     }
@@ -116,7 +112,6 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jcbReparticiones = new javax.swing.JComboBox();
         jlExpediente = new javax.swing.JLabel();
         jlObservaciones = new javax.swing.JLabel();
-        jtfObservaciones = new javax.swing.JTextField();
         jlReparticiones = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jlCaracteristicas1 = new javax.swing.JLabel();
@@ -126,6 +121,10 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jlTipo = new javax.swing.JLabel();
         jtfTipo = new javax.swing.JTextField();
         jtfDomicilio = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtaObservaciones = new javax.swing.JTextArea();
+        jlValor = new javax.swing.JLabel();
+        jtfValor = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -189,7 +188,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 100, -1));
 
         jtfExpediente.setBackground(new java.awt.Color(204, 204, 204));
         jtfExpediente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -243,17 +242,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlObservaciones.setText("Observaciones:");
-        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 210, 20));
-
-        jtfObservaciones.setBackground(new java.awt.Color(204, 204, 204));
-        jtfObservaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfObservaciones.setForeground(new java.awt.Color(33, 150, 243));
-        jtfObservaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfObservacionesActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jtfObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 220, -1));
+        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 210, 20));
 
         jlReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jlReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -330,6 +319,29 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         });
         jpPrincipal.add(jtfDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 220, -1));
 
+        jtaObservaciones.setColumns(20);
+        jtaObservaciones.setRows(5);
+        jScrollPane1.setViewportView(jtaObservaciones);
+
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 600, -1));
+
+        jlValor.setBackground(new java.awt.Color(204, 204, 204));
+        jlValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlValor.setForeground(new java.awt.Color(33, 150, 243));
+        jlValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlValor.setText("Valor:");
+        jpPrincipal.add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 210, 20));
+
+        jtfValor.setBackground(new java.awt.Color(204, 204, 204));
+        jtfValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfValor.setForeground(new java.awt.Color(33, 150, 243));
+        jtfValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfValorActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 220, -1));
+
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -386,10 +398,6 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfExpedienteActionPerformed
 
-    private void jtfObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfObservacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfObservacionesActionPerformed
-
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfNombreActionPerformed
@@ -411,8 +419,12 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     }//GEN-LAST:event_jtfDomicilioActionPerformed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        
+
     }//GEN-LAST:event_formMousePressed
+
+    private void jtfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValorActionPerformed
 
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
@@ -424,19 +436,21 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
             }
             jtfExpediente.setText(String.valueOf(inmueble.getExpediente()));
             jtfCaracteristicas.setText(String.valueOf(inmueble.getCaracteristicas()));
-            jtfObservaciones.setText(String.valueOf(inmueble.getObservaciones()));
+            jtaObservaciones.setText(String.valueOf(inmueble.getObservaciones()));
             jtfDomicilio.setText(String.valueOf(inmueble.getDomicilio()));
             jcbReparticiones.setSelectedItem(inmueble.getReparticion());
             jtfTipo.setText(inmueble.getTipo());
+            jtfValor.setText(String.valueOf(inmueble.getValor()));
 
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
                 jtfExpediente.setEnabled(false);
-                jtfObservaciones.setEnabled(false);
+                jtaObservaciones.setEnabled(false);
                 jcbReparticiones.setEnabled(false);
                 jtfTipo.setEnabled(false);
+                jtfValor.setEditable(false);
 
             }
         }
@@ -452,10 +466,11 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         }
         inmueble.setExpediente(jtfExpediente.getText());
         inmueble.setCaracteristicas(jtfCaracteristicas.getText());
-        inmueble.setObservaciones(jtfObservaciones.getText());
+        inmueble.setObservaciones(jtaObservaciones.getText());
         inmueble.setDomicilio(jtfDomicilio.getText());
         inmueble.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
         inmueble.setTipo(jtfTipo.getText());
+        inmueble.setValor(Float.parseFloat(jtfValor.getText()));
         return OK;
     }
 
@@ -487,6 +502,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbAceptar;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JComboBox jcbReparticiones;
@@ -501,17 +517,19 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTipo;
     private javax.swing.JLabel jlTituloPrincipal;
+    private javax.swing.JLabel jlValor;
     private javax.swing.JLabel jlVisible;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JRadioButton jrbNoVisible;
     private javax.swing.JRadioButton jrbVisible;
+    private javax.swing.JTextArea jtaObservaciones;
     private javax.swing.JTextField jtfCaracteristicas;
     private javax.swing.JTextField jtfDomicilio;
     private javax.swing.JTextField jtfExpediente;
     private javax.swing.JTextField jtfNombre;
-    private javax.swing.JTextField jtfObservaciones;
     private javax.swing.JTextField jtfTipo;
+    private javax.swing.JTextField jtfValor;
     // End of variables declaration//GEN-END:variables
 
 }
