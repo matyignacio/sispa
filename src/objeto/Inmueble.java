@@ -14,7 +14,6 @@ public class Inmueble extends BienPatrimonial {
     private String domicilio;
     private String tipo;
 
-
     public String getTipo() {
         return tipo;
     }

@@ -126,7 +126,7 @@ public class EstadoControlador {
                 ps.close();
                 conn.close();
             } catch (SQLException ex) {
-                 JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex, "No se pudo eliminar " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
             }
         }
     }

@@ -44,9 +44,8 @@ public class VistaMueblesMantenible extends javax.swing.JInternalFrame {
         jtaObservaciones.setText(muebleMantenible.getObservaciones());
         jtfCantidad.setText(String.valueOf(muebleMantenible.getCantidad()));
         jtfValor.setText(String.valueOf(muebleMantenible.getValor()));
-        
+
         jlNombreUsuario.setText(Login.usuario.toString());
-        
 
     }
 
@@ -463,7 +462,6 @@ public class VistaMueblesMantenible extends javax.swing.JInternalFrame {
     private void jtfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfValorActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;

@@ -25,7 +25,7 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
-    
+
     private PerfilControlador perfilControlador = new PerfilControlador();
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
     private DefaultComboBoxModel dcbmPerfiles;
@@ -33,39 +33,39 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Usuario usuario;
     private Gestionable ventanaGestion;
-    
+
     public String getOperacion() {
         return operacion;
     }
-    
+
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
-    
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-    
+
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-    
+
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-    
+
     public AbmUsuarios(String operacion, Usuario usuario, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
@@ -79,13 +79,13 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosVisibles().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
         inicializacionVentana();
-        
+
     }
-    
+
     public AbmUsuarios() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        
+
     }
 
     /**
@@ -339,7 +339,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     private void jcbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbReparticionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbReparticionesActionPerformed
-    
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(usuario.getNombre());
@@ -363,7 +363,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }
-    
+
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         usuario.setNombre(jtfNombre.getText());
@@ -378,7 +378,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         usuario.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
         return OK;
     }
-    
+
     @Override
     public int grabar() {
         UsuarioControlador usuarioControlador = new UsuarioControlador();

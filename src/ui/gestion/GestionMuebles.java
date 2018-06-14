@@ -304,7 +304,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             gestionMueblesMantenible = new GestionMueblesMantenible();
             this.desktopPane.add(gestionMueblesMantenible);
             gestionMueblesMantenible.show();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -269,12 +269,12 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
             VistaMueblesMantenible vistaMuebleMantenible;
             try {
                 vistaMuebleMantenible = new VistaMueblesMantenible(muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
-                    get(jtMueblesMantenibles.getSelectedRow()).getId()));
-            this.desktopPane.add(vistaMuebleMantenible);
-            vistaMuebleMantenible.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                        get(jtMueblesMantenibles.getSelectedRow()).getId()));
+                this.desktopPane.add(vistaMuebleMantenible);
+                vistaMuebleMantenible.show();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
@@ -299,10 +299,10 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     @Override
     public void actualizarGestion() {
         try {
-            
+
             grillaMueblesMantenibles = new GrillaMueblesMantenibles((ArrayList<MuebleMantenible>) muebleMantenibleControlador.extraerTodosVisibles());
             jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
-         //   jtMueblesMantenibles.setDefaultRenderer(Object.class , new MiRender());
+            //   jtMueblesMantenibles.setDefaultRenderer(Object.class , new MiRender());
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }

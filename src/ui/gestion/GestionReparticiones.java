@@ -235,7 +235,7 @@ public class GestionReparticiones extends javax.swing.JInternalFrame implements 
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-         if (jtReparticiones.getSelectedRow() > -1) {
+        if (jtReparticiones.getSelectedRow() > -1) {
             AbmReparticion abmReparticion;
             try {
                 abmReparticion = new AbmReparticion(ABM_MODIFICACION, reparticionControlador.extraer(reparticionControlador.extraerTodosSinNinguna().

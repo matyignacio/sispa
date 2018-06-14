@@ -20,45 +20,45 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
-    
+
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
     private DefaultComboBoxModel<Reparticion> dcbmReparticionSuperior;
     private String operacion;
     private Reparticion reparticion;
     private Gestionable ventanaGestion;
-    
+
     public String getOperacion() {
         return operacion;
     }
-    
+
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
-    
+
     public Reparticion getReparticion() {
         return reparticion;
     }
-    
+
     public void setReparticion(Reparticion reparticion) {
         this.reparticion = reparticion;
     }
-    
+
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
-    
+
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
-    
+
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
-    
+
     public AbmReparticion(String operacion, Reparticion reparticion, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         jbgEstado.add(jrbVisible);
@@ -70,13 +70,13 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         dcbmReparticionSuperior = new DefaultComboBoxModel(reparticionControlador.extraerTodos().toArray());
         jcbReparticionSuperior.setModel(dcbmReparticionSuperior);
         inicializacionVentana();
-        
+
     }
-    
+
     public AbmReparticion() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        
+
     }
 
     /**
@@ -334,7 +334,7 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
     private void jtfDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDomicilioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfDomicilioActionPerformed
-    
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(reparticion.getNombre());
@@ -358,7 +358,7 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
             }
         }
     }
-    
+
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         reparticion.setNombre(jtfNombre.getText());
@@ -373,7 +373,7 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         reparticion.setReparticionSuperior((Reparticion) jcbReparticionSuperior.getSelectedItem());
         return OK;
     }
-    
+
     @Override
     public int grabar() {
         ReparticionControlador reparticionControlador = new ReparticionControlador();

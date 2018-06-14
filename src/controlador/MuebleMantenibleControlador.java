@@ -101,7 +101,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
             muebleMantenible.setFecha(rs.getTimestamp(14));
-        
+
         }
         rs.close();
         ps.close();

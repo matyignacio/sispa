@@ -223,7 +223,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
             AbmInmuebles abmInmuebles;
             try {
                 abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                        get(jtInmuebles.getSelectedRow()).getId()),this);
+                        get(jtInmuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmInmuebles);
                 abmInmuebles.show();
             } catch (SQLException ex) {
@@ -248,10 +248,10 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtInmuebles.getSelectedRow() > -1) {
-             AbmInmuebles abmInuebles;
+            AbmInmuebles abmInuebles;
             try {
-                 abmInuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                        get(jtInmuebles.getSelectedRow()).getId()),this);
+                abmInuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
+                        get(jtInmuebles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmInuebles);
                 abmInuebles.show();
             } catch (SQLException ex) {
@@ -263,7 +263,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbVerInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerInmuebleActionPerformed
-         if (jtInmuebles.getSelectedRow() > -1) {
+        if (jtInmuebles.getSelectedRow() > -1) {
             VistaInmuebles vistaInmuebles;
             try {
                 vistaInmuebles = new VistaInmuebles(inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().

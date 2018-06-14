@@ -42,7 +42,7 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
         jtfCodigo.setText(mueble.getCategoria().getCodigoPresupuestario().toString());
         jtaObservaciones.setText(mueble.getObservaciones());
         jtfValor.setText(String.valueOf(mueble.getValor()));
-        jtfCantidad.setText(String.valueOf( mueble.getCantidad()));
+        jtfCantidad.setText(String.valueOf(mueble.getCantidad()));
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
@@ -460,7 +460,6 @@ public class VistaMuebles extends javax.swing.JInternalFrame {
     private void jtfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfValorActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;

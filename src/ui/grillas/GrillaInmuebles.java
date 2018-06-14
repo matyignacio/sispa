@@ -58,12 +58,11 @@ public class GrillaInmuebles extends AbstractTableModel {
             case 4:
                 return inmueble.getObservaciones();
             case 5:
-               return inmueble.getDomicilio();
+                return inmueble.getDomicilio();
             case 6:
                 return inmueble.getTipo();
             case 7:
                 return inmueble.getReparticion();
-       
 
             default:
                 return null;
@@ -89,7 +88,7 @@ public class GrillaInmuebles extends AbstractTableModel {
                 return "TIPO";
             case 7:
                 return "REPARTICION";
-   
+
             default:
                 return "";
         }

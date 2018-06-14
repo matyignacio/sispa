@@ -156,7 +156,7 @@ public class InmuebleControlador {
             ps.setInt(8, inmueble.getReparticion().getId());
             ps.setFloat(9, inmueble.getValor());
             ps.setInt(10, inmueble.getId());
-            
+
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, inmueble.toString() + " modificado correctamente");
             ps.close();

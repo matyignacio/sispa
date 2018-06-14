@@ -45,15 +45,14 @@ public class MiRender extends DefaultTableCellRenderer {
                         String.valueOf(table.getValueAt(i, 2)),
                         String.valueOf(table.getValueAt(i, 3)),
                         Integer.parseInt(String.valueOf(table.getValueAt(i, 5))));
-            if (currentTimestamp.compareTo(muebleMantenible.getFecha()) < 0) {
-                this.setOpaque(true);
-                this.setForeground(Color.RED);
-            }
+                if (currentTimestamp.compareTo(muebleMantenible.getFecha()) < 0) {
+                    this.setOpaque(true);
+                    this.setForeground(Color.RED);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(MiRender.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+
         }
 
         return this;
