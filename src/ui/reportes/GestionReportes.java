@@ -61,6 +61,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jbMuebles = new javax.swing.JButton();
+        jbInmuebles = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Reportes");
@@ -120,6 +121,19 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             }
         });
         jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 90));
+
+        jbInmuebles.setBackground(new java.awt.Color(204, 204, 204));
+        jbInmuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInmuebles.setForeground(new java.awt.Color(33, 150, 243));
+        jbInmuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_inmueble.png"))); // NOI18N
+        jbInmuebles.setText("Inmuebles");
+        jbInmuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInmuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInmueblesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 210, 90));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -194,8 +208,13 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbMueblesActionPerformed
 
+    private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
+
+    }//GEN-LAST:event_jbInmueblesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JButton jbInmuebles;
     private javax.swing.JButton jbMuebles;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
