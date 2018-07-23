@@ -13,8 +13,10 @@ public class BienPatrimonial extends ObjetoBase {
 
     private String expediente;
     private String caracteristicas;
+
     private String observaciones;
     private Reparticion reparticion;
+
     private float valor;
 
     public float getValor() {

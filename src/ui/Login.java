@@ -39,7 +39,6 @@ public class Login extends javax.swing.JFrame {
 
         jpPrincipal = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
-        jlSubtitulo = new javax.swing.JLabel();
         jl_salir = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
         jlClave = new javax.swing.JLabel();
@@ -70,11 +69,6 @@ public class Login extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jlSubtitulo.setText("Sistema de Control de Patrimonio");
-        jpTitulo.add(jlSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
-
         jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jl_salir.setForeground(new java.awt.Color(255, 255, 255));
         jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -88,11 +82,11 @@ public class Login extends javax.swing.JFrame {
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_login_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Bienvenido");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 340, 70));
+        jlTituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo Centrado.png"))); // NOI18N
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 150));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 140));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 150));
 
         jlClave.setBackground(new java.awt.Color(255, 255, 255));
         jlClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -253,7 +247,6 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbAceptar;
     private javax.swing.JLabel jlClave;
-    private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jl_salir;

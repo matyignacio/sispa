@@ -54,7 +54,6 @@ public class Principal extends javax.swing.JFrame {
         jpTitulo = new javax.swing.JPanel();
         jlNombreUsuario = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
-        jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jbInmuebles = new javax.swing.JButton();
         jbMuebles = new javax.swing.JButton();
@@ -107,22 +106,18 @@ public class Principal extends javax.swing.JFrame {
         jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
-        jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 170, -1));
+        jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, 170, -1));
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setText("SISPA");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 110, -1));
-
-        jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jlSubtitulo.setText("Sistema de Control de Patrimonio");
-        jpTitulo.add(jlSubtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+        jlTituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo Centrado.png"))); // NOI18N
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 200, -1));
 
         jlBienvenido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlBienvenido.setForeground(new java.awt.Color(255, 255, 255));
         jlBienvenido.setText("Bienvenido: ");
-        jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
+        jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, -1));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 200));
 
@@ -206,7 +201,7 @@ public class Principal extends javax.swing.JFrame {
         );
         dpPrincipalLayout.setVerticalGroup(
             dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
 
         jmbPrincipal.setBackground(new java.awt.Color(33, 150, 243));
@@ -409,7 +404,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jbUsuarios;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
-    private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JMenu jmAcercaDe;
     private javax.swing.JMenu jmModulos;
