@@ -113,7 +113,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbMuebles.setForeground(new java.awt.Color(33, 150, 243));
         jbMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
-        jbMuebles.setText("Muebles");
+        jbMuebles.setText("Muebles ");
         jbMuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbMuebles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +166,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
         );
 
         pack();
@@ -186,7 +186,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
-            URL in = this.getClass().getResource("MuebleReport.jasper");
+            URL in = this.getClass().getResource("MuebleReportHistorico.jasper");
             reporte = (JasperReport) JRLoader.loadObject(in);
             HashMap<String, Object> parametros = new HashMap<String, Object>();
             parametros.clear();
