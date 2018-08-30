@@ -29,6 +29,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class GestionReportes extends javax.swing.JInternalFrame {
 
     private Connection conn;
+    private final String logotipo = "logo_derecha.png";
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
@@ -184,15 +185,18 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
         try {
             conn = ConexionDB.GetConnection();
+            
             JasperReport reporte;
             JasperPrint jasperPrint;
             URL in = this.getClass().getResource("MuebleReportHistorico.jasper");
             reporte = (JasperReport) JRLoader.loadObject(in);
             HashMap<String, Object> parametros = new HashMap<String, Object>();
             parametros.clear();
+            
             //el nombre que se dio al parametro en JasperReport fue "p1", y se debe llamar desde Java con
             //ese mismo nombre, a su lado se pasa el valor del parametro
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
             JasperViewer.viewReport(jasperPrint);
 //            JRExporter exporter = new JRPdfExporter();
