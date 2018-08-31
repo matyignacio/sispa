@@ -106,20 +106,20 @@ public class Principal extends javax.swing.JFrame {
         jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
-        jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, 170, -1));
+        jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 130, 170, -1));
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo Centrado.png"))); // NOI18N
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 200, -1));
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 200, 150));
 
         jlBienvenido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlBienvenido.setForeground(new java.awt.Color(255, 255, 255));
         jlBienvenido.setText("Bienvenido: ");
-        jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, -1));
+        jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 200));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 150));
 
         jbInmuebles.setBackground(new java.awt.Color(204, 204, 204));
         jbInmuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -132,7 +132,7 @@ public class Principal extends javax.swing.JFrame {
                 jbInmueblesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 210, 90));
+        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 210, 90));
 
         jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
         jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -145,7 +145,7 @@ public class Principal extends javax.swing.JFrame {
                 jbMueblesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 210, 90));
+        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 210, 90));
 
         jbAjustes.setBackground(new java.awt.Color(204, 204, 204));
         jbAjustes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -159,7 +159,7 @@ public class Principal extends javax.swing.JFrame {
                 jbAjustesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 210, 90));
+        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 210, 90));
 
         jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -173,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
                 jbUsuariosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 210, 90));
+        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 210, 90));
 
         jbInformes.setBackground(new java.awt.Color(204, 204, 204));
         jbInformes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -187,7 +187,7 @@ public class Principal extends javax.swing.JFrame {
                 jbInformesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 210, 90));
+        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 210, 90));
 
         dpPrincipal.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

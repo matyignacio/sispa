@@ -10,7 +10,6 @@ import java.sql.Connection;
 import ui.*;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -185,25 +184,16 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
         try {
             conn = ConexionDB.GetConnection();
-            
             JasperReport reporte;
             JasperPrint jasperPrint;
             URL in = this.getClass().getResource("MuebleReportHistorico.jasper");
             reporte = (JasperReport) JRLoader.loadObject(in);
             HashMap<String, Object> parametros = new HashMap<String, Object>();
             parametros.clear();
-            
-            //el nombre que se dio al parametro en JasperReport fue "p1", y se debe llamar desde Java con
-            //ese mismo nombre, a su lado se pasa el valor del parametro
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-            JasperViewer.viewReport(jasperPrint);
-//            JRExporter exporter = new JRPdfExporter();
-//
-//            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-//            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("reportePDF.pdf"));
-//            exporter.exportReport();
+            JasperViewer.viewReport(jasperPrint,false);
             conn.close();
         } catch (JRException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
