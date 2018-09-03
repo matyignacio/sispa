@@ -11,7 +11,9 @@ package util;
  */
 public class Util {
 
-    public static int MUEBLE_MANTENIBLE = 1;
-    public static int MUEBLE_NO_MANTENIBLE = 0;
+    public static final int MUEBLE_MANTENIBLE = 1;
+    public static final int MUEBLE_NO_MANTENIBLE = 0;
+    public static final String CORREO = "sispaunlar@gmail.com";
+    public static final String CLAVE = "sispasispa";
 
 }

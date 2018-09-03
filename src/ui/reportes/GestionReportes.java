@@ -11,8 +11,12 @@ import ui.*;
 import java.net.URL;
 import java.util.HashMap;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
@@ -206,34 +210,56 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
         try {
-              
-            String[] list = {"2014", "2016", "2017","2018", "2019"};
-            JComboBox jcb = new JComboBox(list);
-            jcb.setEditable(true);
-            JOptionPane.showMessageDialog(null, jcb, "SELECCIONE UNA FECHA", JOptionPane.QUESTION_MESSAGE);
-           String fecha = (String) jcb.getSelectedItem();
-           
-     
-            
+            String fecha = listaAnios();
+
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
             URL in = this.getClass().getResource("InmuebleReportAnual.jasper");
             reporte = (JasperReport) JRLoader.loadObject(in);
             HashMap<String, Object> parametros = new HashMap<String, Object>();
+
             parametros.clear();
-            parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
-            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
-            parametros.put("fecha", fecha);
+
+            parametros.put(
+                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put(
+                    "logo", this.getClass().getResourceAsStream(logotipo));
+            parametros.put(
+                    "fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-            JasperViewer.viewReport(jasperPrint, false);
+
+            JasperViewer.viewReport(jasperPrint,
+                    false);
             conn.close();
         } catch (JRException ex) {
-            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionReportes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (SQLException ex) {
-            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionReportes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbInmueblesActionPerformed
+
+    private String listaAnios() {
+        Calendar calendar = new GregorianCalendar();
+        DefaultComboBoxModel dcbmAnios;
+        int i, anio;
+        ArrayList<String> anios = new ArrayList<>();
+        for (i = 0;
+                i < 100; i++) {
+            anio = calendar.get(Calendar.YEAR) - i;
+            anios.add(String.valueOf(anio));
+        }
+        dcbmAnios = new DefaultComboBoxModel(anios.toArray());
+        JComboBox jcb = new JComboBox(dcbmAnios);
+        jcb.setEditable(
+                false);
+        JOptionPane.showMessageDialog(
+                null, jcb, "SELECCIONE UNA FECHA", JOptionPane.QUESTION_MESSAGE);
+        return (String) jcb.getSelectedItem();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
