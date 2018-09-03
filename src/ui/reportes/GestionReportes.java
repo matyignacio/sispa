@@ -62,17 +62,32 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jpPrincipal = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
-        jlTituloPrincipal = new javax.swing.JLabel();
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
-        jbMuebles = new javax.swing.JButton();
-        jbInmuebles = new javax.swing.JButton();
+        jbMueblesHistorico = new javax.swing.JButton();
+        jbInmueblesAnual = new javax.swing.JButton();
+        jbMueblesAnuales = new javax.swing.JButton();
+        jbInmueblesHistoricos = new javax.swing.JButton();
+        jlTituloPrincipal = new javax.swing.JLabel();
+        jbInmueblesHistoricosHistorico = new javax.swing.JButton();
+        jbInmueblesHistoricosAnual = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Reportes");
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 706, Short.MAX_VALUE)
+        );
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,12 +105,6 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             }
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Reportes");
-        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlSubtitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,64 +124,104 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
-        jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
-        jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbMuebles.setForeground(new java.awt.Color(33, 150, 243));
-        jbMuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
-        jbMuebles.setText("Muebles ");
-        jbMuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbMuebles.addActionListener(new java.awt.event.ActionListener() {
+        jbMueblesHistorico.setBackground(new java.awt.Color(204, 204, 204));
+        jbMueblesHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbMueblesHistorico.setForeground(new java.awt.Color(33, 150, 243));
+        jbMueblesHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
+        jbMueblesHistorico.setText("Muebles Historico");
+        jbMueblesHistorico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMueblesHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbMueblesActionPerformed(evt);
+                jbMueblesHistoricoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 90));
+        jpPrincipal.add(jbMueblesHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 260, 90));
 
-        jbInmuebles.setBackground(new java.awt.Color(204, 204, 204));
-        jbInmuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbInmuebles.setForeground(new java.awt.Color(33, 150, 243));
-        jbInmuebles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_inmueble.png"))); // NOI18N
-        jbInmuebles.setText("Inmuebles");
-        jbInmuebles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbInmuebles.addActionListener(new java.awt.event.ActionListener() {
+        jbInmueblesAnual.setBackground(new java.awt.Color(204, 204, 204));
+        jbInmueblesAnual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInmueblesAnual.setForeground(new java.awt.Color(33, 150, 243));
+        jbInmueblesAnual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_inmueble.png"))); // NOI18N
+        jbInmueblesAnual.setText("Inmuebles Anual");
+        jbInmueblesAnual.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInmueblesAnual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbInmueblesActionPerformed(evt);
+                jbInmueblesAnualActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 210, 90));
+        jpPrincipal.add(jbInmueblesAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 270, 90));
 
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jbMueblesAnuales.setBackground(new java.awt.Color(204, 204, 204));
+        jbMueblesAnuales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbMueblesAnuales.setForeground(new java.awt.Color(33, 150, 243));
+        jbMueblesAnuales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_mueble.png"))); // NOI18N
+        jbMueblesAnuales.setText("Muebles Anual ");
+        jbMueblesAnuales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbMueblesAnuales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMueblesAnualesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbMueblesAnuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 260, 90));
 
-        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
-        desktopPane.setLayout(desktopPaneLayout);
-        desktopPaneLayout.setHorizontalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(32, Short.MAX_VALUE)))
-        );
-        desktopPaneLayout.setVerticalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
+        jbInmueblesHistoricos.setBackground(new java.awt.Color(204, 204, 204));
+        jbInmueblesHistoricos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInmueblesHistoricos.setForeground(new java.awt.Color(33, 150, 243));
+        jbInmueblesHistoricos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_inmueble.png"))); // NOI18N
+        jbInmueblesHistoricos.setText("Inmuebles Historico");
+        jbInmueblesHistoricos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInmueblesHistoricos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInmueblesHistoricosActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbInmueblesHistoricos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 270, 90));
+
+        jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe_blanco.png"))); // NOI18N
+        jlTituloPrincipal.setText("SISPA - Reportes");
+        jpPrincipal.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 340, 70));
+
+        jbInmueblesHistoricosHistorico.setBackground(new java.awt.Color(204, 204, 204));
+        jbInmueblesHistoricosHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInmueblesHistoricosHistorico.setForeground(new java.awt.Color(33, 150, 243));
+        jbInmueblesHistoricosHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
+        jbInmueblesHistoricosHistorico.setText("Muebles Mantenibles Historico");
+        jbInmueblesHistoricosHistorico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInmueblesHistoricosHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInmueblesHistoricosHistoricoActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbInmueblesHistoricosHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 270, 90));
+
+        jbInmueblesHistoricosAnual.setBackground(new java.awt.Color(204, 204, 204));
+        jbInmueblesHistoricosAnual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbInmueblesHistoricosAnual.setForeground(new java.awt.Color(33, 150, 243));
+        jbInmueblesHistoricosAnual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
+        jbInmueblesHistoricosAnual.setText("Muebles Mantenibles Anuales");
+        jbInmueblesHistoricosAnual.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbInmueblesHistoricosAnual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInmueblesHistoricosAnualActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbInmueblesHistoricosAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 270, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
         );
 
         pack();
@@ -186,7 +235,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jpTituloMousePressed
 
-    private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
+    private void jbMueblesHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesHistoricoActionPerformed
 
         try {
             conn = ConexionDB.GetConnection();
@@ -206,11 +255,11 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jbMueblesActionPerformed
+    }//GEN-LAST:event_jbMueblesHistoricoActionPerformed
 
-    private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
+    private void jbInmueblesAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesAnualActionPerformed
         try {
-            String fecha = listaAnios();
+            String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
 
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
@@ -240,7 +289,117 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             Logger.getLogger(GestionReportes.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jbInmueblesActionPerformed
+    }//GEN-LAST:event_jbInmueblesAnualActionPerformed
+
+    private void jbMueblesAnualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesAnualesActionPerformed
+        try {
+            String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
+
+            conn = ConexionDB.GetConnection();
+            JasperReport reporte;
+            JasperPrint jasperPrint;
+            URL in = this.getClass().getResource("MuebleReportAnual.jasper");
+            reporte = (JasperReport) JRLoader.loadObject(in);
+            HashMap<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.clear();
+
+            parametros.put(
+                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put(
+                    "logo", this.getClass().getResourceAsStream(logotipo));
+            parametros.put(
+                    "fecha", fecha);
+            jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
+
+            JasperViewer.viewReport(jasperPrint,
+                    false);
+            conn.close();
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReportes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbMueblesAnualesActionPerformed
+
+    private void jbInmueblesHistoricosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosActionPerformed
+        try {
+            conn = ConexionDB.GetConnection();
+            JasperReport reporte;
+            JasperPrint jasperPrint;
+            URL in = this.getClass().getResource("InmuebleReportHistorico.jasper");
+            reporte = (JasperReport) JRLoader.loadObject(in);
+            HashMap<String, Object> parametros = new HashMap<String, Object>();
+            parametros.clear();
+            parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            conn.close();
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbInmueblesHistoricosActionPerformed
+
+    private void jbInmueblesHistoricosHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosHistoricoActionPerformed
+     try {
+            conn = ConexionDB.GetConnection();
+            JasperReport reporte;
+            JasperPrint jasperPrint;
+            URL in = this.getClass().getResource("MuebleMantenibleReportHistorico.jasper");
+            reporte = (JasperReport) JRLoader.loadObject(in);
+            HashMap<String, Object> parametros = new HashMap<String, Object>();
+            parametros.clear();
+            parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            conn.close();
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbInmueblesHistoricosHistoricoActionPerformed
+
+    private void jbInmueblesHistoricosAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosAnualActionPerformed
+         try {
+            String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
+
+            conn = ConexionDB.GetConnection();
+            JasperReport reporte;
+            JasperPrint jasperPrint;
+            URL in = this.getClass().getResource("MuebleMantenibleReportAnual.jasper");
+            reporte = (JasperReport) JRLoader.loadObject(in);
+            HashMap<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.clear();
+
+            parametros.put(
+                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put(
+                    "logo", this.getClass().getResourceAsStream(logotipo));
+            parametros.put(
+                    "fecha", fecha);
+            jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
+
+            JasperViewer.viewReport(jasperPrint,
+                    false);
+            conn.close();
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReportes.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbInmueblesHistoricosAnualActionPerformed
 
     private String listaAnios() {
         Calendar calendar = new GregorianCalendar();
@@ -263,8 +422,12 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JButton jbInmuebles;
-    private javax.swing.JButton jbMuebles;
+    private javax.swing.JButton jbInmueblesAnual;
+    private javax.swing.JButton jbInmueblesHistoricos;
+    private javax.swing.JButton jbInmueblesHistoricosAnual;
+    private javax.swing.JButton jbInmueblesHistoricosHistorico;
+    private javax.swing.JButton jbMueblesAnuales;
+    private javax.swing.JButton jbMueblesHistorico;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
