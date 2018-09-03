@@ -9,6 +9,7 @@
 	<parameter name="fecha" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[call sp_muebles_reparticion($P!{id_reparticion}, $P!{fecha} )]]>
 	</queryString>
@@ -50,7 +51,7 @@
 					<reportElement x="20" y="4" width="121" height="88" uuid="f7138d49-661a-45e6-b2dd-3089cb45fee8">
 						<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
 					</reportElement>
-					<imageExpression><![CDATA["logo_derecha.png"]]></imageExpression>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 				</image>
 			</frame>
 		</band>

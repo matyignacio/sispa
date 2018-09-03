@@ -13,7 +13,9 @@ import java.util.HashMap;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -193,7 +195,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-            JasperViewer.viewReport(jasperPrint,false);
+            JasperViewer.viewReport(jasperPrint, false);
             conn.close();
         } catch (JRException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,7 +205,34 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbMueblesActionPerformed
 
     private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
-
+        try {
+              
+            String[] list = {"2014", "2016", "2017","2018", "2019"};
+            JComboBox jcb = new JComboBox(list);
+            jcb.setEditable(true);
+            JOptionPane.showMessageDialog(null, jcb, "SELECCIONE UNA FECHA", JOptionPane.QUESTION_MESSAGE);
+           String fecha = (String) jcb.getSelectedItem();
+           
+     
+            
+            conn = ConexionDB.GetConnection();
+            JasperReport reporte;
+            JasperPrint jasperPrint;
+            URL in = this.getClass().getResource("InmuebleReportAnual.jasper");
+            reporte = (JasperReport) JRLoader.loadObject(in);
+            HashMap<String, Object> parametros = new HashMap<String, Object>();
+            parametros.clear();
+            parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
+            parametros.put("fecha", fecha);
+            jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            conn.close();
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbInmueblesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
