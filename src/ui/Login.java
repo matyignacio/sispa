@@ -38,23 +38,83 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jpPrincipal = new javax.swing.JPanel();
-        jpTitulo = new javax.swing.JPanel();
-        jl_salir = new javax.swing.JLabel();
-        jlTituloPrincipal = new javax.swing.JLabel();
         jlClave = new javax.swing.JLabel();
         jbAceptar = new javax.swing.JButton();
         jlUsuario = new javax.swing.JLabel();
         jtfUsuario = new javax.swing.JTextField();
         jtfClave = new javax.swing.JPasswordField();
+        jpTitulo1 = new javax.swing.JPanel();
+        jpTitulo = new javax.swing.JPanel();
+        jl_salir = new javax.swing.JLabel();
+        jlTituloPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
 
-        jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
         jpPrincipal.setMinimumSize(new java.awt.Dimension(860, 600));
         jpPrincipal.setPreferredSize(new java.awt.Dimension(854, 600));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlClave.setBackground(new java.awt.Color(255, 255, 255));
+        jlClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlClave.setForeground(new java.awt.Color(33, 150, 243));
+        jlClave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlClave.setText("Clave: ");
+        jpPrincipal.add(jlClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 60, -1));
+
+        jbAceptar.setBackground(new java.awt.Color(204, 204, 204));
+        jbAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbAceptar.setForeground(new java.awt.Color(33, 150, 243));
+        jbAceptar.setText("Aceptar");
+        jbAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptarActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 100, -1));
+
+        jlUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        jlUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlUsuario.setForeground(new java.awt.Color(33, 150, 243));
+        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlUsuario.setText("Correo: ");
+        jpPrincipal.add(jlUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 80, -1));
+
+        jtfUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        jtfUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtfUsuario.setForeground(new java.awt.Color(33, 150, 243));
+        jtfUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfUsuarioActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 210, 30));
+
+        jtfClave.setBackground(new java.awt.Color(204, 204, 204));
+        jtfClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtfClave.setForeground(new java.awt.Color(33, 150, 243));
+        jtfClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfClaveActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jtfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 210, 30));
+
+        jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo1MouseDragged(evt);
+            }
+        });
+        jpTitulo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo1MousePressed(evt);
+            }
+        });
+        jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 510, 100));
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -86,52 +146,7 @@ public class Login extends javax.swing.JFrame {
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo Centrado.png"))); // NOI18N
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 150));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 150));
-
-        jlClave.setBackground(new java.awt.Color(255, 255, 255));
-        jlClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlClave.setForeground(new java.awt.Color(33, 150, 243));
-        jlClave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlClave.setText("Clave: ");
-        jpPrincipal.add(jlClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 290, 60, -1));
-
-        jbAceptar.setBackground(new java.awt.Color(204, 204, 204));
-        jbAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbAceptar.setForeground(new java.awt.Color(33, 150, 243));
-        jbAceptar.setText("Aceptar");
-        jbAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAceptarActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 100, -1));
-
-        jlUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        jlUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlUsuario.setForeground(new java.awt.Color(33, 150, 243));
-        jlUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlUsuario.setText("Correo: ");
-        jpPrincipal.add(jlUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 80, -1));
-
-        jtfUsuario.setBackground(new java.awt.Color(204, 204, 204));
-        jtfUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jtfUsuario.setForeground(new java.awt.Color(33, 150, 243));
-        jtfUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfUsuarioActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jtfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 210, 30));
-
-        jtfClave.setBackground(new java.awt.Color(204, 204, 204));
-        jtfClave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jtfClave.setForeground(new java.awt.Color(33, 150, 243));
-        jtfClave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfClaveActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jtfClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 283, 210, 30));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,6 +201,14 @@ public class Login extends javax.swing.JFrame {
     private void jtfClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfClaveActionPerformed
         ValidarUsuario();
     }//GEN-LAST:event_jtfClaveActionPerformed
+
+    private void jpTitulo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MouseDragged
+
+    private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MousePressed
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }
@@ -252,6 +275,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jl_salir;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
+    private javax.swing.JPanel jpTitulo1;
     private javax.swing.JPasswordField jtfClave;
     private javax.swing.JTextField jtfUsuario;
     // End of variables declaration//GEN-END:variables

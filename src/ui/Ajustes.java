@@ -78,11 +78,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbUsuarios = new javax.swing.JButton();
         jbPerfiles = new javax.swing.JButton();
         jbTipoAdquisicion = new javax.swing.JButton();
+        jpTitulo1 = new javax.swing.JPanel();
 
         setClosable(true);
         setTitle("SISPA - Ajustes");
 
-        jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -121,7 +122,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 140));
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 140));
 
         jbMarcas.setBackground(new java.awt.Color(204, 204, 204));
         jbMarcas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -140,12 +141,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbMarcasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 90));
+        jpPrincipal.add(jbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 120, 80));
 
         jbCodigos.setBackground(new java.awt.Color(204, 204, 204));
         jbCodigos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbCodigos.setForeground(new java.awt.Color(33, 150, 243));
-        jbCodigos.setText("C. Presup.");
+        jbCodigos.setText("Cod. Presup.");
         jbCodigos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbCodigos.setEnabled(false);
         jbCodigos.setPreferredSize(new java.awt.Dimension(90, 121));
@@ -159,7 +160,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCodigosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 120, 90));
+        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 120, 40));
 
         jbModelos.setBackground(new java.awt.Color(204, 204, 204));
         jbModelos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -178,7 +179,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbModelosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 120, 90));
+        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 120, 55));
 
         jbIncisos.setBackground(new java.awt.Color(204, 204, 204));
         jbIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,7 +198,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbIncisosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 120, 90));
+        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, 55));
 
         jbEstados.setBackground(new java.awt.Color(204, 204, 204));
         jbEstados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -216,7 +217,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbEstadosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 120, 90));
+        jpPrincipal.add(jbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 120, 80));
 
         jbCategorias.setBackground(new java.awt.Color(204, 204, 204));
         jbCategorias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -235,7 +236,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCategoriasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 120, 90));
+        jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, 80));
 
         jbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -254,7 +255,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbReparticionesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 120, 90));
+        jpPrincipal.add(jbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 200, 120, 80));
 
         jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -273,7 +274,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbUsuariosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 120, 90));
+        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 120, 80));
 
         jbPerfiles.setBackground(new java.awt.Color(204, 204, 204));
         jbPerfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -292,7 +293,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbPerfilesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 120, 90));
+        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 120, 55));
 
         jbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
         jbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -311,29 +312,38 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbTipoAdquisicionActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 240, 120, 90));
+        jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, 120, 80));
+
+        jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo1MouseDragged(evt);
+            }
+        });
+        jpTitulo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo1MousePressed(evt);
+            }
+        });
+        jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1190, 140));
+
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1181, Short.MAX_VALUE)
+            .addGap(0, 1190, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1190, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 702, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -483,6 +493,14 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbMarcaActionPerformed(evt);// TODO add your handling code here:
     }//GEN-LAST:event_jbMarcasMousePressed
 
+    private void jpTitulo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MouseDragged
+
+    private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MousePressed
+
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
         try {
@@ -546,5 +564,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
+    private javax.swing.JPanel jpTitulo1;
     // End of variables declaration//GEN-END:variables
 }

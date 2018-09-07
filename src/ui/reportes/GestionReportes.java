@@ -65,31 +65,22 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jlTituloPrincipal = new javax.swing.JLabel();
         jbMueblesHistorico = new javax.swing.JButton();
         jbInmueblesAnual = new javax.swing.JButton();
         jbMueblesAnuales = new javax.swing.JButton();
         jbInmueblesHistoricos = new javax.swing.JButton();
-        jlTituloPrincipal = new javax.swing.JLabel();
         jbInmueblesHistoricosHistorico = new javax.swing.JButton();
         jbInmueblesHistoricosAnual = new javax.swing.JButton();
+        jpTitulo1 = new javax.swing.JPanel();
 
         setClosable(true);
         setTitle("SISPA - Reportes");
+        setPreferredSize(new java.awt.Dimension(1216, 736));
 
-        desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
+        desktopPane.setPreferredSize(new java.awt.Dimension(1190, 702));
 
-        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
-        desktopPane.setLayout(desktopPaneLayout);
-        desktopPaneLayout.setHorizontalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        desktopPaneLayout.setVerticalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
-        );
-
-        jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,7 +113,13 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
 
-        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
+        jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe_blanco.png"))); // NOI18N
+        jlTituloPrincipal.setText("SISPA - Reportes");
+        jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 340, 70));
+
+        jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 140));
 
         jbMueblesHistorico.setBackground(new java.awt.Color(204, 204, 204));
         jbMueblesHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -176,12 +173,6 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         });
         jpPrincipal.add(jbInmueblesHistoricos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 270, 90));
 
-        jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
-        jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Reportes");
-        jpPrincipal.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 340, 70));
-
         jbInmueblesHistoricosHistorico.setBackground(new java.awt.Color(204, 204, 204));
         jbInmueblesHistoricosHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbInmueblesHistoricosHistorico.setForeground(new java.awt.Color(33, 150, 243));
@@ -208,20 +199,46 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         });
         jpPrincipal.add(jbInmueblesHistoricosAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 270, 90));
 
+        jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo1MouseDragged(evt);
+            }
+        });
+        jpTitulo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo1MousePressed(evt);
+            }
+        });
+        jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
+
+        desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopPaneLayout.createSequentialGroup()
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1170, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -250,9 +267,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
             JasperViewer.viewReport(jasperPrint, false);
             conn.close();
-        } catch (JRException ex) {
-            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbMueblesHistoricoActionPerformed
@@ -281,13 +296,10 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             JasperViewer.viewReport(jasperPrint,
                     false);
             conn.close();
-        } catch (JRException ex) {
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
                     .getName()).log(Level.SEVERE, null, ex);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionReportes.class
-                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbInmueblesAnualActionPerformed
 
@@ -315,13 +327,10 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             JasperViewer.viewReport(jasperPrint,
                     false);
             conn.close();
-        } catch (JRException ex) {
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
                     .getName()).log(Level.SEVERE, null, ex);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionReportes.class
-                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbMueblesAnualesActionPerformed
 
@@ -339,15 +348,13 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
             JasperViewer.viewReport(jasperPrint, false);
             conn.close();
-        } catch (JRException ex) {
-            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbInmueblesHistoricosActionPerformed
 
     private void jbInmueblesHistoricosHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosHistoricoActionPerformed
-     try {
+        try {
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
@@ -360,15 +367,13 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
             JasperViewer.viewReport(jasperPrint, false);
             conn.close();
-        } catch (JRException ex) {
-            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbInmueblesHistoricosHistoricoActionPerformed
 
     private void jbInmueblesHistoricosAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosAnualActionPerformed
-         try {
+        try {
             String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
 
             conn = ConexionDB.GetConnection();
@@ -391,15 +396,20 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             JasperViewer.viewReport(jasperPrint,
                     false);
             conn.close();
-        } catch (JRException ex) {
+        } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
                     .getName()).log(Level.SEVERE, null, ex);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionReportes.class
-                    .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbInmueblesHistoricosAnualActionPerformed
+
+    private void jpTitulo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MouseDragged
+
+    private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MousePressed
 
     private String listaAnios() {
         Calendar calendar = new GregorianCalendar();
@@ -434,6 +444,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
+    private javax.swing.JPanel jpTitulo1;
     // End of variables declaration//GEN-END:variables
 
 }
