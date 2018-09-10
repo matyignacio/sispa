@@ -23,6 +23,9 @@ import objeto.MuebleMantenible;
  * @author Kuky
  */
 public class MiRender extends DefaultTableCellRenderer {
+    private int columna;
+    
+  
 
     MuebleMantenible muebleMantenible;
     MuebleMantenibleControlador mantenibleControlador = new MuebleMantenibleControlador();
@@ -35,25 +38,57 @@ public class MiRender extends DefaultTableCellRenderer {
             boolean hasFocus,
             int row,
             int column) {
+        
+        
+             
+             
+            
+            
         super.getTableCellRendererComponent(table, object, isSelected, hasFocus, row, column);
-        for (i = 0; i < 3; i++) {
-            muebleMantenible = new MuebleMantenible();
-            try {
-                muebleMantenible = mantenibleControlador.extraerDeTabla(
-                        String.valueOf(table.getValueAt(i, 0)),
-                        String.valueOf(table.getValueAt(i, 1)),
-                        String.valueOf(table.getValueAt(i, 2)),
-                        String.valueOf(table.getValueAt(i, 3)),
-                        Integer.parseInt(String.valueOf(table.getValueAt(i, 5))));
-                if (currentTimestamp.compareTo(muebleMantenible.getFecha()) < 0) {
-                    this.setOpaque(true);
-                    this.setForeground(Color.RED);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(MiRender.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
+        
+         String valor = table.getValueAt(row, 5).toString();
+             if (Integer.parseInt(valor) == 8) {
+ 
+                        //la pinto de amarillo
+                        setBackground(Color.RED);
+                        setForeground(Color.YELLOW);
+                    }
+             
+        
+//         if()
+//         this.setOpaque(true);
+//         this.setBackground(Color.RED);
+//         this.setForeground(Color.YELLOW);
+      
+      
+//        for (i = 0; i < 3; i++) {
+//            muebleMantenible = new MuebleMantenible();
+//            try {
+//                muebleMantenible = mantenibleControlador.extraerDeTabla(
+//                        String.valueOf(table.getValueAt(i, 0)),
+//                        String.valueOf(table.getValueAt(i, 1)),
+//                        String.valueOf(table.getValueAt(i, 2)),
+//                        String.valueOf(table.getValueAt(i, 3)),
+//                        Integer.parseInt(String.valueOf(table.getValueAt(i, 5))));
+//                
+//            
+//                
+//                if (currentTimestamp.compareTo(muebleMantenible.getFecha()) < 0) {
+//                    this.setOpaque(true);
+//
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(MiRender.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+        
+//        if(table.getValueAt(row,columna).equals("S"))
+//    {
+//        this.setForeground(Color.RED);
+//    }else if(table.getValueAt(row,columna).equals("A")){
+//        this.setForeground(Color.BLUE);
+//    }else if(table.getValueAt(row, columna).equals("C")){
+//        this.setForeground(Color.GREEN);
+//    }
 
         return this;
     }
