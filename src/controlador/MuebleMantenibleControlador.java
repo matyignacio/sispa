@@ -255,4 +255,44 @@ public class MuebleMantenibleControlador {
             }
         }
     }
+
+    public ArrayList<MuebleMantenible> necesitaMantenimiento(int reparticion) throws SQLException {
+        ArrayList<MuebleMantenible> autos = new ArrayList<>();
+        try {
+            conn = ConexionDB.GetConnection();
+            //String consultaSql = "SELECT nombre,dominio,expediente FROM sispa.muebles \n"
+            String consultaSql = "SELECT * FROM muebles "
+                    + "WHERE mantenible = 1 "
+                    + "AND id_reparticion = ? "
+                    + "AND (CURRENT_TIMESTAMP - fecha)> 1200000000";//ESTO ES EQUIVALENTE A UN AÑO
+            ps = conn.prepareStatement(consultaSql);
+            ps.setInt(1, reparticion);
+            ps.execute();
+            rs = ps.getResultSet();
+            while (rs.next()) {
+                muebleMantenible = new MuebleMantenible();
+                muebleMantenible.setId(rs.getInt(1));
+                muebleMantenible.setNombre(rs.getString(2));
+                muebleMantenible.setVisible(rs.getBoolean(3));
+                muebleMantenible.setExpediente(rs.getString(4));
+                muebleMantenible.setCaracteristicas(rs.getString(5));
+                muebleMantenible.setObservaciones(rs.getString(6));
+                muebleMantenible.setDominio(rs.getString(7));
+                muebleMantenible.setChasis(rs.getString(8));
+                muebleMantenible.setCategoria(categoriaControlador.extraer(rs.getInt(9)));
+                muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
+                muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
+                muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+                muebleMantenible.setCantidad(rs.getInt(15));
+                muebleMantenible.setValor(rs.getFloat(16));
+                mueblesMatenibles.add(muebleMantenible);
+                autos.add(muebleMantenible);
+            }
+            ps.close();
+            conn.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error necesitaMantenimiento" + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+        }
+        return autos;
+    }
 }

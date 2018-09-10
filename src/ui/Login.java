@@ -5,12 +5,15 @@
  */
 package ui;
 
+import controlador.MuebleMantenibleControlador;
 import controlador.UsuarioControlador;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import objeto.MuebleMantenible;
 import objeto.Usuario;
 
 /**
@@ -286,6 +289,26 @@ public class Login extends javax.swing.JFrame {
         usuario.setClave(jtfClave.getText());
         try {
             usuario = usuarioControlador.validarUsuario(usuario);
+            IniciarSesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
+        }
+
+    }
+
+    public void IniciarSesion() {
+        MuebleMantenibleControlador mmc = new MuebleMantenibleControlador();
+        ArrayList<MuebleMantenible> autos = new ArrayList();
+        try {
+            autos = mmc.necesitaMantenimiento(usuario.getReparticion().getId());
+            if (autos.size() > 0) {
+                for (int i = 0; i < autos.size(); i++) {
+                    JOptionPane.showMessageDialog(null, autos.get(i).toString());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Felicidades! No tiene vehiculos que necesitan mantenimiento");
+            }
             Principal principal;
             principal = new Principal();
             principal.setVisible(true);
