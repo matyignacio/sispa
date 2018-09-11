@@ -298,10 +298,14 @@ public class Login extends javax.swing.JFrame {
         usuario.setClave(jtfClave.getText());
         try {
             usuario = usuarioControlador.validarUsuario(usuario);
-            IniciarSesion();
+            if (usuario.getId() > 0) {//VERIFICA SI ENCONTRO UN USUARIO
+                IniciarSesion();
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta.");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
+            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta. " + ex.toString());
         }
 
     }
@@ -314,7 +318,7 @@ public class Login extends javax.swing.JFrame {
             if (autos.size() > 0) {
                 SendMail(autos);
             } else {
-                JOptionPane.showMessageDialog(null, "Felicidades! No tiene vehiculos que necesitan mantenimiento");
+                JOptionPane.showMessageDialog(null, "Felicidades! No tiene vehiculos que necesitan mantenimiento!");
             }
             Principal principal;
             principal = new Principal();
@@ -322,7 +326,7 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
+            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta.");
         }
     }
 
@@ -354,9 +358,11 @@ public class Login extends javax.swing.JFrame {
             message.setSubject(subject);
             message.setText(mensaje);
             Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Revise su correo, se ha enviado un mensaje");
+            JOptionPane.showMessageDialog(this, "Revise su correo, se ha enviado un mensaje.");
 
         } catch (MessagingException e) {
+            JOptionPane.showMessageDialog(null, "Su direccion de correo electronico no es una direccion valida. Ponganse en contacto con el administrador del sistema para solucionar el problema.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Debe tener un correo valido en su perfil para poder iniciar sesion en el sistema.", "ERROR", JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException(e);
         }
     }
