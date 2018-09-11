@@ -9,12 +9,21 @@ import controlador.MuebleMantenibleControlador;
 import controlador.UsuarioControlador;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import objeto.MuebleMantenible;
 import objeto.Usuario;
+import util.Util;
 
 /**
  *
@@ -298,14 +307,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void IniciarSesion() {
-        MuebleMantenibleControlador mmc = new MuebleMantenibleControlador();
         ArrayList<MuebleMantenible> autos = new ArrayList();
+        MuebleMantenibleControlador mmc = new MuebleMantenibleControlador();
         try {
             autos = mmc.necesitaMantenimiento(usuario.getReparticion().getId());
             if (autos.size() > 0) {
-                for (int i = 0; i < autos.size(); i++) {
-                    JOptionPane.showMessageDialog(null, autos.get(i).toString());
-                }
+                SendMail(autos);
             } else {
                 JOptionPane.showMessageDialog(null, "Felicidades! No tiene vehiculos que necesitan mantenimiento");
             }
@@ -316,6 +323,41 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
+        }
+    }
+
+    public void SendMail(ArrayList<MuebleMantenible> autos) {
+        String subject = "Debe realizar mantenimiento a: ", mensaje = "";
+        for (int i = 0; i < autos.size(); i++) {
+            subject += autos.get(i).getDominio() + " - ";
+            mensaje += "Marca: " + autos.get(i).getNombre() + " Modelo: " + autos.get(i).getModelo().getNombre()
+                    + " con Dominio " + autos.get(i).getDominio() + "\n";
+        }
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(Util.CORREO, Util.CLAVE);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(Util.CORREO));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(usuario.getMail()));
+            message.setSubject(subject);
+            message.setText(mensaje);
+            Transport.send(message);
+            JOptionPane.showMessageDialog(this, "Revise su correo, se ha enviado un mensaje");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 }
