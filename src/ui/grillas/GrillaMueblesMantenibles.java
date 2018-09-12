@@ -54,7 +54,7 @@ public class GrillaMueblesMantenibles extends AbstractTableModel {
             case 4:
                 return muebleMantenible.getModelo().getMarca();
             case 5:
-                return muebleMantenible.getModelo().getId();
+                return muebleMantenible.getModelo().getNombre();
 
             default:
                 return null;

@@ -168,6 +168,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setEstado(estadoControlador.extraer(rs.getInt(10)));
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
+            muebleMantenible.setFecha(rs.getTimestamp(14));
             muebleMantenible.setCantidad(rs.getInt(15));
             muebleMantenible.setValor(rs.getFloat(16));
 

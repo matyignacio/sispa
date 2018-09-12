@@ -299,10 +299,11 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     @Override
     public void actualizarGestion() {
         try {
-
-            grillaMueblesMantenibles = new GrillaMueblesMantenibles((ArrayList<MuebleMantenible>) muebleMantenibleControlador.extraerTodosVisibles());
+            ArrayList<MuebleMantenible> muebles = new ArrayList<>();
+            muebles = muebleMantenibleControlador.extraerTodosVisibles();
+            grillaMueblesMantenibles = new GrillaMueblesMantenibles(muebles);
             jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
-              jtMueblesMantenibles.setDefaultRenderer(Object.class , new MiRender());
+            jtMueblesMantenibles.setDefaultRenderer(Object.class, new MiRender(muebles));
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }

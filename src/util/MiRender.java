@@ -8,12 +8,8 @@ package util;
 import controlador.MuebleMantenibleControlador;
 import java.awt.Color;
 import java.awt.Component;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import objeto.MuebleMantenible;
@@ -23,73 +19,37 @@ import objeto.MuebleMantenible;
  * @author Kuky
  */
 public class MiRender extends DefaultTableCellRenderer {
-    private int columna;
-    
-  
 
-    MuebleMantenible muebleMantenible;
-    MuebleMantenibleControlador mantenibleControlador = new MuebleMantenibleControlador();
-    int i = 0;
+    private ArrayList<MuebleMantenible> muebles;
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+    long fechaMueble = 0, fechaActual = currentTimestamp.getTime();
+    long anio = (long) (1200000000 * 26.27988782333333);//forma de calcular un año en tics
+    //NO PUEDO PONER DIRECTAMENTE 31535865388 PORQUE ME DICE "INTEGER TOO LONG" (?)
+    long trimestre = (long) (1200000000 * 19.7099158675); //forma de calcular un trimestre en tics
 
+    public MiRender(ArrayList<MuebleMantenible> muebles) {
+        this.muebles = muebles;
+    }
+
+    @Override
     public Component getTableCellRendererComponent(JTable table,
             Object object,
             boolean isSelected,
             boolean hasFocus,
             int row,
             int column) {
-        
-        
-             
-             
-            
-            
-        super.getTableCellRendererComponent(table, object, isSelected, hasFocus, row, column);
-        
-         String valor = table.getValueAt(row, 5).toString();
-             if (Integer.parseInt(valor) == 8) {
- 
-                        //la pinto de amarillo
-                        setBackground(Color.RED);
-                        setForeground(Color.YELLOW);
-                    }
-             
-        
-//         if()
-//         this.setOpaque(true);
-//         this.setBackground(Color.RED);
-//         this.setForeground(Color.YELLOW);
-      
-      
-//        for (i = 0; i < 3; i++) {
-//            muebleMantenible = new MuebleMantenible();
-//            try {
-//                muebleMantenible = mantenibleControlador.extraerDeTabla(
-//                        String.valueOf(table.getValueAt(i, 0)),
-//                        String.valueOf(table.getValueAt(i, 1)),
-//                        String.valueOf(table.getValueAt(i, 2)),
-//                        String.valueOf(table.getValueAt(i, 3)),
-//                        Integer.parseInt(String.valueOf(table.getValueAt(i, 5))));
-//                
-//            
-//                
-//                if (currentTimestamp.compareTo(muebleMantenible.getFecha()) < 0) {
-//                    this.setOpaque(true);
-//
-//                }
-//            } catch (SQLException ex) {
-//                Logger.getLogger(MiRender.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-        
-//        if(table.getValueAt(row,columna).equals("S"))
-//    {
-//        this.setForeground(Color.RED);
-//    }else if(table.getValueAt(row,columna).equals("A")){
-//        this.setForeground(Color.BLUE);
-//    }else if(table.getValueAt(row, columna).equals("C")){
-//        this.setForeground(Color.GREEN);
-//    }
 
+        setBackground(Color.WHITE);
+        setForeground(new Color(33, 150, 243));//color que usamos en todas las vistas
+        super.getTableCellRendererComponent(table, object, isSelected, hasFocus, row, column);
+        fechaMueble = muebles.get(row).getFecha().getTime();
+        if ((fechaActual - fechaMueble) > trimestre) {
+            setForeground(new Color(204, 51, 0));
+        }
+        if ((fechaActual - fechaMueble) > anio) {
+            setBackground(Color.RED);
+            setForeground(Color.YELLOW);
+        }
         return this;
     }
 }
