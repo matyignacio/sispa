@@ -35,19 +35,19 @@
 		<band height="72">
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="841" height="92" backcolor="#2196F3" uuid="e9c6825c-e356-4333-a05d-ac362c263ca9"/>
-				<staticText>
-					<reportElement x="141" y="20" width="453" height="43" forecolor="#FFFFFF" uuid="f062263e-c19c-434d-b551-9ea81b56eb2a"/>
-					<textElement>
-						<font size="34" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Reporte Anual del Inmueble]]></text>
-				</staticText>
 				<image hAlign="Center" vAlign="Middle">
 					<reportElement x="20" y="4" width="121" height="88" uuid="f7138d49-661a-45e6-b2dd-3089cb45fee8">
 						<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
 					</reportElement>
 					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 				</image>
+				<staticText>
+					<reportElement x="141" y="20" width="504" height="43" forecolor="#FFFFFF" uuid="2de904ae-1abc-4b6c-8243-0515dcbb113d"/>
+					<textElement>
+						<font fontName="Segoe UI" size="30" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Reporte Anual del Inmueble]]></text>
+				</staticText>
 			</frame>
 		</band>
 	</title>
