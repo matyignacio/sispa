@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.Dimension;
 import ui.reportes.GestionReportes;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -338,6 +339,9 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionMuebles = new GestionMuebles();
             this.dpPrincipal.add(gestionMuebles);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = gestionMuebles.getSize();
+            gestionMuebles.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
             gestionMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -364,6 +368,9 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionReportes = new GestionReportes();
             this.dpPrincipal.add(gestionReportes);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = gestionReportes.getSize();
+            gestionReportes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
             gestionReportes.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import objeto.MuebleMantenible;
 import ui.grillas.GrillaMueblesMantenibles;
 import ui.abm.AbmMuebleMantenible;
-import ui.abm.VistaMueblesMantenible;
+
 import util.MiRender;
 
 /**
@@ -65,6 +65,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
         jbVer = new javax.swing.JButton();
+        jpTitulo1 = new javax.swing.JPanel();
 
         setClosable(true);
         setTitle("SISPA - Automotores");
@@ -139,7 +140,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 550, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 520, 100, -1));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -150,7 +151,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 550, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 100, -1));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -161,7 +162,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 550, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 100, -1));
 
         jbVer.setBackground(new java.awt.Color(204, 204, 204));
         jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -173,7 +174,21 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbVerActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, 100, -1));
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 100, -1));
+
+        jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo1MouseDragged(evt);
+            }
+        });
+        jpTitulo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo1MousePressed(evt);
+            }
+        });
+        jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -181,20 +196,18 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1126, Short.MAX_VALUE)
+            .addGap(0, 1176, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 690, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
+                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 684, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -222,12 +235,15 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         if (jtMueblesMantenibles.getSelectedRow() > -1) {
-            AbmMuebleMantenible abmMueblesAbmMuebleMantenible;
+            AbmMuebleMantenible abmMuebleMantenible;
+            GestionMueblesMantenible gestionMueblesMantenibles;
             try {
-                abmMueblesAbmMuebleMantenible = new AbmMuebleMantenible(ABM_BAJA, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
+                abmMuebleMantenible = new AbmMuebleMantenible(ABM_BAJA, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
                         get(jtMueblesMantenibles.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmMueblesAbmMuebleMantenible);
-                abmMueblesAbmMuebleMantenible.show();
+                this.desktopPane.add(abmMuebleMantenible);
+                gestionMueblesMantenibles = new GestionMueblesMantenible();
+                util.Util.centrarInternalVentana(gestionMueblesMantenibles, abmMuebleMantenible);
+                abmMuebleMantenible.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -238,9 +254,12 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         AbmMuebleMantenible abmMuebleMantenible;
+        GestionMueblesMantenible gestionMueblesMantenibles;
         try {
             abmMuebleMantenible = new AbmMuebleMantenible(ABM_ALTA, new MuebleMantenible(), this);
             this.desktopPane.add(abmMuebleMantenible);
+            gestionMueblesMantenibles = new GestionMueblesMantenible();
+            util.Util.centrarInternalVentana(gestionMueblesMantenibles, abmMuebleMantenible);
             abmMuebleMantenible.show();
         } catch (SQLException ex) {
             Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,10 +270,13 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtMueblesMantenibles.getSelectedRow() > -1) {
             AbmMuebleMantenible abmMuebleMantenible;
+            GestionMueblesMantenible gestionMueblesMantenibles;
             try {
-                abmMuebleMantenible = new AbmMuebleMantenible(ABM_MODIFICACION, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
+                abmMuebleMantenible = new AbmMuebleMantenible(ABM_BAJA, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
                         get(jtMueblesMantenibles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebleMantenible);
+                gestionMueblesMantenibles = new GestionMueblesMantenible();
+                util.Util.centrarInternalVentana(gestionMueblesMantenibles, abmMuebleMantenible);
                 abmMuebleMantenible.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
@@ -265,20 +287,31 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerActionPerformed
-        if (jtMueblesMantenibles.getSelectedRow() > -1) {
-            VistaMueblesMantenible vistaMuebleMantenible;
+  if (jtMueblesMantenibles.getSelectedRow() > -1) {
+            AbmMuebleMantenible abmMuebleMantenible;
+            GestionMueblesMantenible gestionMueblesMantenibles;
             try {
-                vistaMuebleMantenible = new VistaMueblesMantenible(muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
-                        get(jtMueblesMantenibles.getSelectedRow()).getId()));
-                this.desktopPane.add(vistaMuebleMantenible);
-                vistaMuebleMantenible.show();
+                abmMuebleMantenible = new AbmMuebleMantenible(ABM_VER, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
+                        get(jtMueblesMantenibles.getSelectedRow()).getId()), this);
+                this.desktopPane.add(abmMuebleMantenible);
+                gestionMueblesMantenibles = new GestionMueblesMantenible();
+                util.Util.centrarInternalVentana(gestionMueblesMantenibles, abmMuebleMantenible);
+                abmMuebleMantenible.show();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GestionMueblesMantenible.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
     }//GEN-LAST:event_jbVerActionPerformed
+
+    private void jpTitulo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MouseDragged
+
+    private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
@@ -293,6 +326,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
+    private javax.swing.JPanel jpTitulo1;
     private javax.swing.JTable jtMueblesMantenibles;
     // End of variables declaration//GEN-END:variables
 

@@ -15,7 +15,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import objeto.Inmueble;
 import ui.abm.AbmInmuebles;
-import ui.abm.VistaInmuebles;
+
 import ui.grillas.GrillaInmuebles;
 
 /**
@@ -263,19 +263,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbVerInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerInmuebleActionPerformed
-        if (jtInmuebles.getSelectedRow() > -1) {
-            VistaInmuebles vistaInmuebles;
-            try {
-                vistaInmuebles = new VistaInmuebles(inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                        get(jtInmuebles.getSelectedRow()).getId()));
-                this.desktopPane.add(vistaInmuebles);
-                vistaInmuebles.show();
-            } catch (SQLException ex) {
-                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
-        }
+    
     }//GEN-LAST:event_jbVerInmuebleActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
