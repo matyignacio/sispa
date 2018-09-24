@@ -327,6 +327,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionInmuebles = new GestionInmuebles();
             this.dpPrincipal.add(gestionInmuebles);
+            util.Util.centrarVentana(dpPrincipal, gestionInmuebles);
             gestionInmuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);

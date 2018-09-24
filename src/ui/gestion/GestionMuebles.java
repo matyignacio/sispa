@@ -326,7 +326,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             gestionMueblesMantenible = new GestionMueblesMantenible();
             this.desktopPaneGestion.add(gestionMueblesMantenible);
             gestionMuebles = new GestionMuebles();
-            util.Util.centrarInternalVentana(gestionMuebles, gestionMuebles);
+            util.Util.centrarInternalVentana(gestionMuebles, gestionMueblesMantenible);
             gestionMueblesMantenible.show();
 
         } catch (SQLException ex) {

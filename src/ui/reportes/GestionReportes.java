@@ -50,10 +50,12 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     public GestionReportes() throws SQLException {
         initComponents();
+        
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -158,12 +158,48 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jlValor = new javax.swing.JLabel();
         jtfValor = new javax.swing.JTextField();
         jpTitulo1 = new javax.swing.JPanel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        desktopPane1 = new javax.swing.JDesktopPane();
+        jpPrincipal1 = new javax.swing.JPanel();
+        jpTitulo2 = new javax.swing.JPanel();
+        jlTituloPrincipal1 = new javax.swing.JLabel();
+        jlSubtitulo1 = new javax.swing.JLabel();
+        jlBienvenido1 = new javax.swing.JLabel();
+        jlNombreUsuario1 = new javax.swing.JLabel();
+        jbAceptar1 = new javax.swing.JButton();
+        jlModelo1 = new javax.swing.JLabel();
+        jtfExpediente1 = new javax.swing.JTextField();
+        jlVisible1 = new javax.swing.JLabel();
+        jrbNoVisible1 = new javax.swing.JRadioButton();
+        jrbVisible1 = new javax.swing.JRadioButton();
+        jcbReparticiones1 = new javax.swing.JComboBox();
+        jlExpediente1 = new javax.swing.JLabel();
+        jlObservaciones1 = new javax.swing.JLabel();
+        jlReparticiones1 = new javax.swing.JLabel();
+        jtfNombre1 = new javax.swing.JTextField();
+        jlCaracteristicas2 = new javax.swing.JLabel();
+        jtfCaracteristicas1 = new javax.swing.JTextField();
+        jlNombre1 = new javax.swing.JLabel();
+        jcbModelo1 = new javax.swing.JComboBox();
+        jlEstado2 = new javax.swing.JLabel();
+        jcbEstado1 = new javax.swing.JComboBox();
+        ljCategoria2 = new javax.swing.JLabel();
+        jcbCategoria1 = new javax.swing.JComboBox();
+        jlMarca1 = new javax.swing.JLabel();
+        jcbMarca1 = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtaObservaciones1 = new javax.swing.JTextArea();
+        jlCantidad1 = new javax.swing.JLabel();
+        jtfCantidad1 = new javax.swing.JTextField();
+        jlValor1 = new javax.swing.JLabel();
+        jtfValor1 = new javax.swing.JTextField();
+        jpTitulo3 = new javax.swing.JPanel();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
         setPreferredSize(new java.awt.Dimension(1000, 710));
 
-        desktopPane.setPreferredSize(new java.awt.Dimension(1000, 716));
+        desktopPane.setPreferredSize(new java.awt.Dimension(1000, 710));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -444,6 +480,304 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
             .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
         );
 
+        jInternalFrame1.setClosable(true);
+        jInternalFrame1.setTitle("SISPA - Muebles");
+        jInternalFrame1.setPreferredSize(new java.awt.Dimension(1000, 710));
+
+        desktopPane1.setPreferredSize(new java.awt.Dimension(1000, 716));
+
+        jpPrincipal1.setBackground(new java.awt.Color(255, 255, 255));
+        jpPrincipal1.setForeground(new java.awt.Color(255, 255, 255));
+        jpPrincipal1.setPreferredSize(new java.awt.Dimension(1000, 716));
+        jpPrincipal1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jpTitulo2.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo2MouseDragged(evt);
+            }
+        });
+        jpTitulo2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo2MousePressed(evt);
+            }
+        });
+        jpTitulo2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlTituloPrincipal1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jlTituloPrincipal1.setForeground(new java.awt.Color(255, 255, 255));
+        jlTituloPrincipal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
+        jlTituloPrincipal1.setText("SISPA - Muebles");
+        jpTitulo2.add(jlTituloPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
+
+        jlSubtitulo1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlSubtitulo1.setForeground(new java.awt.Color(255, 255, 255));
+        jlSubtitulo1.setText("Sistema de Control de Patrimonio");
+        jpTitulo2.add(jlSubtitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+
+        jlBienvenido1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jlBienvenido1.setForeground(new java.awt.Color(255, 255, 255));
+        jlBienvenido1.setText("Bienvenido: ");
+        jpTitulo2.add(jlBienvenido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        jlNombreUsuario1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlNombreUsuario1.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombreUsuario1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlNombreUsuario1.setText("Usuario");
+        jpTitulo2.add(jlNombreUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
+
+        jpPrincipal1.add(jpTitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 140));
+
+        jbAceptar1.setBackground(new java.awt.Color(204, 204, 204));
+        jbAceptar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbAceptar1.setForeground(new java.awt.Color(33, 150, 243));
+        jbAceptar1.setText("Aceptar");
+        jbAceptar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptar1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jbAceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 100, -1));
+
+        jlModelo1.setBackground(new java.awt.Color(204, 204, 204));
+        jlModelo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlModelo1.setForeground(new java.awt.Color(33, 150, 243));
+        jlModelo1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlModelo1.setText("Modelo:");
+        jpPrincipal1.add(jlModelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 120, 20));
+
+        jtfExpediente1.setBackground(new java.awt.Color(204, 204, 204));
+        jtfExpediente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfExpediente1.setForeground(new java.awt.Color(33, 150, 243));
+        jtfExpediente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfExpediente1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jtfExpediente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 220, -1));
+
+        jlVisible1.setBackground(new java.awt.Color(204, 204, 204));
+        jlVisible1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlVisible1.setForeground(new java.awt.Color(33, 150, 243));
+        jlVisible1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlVisible1.setText("Estado: ");
+        jpPrincipal1.add(jlVisible1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 190, 210, 20));
+
+        jrbNoVisible1.setBackground(new java.awt.Color(204, 204, 204));
+        jrbNoVisible1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jrbNoVisible1.setForeground(new java.awt.Color(33, 150, 243));
+        jrbNoVisible1.setText("No Visible");
+        jpPrincipal1.add(jrbNoVisible1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
+
+        jrbVisible1.setBackground(new java.awt.Color(204, 204, 204));
+        jrbVisible1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jrbVisible1.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible1.setText("Visible");
+        jpPrincipal1.add(jrbVisible1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+
+        jcbReparticiones1.setBackground(new java.awt.Color(204, 204, 204));
+        jcbReparticiones1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbReparticiones1.setForeground(new java.awt.Color(33, 150, 243));
+        jcbReparticiones1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbReparticiones1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbReparticiones1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jcbReparticiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 220, -1));
+
+        jlExpediente1.setBackground(new java.awt.Color(204, 204, 204));
+        jlExpediente1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlExpediente1.setForeground(new java.awt.Color(33, 150, 243));
+        jlExpediente1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlExpediente1.setText("Expediente:");
+        jpPrincipal1.add(jlExpediente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 240, 210, 20));
+
+        jlObservaciones1.setBackground(new java.awt.Color(204, 204, 204));
+        jlObservaciones1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlObservaciones1.setForeground(new java.awt.Color(33, 150, 243));
+        jlObservaciones1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlObservaciones1.setText("Observaciones:");
+        jpPrincipal1.add(jlObservaciones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 210, 20));
+
+        jlReparticiones1.setBackground(new java.awt.Color(204, 204, 204));
+        jlReparticiones1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlReparticiones1.setForeground(new java.awt.Color(33, 150, 243));
+        jlReparticiones1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlReparticiones1.setText("Reparticion:");
+        jpPrincipal1.add(jlReparticiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 130, 30));
+
+        jtfNombre1.setBackground(new java.awt.Color(204, 204, 204));
+        jtfNombre1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfNombre1.setForeground(new java.awt.Color(33, 150, 243));
+        jtfNombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNombre1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jtfNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 220, -1));
+
+        jlCaracteristicas2.setBackground(new java.awt.Color(204, 204, 204));
+        jlCaracteristicas2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlCaracteristicas2.setForeground(new java.awt.Color(33, 150, 243));
+        jlCaracteristicas2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlCaracteristicas2.setText("Caracteristicas:");
+        jpPrincipal1.add(jlCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 290, 210, 20));
+
+        jtfCaracteristicas1.setBackground(new java.awt.Color(204, 204, 204));
+        jtfCaracteristicas1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfCaracteristicas1.setForeground(new java.awt.Color(33, 150, 243));
+        jtfCaracteristicas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCaracteristicas1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jtfCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 220, -1));
+
+        jlNombre1.setBackground(new java.awt.Color(204, 204, 204));
+        jlNombre1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlNombre1.setForeground(new java.awt.Color(33, 150, 243));
+        jlNombre1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlNombre1.setText("Nombre: ");
+        jpPrincipal1.add(jlNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 150, 210, 20));
+
+        jcbModelo1.setBackground(new java.awt.Color(204, 204, 204));
+        jcbModelo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbModelo1.setForeground(new java.awt.Color(33, 150, 243));
+        jcbModelo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbModelo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbModelo1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jcbModelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 220, -1));
+
+        jlEstado2.setBackground(new java.awt.Color(204, 204, 204));
+        jlEstado2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlEstado2.setForeground(new java.awt.Color(33, 150, 243));
+        jlEstado2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlEstado2.setText("Estado:");
+        jpPrincipal1.add(jlEstado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 90, 30));
+
+        jcbEstado1.setBackground(new java.awt.Color(204, 204, 204));
+        jcbEstado1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbEstado1.setForeground(new java.awt.Color(33, 150, 243));
+        jcbEstado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jpPrincipal1.add(jcbEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 220, -1));
+
+        ljCategoria2.setBackground(new java.awt.Color(204, 204, 204));
+        ljCategoria2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ljCategoria2.setForeground(new java.awt.Color(33, 150, 243));
+        ljCategoria2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ljCategoria2.setText("Categoria:");
+        jpPrincipal1.add(ljCategoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 90, 20));
+
+        jcbCategoria1.setBackground(new java.awt.Color(204, 204, 204));
+        jcbCategoria1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbCategoria1.setForeground(new java.awt.Color(33, 150, 243));
+        jcbCategoria1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jpPrincipal1.add(jcbCategoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 220, -1));
+
+        jlMarca1.setBackground(new java.awt.Color(204, 204, 204));
+        jlMarca1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlMarca1.setForeground(new java.awt.Color(33, 150, 243));
+        jlMarca1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlMarca1.setText("Marca:");
+        jpPrincipal1.add(jlMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 120, 20));
+
+        jcbMarca1.setBackground(new java.awt.Color(204, 204, 204));
+        jcbMarca1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbMarca1.setForeground(new java.awt.Color(33, 150, 243));
+        jcbMarca1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbMarca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMarca1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jcbMarca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 220, -1));
+
+        jtaObservaciones1.setColumns(20);
+        jtaObservaciones1.setRows(5);
+        jScrollPane2.setViewportView(jtaObservaciones1);
+
+        jpPrincipal1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 620, 50));
+
+        jlCantidad1.setBackground(new java.awt.Color(204, 204, 204));
+        jlCantidad1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlCantidad1.setForeground(new java.awt.Color(33, 150, 243));
+        jlCantidad1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlCantidad1.setText("Cantidad:");
+        jpPrincipal1.add(jlCantidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 340, 210, 20));
+
+        jtfCantidad1.setBackground(new java.awt.Color(204, 204, 204));
+        jtfCantidad1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfCantidad1.setForeground(new java.awt.Color(33, 150, 243));
+        jtfCantidad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCantidad1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jtfCantidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 220, -1));
+
+        jlValor1.setBackground(new java.awt.Color(204, 204, 204));
+        jlValor1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlValor1.setForeground(new java.awt.Color(33, 150, 243));
+        jlValor1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlValor1.setText("Valor:");
+        jpPrincipal1.add(jlValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 390, 210, 20));
+
+        jtfValor1.setBackground(new java.awt.Color(204, 204, 204));
+        jtfValor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfValor1.setForeground(new java.awt.Color(33, 150, 243));
+        jtfValor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfValor1ActionPerformed(evt);
+            }
+        });
+        jpPrincipal1.add(jtfValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 220, -1));
+
+        jpTitulo3.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo3MouseDragged(evt);
+            }
+        });
+        jpTitulo3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo3MousePressed(evt);
+            }
+        });
+        jpTitulo3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal1.add(jpTitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
+
+        desktopPane1.setLayer(jpPrincipal1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopPane1Layout = new javax.swing.GroupLayout(desktopPane1);
+        desktopPane1.setLayout(desktopPane1Layout);
+        desktopPane1Layout.setHorizontalGroup(
+            desktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPane1Layout.createSequentialGroup()
+                .addComponent(jpPrincipal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        desktopPane1Layout.setVerticalGroup(
+            desktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addComponent(desktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(desktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -451,10 +785,20 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -520,6 +864,58 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
+
+    private void jpTitulo2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo2MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo2MouseDragged
+
+    private void jpTitulo2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo2MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo2MousePressed
+
+    private void jbAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAceptar1ActionPerformed
+
+    private void jtfExpediente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfExpediente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfExpediente1ActionPerformed
+
+    private void jcbReparticiones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbReparticiones1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbReparticiones1ActionPerformed
+
+    private void jtfNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombre1ActionPerformed
+
+    private void jtfCaracteristicas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCaracteristicas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCaracteristicas1ActionPerformed
+
+    private void jcbModelo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModelo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbModelo1ActionPerformed
+
+    private void jcbMarca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMarca1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMarca1ActionPerformed
+
+    private void jtfCantidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCantidad1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCantidad1ActionPerformed
+
+    private void jtfValor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfValor1ActionPerformed
+
+    private void jpTitulo3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo3MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo3MouseDragged
+
+    private void jpTitulo3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo3MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo3MousePressed
 
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
@@ -614,41 +1010,77 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JDesktopPane desktopPane1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbAceptar;
+    private javax.swing.JButton jbAceptar1;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JComboBox jcbCategoria;
+    private javax.swing.JComboBox jcbCategoria1;
     private javax.swing.JComboBox jcbEstado;
+    private javax.swing.JComboBox jcbEstado1;
     private javax.swing.JComboBox jcbMarca;
+    private javax.swing.JComboBox jcbMarca1;
     private javax.swing.JComboBox jcbModelo;
+    private javax.swing.JComboBox jcbModelo1;
     private javax.swing.JComboBox jcbReparticiones;
+    private javax.swing.JComboBox jcbReparticiones1;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlBienvenido1;
     private javax.swing.JLabel jlCantidad;
+    private javax.swing.JLabel jlCantidad1;
     private javax.swing.JLabel jlCaracteristicas1;
+    private javax.swing.JLabel jlCaracteristicas2;
     private javax.swing.JLabel jlEstado1;
+    private javax.swing.JLabel jlEstado2;
     private javax.swing.JLabel jlExpediente;
+    private javax.swing.JLabel jlExpediente1;
     private javax.swing.JLabel jlMarca;
+    private javax.swing.JLabel jlMarca1;
     private javax.swing.JLabel jlModelo;
+    private javax.swing.JLabel jlModelo1;
     private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlNombre1;
     private javax.swing.JLabel jlNombreUsuario;
+    private javax.swing.JLabel jlNombreUsuario1;
     private javax.swing.JLabel jlObservaciones;
+    private javax.swing.JLabel jlObservaciones1;
     private javax.swing.JLabel jlReparticiones;
+    private javax.swing.JLabel jlReparticiones1;
     private javax.swing.JLabel jlSubtitulo;
+    private javax.swing.JLabel jlSubtitulo1;
     private javax.swing.JLabel jlTituloPrincipal;
+    private javax.swing.JLabel jlTituloPrincipal1;
     private javax.swing.JLabel jlValor;
+    private javax.swing.JLabel jlValor1;
     private javax.swing.JLabel jlVisible;
+    private javax.swing.JLabel jlVisible1;
     private javax.swing.JPanel jpPrincipal;
+    private javax.swing.JPanel jpPrincipal1;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpTitulo1;
+    private javax.swing.JPanel jpTitulo2;
+    private javax.swing.JPanel jpTitulo3;
     private javax.swing.JRadioButton jrbNoVisible;
+    private javax.swing.JRadioButton jrbNoVisible1;
     private javax.swing.JRadioButton jrbVisible;
+    private javax.swing.JRadioButton jrbVisible1;
     private javax.swing.JTextArea jtaObservaciones;
+    private javax.swing.JTextArea jtaObservaciones1;
     private javax.swing.JTextField jtfCantidad;
+    private javax.swing.JTextField jtfCantidad1;
     private javax.swing.JTextField jtfCaracteristicas;
+    private javax.swing.JTextField jtfCaracteristicas1;
     private javax.swing.JTextField jtfExpediente;
+    private javax.swing.JTextField jtfExpediente1;
     private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfNombre1;
     private javax.swing.JTextField jtfValor;
+    private javax.swing.JTextField jtfValor1;
     private javax.swing.JLabel ljCategoria1;
+    private javax.swing.JLabel ljCategoria2;
     // End of variables declaration//GEN-END:variables
 
 }

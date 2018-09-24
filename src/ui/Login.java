@@ -179,29 +179,7 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
-            System.exit(0);
-        } else {
-
-        }
-    }//GEN-LAST:event_jl_salirMousePressed
-
     int xx, xy;
-    private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
-        // TODO add your handling code here:
-        xx = evt.getX();
-        xy = evt.getY();
-    }//GEN-LAST:event_jpTituloMousePressed
-
-    private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xx, y - xy);
-    }//GEN-LAST:event_jpTituloMouseDragged
-
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         ValidarUsuario();
     }//GEN-LAST:event_jbAceptarActionPerformed
@@ -221,6 +199,28 @@ public class Login extends javax.swing.JFrame {
     private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
+
+    private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jpTituloMousePressed
+
+    private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jpTituloMouseDragged
+
+    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+            System.exit(0);
+        } else {
+
+        }
+    }//GEN-LAST:event_jl_salirMousePressed
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }

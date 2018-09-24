@@ -69,11 +69,13 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
 
         setClosable(true);
         setTitle("SISPA - Automotores");
+        setPreferredSize(new java.awt.Dimension(1100, 710));
 
-        desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
+        desktopPane.setPreferredSize(new java.awt.Dimension(1100, 710));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(1100, 710));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
@@ -219,7 +221,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
 
         pack();
@@ -272,7 +274,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
             AbmMuebleMantenible abmMuebleMantenible;
             GestionMueblesMantenible gestionMueblesMantenibles;
             try {
-                abmMuebleMantenible = new AbmMuebleMantenible(ABM_BAJA, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
+                abmMuebleMantenible = new AbmMuebleMantenible(ABM_MODIFICACION, muebleMantenibleControlador.extraer(muebleMantenibleControlador.extraerTodosVisibles().
                         get(jtMueblesMantenibles.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmMuebleMantenible);
                 gestionMueblesMantenibles = new GestionMueblesMantenible();
