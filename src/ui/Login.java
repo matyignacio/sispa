@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         jpTitulo1 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
         jpTitulo = new javax.swing.JPanel();
-        jl_salir = new javax.swing.JLabel();
+        jl_sali = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,16 +147,16 @@ public class Login extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jl_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
-        jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+        jl_sali.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jl_sali.setForeground(new java.awt.Color(255, 255, 255));
+        jl_sali.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_sali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
+        jl_sali.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jl_salirMousePressed(evt);
+                jl_saliMousePressed(evt);
             }
         });
-        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 40));
+        jpTitulo.add(jl_sali, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 40));
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,28 +185,15 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_salirMousePressed
+    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
             System.exit(0);
         } else {
         }
-    }//GEN-LAST:event_jl_salirMousePressed
+    }                                     
 
     int xx, xy;
-    private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
-        // TODO add your handling code here:
-        xx = evt.getX();
-        xy = evt.getY();
-    }//GEN-LAST:event_jpTituloMousePressed
-
-    private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xx, y - xy);
-    }//GEN-LAST:event_jpTituloMouseDragged
-
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         validarUsuario();
     }//GEN-LAST:event_jbAceptarActionPerformed
@@ -226,6 +213,28 @@ public class Login extends javax.swing.JFrame {
     private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
+
+    private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jpTituloMousePressed
+
+    private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jpTituloMouseDragged
+
+    private void jl_saliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_saliMousePressed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+            System.exit(0);
+        } else {
+
+        }
+    }//GEN-LAST:event_jl_saliMousePressed
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }
@@ -253,7 +262,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jlClave;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuario;
-    private javax.swing.JLabel jl_salir;
+    private javax.swing.JLabel jl_sali;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpTitulo1;
@@ -278,7 +287,7 @@ public class Login extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta. " + ex.toString());
+            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
         }
         //this.dispose();
 //        Principal principal;
@@ -356,11 +365,9 @@ public class Login extends javax.swing.JFrame {
             message.setSubject(subject);
             message.setText(mensaje);
             Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Revise su correo, se ha enviado un mensaje.");
+            JOptionPane.showMessageDialog(this, "Revise su correo, se ha enviado un mensaje");
 
         } catch (MessagingException e) {
-            JOptionPane.showMessageDialog(null, "Su direccion de correo electronico no es una direccion valida. Ponganse en contacto con el administrador del sistema para solucionar el problema.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            JOptionPane.showMessageDialog(null, "Debe tener un correo valido en su perfil para poder iniciar sesion en el sistema.", "ERROR", JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException(e);
         }
     }

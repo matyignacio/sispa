@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.Dimension;
 import ui.reportes.GestionReportes;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -35,8 +36,6 @@ public class Principal extends javax.swing.JFrame {
             switch (operaciones1.getId()) {
                 case util.Util.ABM_AJUSTES:
                     jbAjustes.setEnabled(true);
-                case util.Util.ABM_USUARIOS:
-                    jbUsuarios.setEnabled(true);
                 case util.Util.ABM_INFORMES:
                     jbInformes.setEnabled(true);
             }
@@ -60,10 +59,9 @@ public class Principal extends javax.swing.JFrame {
         jlBienvenido = new javax.swing.JLabel();
         jbInmuebles = new javax.swing.JButton();
         jbMuebles = new javax.swing.JButton();
-        jbAjustes = new javax.swing.JButton();
-        jbUsuarios = new javax.swing.JButton();
         jbInformes = new javax.swing.JButton();
         jpTitulo1 = new javax.swing.JPanel();
+        jbAjustes = new javax.swing.JButton();
         jmbPrincipal = new javax.swing.JMenuBar();
         jmModulos = new javax.swing.JMenu();
         jmiMuebles = new javax.swing.JMenuItem();
@@ -136,7 +134,7 @@ public class Principal extends javax.swing.JFrame {
                 jbInmueblesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 210, 90));
+        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 1060, 90));
 
         jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
         jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -149,35 +147,7 @@ public class Principal extends javax.swing.JFrame {
                 jbMueblesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 210, 90));
-
-        jbAjustes.setBackground(new java.awt.Color(204, 204, 204));
-        jbAjustes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbAjustes.setForeground(new java.awt.Color(33, 150, 243));
-        jbAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes.png"))); // NOI18N
-        jbAjustes.setText("Ajustes");
-        jbAjustes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbAjustes.setEnabled(false);
-        jbAjustes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAjustesActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 210, 90));
-
-        jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
-        jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbUsuarios.setForeground(new java.awt.Color(33, 150, 243));
-        jbUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_usuarios.png"))); // NOI18N
-        jbUsuarios.setText("Usuarios");
-        jbUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbUsuarios.setEnabled(false);
-        jbUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbUsuariosActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 210, 90));
+        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 1060, 90));
 
         jbInformes.setBackground(new java.awt.Color(204, 204, 204));
         jbInformes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -191,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
                 jbInformesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 210, 90));
+        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 1060, 90));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -206,6 +176,20 @@ public class Principal extends javax.swing.JFrame {
         });
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1220, 150));
+
+        jbAjustes.setBackground(new java.awt.Color(204, 204, 204));
+        jbAjustes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbAjustes.setForeground(new java.awt.Color(33, 150, 243));
+        jbAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes.png"))); // NOI18N
+        jbAjustes.setText("Ajustes");
+        jbAjustes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbAjustes.setEnabled(false);
+        jbAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAjustesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 1060, 90));
 
         dpPrincipal.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -329,6 +313,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionInmuebles = new GestionInmuebles();
             this.dpPrincipal.add(gestionInmuebles);
+            util.Util.centrarVentana(dpPrincipal, gestionInmuebles);
             gestionInmuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,6 +326,9 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionMuebles = new GestionMuebles();
             this.dpPrincipal.add(gestionMuebles);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = gestionMuebles.getSize();
+            gestionMuebles.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
             gestionMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -358,15 +346,14 @@ public class Principal extends javax.swing.JFrame {
         } // TODO add your handling code here:
     }//GEN-LAST:event_jbAjustesActionPerformed
 
-    private void jbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbUsuariosActionPerformed
-
     private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
         GestionReportes gestionReportes;
         try {
             gestionReportes = new GestionReportes();
             this.dpPrincipal.add(gestionReportes);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = gestionReportes.getSize();
+            gestionReportes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
             gestionReportes.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -410,7 +397,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jbInformes;
     private javax.swing.JButton jbInmuebles;
     private javax.swing.JButton jbMuebles;
-    private javax.swing.JButton jbUsuarios;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlTituloPrincipal;

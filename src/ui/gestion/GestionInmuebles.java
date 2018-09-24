@@ -15,7 +15,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import objeto.Inmueble;
 import ui.abm.AbmInmuebles;
-import ui.abm.VistaInmuebles;
+
 import ui.grillas.GrillaInmuebles;
 
 /**
@@ -60,18 +60,22 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jlNombreUsuario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtInmuebles = new javax.swing.JTable();
-        jbEliminar = new javax.swing.JButton();
+        jpTitulo1 = new javax.swing.JPanel();
+        jbVer = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
-        jbVerInmueble = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
+        setPreferredSize(new java.awt.Dimension(1145, 710));
 
-        desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
+        desktopPane.setPreferredSize(new java.awt.Dimension(1145, 710));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setMinimumSize(new java.awt.Dimension(1145, 710));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(1145, 710));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
@@ -129,27 +133,43 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
         jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1020, 330));
 
-        jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
-        jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
-        jbEliminar.setText("Eliminar");
-        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEliminarActionPerformed(evt);
+        jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo1MouseDragged(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 100, -1));
+        jpTitulo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo1MousePressed(evt);
+            }
+        });
+        jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
+
+        jbVer.setBackground(new java.awt.Color(204, 204, 204));
+        jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVer.setForeground(new java.awt.Color(33, 150, 243));
+        jbVer.setText("Ver");
+        jbVer.setPreferredSize(new java.awt.Dimension(92, 33));
+        jbVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVerActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 100, -1));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
         jbNuevo.setText("Nuevo");
+        jbNuevo.setPreferredSize(new java.awt.Dimension(92, 33));
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 100, -1));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -160,18 +180,19 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 100, -1));
 
-        jbVerInmueble.setBackground(new java.awt.Color(204, 204, 204));
-        jbVerInmueble.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbVerInmueble.setForeground(new java.awt.Color(33, 150, 243));
-        jbVerInmueble.setText("Ver");
-        jbVerInmueble.addActionListener(new java.awt.event.ActionListener() {
+        jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
+        jbEliminar.setText("Eliminar");
+        jbEliminar.setPreferredSize(new java.awt.Dimension(92, 33));
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbVerInmuebleActionPerformed(evt);
+                jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVerInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 100, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -179,32 +200,28 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
+            .addGap(0, 1156, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(32, Short.MAX_VALUE)))
+                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 690, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
 
         pack();
@@ -218,65 +235,84 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
     }//GEN-LAST:event_jpTituloMousePressed
 
-    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+    private void jpTitulo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MouseDragged
+
+    private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MousePressed
+
+    private void jbVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerActionPerformed
         if (jtInmuebles.getSelectedRow() > -1) {
             AbmInmuebles abmInmuebles;
+            GestionInmuebles gestionInmuebles;
             try {
-                abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                        get(jtInmuebles.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmInmuebles);
-                abmInmuebles.show();
-            } catch (SQLException ex) {
-                Logger.getLogger(GestionInmuebles.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                abmInmuebles = new AbmInmuebles(ABM_VER, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
+                    get(jtInmuebles.getSelectedRow()).getId()), this);
+            gestionInmuebles = new GestionInmuebles();
+            this.desktopPane.add(abmInmuebles);
+            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
+            abmInmuebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
-    }//GEN-LAST:event_jbEliminarActionPerformed
+    }//GEN-LAST:event_jbVerActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        AbmInmuebles abmInmuebles;
+           AbmInmuebles abmInmuebles;
+            GestionInmuebles gestionInmuebles;
         try {
             abmInmuebles = new AbmInmuebles(ABM_ALTA, new Inmueble(), this);
+             gestionInmuebles = new GestionInmuebles();
             this.desktopPane.add(abmInmuebles);
+            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
             abmInmuebles.show();
         } catch (SQLException ex) {
-            Logger.getLogger(GestionInmuebles.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtInmuebles.getSelectedRow() > -1) {
-            AbmInmuebles abmInuebles;
+             AbmInmuebles abmInmuebles;
+            GestionInmuebles gestionInmuebles;
             try {
-                abmInuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                        get(jtInmuebles.getSelectedRow()).getId()), this);
-                this.desktopPane.add(abmInuebles);
-                abmInuebles.show();
-            } catch (SQLException ex) {
-                Logger.getLogger(GestionInmuebles.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                abmInmuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
+                    get(jtInmuebles.getSelectedRow()).getId()), this);
+            gestionInmuebles = new GestionInmuebles();
+             this.desktopPane.add(abmInmuebles);
+            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
+            abmInmuebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
-    private void jbVerInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerInmuebleActionPerformed
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         if (jtInmuebles.getSelectedRow() > -1) {
-            VistaInmuebles vistaInmuebles;
+           AbmInmuebles abmInmuebles;
+            GestionInmuebles gestionInmuebles;
             try {
-                vistaInmuebles = new VistaInmuebles(inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                        get(jtInmuebles.getSelectedRow()).getId()));
-                this.desktopPane.add(vistaInmuebles);
-                vistaInmuebles.show();
-            } catch (SQLException ex) {
-                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-            }
+               abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
+                    get(jtInmuebles.getSelectedRow()).getId()), this);
+           gestionInmuebles = new GestionInmuebles();
+             this.desktopPane.add(abmInmuebles);
+            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
+            abmInmuebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
-    }//GEN-LAST:event_jbVerInmuebleActionPerformed
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
@@ -284,13 +320,14 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
-    private javax.swing.JButton jbVerInmueble;
+    private javax.swing.JButton jbVer;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
+    private javax.swing.JPanel jpTitulo1;
     private javax.swing.JTable jtInmuebles;
     // End of variables declaration//GEN-END:variables
 

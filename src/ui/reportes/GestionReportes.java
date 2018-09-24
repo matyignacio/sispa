@@ -6,6 +6,9 @@
 package ui.reportes;
 
 import controlador.ConexionDB;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import ui.*;
 import java.net.URL;
@@ -21,6 +24,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -46,10 +50,12 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     public GestionReportes() throws SQLException {
         initComponents();
+        
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +82,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("SISPA - Reportes");
-        setPreferredSize(new java.awt.Dimension(1216, 736));
+        setPreferredSize(new java.awt.Dimension(1145, 710));
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1190, 702));
 
@@ -132,7 +138,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
                 jbMueblesHistoricoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMueblesHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 260, 90));
+        jpPrincipal.add(jbMueblesHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 260, 90));
 
         jbInmueblesAnual.setBackground(new java.awt.Color(204, 204, 204));
         jbInmueblesAnual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -145,7 +151,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
                 jbInmueblesAnualActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmueblesAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 270, 90));
+        jpPrincipal.add(jbInmueblesAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 270, 90));
 
         jbMueblesAnuales.setBackground(new java.awt.Color(204, 204, 204));
         jbMueblesAnuales.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -158,7 +164,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
                 jbMueblesAnualesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMueblesAnuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 260, 90));
+        jpPrincipal.add(jbMueblesAnuales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 260, 90));
 
         jbInmueblesHistoricos.setBackground(new java.awt.Color(204, 204, 204));
         jbInmueblesHistoricos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -171,7 +177,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
                 jbInmueblesHistoricosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmueblesHistoricos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 270, 90));
+        jpPrincipal.add(jbInmueblesHistoricos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 270, 90));
 
         jbInmueblesHistoricosHistorico.setBackground(new java.awt.Color(204, 204, 204));
         jbInmueblesHistoricosHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -184,7 +190,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
                 jbInmueblesHistoricosHistoricoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmueblesHistoricosHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 270, 90));
+        jpPrincipal.add(jbInmueblesHistoricosHistorico, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 270, 90));
 
         jbInmueblesHistoricosAnual.setBackground(new java.awt.Color(204, 204, 204));
         jbInmueblesHistoricosAnual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,7 +203,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
                 jbInmueblesHistoricosAnualActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmueblesHistoricosAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 270, 90));
+        jpPrincipal.add(jbInmueblesHistoricosAnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 380, 270, 90));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -253,6 +259,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     private void jbMueblesHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesHistoricoActionPerformed
 
         try {
+
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
@@ -263,15 +270,23 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
+            File pdf = File.createTempFile("output.", ".pdf");
+            JasperExportManager.exportReportToPdfStream(jasperPrint, new FileOutputStream(pdf));
+
             JasperViewer.viewReport(jasperPrint, false);
+            setearTitulo(jasperPrint, "SISPA Reporte");
+
+            //  JasperViewer.viewReport(jasperPrint, false);
             conn.close();
         } catch (JRException | SQLException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbMueblesHistoricoActionPerformed
 
     private void jbInmueblesAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesAnualActionPerformed
-        try {
+       try {
             String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
 
             conn = ConexionDB.GetConnection();
@@ -284,19 +299,19 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.clear();
 
             parametros.put(
-                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+                "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put(
-                    "logo", this.getClass().getResourceAsStream(logotipo));
+                "logo", this.getClass().getResourceAsStream(logotipo));
             parametros.put(
-                    "fecha", fecha);
+                "fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
 
-            JasperViewer.viewReport(jasperPrint,
-                    false);
+            setearTitulo(jasperPrint, "SISPA Reporte");
+
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
-                    .getName()).log(Level.SEVERE, null, ex);
+                .getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_jbInmueblesAnualActionPerformed
@@ -315,25 +330,26 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.clear();
 
             parametros.put(
-                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+                "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put(
-                    "logo", this.getClass().getResourceAsStream(logotipo));
+                "logo", this.getClass().getResourceAsStream(logotipo));
             parametros.put(
-                    "fecha", fecha);
+                "fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
 
-            JasperViewer.viewReport(jasperPrint,
-                    false);
+            setearTitulo(jasperPrint, "SISPA Reporte");
+
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
-                    .getName()).log(Level.SEVERE, null, ex);
+                .getName()).log(Level.SEVERE, null, ex);
 
         }
+   
     }//GEN-LAST:event_jbMueblesAnualesActionPerformed
 
     private void jbInmueblesHistoricosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosActionPerformed
-        try {
+      try {
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
@@ -344,7 +360,8 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-            JasperViewer.viewReport(jasperPrint, false);
+            setearTitulo(jasperPrint, "SISPA Reporte");
+
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
@@ -352,7 +369,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInmueblesHistoricosActionPerformed
 
     private void jbInmueblesHistoricosHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosHistoricoActionPerformed
-        try {
+         try {
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
@@ -363,15 +380,18 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-            JasperViewer.viewReport(jasperPrint, false);
+            setearTitulo(jasperPrint, "SISPA Reporte");
+
             conn.close();
-        } catch (JRException | SQLException ex) {
+        } catch (JRException ex) {
+            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbInmueblesHistoricosHistoricoActionPerformed
 
     private void jbInmueblesHistoricosAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosAnualActionPerformed
-        try {
+       try {
             String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
 
             conn = ConexionDB.GetConnection();
@@ -384,19 +404,19 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.clear();
 
             parametros.put(
-                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+                "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put(
-                    "logo", this.getClass().getResourceAsStream(logotipo));
+                "logo", this.getClass().getResourceAsStream(logotipo));
             parametros.put(
-                    "fecha", fecha);
+                "fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
 
-            JasperViewer.viewReport(jasperPrint,
-                    false);
+            setearTitulo(jasperPrint, "SISPA Reporte");
+
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
-                    .getName()).log(Level.SEVERE, null, ex);
+                .getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_jbInmueblesHistoricosAnualActionPerformed
@@ -445,4 +465,10 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jpTitulo1;
     // End of variables declaration//GEN-END:variables
 
+    private void setearTitulo(JasperPrint jasperPrint, String titulo) {
+        JasperViewer jv = new JasperViewer(jasperPrint, false);
+        jv.setTitle(titulo);
+        jv.setVisible(true);
+
+    }
 }
