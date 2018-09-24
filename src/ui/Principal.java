@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 import objeto.Operaciones;
 import ui.gestion.*;
 
@@ -18,6 +19,8 @@ import ui.gestion.*;
  * @author Kuky
  */
 public class Principal extends javax.swing.JFrame {
+
+    JProgressBar prog;
 
     /**
      * Creates new form Principal2
@@ -30,11 +33,11 @@ public class Principal extends javax.swing.JFrame {
             Operaciones operaciones1 = new Operaciones();
             operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
             switch (operaciones1.getId()) {
-                case 3:
+                case util.Util.ABM_AJUSTES:
                     jbAjustes.setEnabled(true);
-                case 4:
+                case util.Util.ABM_USUARIOS:
                     jbUsuarios.setEnabled(true);
-                case 5:
+                case util.Util.ABM_INFORMES:
                     jbInformes.setEnabled(true);
             }
         }
@@ -391,24 +394,7 @@ public class Principal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
