@@ -594,9 +594,9 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jcbModelo.setEnabled(false);
                 jtfCantidad.setEditable(false);
                 jtfValor.setEditable(false);
-                if(!operacion.equals(Gestionable.ABM_BAJA)){
+                if (!operacion.equals(Gestionable.ABM_BAJA)) {
                     jbAceptar.setVisible(false);
-                    
+
                 }
             }
         }
