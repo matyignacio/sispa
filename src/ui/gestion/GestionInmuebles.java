@@ -150,6 +150,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jbVer.setBackground(new java.awt.Color(204, 204, 204));
         jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbVer.setForeground(new java.awt.Color(33, 150, 243));
+        jbVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ver.png"))); // NOI18N
         jbVer.setText("Ver");
         jbVer.setPreferredSize(new java.awt.Dimension(92, 33));
         jbVer.addActionListener(new java.awt.event.ActionListener() {
@@ -157,11 +158,12 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbVerActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 100, -1));
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 110, 40));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_nuevo.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.setPreferredSize(new java.awt.Dimension(92, 33));
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -169,22 +171,24 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 110, 40));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(33, 150, 243));
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_modificar.png"))); // NOI18N
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 130, -1));
 
         jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_eliminar.png"))); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.setPreferredSize(new java.awt.Dimension(92, 33));
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +196,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 120, 40));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -217,11 +221,11 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1143, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
 
         pack();

@@ -152,6 +152,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_eliminar.png"))); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.setPreferredSize(new java.awt.Dimension(92, 33));
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,11 +160,12 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, 120, 40));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_nuevo.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.setPreferredSize(new java.awt.Dimension(92, 33));
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -171,22 +173,24 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 110, 40));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(33, 150, 243));
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_modificar.png"))); // NOI18N
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 130, -1));
 
         jbVer.setBackground(new java.awt.Color(204, 204, 204));
         jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbVer.setForeground(new java.awt.Color(33, 150, 243));
+        jbVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ver.png"))); // NOI18N
         jbVer.setText("Ver");
         jbVer.setPreferredSize(new java.awt.Dimension(92, 33));
         jbVer.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +198,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbVerActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 100, -1));
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 100, 40));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

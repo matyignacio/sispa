@@ -134,35 +134,38 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbEliminar.setForeground(new java.awt.Color(33, 150, 243));
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_eliminar.png"))); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 520, 120, -1));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbNuevo.setForeground(new java.awt.Color(33, 150, 243));
+        jbNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_nuevo.png"))); // NOI18N
         jbNuevo.setText("Nuevo");
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 110, -1));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbModificar.setForeground(new java.awt.Color(33, 150, 243));
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_modificar.png"))); // NOI18N
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, 130, -1));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -201,11 +204,11 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
 
         pack();
