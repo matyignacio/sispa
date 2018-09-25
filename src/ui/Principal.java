@@ -326,9 +326,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionMuebles = new GestionMuebles();
             this.dpPrincipal.add(gestionMuebles);
-            Dimension desktopSize = dpPrincipal.getSize();
-            Dimension FrameSize = gestionMuebles.getSize();
-            gestionMuebles.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            util.Util.centrarVentana(dpPrincipal, gestionMuebles);
             gestionMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -340,6 +338,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             ajustes = new Ajustes();
             this.dpPrincipal.add(ajustes);
+            util.Util.centrarVentana(dpPrincipal, ajustes);
             ajustes.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);

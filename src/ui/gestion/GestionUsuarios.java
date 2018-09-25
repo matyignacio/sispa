@@ -62,14 +62,17 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
         jbEliminar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
+        jpTitulo1 = new javax.swing.JPanel();
 
         setClosable(true);
         setTitle("SISPA - Usuarios");
+        setPreferredSize(new java.awt.Dimension(1100, 710));
 
-        desktopPane.setPreferredSize(new java.awt.Dimension(1150, 690));
+        desktopPane.setPreferredSize(new java.awt.Dimension(1100, 710));
 
         jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(1100, 710));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
@@ -125,7 +128,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
         ));
         jScrollPane1.setViewportView(jtUsuario);
 
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1020, 330));
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 1020, 330));
 
         jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -136,7 +139,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 590, 100, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, 100, -1));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -147,7 +150,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 100, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 100, -1));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -158,7 +161,21 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 100, -1));
+
+        jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
+        jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jpTitulo1MouseDragged(evt);
+            }
+        });
+        jpTitulo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpTitulo1MousePressed(evt);
+            }
+        });
+        jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1190, 140));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -169,29 +186,25 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
             .addGap(0, 1150, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(32, Short.MAX_VALUE)))
+                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 690, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
 
         pack();
@@ -250,6 +263,14 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
         }
     }//GEN-LAST:event_jbModificarActionPerformed
 
+    private void jpTitulo1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MouseDragged
+
+    private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpTitulo1MousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
@@ -262,6 +283,7 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
+    private javax.swing.JPanel jpTitulo1;
     private javax.swing.JTable jtUsuario;
     // End of variables declaration//GEN-END:variables
 

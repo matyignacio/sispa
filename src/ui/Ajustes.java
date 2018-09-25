@@ -82,9 +82,13 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("SISPA - Ajustes");
+        setPreferredSize(new java.awt.Dimension(1145, 710));
+
+        desktopPane.setPreferredSize(new java.awt.Dimension(1145, 710));
 
         jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(1145, 710));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
@@ -141,7 +145,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbMarcasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 120, 80));
+        jpPrincipal.add(jbMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 80));
 
         jbCodigos.setBackground(new java.awt.Color(204, 204, 204));
         jbCodigos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -160,7 +164,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCodigosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 120, 40));
+        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 80, 60));
 
         jbModelos.setBackground(new java.awt.Color(204, 204, 204));
         jbModelos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -179,7 +183,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbModelosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 120, 55));
+        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 100, 60));
 
         jbIncisos.setBackground(new java.awt.Color(204, 204, 204));
         jbIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -198,7 +202,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbIncisosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, 55));
+        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 100, 60));
 
         jbEstados.setBackground(new java.awt.Color(204, 204, 204));
         jbEstados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -217,7 +221,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbEstadosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 120, 80));
+        jpPrincipal.add(jbEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 160, 80));
 
         jbCategorias.setBackground(new java.awt.Color(204, 204, 204));
         jbCategorias.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -236,7 +240,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCategoriasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, 80));
+        jpPrincipal.add(jbCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 160, 80));
 
         jbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -255,7 +259,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbReparticionesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 200, 120, 80));
+        jpPrincipal.add(jbReparticiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 160, 80));
 
         jbUsuarios.setBackground(new java.awt.Color(204, 204, 204));
         jbUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -274,7 +278,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbUsuariosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 120, 80));
+        jpPrincipal.add(jbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 160, 80));
 
         jbPerfiles.setBackground(new java.awt.Color(204, 204, 204));
         jbPerfiles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -293,7 +297,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbPerfilesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 120, 55));
+        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 100, 60));
 
         jbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
         jbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -312,7 +316,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbTipoAdquisicionActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, 120, 80));
+        jpPrincipal.add(jbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 200, 160, 80));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -349,11 +353,11 @@ public class Ajustes extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
         );
 
         pack();
@@ -371,7 +375,9 @@ public class Ajustes extends javax.swing.JInternalFrame {
         GestionMarcas gestionMarcas;
         try {
             gestionMarcas = new GestionMarcas();
+            Ajustes ajustes = new Ajustes();
             this.desktopPane.add(gestionMarcas);
+            util.Util.centrarInternalVentana(ajustes, gestionMarcas);
             gestionMarcas.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -408,9 +414,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEstadosActionPerformed
         GestionEstados gestionEstados;
+        Ajustes ajustes;
         try {
             gestionEstados = new GestionEstados();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionEstados);
+            util.Util.centrarInternalVentana(ajustes, gestionEstados);
             gestionEstados.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -503,9 +512,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
+        Ajustes ajustes;
         try {
             gestionModelos = new GestionModelos();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionModelos);
+            util.Util.centrarInternalVentana(ajustes, gestionModelos);
             gestionModelos.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -514,9 +526,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbCodigosActionPerformed(java.awt.event.MouseEvent evt) {
         GestionCodigosPresupuestario gestionCodigos;
+        Ajustes ajustes;
         try {
             gestionCodigos = new GestionCodigosPresupuestario();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionCodigos);
+            util.Util.centrarInternalVentana(ajustes, gestionCodigos);
             gestionCodigos.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -525,9 +540,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbIncisosActionPerformed(java.awt.event.MouseEvent evt) {
         GestionIncisos gestionIncisos;
+        Ajustes ajustes;
         try {
             gestionIncisos = new GestionIncisos();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionIncisos);
+            util.Util.centrarInternalVentana(ajustes, gestionIncisos);
             gestionIncisos.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -536,9 +554,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbCategoriasActionPerformed(java.awt.event.MouseEvent evt) {
         GestionCategorias gestionCategorias;
+        Ajustes ajustes;
         try {
             gestionCategorias = new GestionCategorias();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionCategorias);
+            util.Util.centrarInternalVentana(ajustes, gestionCategorias);
             gestionCategorias.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
