@@ -34,13 +34,15 @@ import util.Util;
  */
 public class Login extends javax.swing.JFrame {
 
-    public static Usuario usuario = new Usuario();
+    public static final Login login = new Login();
+    public static Usuario usuario;
     public static UsuarioControlador usuarioControlador;
     private IniciarSesionTask iniciarSesionTask;
 
     public Login() {
         initComponents();
         jtfUsuario.requestFocus();
+        pbLogin.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -54,12 +56,13 @@ public class Login extends javax.swing.JFrame {
         jtfUsuario = new javax.swing.JTextField();
         jtfClave = new javax.swing.JPasswordField();
         jpTitulo1 = new javax.swing.JPanel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        pbLogin = new javax.swing.JProgressBar();
         jpTitulo = new javax.swing.JPanel();
-        jl_sali = new javax.swing.JLabel();
+        jl_salir = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SISPA - Login");
         setLocationByPlatform(true);
         setUndecorated(true);
 
@@ -126,11 +129,11 @@ public class Login extends javax.swing.JFrame {
         });
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jProgressBar1.setBackground(new java.awt.Color(251, 255, 216));
-        jProgressBar1.setForeground(java.awt.Color.green);
-        jProgressBar1.setIndeterminate(true);
-        jProgressBar1.setPreferredSize(new java.awt.Dimension(400, 30));
-        jpTitulo1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 510, 40));
+        pbLogin.setBackground(new java.awt.Color(251, 255, 216));
+        pbLogin.setForeground(java.awt.Color.green);
+        pbLogin.setIndeterminate(true);
+        pbLogin.setPreferredSize(new java.awt.Dimension(400, 30));
+        jpTitulo1.add(pbLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 510, 40));
 
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 510, 100));
 
@@ -147,16 +150,16 @@ public class Login extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jl_sali.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jl_sali.setForeground(new java.awt.Color(255, 255, 255));
-        jl_sali.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_sali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
-        jl_sali.addMouseListener(new java.awt.event.MouseAdapter() {
+        jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jl_salir.setForeground(new java.awt.Color(255, 255, 255));
+        jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
+        jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jl_saliMousePressed(evt);
+                jl_salirMousePressed(evt);
             }
         });
-        jpTitulo.add(jl_sali, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 40));
+        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 40));
 
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,13 +188,13 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {                                      
+    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
             System.exit(0);
         } else {
         }
-    }                                     
+    }
 
     int xx, xy;
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
@@ -227,14 +230,6 @@ public class Login extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jpTituloMouseDragged
 
-    private void jl_saliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_saliMousePressed
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
-            System.exit(0);
-        } else {
-
-        }
-    }//GEN-LAST:event_jl_saliMousePressed
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }
@@ -251,48 +246,47 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+
+                login.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton jbAceptar;
     private javax.swing.JLabel jlClave;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuario;
-    private javax.swing.JLabel jl_sali;
+    private javax.swing.JLabel jl_salir;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpTitulo1;
     private javax.swing.JPasswordField jtfClave;
     private javax.swing.JTextField jtfUsuario;
+    private javax.swing.JProgressBar pbLogin;
     // End of variables declaration//GEN-END:variables
 
     public void validarUsuario() {
-
+        pbLogin.setVisible(true);
+        jbAceptar.setEnabled(false);
         usuarioControlador = new UsuarioControlador();
+        usuario = new Usuario();
         usuario.setMail(jtfUsuario.getText());
         usuario.setClave(String.valueOf(jtfClave.getPassword()));
         try {
             usuario = usuarioControlador.validarUsuario(usuario);
             if (usuario.getId() > 0) {//VERIFICA SI ENCONTRO UN USUARIO
-//                iniciarSesion();
-
                 iniciarSesionTask = new IniciarSesionTask();
                 iniciarSesionTask.execute();
             } else {
+                pbLogin.setVisible(false);
+                jbAceptar.setEnabled(true);
                 JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta.");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta");
+            JOptionPane.showMessageDialog(null, ex.toString());
         }
-        //this.dispose();
-//        Principal principal;
-//        principal = new Principal();
-//        principal.setVisible(true);
     }
 
     private class IniciarSesionTask extends SwingWorker<String, Void> {
@@ -301,14 +295,50 @@ public class Login extends javax.swing.JFrame {
         public String doInBackground() {
             ArrayList<MuebleMantenible> autos = new ArrayList();
             MuebleMantenibleControlador mmc = new MuebleMantenibleControlador();
+
             try {
                 autos = mmc.necesitaMantenimiento(usuario.getReparticion().getId());
                 if (autos.size() > 0) {
-                    //sendMail(autos);
+                    String subject = "Debe realizar mantenimiento a: ", mensaje = "";
+                    for (int i = 0; i < autos.size(); i++) {
+                        subject += autos.get(i).getDominio() + " - ";
+                        mensaje += "Marca: " + autos.get(i).getNombre() + " Modelo: " + autos.get(i).getModelo().getNombre()
+                                + " con Dominio " + autos.get(i).getDominio() + "\n";
+                    }
+                    Properties props = new Properties();
+                    props.put("mail.smtp.auth", "true");
+                    props.put("mail.smtp.starttls.enable", "true");
+                    props.put("mail.smtp.host", "smtp.gmail.com");
+                    props.put("mail.smtp.port", "587");
+
+                    Session session = Session.getInstance(props,
+                            new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(Util.CORREO, Util.CLAVE);
+                        }
+                    });
+
+                    try {
+                        Message message = new MimeMessage(session);
+                        message.setFrom(new InternetAddress(Util.CORREO));
+                        message.setRecipients(Message.RecipientType.TO,
+                                InternetAddress.parse(usuario.getMail()));
+                        message.setSubject(subject);
+                        message.setText(mensaje);
+                        Transport.send(message);
+                        JOptionPane.showMessageDialog(null, "Revise su correo, se ha enviado un mensaje");
+                        return "OK";
+
+                    } catch (MessagingException e) {
+                        JOptionPane.showMessageDialog(null, "Usted ingreso una direccion de correo invalida.\n"
+                                + "Para poder iniciar sesion, comuniquese con el administrador del sistema.", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                        return "ERROR";
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Felicidades! No tiene vehiculos que necesitan mantenimiento!");
+                    return "OK";
                 }
-                return "OK";
+
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "ERROR: Usuario o clave incorrecta.");
@@ -324,51 +354,19 @@ public class Login extends javax.swing.JFrame {
                     Principal principal;
                     principal = new Principal();
                     principal.setVisible(true);
+                    pbLogin.setVisible(false);
+                    jtfUsuario.setText("");
+                    jtfClave.setText("");
+                    jbAceptar.setEnabled(true);
+                    login.dispose();
                 } else {
+                    pbLogin.setVisible(false);
+                    jbAceptar.setEnabled(true);
                     Toolkit.getDefaultToolkit().beep();
-
                 }
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
+            } catch (InterruptedException | ExecutionException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        }
-    }
-
-    public void sendMail(ArrayList<MuebleMantenible> autos) {
-        String subject = "Debe realizar mantenimiento a: ", mensaje = "";
-        for (int i = 0; i < autos.size(); i++) {
-            subject += autos.get(i).getDominio() + " - ";
-            mensaje += "Marca: " + autos.get(i).getNombre() + " Modelo: " + autos.get(i).getModelo().getNombre()
-                    + " con Dominio " + autos.get(i).getDominio() + "\n";
-        }
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(Util.CORREO, Util.CLAVE);
-            }
-        });
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(Util.CORREO));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(usuario.getMail()));
-            message.setSubject(subject);
-            message.setText(mensaje);
-            Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Revise su correo, se ha enviado un mensaje");
-
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
         }
     }
 }

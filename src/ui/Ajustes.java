@@ -8,6 +8,8 @@ package ui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultDesktopManager;
+import javax.swing.JComponent;
 import objeto.Operaciones;
 import ui.gestion.*;
 
@@ -22,6 +24,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
      */
     public Ajustes() throws SQLException {
         initComponents();
+        
         int i;
         jlNombreUsuario.setText(Login.usuario.toString());
         for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
@@ -353,16 +356,17 @@ public class Ajustes extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1143, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     
     private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
 
     }//GEN-LAST:event_jpTituloMouseDragged
@@ -440,9 +444,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbReparticionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReparticionesActionPerformed
         GestionReparticiones gestionReparticiones;
+        Ajustes ajustes;
         try {
             gestionReparticiones = new GestionReparticiones();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionReparticiones);
+            util.Util.centrarInternalVentana(ajustes, gestionReparticiones);
             gestionReparticiones.show();
         } catch (SQLException ex) {
             Logger.getLogger(Ajustes.class.getName()).log(Level.SEVERE, null, ex);
@@ -455,9 +462,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUsuariosActionPerformed
         GestionUsuarios gestionUsuarios;
+        Ajustes ajustes;
         try {
             gestionUsuarios = new GestionUsuarios();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionUsuarios);
+            util.Util.centrarInternalVentana(ajustes, gestionUsuarios);
             gestionUsuarios.show();
         } catch (SQLException ex) {
             Logger.getLogger(Ajustes.class.getName()).log(Level.SEVERE, null, ex);
@@ -470,9 +480,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbPerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPerfilesActionPerformed
         GestionPerfiles gestionPerfiles;
+        Ajustes ajustes;
         try {
             gestionPerfiles = new GestionPerfiles();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionPerfiles);
+            util.Util.centrarInternalVentana(ajustes, gestionPerfiles);
             gestionPerfiles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -485,9 +498,12 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     private void jbTipoAdquisicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTipoAdquisicionActionPerformed
         GestionTipoAdquisiciones gestionTipoAdquisiciones;
+        Ajustes ajustes;
         try {
             gestionTipoAdquisiciones = new GestionTipoAdquisiciones();
+            ajustes = new Ajustes();
             this.desktopPane.add(gestionTipoAdquisiciones);
+            util.Util.centrarInternalVentana(ajustes, gestionTipoAdquisiciones);
             gestionTipoAdquisiciones.show();
         } catch (SQLException ex) {
             Logger.getLogger(Ajustes.class.getName()).log(Level.SEVERE, null, ex);

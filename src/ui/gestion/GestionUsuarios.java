@@ -221,11 +221,14 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         if (jtUsuario.getSelectedRow() > -1) {
             AbmUsuarios abmUsuarios;
+            GestionUsuarios gestionUsuarios;
             try {
                 abmUsuarios = new AbmUsuarios(ABM_BAJA, usuarioControlador.extraer(usuarioControlador.extraerTodosVisibles().
                         get(jtUsuario.getSelectedRow()).getId()),
                         this);
                 this.desktopPane.add(abmUsuarios);
+                gestionUsuarios = new GestionUsuarios();
+                util.Util.centrarInternalVentana(gestionUsuarios, abmUsuarios);
                 abmUsuarios.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -237,9 +240,12 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         AbmUsuarios abmUsuarios;
+        GestionUsuarios gestionUsuarios;
         try {
             abmUsuarios = new AbmUsuarios(ABM_ALTA, new Usuario(), this);
             this.desktopPane.add(abmUsuarios);
+            gestionUsuarios = new GestionUsuarios();
+            util.Util.centrarInternalVentana(gestionUsuarios, abmUsuarios);
             abmUsuarios.show();
         } catch (SQLException ex) {
             Logger.getLogger(GestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -250,10 +256,13 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtUsuario.getSelectedRow() > -1) {
             AbmUsuarios abmUsuarios;
+            GestionUsuarios gestionUsuarios;
             try {
                 abmUsuarios = new AbmUsuarios(ABM_MODIFICACION, usuarioControlador.extraer(usuarioControlador.extraerTodosVisibles().
                         get(jtUsuario.getSelectedRow()).getId()), this);
                 this.desktopPane.add(abmUsuarios);
+                gestionUsuarios = new GestionUsuarios();
+                util.Util.centrarInternalVentana(gestionUsuarios, abmUsuarios);
                 abmUsuarios.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionUsuarios.class.getName()).log(Level.SEVERE, null, ex);
