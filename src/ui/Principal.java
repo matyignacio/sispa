@@ -362,9 +362,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void abrirAjustes() {
         Ajustes ajustes;
+        
         try {
             ajustes = new Ajustes();
             this.dpPrincipal.add(ajustes);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = ajustes.getSize();
+            ajustes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
             ajustes.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
