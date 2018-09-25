@@ -289,7 +289,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagenes/ic_automotores.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Muebles Mantenibles Historico"/>
+                <Property name="text" type="java.lang.String" value="Automotores Historico"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor Por defecto"/>
                 </Property>
@@ -317,7 +317,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagenes/ic_automotores.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Muebles Mantenibles Anuales"/>
+                <Property name="text" type="java.lang.String" value="Automotores Anual"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor Por defecto"/>
                 </Property>

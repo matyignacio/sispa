@@ -210,7 +210,6 @@ public class MuebleMantenibleControlador {
 
     public void modificar(MuebleMantenible muebleMantenible) throws SQLException {
         java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-        JOptionPane.showMessageDialog(null, currentTimestamp);
 //        JOptionPane.showMessageDialog(null, (java.sql.Date) now);
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();

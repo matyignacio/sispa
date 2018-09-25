@@ -67,7 +67,6 @@ public class Principal extends javax.swing.JFrame {
         jmiMuebles = new javax.swing.JMenuItem();
         jmiInmubles = new javax.swing.JMenuItem();
         jmiInformes = new javax.swing.JMenuItem();
-        jmiUsuarios = new javax.swing.JMenuItem();
         jmiAjustes = new javax.swing.JMenuItem();
         jmSesion = new javax.swing.JMenu();
         jmiCerrarSesion = new javax.swing.JMenuItem();
@@ -221,13 +220,20 @@ public class Principal extends javax.swing.JFrame {
         jmModulos.add(jmiMuebles);
 
         jmiInmubles.setText("Inmuebles");
+        jmiInmubles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiInmublesActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiInmubles);
 
         jmiInformes.setText("Informes");
+        jmiInformes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiInformesActionPerformed(evt);
+            }
+        });
         jmModulos.add(jmiInformes);
-
-        jmiUsuarios.setText("Usuarios");
-        jmModulos.add(jmiUsuarios);
 
         jmiAjustes.setText("Ajustes");
         jmiAjustes.addActionListener(new java.awt.event.ActionListener() {
@@ -284,80 +290,35 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jmiMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMueblesActionPerformed
-
+        abrirMuebles();
     }//GEN-LAST:event_jmiMueblesActionPerformed
 
     private void jmiCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerrarSesionActionPerformed
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar sesión?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
             dispose();
-            Login login;
-            login = new Login();
-            login.show();
+            Login.login.setVisible(true);
         }
 
     }//GEN-LAST:event_jmiCerrarSesionActionPerformed
 
     private void jmiAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAjustesActionPerformed
-        Ajustes ajustes;
-        try {
-            ajustes = new Ajustes();
-            this.dpPrincipal.add(ajustes);
-            ajustes.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        abrirAjustes();
     }//GEN-LAST:event_jmiAjustesActionPerformed
 
     private void jbInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesActionPerformed
-        GestionInmuebles gestionInmuebles;
-        try {
-            gestionInmuebles = new GestionInmuebles();
-            this.dpPrincipal.add(gestionInmuebles);
-            util.Util.centrarVentana(dpPrincipal, gestionInmuebles);
-            gestionInmuebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        abrirInmuebles();
     }//GEN-LAST:event_jbInmueblesActionPerformed
 
     private void jbMueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMueblesActionPerformed
-        GestionMuebles gestionMuebles;
-        try {
-            gestionMuebles = new GestionMuebles();
-            this.dpPrincipal.add(gestionMuebles);
-            Dimension desktopSize = dpPrincipal.getSize();
-            Dimension FrameSize = gestionMuebles.getSize();
-            gestionMuebles.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-            gestionMuebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }               // TODO add your handling code here:
+        abrirMuebles();
     }//GEN-LAST:event_jbMueblesActionPerformed
 
     private void jbAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAjustesActionPerformed
-        Ajustes ajustes;
-        try {
-            ajustes = new Ajustes();
-            this.dpPrincipal.add(ajustes);
-            ajustes.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        } // TODO add your handling code here:
+        abrirAjustes();
     }//GEN-LAST:event_jbAjustesActionPerformed
 
     private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
-        GestionReportes gestionReportes;
-        try {
-            gestionReportes = new GestionReportes();
-            this.dpPrincipal.add(gestionReportes);
-            Dimension desktopSize = dpPrincipal.getSize();
-            Dimension FrameSize = gestionReportes.getSize();
-            gestionReportes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-            gestionReportes.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        abrirReportes();
     }//GEN-LAST:event_jbInformesActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -372,6 +333,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
 
+    private void jmiInmublesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInmublesActionPerformed
+        abrirInmuebles();
+    }//GEN-LAST:event_jmiInmublesActionPerformed
+
+    private void jmiInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInformesActionPerformed
+        abrirReportes();
+    }//GEN-LAST:event_jmiInformesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -383,12 +352,63 @@ public class Principal extends javax.swing.JFrame {
          */
 
 
-        /* Create and display the form */
+ /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
             }
         });
+    }
+
+    private void abrirAjustes() {
+        Ajustes ajustes;
+        try {
+            ajustes = new Ajustes();
+            this.dpPrincipal.add(ajustes);
+            ajustes.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void abrirMuebles() {
+        GestionMuebles gestionMuebles;
+        try {
+            gestionMuebles = new GestionMuebles();
+            this.dpPrincipal.add(gestionMuebles);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = gestionMuebles.getSize();
+            gestionMuebles.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            gestionMuebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void abrirInmuebles() {
+        GestionInmuebles gestionInmuebles;
+        try {
+            gestionInmuebles = new GestionInmuebles();
+            this.dpPrincipal.add(gestionInmuebles);
+            util.Util.centrarVentana(dpPrincipal, gestionInmuebles);
+            gestionInmuebles.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void abrirReportes() {
+        GestionReportes gestionReportes;
+        try {
+            gestionReportes = new GestionReportes();
+            this.dpPrincipal.add(gestionReportes);
+            Dimension desktopSize = dpPrincipal.getSize();
+            Dimension FrameSize = gestionReportes.getSize();
+            gestionReportes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            gestionReportes.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -410,7 +430,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiInmubles;
     private javax.swing.JMenuItem jmiMuebles;
     private javax.swing.JMenuItem jmiSispa;
-    private javax.swing.JMenuItem jmiUsuarios;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpTitulo1;

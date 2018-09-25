@@ -50,12 +50,11 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     public GestionReportes() throws SQLException {
         initComponents();
-        
+
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,7 +182,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jbInmueblesHistoricosHistorico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbInmueblesHistoricosHistorico.setForeground(new java.awt.Color(33, 150, 243));
         jbInmueblesHistoricosHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
-        jbInmueblesHistoricosHistorico.setText("Muebles Mantenibles Historico");
+        jbInmueblesHistoricosHistorico.setText("Automotores Historico");
         jbInmueblesHistoricosHistorico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbInmueblesHistoricosHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +195,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
         jbInmueblesHistoricosAnual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbInmueblesHistoricosAnual.setForeground(new java.awt.Color(33, 150, 243));
         jbInmueblesHistoricosAnual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
-        jbInmueblesHistoricosAnual.setText("Muebles Mantenibles Anuales");
+        jbInmueblesHistoricosAnual.setText("Automotores Anual");
         jbInmueblesHistoricosAnual.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbInmueblesHistoricosAnual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,23 +269,17 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-            File pdf = File.createTempFile("output.", ".pdf");
-            JasperExportManager.exportReportToPdfStream(jasperPrint, new FileOutputStream(pdf));
-
-            JasperViewer.viewReport(jasperPrint, false);
             setearTitulo(jasperPrint, "SISPA Reporte");
 
             //  JasperViewer.viewReport(jasperPrint, false);
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GestionReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbMueblesHistoricoActionPerformed
 
     private void jbInmueblesAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesAnualActionPerformed
-       try {
+        try {
             String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
 
             conn = ConexionDB.GetConnection();
@@ -295,23 +288,16 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             URL in = this.getClass().getResource("InmuebleReportAnual.jasper");
             reporte = (JasperReport) JRLoader.loadObject(in);
             HashMap<String, Object> parametros = new HashMap<String, Object>();
-
             parametros.clear();
-
-            parametros.put(
-                "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
-            parametros.put(
-                "logo", this.getClass().getResourceAsStream(logotipo));
-            parametros.put(
-                "fecha", fecha);
+            parametros.put("id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+            parametros.put("logo", this.getClass().getResourceAsStream(logotipo));
+            parametros.put("fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
-
             setearTitulo(jasperPrint, "SISPA Reporte");
-
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
-                .getName()).log(Level.SEVERE, null, ex);
+                    .getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_jbInmueblesAnualActionPerformed
@@ -330,11 +316,11 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.clear();
 
             parametros.put(
-                "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put(
-                "logo", this.getClass().getResourceAsStream(logotipo));
+                    "logo", this.getClass().getResourceAsStream(logotipo));
             parametros.put(
-                "fecha", fecha);
+                    "fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
 
             setearTitulo(jasperPrint, "SISPA Reporte");
@@ -342,14 +328,14 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
-                .getName()).log(Level.SEVERE, null, ex);
+                    .getName()).log(Level.SEVERE, null, ex);
 
         }
-   
+
     }//GEN-LAST:event_jbMueblesAnualesActionPerformed
 
     private void jbInmueblesHistoricosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosActionPerformed
-      try {
+        try {
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
@@ -369,7 +355,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInmueblesHistoricosActionPerformed
 
     private void jbInmueblesHistoricosHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosHistoricoActionPerformed
-         try {
+        try {
             conn = ConexionDB.GetConnection();
             JasperReport reporte;
             JasperPrint jasperPrint;
@@ -391,7 +377,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInmueblesHistoricosHistoricoActionPerformed
 
     private void jbInmueblesHistoricosAnualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInmueblesHistoricosAnualActionPerformed
-       try {
+        try {
             String fecha = listaAnios(); // año seleccionado del combobox para el parametero put fecha
 
             conn = ConexionDB.GetConnection();
@@ -404,11 +390,11 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             parametros.clear();
 
             parametros.put(
-                "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
+                    "id_reparticion", String.valueOf(Login.usuario.getReparticion().getId()));
             parametros.put(
-                "logo", this.getClass().getResourceAsStream(logotipo));
+                    "logo", this.getClass().getResourceAsStream(logotipo));
             parametros.put(
-                "fecha", fecha);
+                    "fecha", fecha);
             jasperPrint = JasperFillManager.fillReport(reporte, parametros, conn);
 
             setearTitulo(jasperPrint, "SISPA Reporte");
@@ -416,7 +402,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
             conn.close();
         } catch (JRException | SQLException ex) {
             Logger.getLogger(GestionReportes.class
-                .getName()).log(Level.SEVERE, null, ex);
+                    .getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_jbInmueblesHistoricosAnualActionPerformed
