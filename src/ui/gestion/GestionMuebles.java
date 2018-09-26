@@ -41,6 +41,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
 
     public GestionMuebles() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null); 
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 

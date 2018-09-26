@@ -38,6 +38,7 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
 
     public GestionCategorias() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 

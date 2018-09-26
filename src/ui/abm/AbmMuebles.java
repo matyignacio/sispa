@@ -82,6 +82,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmMuebles(String operacion, Mueble mueble, Gestionable ventanaGestion) throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());

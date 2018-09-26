@@ -36,6 +36,7 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
 
     public GestionIncisos() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 

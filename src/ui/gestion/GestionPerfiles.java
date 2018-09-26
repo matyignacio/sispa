@@ -36,6 +36,7 @@ public class GestionPerfiles extends javax.swing.JInternalFrame implements Gesti
 
     public GestionPerfiles() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 

@@ -22,6 +22,7 @@ import ui.gestion.*;
 public class Principal extends javax.swing.JFrame {
 
     JProgressBar prog;
+    private boolean locked = false;
 
     /**
      * Creates new form Principal2
@@ -29,6 +30,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         int i;
         initComponents();
+       
         jlNombreUsuario.setText(Login.usuario.toString());
         for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
             Operaciones operaciones1 = new Operaciones();
@@ -41,6 +43,8 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +90,7 @@ public class Principal extends javax.swing.JFrame {
         dpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
 
         jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
+        jpPrincipal.setFocusable(false);
         jpPrincipal.setMinimumSize(new java.awt.Dimension(860, 600));
         jpPrincipal.setPreferredSize(new java.awt.Dimension(854, 600));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -315,6 +320,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAjustesActionPerformed
         abrirAjustes();
+      
     }//GEN-LAST:event_jbAjustesActionPerformed
 
     private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
@@ -415,6 +421,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpPrincipal;
     private javax.swing.JButton jbAjustes;
@@ -439,3 +446,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jpTitulo1;
     // End of variables declaration//GEN-END:variables
 }
+
+
