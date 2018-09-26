@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.reportes;
+package ui;
 
 import controlador.ConexionDB;
 import java.io.File;
@@ -440,6 +440,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     private void jbVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolver1ActionPerformed
         this.dispose();
+        util.Util.setEnabledMenues(true);
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
     private String listaAnios() {
