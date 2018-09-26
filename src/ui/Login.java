@@ -189,15 +189,6 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jl_salirMousePressed(java.awt.event.MouseEvent evt) {
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
-            System.exit(0);
-        } else {
-        }
-    }
-
-    int xx, xy;
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         validarUsuario();
     }//GEN-LAST:event_jbAceptarActionPerformed
@@ -219,16 +210,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jpTitulo1MousePressed
 
     private void jpTituloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMousePressed
-        // TODO add your handling code here:
-        xx = evt.getX();
-        xy = evt.getY();
+
     }//GEN-LAST:event_jpTituloMousePressed
 
     private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xx, y - xy);
+
     }//GEN-LAST:event_jpTituloMouseDragged
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -252,7 +238,7 @@ public class Login extends javax.swing.JFrame {
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -269,7 +255,6 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
                 login.setVisible(true);
             }
         });
