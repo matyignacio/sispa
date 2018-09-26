@@ -127,7 +127,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbmueblesManteniblesActionPerformed(evt);
             }
         });
-        jpTitulo.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 200, 60));
+        jpTitulo.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 230, 60));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 140));
 
@@ -160,7 +160,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, 120, 40));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(885, 530, 130, 40));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -173,7 +173,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 110, 40));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 130, 40));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -185,7 +185,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 130, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 130, 40));
 
         jbVer.setBackground(new java.awt.Color(204, 204, 204));
         jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -198,7 +198,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
                 jbVerActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 100, 40));
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 130, 40));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

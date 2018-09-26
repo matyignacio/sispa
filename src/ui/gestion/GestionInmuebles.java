@@ -158,7 +158,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbVerActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 110, 40));
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 130, 40));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -171,7 +171,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 110, 40));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 530, 130, 40));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -183,7 +183,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 130, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 130, 40));
 
         jbEliminar.setBackground(new java.awt.Color(204, 204, 204));
         jbEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -196,7 +196,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 120, 40));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 130, 40));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

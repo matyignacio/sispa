@@ -143,7 +143,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbEliminarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 120, -1));
+        jpPrincipal.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 130, 40));
 
         jbNuevo.setBackground(new java.awt.Color(204, 204, 204));
         jbNuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -155,7 +155,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbNuevoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 110, -1));
+        jpPrincipal.add(jbNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 530, 130, 40));
 
         jbModificar.setBackground(new java.awt.Color(204, 204, 204));
         jbModificar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -167,7 +167,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbModificarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 130, -1));
+        jpPrincipal.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 130, 40));
 
         jbVer.setBackground(new java.awt.Color(204, 204, 204));
         jbVer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -180,7 +180,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
                 jbVerActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 110, 40));
+        jpPrincipal.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 130, 40));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
