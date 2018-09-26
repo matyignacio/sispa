@@ -58,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         jpTitulo1 = new javax.swing.JPanel();
         pbLogin = new javax.swing.JProgressBar();
         jpTitulo = new javax.swing.JPanel();
-        jl_salir = new javax.swing.JLabel();
+        jbSalir = new javax.swing.JButton();
         jlTituloPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,19 +150,20 @@ public class Login extends javax.swing.JFrame {
         });
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jl_salir.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jl_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jl_salir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jl_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
-        jl_salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jl_salirMousePressed(evt);
+        jbSalir.setBackground(new java.awt.Color(33, 150, 243));
+        jbSalir.setForeground(new java.awt.Color(204, 204, 204));
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
+        jbSalir.setBorder(null);
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
             }
         });
-        jpTitulo.add(jl_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 40));
+        jpTitulo.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 50, 50));
 
+        jlTituloPrincipal.setBackground(new java.awt.Color(204, 204, 204));
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        jlTituloPrincipal.setForeground(new java.awt.Color(33, 150, 243));
         jlTituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logo Centrado.png"))); // NOI18N
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 150));
@@ -230,6 +231,13 @@ public class Login extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jpTituloMouseDragged
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+            System.exit(0);
+        } else {
+        }
+    }//GEN-LAST:event_jbSalirActionPerformed
+
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }
@@ -254,10 +262,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbAceptar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JLabel jlClave;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlUsuario;
-    private javax.swing.JLabel jl_salir;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpTitulo1;

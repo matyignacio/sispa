@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.event.WindowAdapter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +21,6 @@ import ui.gestion.*;
 public class Principal extends javax.swing.JFrame {
 
     JProgressBar prog;
-    private boolean locked = false;
 
     /**
      * Creates new form Principal2
@@ -28,7 +28,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         int i;
         initComponents();
-       
+
         jlNombreUsuario.setText(Login.usuario.toString());
         for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {
             Operaciones operaciones1 = new Operaciones();
@@ -41,8 +41,6 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +57,7 @@ public class Principal extends javax.swing.JFrame {
         jlNombreUsuario = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
+        jbSalir = new javax.swing.JButton();
         jbInmuebles = new javax.swing.JButton();
         jbMuebles = new javax.swing.JButton();
         jbInformes = new javax.swing.JButton();
@@ -77,6 +76,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISPA");
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -122,6 +122,17 @@ public class Principal extends javax.swing.JFrame {
         jlBienvenido.setForeground(new java.awt.Color(255, 255, 255));
         jlBienvenido.setText("Bienvenido: ");
         jpTitulo.add(jlBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, -1, -1));
+
+        jbSalir.setBackground(new java.awt.Color(33, 150, 243));
+        jbSalir.setForeground(new java.awt.Color(204, 204, 204));
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_salir.png"))); // NOI18N
+        jbSalir.setBorder(null);
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 0, 50, 50));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 150));
 
@@ -209,8 +220,9 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jmbPrincipal.setBackground(new java.awt.Color(33, 150, 243));
-        jmbPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(33, 150, 243)));
+        jmbPrincipal.setBorder(new javax.swing.border.MatteBorder(null));
         jmbPrincipal.setForeground(new java.awt.Color(33, 150, 243));
+        jmbPrincipal.setOpaque(false);
 
         jmModulos.setText("Modulos");
 
@@ -318,7 +330,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAjustesActionPerformed
         abrirAjustes();
-      
+
     }//GEN-LAST:event_jbAjustesActionPerformed
 
     private void jbInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInformesActionPerformed
@@ -345,6 +357,13 @@ public class Principal extends javax.swing.JFrame {
         abrirReportes();
     }//GEN-LAST:event_jmiInformesActionPerformed
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cerrar el sistema?", "ATENCION!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0) {
+            System.exit(0);
+        } else {
+        }
+    }//GEN-LAST:event_jbSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,7 +377,8 @@ public class Principal extends javax.swing.JFrame {
  /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                Principal principal = new Principal();
+                principal.setVisible(true);
             }
         });
     }
@@ -416,13 +436,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpPrincipal;
     private javax.swing.JButton jbAjustes;
     private javax.swing.JButton jbInformes;
     private javax.swing.JButton jbInmuebles;
     private javax.swing.JButton jbMuebles;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlTituloPrincipal;
@@ -441,5 +461,3 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jpTitulo1;
     // End of variables declaration//GEN-END:variables
 }
-
-
