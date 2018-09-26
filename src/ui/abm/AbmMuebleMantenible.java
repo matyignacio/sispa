@@ -82,7 +82,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
 
     public AbmMuebleMantenible(String operacion, MuebleMantenible muebleMantenible, Gestionable ventanaGestion) throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -611,12 +611,13 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
-                jtfExpediente.setEnabled(false);
-                jtaObservaciones.setEnabled(false);
-                jtfDominio.setEnabled(false);
-                jtfChasis.setEnabled(false);
+                jtfExpediente.setEditable(false);
+                jtaObservaciones.setEditable(false);
+                jtfDominio.setEditable(false);
+                jtfChasis.setEditable(false);
                 jcbReparticiones.setEnabled(false);
                 jcbEstado.setEnabled(false);
+                jtfCaracteristicas.setEditable(false);
                 jcbCategoria.setEnabled(false);
                 jcbMarca.setEnabled(false);
                 jcbModelo.setEnabled(false);

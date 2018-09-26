@@ -82,7 +82,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmMuebles(String operacion, Mueble mueble, Gestionable ventanaGestion) throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -968,8 +968,8 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
-                jtfExpediente.setEnabled(false);
-                jtaObservaciones.setEnabled(false);
+                jtfExpediente.setEditable(false);
+                jtaObservaciones.setEditable(false);
                 jcbReparticiones.setEnabled(false);
                 jcbEstado.setEnabled(false);
                 jcbCategoria.setEnabled(false);
@@ -977,7 +977,8 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
                 jcbModelo.setEnabled(false);
                 jtfCantidad.setEditable(false);
                 jtfValor.setEditable(false);
-                if(!operacion.equals(Gestionable.ABM_BAJA)){
+                jtfCaracteristicas.setEditable(false);
+                if (!operacion.equals(Gestionable.ABM_BAJA)) {
                     jbAceptar.setVisible(false);
                 }
             }

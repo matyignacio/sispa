@@ -491,10 +491,12 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
-                jtfExpediente.setEnabled(false);
-                jtaObservaciones.setEnabled(false);
+                jtfExpediente.setEditable(false);
+                jtfCaracteristicas.setEditable(false);
+                jtaObservaciones.setEditable(false);
                 jcbReparticiones.setEnabled(false);
-                jtfTipo.setEnabled(false);
+                jtfDomicilio.setEditable(false);
+                jtfTipo.setEditable(false);
                 jtfValor.setEditable(false);
                 if (!operacion.equals(Gestionable.ABM_BAJA)) {
                     jbAceptar.setVisible(false);
