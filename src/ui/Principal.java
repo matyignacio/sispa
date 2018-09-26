@@ -5,7 +5,6 @@
  */
 package ui;
 
-import java.awt.Dimension;
 import ui.reportes.GestionReportes;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -351,7 +350,6 @@ public class Principal extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
 
-
  /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -362,13 +360,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void abrirAjustes() {
         Ajustes ajustes;
-        
         try {
             ajustes = new Ajustes();
             this.dpPrincipal.add(ajustes);
-            Dimension desktopSize = dpPrincipal.getSize();
-            Dimension FrameSize = ajustes.getSize();
-            ajustes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            util.Util.setEnabledMenues(false);
+            util.Util.centrarVentana(dpPrincipal, ajustes);
             ajustes.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -380,9 +376,8 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionMuebles = new GestionMuebles();
             this.dpPrincipal.add(gestionMuebles);
-            Dimension desktopSize = dpPrincipal.getSize();
-            Dimension FrameSize = gestionMuebles.getSize();
-            gestionMuebles.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            util.Util.setEnabledMenues(false);
+            util.Util.centrarVentana(dpPrincipal, gestionMuebles);
             gestionMuebles.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -394,6 +389,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionInmuebles = new GestionInmuebles();
             this.dpPrincipal.add(gestionInmuebles);
+            util.Util.setEnabledMenues(false);
             util.Util.centrarVentana(dpPrincipal, gestionInmuebles);
             gestionInmuebles.show();
         } catch (SQLException ex) {
@@ -406,14 +402,14 @@ public class Principal extends javax.swing.JFrame {
         try {
             gestionReportes = new GestionReportes();
             this.dpPrincipal.add(gestionReportes);
-            Dimension desktopSize = dpPrincipal.getSize();
-            Dimension FrameSize = gestionReportes.getSize();
-            gestionReportes.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            util.Util.setEnabledMenues(false);
+            util.Util.centrarVentana(dpPrincipal, gestionReportes);
             gestionReportes.show();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpPrincipal;
@@ -424,9 +420,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlTituloPrincipal;
-    private javax.swing.JMenu jmAcercaDe;
-    private javax.swing.JMenu jmModulos;
-    private javax.swing.JMenu jmSesion;
+    public static javax.swing.JMenu jmAcercaDe;
+    public static javax.swing.JMenu jmModulos;
+    public static javax.swing.JMenu jmSesion;
     private javax.swing.JMenuBar jmbPrincipal;
     private javax.swing.JMenuItem jmiAjustes;
     private javax.swing.JMenuItem jmiCerrarSesion;

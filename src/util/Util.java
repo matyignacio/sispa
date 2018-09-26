@@ -25,16 +25,21 @@ public class Util {
 
     public static void centrarVentana(javax.swing.JDesktopPane dpPrincipal, JInternalFrame gestion) {
         Dimension desktopSize = dpPrincipal.getSize();
-        Dimension FrameSize = gestion.getSize();
-        gestion.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        
-    }  
+        Dimension frameSize = gestion.getSize();
+        gestion.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+
+    }
 
     public static void centrarInternalVentana(JInternalFrame dpPrincipal, JInternalFrame gestion) {
         Dimension desktopSize = dpPrincipal.getSize();
-        Dimension FrameSize = gestion.getSize();
-        gestion.setLocation(((desktopSize.width - FrameSize.width) / 2)- 8, (desktopSize.height - FrameSize.height) / 2);
+        Dimension frameSize = gestion.getSize();
+        gestion.setLocation(((desktopSize.width - frameSize.width) / 2) - 8, (desktopSize.height - frameSize.height) / 2);
     }
 
+    public static void setEnabledMenues(Boolean estado) {
+        ui.Principal.jmModulos.setEnabled(estado);
+        ui.Principal.jmSesion.setEnabled(estado);
+        ui.Principal.jmAcercaDe.setEnabled(estado);
+    }
 
 }
