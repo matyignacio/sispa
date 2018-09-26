@@ -59,6 +59,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jbVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtInmuebles = new javax.swing.JTable();
         jpTitulo1 = new javax.swing.JPanel();
@@ -68,7 +69,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jbEliminar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("SISPA - Muebles");
+        setTitle("SISPA - Inmuebles");
         setPreferredSize(new java.awt.Dimension(1145, 710));
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1145, 710));
@@ -95,7 +96,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Muebles");
+        jlTituloPrincipal.setText("SISPA - Inmuebles");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -113,6 +114,24 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
+
+        jbVolver.setBackground(new java.awt.Color(204, 204, 204));
+        jbVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVolver.setForeground(new java.awt.Color(33, 150, 243));
+        jbVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_volver.png"))); // NOI18N
+        jbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbVolver.setPreferredSize(new java.awt.Dimension(90, 121));
+        jbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbVolverMousePressed(evt);
+            }
+        });
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolverActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
@@ -319,6 +338,15 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
+    private void jbVolverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVolverMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVolverMousePressed
+
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
+        this.dispose();
+        util.Util.setEnabledMenues(true);
+    }//GEN-LAST:event_jbVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
@@ -326,6 +354,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbVer;
+    private javax.swing.JButton jbVolver;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;

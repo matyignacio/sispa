@@ -71,6 +71,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jbVolver = new javax.swing.JButton();
         jbMarcas = new javax.swing.JButton();
         jbCodigos = new javax.swing.JButton();
         jbModelos = new javax.swing.JButton();
@@ -128,6 +129,24 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
+
+        jbVolver.setBackground(new java.awt.Color(204, 204, 204));
+        jbVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVolver.setForeground(new java.awt.Color(33, 150, 243));
+        jbVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_volver.png"))); // NOI18N
+        jbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbVolver.setPreferredSize(new java.awt.Dimension(90, 121));
+        jbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbVolverMousePressed(evt);
+            }
+        });
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolverActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 140));
 
@@ -526,6 +545,15 @@ public class Ajustes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
 
+    private void jbVolverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVolverMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVolverMousePressed
+
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
+        this.dispose();
+        util.Util.setEnabledMenues(true);
+    }//GEN-LAST:event_jbVolverActionPerformed
+
     private void jbModeloActionPerformed(java.awt.event.MouseEvent evt) {
         GestionModelos gestionModelos;
         Ajustes ajustes;
@@ -595,6 +623,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbReparticiones;
     private javax.swing.JButton jbTipoAdquisicion;
     private javax.swing.JButton jbUsuarios;
+    private javax.swing.JButton jbVolver;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;

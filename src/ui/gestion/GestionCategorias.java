@@ -60,6 +60,7 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jbVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtCategorias = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
@@ -113,6 +114,24 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
+
+        jbVolver.setBackground(new java.awt.Color(204, 204, 204));
+        jbVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVolver.setForeground(new java.awt.Color(33, 150, 243));
+        jbVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_volver.png"))); // NOI18N
+        jbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbVolver.setPreferredSize(new java.awt.Dimension(90, 121));
+        jbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbVolverMousePressed(evt);
+            }
+        });
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolverActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 140));
 
@@ -286,12 +305,21 @@ public class GestionCategorias extends javax.swing.JInternalFrame implements Ges
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
 
+    private void jbVolverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVolverMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVolverMousePressed
+
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbVolver;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;

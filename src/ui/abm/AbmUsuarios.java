@@ -106,6 +106,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlSubtitulo = new javax.swing.JLabel();
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jbVolver1 = new javax.swing.JButton();
         jbAceptar = new javax.swing.JButton();
         jlPerfil = new javax.swing.JLabel();
         jlVisible = new javax.swing.JLabel();
@@ -178,6 +179,24 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlNombreUsuario.setText("Usuario");
         jpTitulo.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, -1));
+
+        jbVolver1.setBackground(new java.awt.Color(204, 204, 204));
+        jbVolver1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVolver1.setForeground(new java.awt.Color(33, 150, 243));
+        jbVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_volver.png"))); // NOI18N
+        jbVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbVolver1.setPreferredSize(new java.awt.Dimension(90, 121));
+        jbVolver1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbVolver1MousePressed(evt);
+            }
+        });
+        jbVolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolver1ActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 140));
 
@@ -366,6 +385,14 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
 
+    private void jbVolver1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVolver1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVolver1MousePressed
+
+    private void jbVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolver1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbVolver1ActionPerformed
+
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(usuario.getNombre());
@@ -434,6 +461,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JButton jbAceptar;
+    private javax.swing.JButton jbVolver1;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JComboBox jcbPerfiles;
     private javax.swing.JComboBox jcbReparticiones;

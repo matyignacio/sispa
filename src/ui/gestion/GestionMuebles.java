@@ -64,6 +64,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jlNombreUsuario = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
         jbmueblesMantenibles = new javax.swing.JButton();
+        jbVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMuebles = new javax.swing.JTable();
         jbEliminar = new javax.swing.JButton();
@@ -73,7 +74,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jpTitulo1 = new javax.swing.JPanel();
 
         setClosable(true);
-        setTitle("SISPA - Reportes");
+        setTitle("SISPA - Muebles");
         setPreferredSize(new java.awt.Dimension(1145, 710));
 
         desktopPaneGestion.setPreferredSize(new java.awt.Dimension(1145, 710));
@@ -129,6 +130,24 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
             }
         });
         jpTitulo.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 230, 60));
+
+        jbVolver.setBackground(new java.awt.Color(204, 204, 204));
+        jbVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbVolver.setForeground(new java.awt.Color(33, 150, 243));
+        jbVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_volver.png"))); // NOI18N
+        jbVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbVolver.setPreferredSize(new java.awt.Dimension(90, 121));
+        jbVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jbVolverMousePressed(evt);
+            }
+        });
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolverActionPerformed(evt);
+            }
+        });
+        jpTitulo.add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 40));
 
         jpPrincipal.add(jpTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 140));
 
@@ -347,6 +366,15 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MouseDragged
 
+    private void jbVolverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVolverMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbVolverMousePressed
+
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
+        this.dispose();
+        util.Util.setEnabledMenues(true);
+    }//GEN-LAST:event_jbVolverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPaneGestion;
@@ -355,6 +383,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbVer;
+    private javax.swing.JButton jbVolver;
     private javax.swing.JButton jbmueblesMantenibles;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
