@@ -73,7 +73,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.inmueble = inmueble;
         this.ventanaGestion = ventanaGestion;
-
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosSinNinguna().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
 
@@ -83,7 +83,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmInmuebles() throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
@@ -496,6 +496,9 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jcbReparticiones.setEnabled(false);
                 jtfTipo.setEnabled(false);
                 jtfValor.setEditable(false);
+                if (!operacion.equals(Gestionable.ABM_BAJA)) {
+                    jbAceptar.setVisible(false);
+                }
 
             }
         }
