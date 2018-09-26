@@ -50,7 +50,7 @@ public class GestionReportes extends javax.swing.JInternalFrame {
 
     public GestionReportes() throws SQLException {
         initComponents();
-
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }

@@ -83,6 +83,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmInmuebles() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }

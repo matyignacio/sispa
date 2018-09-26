@@ -84,6 +84,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmUsuarios() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }

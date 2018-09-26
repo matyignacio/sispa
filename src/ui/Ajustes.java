@@ -24,7 +24,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
      */
     public Ajustes() throws SQLException {
         initComponents();
-        
+       ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null); 
         int i;
         jlNombreUsuario.setText(Login.usuario.toString());
         for (i = 0; i < Login.usuario.getPerfil().getOperaciones().size(); i++) {

@@ -36,6 +36,7 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
 
     public GestionTipoAdquisiciones() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 

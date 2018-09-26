@@ -62,6 +62,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmPerfil(String operacion, Perfil perfil, Gestionable ventanaGestion) throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());

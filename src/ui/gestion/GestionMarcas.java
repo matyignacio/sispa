@@ -36,6 +36,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
 
     public GestionMarcas() throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 
