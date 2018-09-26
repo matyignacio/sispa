@@ -186,7 +186,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCodigosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 80, 60));
+        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 160, 40));
 
         jbModelos.setBackground(new java.awt.Color(204, 204, 204));
         jbModelos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -205,7 +205,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbModelosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 100, 60));
+        jpPrincipal.add(jbModelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 160, 50));
 
         jbIncisos.setBackground(new java.awt.Color(204, 204, 204));
         jbIncisos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -224,7 +224,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbIncisosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 100, 60));
+        jpPrincipal.add(jbIncisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 160, 50));
 
         jbEstados.setBackground(new java.awt.Color(204, 204, 204));
         jbEstados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -319,7 +319,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbPerfilesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 100, 60));
+        jpPrincipal.add(jbPerfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 160, 50));
 
         jbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
         jbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

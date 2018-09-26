@@ -238,7 +238,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
         jrbVisible.setText("Visible");
-        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, 30));
+        jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
         jcbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jcbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -318,7 +318,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jlTipo.setForeground(new java.awt.Color(33, 150, 243));
         jlTipo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlTipo.setText("Tipo:");
-        jpPrincipal.add(jlTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 210, 20));
+        jpPrincipal.add(jlTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 210, 20));
 
         jtfTipo.setBackground(new java.awt.Color(204, 204, 204));
         jtfTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -328,7 +328,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfTipoActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 220, -1));
+        jpPrincipal.add(jtfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 220, -1));
 
         jtfDomicilio.setBackground(new java.awt.Color(204, 204, 204));
         jtfDomicilio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -400,8 +400,6 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
         );
-
-        getAccessibleContext().setAccessibleName("SISPA - Inmuebles");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
