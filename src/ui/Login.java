@@ -34,15 +34,26 @@ import util.Util;
  */
 public class Login extends javax.swing.JFrame {
 
-    public static final Login login = new Login();
+    public static Login login;
     public static Usuario usuario;
     public static UsuarioControlador usuarioControlador;
     private IniciarSesionTask iniciarSesionTask;
+    private javax.swing.JProgressBar pbLogin;
 
     public Login() {
         initComponents();
         jtfUsuario.requestFocus();
+        ////////////////////////////////////////////////////////////////////////
+        util.Util.modificarLookAndFeel("Metal");
+        pbLogin = new javax.swing.JProgressBar();
         pbLogin.setVisible(false);
+        pbLogin.setBackground(new java.awt.Color(251, 255, 216));
+        pbLogin.setForeground(java.awt.Color.green);
+        pbLogin.setIndeterminate(true);
+        pbLogin.setPreferredSize(new java.awt.Dimension(400, 30));
+        jpTitulo1.add(pbLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 510, 40));
+        util.Util.modificarLookAndFeel("Nimbus");
+        ////////////////////////////////////////////////////////////////////////
     }
 
     @SuppressWarnings("unchecked")
@@ -56,7 +67,6 @@ public class Login extends javax.swing.JFrame {
         jtfUsuario = new javax.swing.JTextField();
         jtfClave = new javax.swing.JPasswordField();
         jpTitulo1 = new javax.swing.JPanel();
-        pbLogin = new javax.swing.JProgressBar();
         jpTitulo = new javax.swing.JPanel();
         jbSalir = new javax.swing.JButton();
         jlTituloPrincipal = new javax.swing.JLabel();
@@ -128,13 +138,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pbLogin.setBackground(new java.awt.Color(251, 255, 216));
-        pbLogin.setForeground(java.awt.Color.green);
-        pbLogin.setIndeterminate(true);
-        pbLogin.setPreferredSize(new java.awt.Dimension(400, 30));
-        jpTitulo1.add(pbLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 510, 40));
-
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 510, 100));
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
@@ -236,25 +239,12 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        util.Util.modificarLookAndFeel("Nimbus");
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                login = new Login();
                 login.setVisible(true);
             }
         });
@@ -270,7 +260,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jpTitulo1;
     private javax.swing.JPasswordField jtfClave;
     private javax.swing.JTextField jtfUsuario;
-    private javax.swing.JProgressBar pbLogin;
     // End of variables declaration//GEN-END:variables
 
     public void validarUsuario() {

@@ -7,6 +7,7 @@ package util;
 
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
+import ui.Login;
 
 /**
  *
@@ -40,6 +41,19 @@ public class Util {
         ui.Principal.jmModulos.setEnabled(estado);
         ui.Principal.jmSesion.setEnabled(estado);
         ui.Principal.jmAcercaDe.setEnabled(estado);
+    }
+
+    public static void modificarLookAndFeel(String lookAndFeel) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if (lookAndFeel.equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
 }
