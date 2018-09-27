@@ -37,8 +37,10 @@ public class Principal extends javax.swing.JFrame {
             switch (operaciones1.getId()) {
                 case util.Util.ABM_AJUSTES:
                     jbAjustes.setEnabled(true);
+                    break;
                 case util.Util.ABM_INFORMES:
                     jbInformes.setEnabled(true);
+                    break;
             }
         }
     }
@@ -70,10 +72,10 @@ public class Principal extends javax.swing.JFrame {
         jmiInmubles = new javax.swing.JMenuItem();
         jmiInformes = new javax.swing.JMenuItem();
         jmiAjustes = new javax.swing.JMenuItem();
-        jmSesion = new javax.swing.JMenu();
-        jmiCerrarSesion = new javax.swing.JMenuItem();
         jmAcercaDe = new javax.swing.JMenu();
         jmiSispa = new javax.swing.JMenuItem();
+        jmSesion = new javax.swing.JMenu();
+        jmiCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISPA");
@@ -217,7 +219,7 @@ public class Principal extends javax.swing.JFrame {
         );
         dpPrincipalLayout.setVerticalGroup(
             dpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
         );
 
         jmbPrincipal.setBackground(new java.awt.Color(33, 150, 243));
@@ -261,6 +263,13 @@ public class Principal extends javax.swing.JFrame {
 
         jmbPrincipal.add(jmModulos);
 
+        jmAcercaDe.setText("Acerca de");
+
+        jmiSispa.setText("Que es SISPA");
+        jmAcercaDe.add(jmiSispa);
+
+        jmbPrincipal.add(jmAcercaDe);
+
         jmSesion.setText("Sesion");
 
         jmiCerrarSesion.setText("Cerrar Sesion");
@@ -272,13 +281,6 @@ public class Principal extends javax.swing.JFrame {
         jmSesion.add(jmiCerrarSesion);
 
         jmbPrincipal.add(jmSesion);
-
-        jmAcercaDe.setText("Acerca de");
-
-        jmiSispa.setText("Que es SISPA");
-        jmAcercaDe.add(jmiSispa);
-
-        jmbPrincipal.add(jmAcercaDe);
 
         setJMenuBar(jmbPrincipal);
 

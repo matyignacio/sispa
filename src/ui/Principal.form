@@ -60,6 +60,21 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jmAcercaDe">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Acerca de"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiSispa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Que es SISPA"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jmSesion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sesion"/>
@@ -75,21 +90,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiCerrarSesionActionPerformed"/>
               </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jmAcercaDe">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Acerca de"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-          </AuxValues>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiSispa">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Que es SISPA"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -156,7 +156,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jpPrincipal" alignment="1" pref="708" max="32767" attributes="0"/>
+              <Component id="jpPrincipal" alignment="1" pref="710" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

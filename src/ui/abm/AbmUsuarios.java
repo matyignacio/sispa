@@ -68,6 +68,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmUsuarios(String operacion, Usuario usuario, Gestionable ventanaGestion) throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -84,7 +85,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmUsuarios() throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
 
     }
@@ -258,7 +259,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jlEmail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlEmail.setForeground(new java.awt.Color(33, 150, 243));
         jlEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlEmail.setText("Corre Electronico: ");
+        jlEmail.setText("Correo Electronico: ");
         jpPrincipal.add(jlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 210, 20));
 
         jlClave.setBackground(new java.awt.Color(204, 204, 204));

@@ -251,7 +251,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
                         this);
                 gestionMarcas = new GestionMarcas();
                 this.desktopPane.add(abmMarca);
-                util.Util.centrarInternalVentana(abmMarca, gestionMarcas);
+                util.Util.centrarInternalVentana(gestionMarcas, abmMarca);
                 abmMarca.show();
             } catch (SQLException ex) {
                 Logger.getLogger(GestionMarcas.class.getName()).log(Level.SEVERE, null, ex);

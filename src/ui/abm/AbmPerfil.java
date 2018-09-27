@@ -62,7 +62,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmPerfil(String operacion, Perfil perfil, Gestionable ventanaGestion) throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -607,7 +607,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
             operaciones.add(operaciones1);
         }
         if (jcbInformes.isSelected()) {
-            operaciones1 = operacionesControlador.extraer(5);//EL 5 ES EQUIVALENTE A USUARIOS
+            operaciones1 = operacionesControlador.extraer(5);//EL 5 ES EQUIVALENTE A INFORMES
             operaciones.add(operaciones1);
         }
         return operaciones;
