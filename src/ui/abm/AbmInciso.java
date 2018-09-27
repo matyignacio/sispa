@@ -58,7 +58,7 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
 
     public AbmInciso(String operacion, Inciso inciso, Gestionable ventanaGestion) throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());

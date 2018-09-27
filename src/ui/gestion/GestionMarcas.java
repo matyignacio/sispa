@@ -36,7 +36,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
 
     public GestionMarcas() throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 
@@ -244,7 +244,7 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         if (jtMarcas.getSelectedRow() > -1) {
             AbmMarca abmMarca;
-             GestionMarcas gestionMarcas;
+            GestionMarcas gestionMarcas;
             try {
                 abmMarca = new AbmMarca(ABM_BAJA, marcaControlador.extraer(marcaControlador.extraerTodosVisibles().
                         get(jtMarcas.getSelectedRow()).getId()),

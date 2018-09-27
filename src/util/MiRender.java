@@ -39,8 +39,8 @@ public class MiRender extends DefaultTableCellRenderer {
             int row,
             int column) {
 
-        setBackground(new Color(204,204,204));//color por defecto de las tablas
-        setForeground(new Color(33,150,243));//color que usamos en todas las vistas
+        setBackground(new Color(204, 204, 204));//color por defecto de las tablas
+        setForeground(new Color(33, 150, 243));//color que usamos en todas las vistas
         super.getTableCellRendererComponent(table, object, isSelected, hasFocus, row, column);
         fechaMueble = muebles.get(row).getFecha().getTime();
         if ((fechaActual - fechaMueble) > trimestre) {

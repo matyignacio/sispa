@@ -37,7 +37,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
     public GestionInmuebles() throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 
@@ -273,25 +273,25 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
             GestionInmuebles gestionInmuebles;
             try {
                 abmInmuebles = new AbmInmuebles(ABM_VER, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                    get(jtInmuebles.getSelectedRow()).getId()), this);
-            gestionInmuebles = new GestionInmuebles();
-            this.desktopPane.add(abmInmuebles);
-            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
-            abmInmuebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                        get(jtInmuebles.getSelectedRow()).getId()), this);
+                gestionInmuebles = new GestionInmuebles();
+                this.desktopPane.add(abmInmuebles);
+                util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
+                abmInmuebles.show();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
     }//GEN-LAST:event_jbVerActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-           AbmInmuebles abmInmuebles;
-            GestionInmuebles gestionInmuebles;
+        AbmInmuebles abmInmuebles;
+        GestionInmuebles gestionInmuebles;
         try {
             abmInmuebles = new AbmInmuebles(ABM_ALTA, new Inmueble(), this);
-             gestionInmuebles = new GestionInmuebles();
+            gestionInmuebles = new GestionInmuebles();
             this.desktopPane.add(abmInmuebles);
             util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
             abmInmuebles.show();
@@ -302,18 +302,18 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         if (jtInmuebles.getSelectedRow() > -1) {
-             AbmInmuebles abmInmuebles;
+            AbmInmuebles abmInmuebles;
             GestionInmuebles gestionInmuebles;
             try {
                 abmInmuebles = new AbmInmuebles(ABM_MODIFICACION, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                    get(jtInmuebles.getSelectedRow()).getId()), this);
-            gestionInmuebles = new GestionInmuebles();
-             this.desktopPane.add(abmInmuebles);
-            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
-            abmInmuebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                        get(jtInmuebles.getSelectedRow()).getId()), this);
+                gestionInmuebles = new GestionInmuebles();
+                this.desktopPane.add(abmInmuebles);
+                util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
+                abmInmuebles.show();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }
@@ -321,18 +321,18 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         if (jtInmuebles.getSelectedRow() > -1) {
-           AbmInmuebles abmInmuebles;
+            AbmInmuebles abmInmuebles;
             GestionInmuebles gestionInmuebles;
             try {
-               abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
-                    get(jtInmuebles.getSelectedRow()).getId()), this);
-           gestionInmuebles = new GestionInmuebles();
-             this.desktopPane.add(abmInmuebles);
-            util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
-            abmInmuebles.show();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                abmInmuebles = new AbmInmuebles(ABM_BAJA, inmuebleControlador.extraer(inmuebleControlador.extraerTodosVisibles().
+                        get(jtInmuebles.getSelectedRow()).getId()), this);
+                gestionInmuebles = new GestionInmuebles();
+                this.desktopPane.add(abmInmuebles);
+                util.Util.centrarInternalVentana(gestionInmuebles, abmInmuebles);
+                abmInmuebles.show();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un item");
         }

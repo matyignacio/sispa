@@ -38,7 +38,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
 
     public GestionMueblesMantenible() throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 
@@ -311,7 +311,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVerActionPerformed
-  if (jtMueblesMantenibles.getSelectedRow() > -1) {
+        if (jtMueblesMantenibles.getSelectedRow() > -1) {
             AbmMuebleMantenible abmMuebleMantenible;
             GestionMueblesMantenible gestionMueblesMantenibles;
             try {

@@ -36,7 +36,7 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
 
     public GestionCodigosPresupuestario() throws SQLException {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
         actualizarGestion();
 
@@ -274,7 +274,6 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         } catch (SQLException ex) {
             Logger.getLogger(GestionCodigosPresupuestario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
 
     }//GEN-LAST:event_jbNuevoActionPerformed
 

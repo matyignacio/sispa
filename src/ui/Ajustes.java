@@ -394,7 +394,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void jpTituloMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTituloMouseDragged
 
     }//GEN-LAST:event_jpTituloMouseDragged

@@ -58,7 +58,7 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
 
     public AbmCodigosPresupuestarios(String operacion, CodigoPresupuestario codigoPresupuestario, Gestionable ventanaGestion) {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
