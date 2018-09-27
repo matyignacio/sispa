@@ -230,11 +230,9 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 688, Short.MAX_VALUE)
             .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
-                    .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 684, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 688, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
