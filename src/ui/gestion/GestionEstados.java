@@ -67,7 +67,7 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         jpTitulo1 = new javax.swing.JPanel();
 
         setClosable(true);
-        setTitle("SISPA - Marcas");
+        setTitle("SISPA - Estados");
         setPreferredSize(new java.awt.Dimension(1100, 710));
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1100, 710));
@@ -94,7 +94,7 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
         jlTituloPrincipal.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jlTituloPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_ajustes_blanco.png"))); // NOI18N
-        jlTituloPrincipal.setText("SISPA - Marcas");
+        jlTituloPrincipal.setText("SISPA - Estados");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 340, 70));
 
         jlSubtitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -318,8 +318,6 @@ public class GestionEstados extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
-    private javax.swing.JButton jbVolver;
-    private javax.swing.JButton jbVolver1;
     private javax.swing.JButton jbVolver2;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;

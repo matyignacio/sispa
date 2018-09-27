@@ -20,6 +20,15 @@ public class Util {
     public static final int ABM_AJUSTES = 3;
     public static final int ABM_USUARIOS = 4;
     public static final int ABM_INFORMES = 5;
+    public static final int ABM_MARCAS = 6;
+    public static final int ABM_MODELOS = 7;
+    public static final int ABM_CATEGORIAS = 8;
+    public static final int ABM_INCISOS = 9;
+    public static final int ABM_CODIGOS_PRESUPUESTARIOS = 10;
+    public static final int ABM_ESTADOS = 11;
+    public static final int ABM_PERFILES = 12;
+    public static final int ABM_REPARTICIONES = 13;
+    public static final int ABM_TIPO_ADQUISICIONES = 14;
     public static final String CORREO = "sispaunlar@gmail.com";
     public static final String CLAVE = "sispasispa";
     public static final String LOOK_AND_FEEL = "Windows";

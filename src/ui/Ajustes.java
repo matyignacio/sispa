@@ -8,8 +8,6 @@ package ui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultDesktopManager;
-import javax.swing.JComponent;
 import objeto.Operaciones;
 import ui.gestion.*;
 
@@ -32,34 +30,34 @@ public class Ajustes extends javax.swing.JInternalFrame {
             Operaciones operaciones1 = new Operaciones();
             operaciones1 = Login.usuario.getPerfil().getOperaciones().get(i);
             switch (operaciones1.getId()) {
-                case 6:
+                case util.Util.ABM_MARCAS:
                     jbMarcas.setEnabled(true);
                     break;
-                case 7:
+                case util.Util.ABM_MODELOS:
                     jbModelos.setEnabled(true);
                     break;
-                case 8:
+                case util.Util.ABM_CATEGORIAS:
                     jbCategorias.setEnabled(true);
                     break;
-                case 9:
+                case util.Util.ABM_INCISOS:
                     jbIncisos.setEnabled(true);
                     break;
-                case 10:
+                case util.Util.ABM_CODIGOS_PRESUPUESTARIOS:
                     jbCodigos.setEnabled(true);
                     break;
-                case 11:
+                case util.Util.ABM_ESTADOS:
                     jbEstados.setEnabled(true);
                     break;
-                case 12:
+                case util.Util.ABM_PERFILES:
                     jbPerfiles.setEnabled(true);
                     break;
-                case 13:
+                case util.Util.ABM_REPARTICIONES:
                     jbReparticiones.setEnabled(true);
                     break;
-                case 14:
+                case util.Util.ABM_TIPO_ADQUISICIONES:
                     jbTipoAdquisicion.setEnabled(true);
                     break;
-                case 15:
+                case util.Util.ABM_USUARIOS:
                     jbUsuarios.setEnabled(true);
                     break;
             }
@@ -422,7 +420,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbModelosMousePressed
 
     private void jbCodigosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCodigosMousePressed
-        
+
     }//GEN-LAST:event_jbCodigosMousePressed
 
     private void jbIncisosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbIncisosMousePressed
@@ -507,7 +505,6 @@ public class Ajustes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbVolverActionPerformed
 
 ////////////////////////////////////////////////////////////////////////////////
-    
     private void marcaActionPerformed(java.awt.event.ActionEvent evt) {
         GestionMarcas gestionMarcas;
         try {
