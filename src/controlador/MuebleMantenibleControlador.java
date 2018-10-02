@@ -264,7 +264,7 @@ public class MuebleMantenibleControlador {
             String consultaSql = "SELECT * FROM muebles "
                     + "WHERE mantenible = 1 "
                     + "AND id_reparticion = ? "
-                    + "AND (CURRENT_TIMESTAMP - fecha)> 1200000000";//ESTO ES EQUIVALENTE A UN AÑO
+                    + "AND (CURRENT_TIMESTAMP - fecha)> 10000500000";//ESTO ES EQUIVALENTE A UN AÑO
             ps = conn.prepareStatement(consultaSql);
             ps.setInt(1, reparticion);
             ps.execute();
