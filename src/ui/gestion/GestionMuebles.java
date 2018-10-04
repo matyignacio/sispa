@@ -5,9 +5,7 @@
  */
 package ui.gestion;
 
-import controlador.MarcaControlador;
 import controlador.MuebleControlador;
-import java.awt.Dimension;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,12 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import objeto.Marca;
 import objeto.Mueble;
 import ui.abm.AbmMuebles;
-import ui.grillas.GrillaMarcas;
 import ui.grillas.GrillaMuebles;
-import ui.gestion.GestionMueblesMantenible;
 
 /**
  *
@@ -30,6 +25,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
 
     GrillaMuebles grillaMuebles;
     MuebleControlador muebleControlador = new MuebleControlador();
+    ArrayList<Mueble> muebles = muebleControlador.extraerTodosVisibles();
 
     public JDesktopPane getDesktopPane() {
         return this.desktopPaneGestion;
@@ -43,7 +39,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         jlNombreUsuario.setText(Login.usuario.toString());
-        actualizarGestion();
+        actualizarGestion(muebles);
 
     }
 
@@ -72,6 +68,7 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jbModificar = new javax.swing.JButton();
         jbVer = new javax.swing.JButton();
         jpTitulo1 = new javax.swing.JPanel();
+        jtfBuscar = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("SISPA - Muebles");
@@ -234,6 +231,34 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
 
+        jtfBuscar.setBackground(new java.awt.Color(204, 204, 204));
+        jtfBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfBuscar.setForeground(new java.awt.Color(33, 150, 243));
+        jtfBuscar.setName(""); // NOI18N
+        jtfBuscar.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jtfBuscarInputMethodTextChanged(evt);
+            }
+        });
+        jtfBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfBuscarActionPerformed(evt);
+            }
+        });
+        jtfBuscar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jtfBuscarPropertyChange(evt);
+            }
+        });
+        jtfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfBuscarKeyTyped(evt);
+            }
+        });
+        jpPrincipal.add(jtfBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 1020, -1));
+
         desktopPaneGestion.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneGestionLayout = new javax.swing.GroupLayout(desktopPaneGestion);
@@ -375,6 +400,32 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         util.Util.setEnabledMenues(true);
     }//GEN-LAST:event_jbVolverActionPerformed
 
+    private void jtfBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfBuscarActionPerformed
+
+    private void jtfBuscarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtfBuscarPropertyChange
+
+    }//GEN-LAST:event_jtfBuscarPropertyChange
+
+    private void jtfBuscarInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jtfBuscarInputMethodTextChanged
+
+    }//GEN-LAST:event_jtfBuscarInputMethodTextChanged
+
+    private void jtfBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscarKeyTyped
+        if (jtfBuscar.getText().equals("")) {
+            actualizarGestion(muebles);
+        } else {
+            ArrayList<Mueble> mueblesBusqueda = new ArrayList<>();
+            for (int i = 0; i < muebles.size(); i++) {
+                if (muebles.get(i).getNombre().contains(jtfBuscar.getText())) {
+                    mueblesBusqueda.add(muebles.get(i));
+                }
+            }
+            actualizarGestion(mueblesBusqueda);
+        }
+    }//GEN-LAST:event_jtfBuscarKeyTyped
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPaneGestion;
     private javax.swing.JScrollPane jScrollPane1;
@@ -392,15 +443,18 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpTitulo1;
     private javax.swing.JTable jtMuebles;
+    private javax.swing.JTextField jtfBuscar;
     // End of variables declaration//GEN-END:variables
 
+    public void actualizarGestion(ArrayList<Mueble> muebles) {
+        grillaMuebles = new GrillaMuebles(muebles);
+        jtMuebles.setModel(grillaMuebles);
+    }
+
+    /*
+    @override
+     */
     public void actualizarGestion() {
-        try {
-            grillaMuebles = new GrillaMuebles((ArrayList<Mueble>) muebleControlador.extraerTodosVisibles());
-            jtMuebles.setModel(grillaMuebles);
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }
 }
