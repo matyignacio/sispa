@@ -532,14 +532,12 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     @override
      */
     public void actualizarGestion() {
-//        if (jtfBuscar.getText().equals("")) {
-//            try {
-//                muebles = muebleControlador.extraerTodosVisibles();
-//                grillaMuebles = new GrillaMuebles(muebles);
-//                jtMuebles.setModel(grillaMuebles);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+        try {
+            muebles = muebleControlador.extraerTodosVisibles();
+            grillaMuebles = new GrillaMuebles(muebles);
+            jtMuebles.setModel(grillaMuebles);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
