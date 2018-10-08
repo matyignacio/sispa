@@ -74,7 +74,7 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1145, 710));
 
-        jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setMinimumSize(new java.awt.Dimension(1145, 710));
         jpPrincipal.setPreferredSize(new java.awt.Dimension(1145, 710));

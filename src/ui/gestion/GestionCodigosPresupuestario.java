@@ -73,7 +73,7 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1100, 710));
 
-        jpPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        jpPrincipal.setBackground(new java.awt.Color(251, 255, 216));
         jpPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         jpPrincipal.setPreferredSize(new java.awt.Dimension(1100, 710));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -320,7 +320,6 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
-    private javax.swing.JButton jbVolver;
     private javax.swing.JButton jbVolver1;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
