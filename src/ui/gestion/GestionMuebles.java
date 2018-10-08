@@ -339,13 +339,8 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         AbmMuebles abmMuebles;
         GestionMuebles gestionMuebles;
         try {
-            if (jtfBuscar.getText().equals("")) {
-                abmMuebles = new AbmMuebles(ABM_ALTA, muebleControlador.extraer(muebles.
-                        get(jtMuebles.getSelectedRow()).getId()), this);
-            } else {
-                abmMuebles = new AbmMuebles(ABM_ALTA, muebleControlador.extraer(mueblesBusqueda.
-                        get(jtMuebles.getSelectedRow()).getId()), this);
-            }
+            abmMuebles = new AbmMuebles(ABM_ALTA, muebleControlador.extraer(muebleControlador.extraerTodosVisibles().
+                    get(jtMuebles.getSelectedRow()).getId()), this);
             this.desktopPaneGestion.add(abmMuebles);
             gestionMuebles = new GestionMuebles();
             util.Util.centrarInternalVentana(gestionMuebles, abmMuebles);
