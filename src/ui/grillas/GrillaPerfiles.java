@@ -17,14 +17,26 @@ public class GrillaPerfiles extends AbstractTableModel {
 
     ArrayList<Perfil> perfiles;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Perfil> getPerfiles() {
         return perfiles;
     }
 
+    /**
+     *
+     * @param perfiles
+     */
     public void setPerfiles(ArrayList<Perfil> perfiles) {
         this.perfiles = perfiles;
     }
 
+    /**
+     *
+     * @param perfiles
+     */
     public GrillaPerfiles(ArrayList<Perfil> perfiles) {
         this.perfiles = perfiles;
     }

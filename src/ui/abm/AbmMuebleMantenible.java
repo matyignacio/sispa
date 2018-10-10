@@ -48,26 +48,50 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     private MuebleMantenible muebleMantenible;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public MuebleMantenible getMueble() {
         return muebleMantenible;
     }
 
+    /**
+     *
+     * @param muebleMantenible
+     */
     public void setMueble(MuebleMantenible muebleMantenible) {
         this.muebleMantenible = muebleMantenible;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -76,10 +100,21 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param muebleMantenible
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmMuebleMantenible(String operacion, MuebleMantenible muebleMantenible, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -108,6 +143,10 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmMuebleMantenible() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -586,6 +625,9 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(muebleMantenible.getNombre());
@@ -631,6 +673,10 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         muebleMantenible.setNombre(jtfNombre.getText());
@@ -653,6 +699,10 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         MuebleMantenibleControlador muebleMantenibleControlador = new MuebleMantenibleControlador();
@@ -680,6 +730,10 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         return OK;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void inicializarComboModelos() throws SQLException {
         dcbmModelo = new DefaultComboBoxModel(modeloControlador.extraerTodosVisiblesPorMarca(
                 (Marca) jcbMarca.getSelectedItem()).toArray());

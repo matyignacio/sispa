@@ -25,6 +25,12 @@ public class EstadoControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Estado extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM estados WHERE id=?";
@@ -44,6 +50,11 @@ public class EstadoControlador {
         return estado;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Estado> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM estados order by nombre";
@@ -64,6 +75,11 @@ public class EstadoControlador {
         return estados;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Estado> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM estados where visible = TRUE order by nombre";
@@ -84,6 +100,11 @@ public class EstadoControlador {
         return estados;
     }
 
+    /**
+     *
+     * @param estado
+     * @throws SQLException
+     */
     public void insertar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -98,6 +119,11 @@ public class EstadoControlador {
         }
     }
 
+    /**
+     *
+     * @param estado
+     * @throws SQLException
+     */
     public void modificar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -113,6 +139,11 @@ public class EstadoControlador {
         }
     }
 
+    /**
+     *
+     * @param estado
+     * @throws SQLException
+     */
     public void borrar(Estado estado) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

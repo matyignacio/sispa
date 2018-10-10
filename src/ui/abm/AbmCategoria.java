@@ -34,26 +34,50 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
     private Categoria categoria;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Categoria getCategoria() {
         return categoria;
     }
 
+    /**
+     *
+     * @param categoria
+     */
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -62,10 +86,21 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param categoria
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmCategoria(String operacion, Categoria categoria, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -83,6 +118,10 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmCategoria() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -364,6 +403,9 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(categoria.getNombre());
@@ -384,6 +426,10 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         categoria.setNombre(jtfNombre.getText());
@@ -397,6 +443,10 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         CategoriaControlador categoriaControlador = new CategoriaControlador();

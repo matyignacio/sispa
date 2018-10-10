@@ -14,18 +14,34 @@ public class Modelo extends ObjetoBase {
     private Marca marca;
     private int año;
 
+    /**
+     *
+     * @return
+     */
     public Marca getMarca() {
         return marca;
     }
 
+    /**
+     *
+     * @param marca
+     */
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getAño() {
         return año;
     }
 
+    /**
+     *
+     * @param año
+     */
     public void setAño(int año) {
         this.año = año;
     }

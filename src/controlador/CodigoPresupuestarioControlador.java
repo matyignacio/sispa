@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.CodigoPresupuestario;
 
+/**
+ *
+ * @author Kuky
+ */
 public class CodigoPresupuestarioControlador {
 
     private CodigoPresupuestario codigo;
@@ -21,6 +25,12 @@ public class CodigoPresupuestarioControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public CodigoPresupuestario extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM codigos_presupuestarios WHERE id=?";
@@ -40,6 +50,11 @@ public class CodigoPresupuestarioControlador {
         return codigo;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<CodigoPresupuestario> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM codigos_presupuestarios order by numero";
@@ -60,6 +75,11 @@ public class CodigoPresupuestarioControlador {
         return codigos;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<CodigoPresupuestario> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM codigos_presupuestarios where visible = TRUE order by numero";
@@ -80,6 +100,11 @@ public class CodigoPresupuestarioControlador {
         return codigos;
     }
 
+    /**
+     *
+     * @param codigo
+     * @throws SQLException
+     */
     public void insertar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -94,6 +119,11 @@ public class CodigoPresupuestarioControlador {
         }
     }
 
+    /**
+     *
+     * @param codigo
+     * @throws SQLException
+     */
     public void modificar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -109,6 +139,11 @@ public class CodigoPresupuestarioControlador {
         }
     }
 
+    /**
+     *
+     * @param codigo
+     * @throws SQLException
+     */
     public void borrar(CodigoPresupuestario codigo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

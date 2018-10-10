@@ -13,10 +13,18 @@ public class AdquisicionInmueble extends Adquisicion {
 
     private Inmueble inmueble;
 
+    /**
+     *
+     * @return
+     */
     public Inmueble getInmueble() {
         return inmueble;
     }
 
+    /**
+     *
+     * @param inmueble
+     */
     public void setInmueble(Inmueble inmueble) {
         this.inmueble = inmueble;
     }

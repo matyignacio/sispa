@@ -24,26 +24,50 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
     private CodigoPresupuestario codigoPresupuestario;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public CodigoPresupuestario getCodigoPresupuestario() {
         return codigoPresupuestario;
     }
 
+    /**
+     *
+     * @param codigoPresupuestario
+     */
     public void setCodigoPresupuestario(CodigoPresupuestario codigoPresupuestario) {
         this.codigoPresupuestario = codigoPresupuestario;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -52,10 +76,20 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param codigoPresupuestario
+     * @param ventanaGestion
+     */
     public AbmCodigosPresupuestarios(String operacion, CodigoPresupuestario codigoPresupuestario, Gestionable ventanaGestion) {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -69,6 +103,10 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmCodigosPresupuestarios() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -298,6 +336,9 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNumero.setText(String.valueOf(codigoPresupuestario.getNumero()));
@@ -314,6 +355,10 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         codigoPresupuestario.setNumero(Integer.parseInt(jtfNumero.getText()));
@@ -325,6 +370,10 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         CodigoPresupuestarioControlador codigoPresupuestarioControlador = new CodigoPresupuestarioControlador();

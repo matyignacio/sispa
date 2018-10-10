@@ -14,11 +14,9 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import objeto.Mueble;
 import objeto.MuebleMantenible;
 import ui.grillas.GrillaMueblesMantenibles;
 import ui.abm.AbmMuebleMantenible;
-import ui.grillas.GrillaMuebles;
 
 import util.MiRender;
 
@@ -39,10 +37,18 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionMueblesMantenible() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -493,11 +499,18 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     private javax.swing.JTextField jtfBuscar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param muebles
+     */
     public void actualizarGestion(ArrayList<MuebleMantenible> muebles) {
         grillaMueblesMantenibles = new GrillaMueblesMantenibles(muebles);
         jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
     }
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

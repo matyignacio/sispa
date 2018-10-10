@@ -34,26 +34,50 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     private Usuario usuario;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Usuario getUsuario() {
         return usuario;
     }
 
+    /**
+     *
+     * @param usuario
+     */
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -62,10 +86,21 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param usuario
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmUsuarios(String operacion, Usuario usuario, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -83,6 +118,10 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmUsuarios() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -394,6 +433,9 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(usuario.getNombre());
@@ -418,6 +460,10 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         usuario.setNombre(jtfNombre.getText());
@@ -433,6 +479,10 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         UsuarioControlador usuarioControlador = new UsuarioControlador();

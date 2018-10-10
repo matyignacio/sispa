@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.Marca;
 
+/**
+ *
+ * @author Kuky
+ */
 public class MarcaControlador {
 
     private Marca marca;
@@ -21,6 +25,12 @@ public class MarcaControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Marca extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM marcas WHERE id=? ";
@@ -40,6 +50,11 @@ public class MarcaControlador {
         return marca;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Marca> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM marcas order by nombre";
@@ -60,6 +75,11 @@ public class MarcaControlador {
         return marcas;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Marca> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM marcas where visible = TRUE order by nombre";
@@ -80,6 +100,11 @@ public class MarcaControlador {
         return marcas;
     }
 
+    /**
+     *
+     * @param marca
+     * @throws SQLException
+     */
     public void insertar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -94,6 +119,11 @@ public class MarcaControlador {
         }
     }
 
+    /**
+     *
+     * @param marca
+     * @throws SQLException
+     */
     public void modificar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -109,6 +139,11 @@ public class MarcaControlador {
         }
     }
 
+    /**
+     *
+     * @param marca
+     * @throws SQLException
+     */
     public void borrar(Marca marca) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

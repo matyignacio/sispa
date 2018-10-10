@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.AdquisicionInmueble;
 
+/**
+ *
+ * @author Kuky
+ */
 public class AdquisicionInmuebleControlador {
 
     private AdquisicionInmueble adquisicionInmueble;
@@ -23,6 +27,12 @@ public class AdquisicionInmuebleControlador {
     private InmuebleControlador inmuebleControlador;
     private TipoAdquisicionControlador tipoAdquisicionControlador;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public AdquisicionInmueble extraer(Integer id) throws SQLException {
 
         inmuebleControlador = new InmuebleControlador();
@@ -50,6 +60,11 @@ public class AdquisicionInmuebleControlador {
         return adquisicionInmueble;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<AdquisicionInmueble> extraerTodos() throws SQLException {
         inmuebleControlador = new InmuebleControlador();
         tipoAdquisicionControlador = new TipoAdquisicionControlador();
@@ -77,6 +92,11 @@ public class AdquisicionInmuebleControlador {
         return adquisicionInmuebles;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<AdquisicionInmueble> extraerTodosVisibles() throws SQLException {
         inmuebleControlador = new InmuebleControlador();
         tipoAdquisicionControlador = new TipoAdquisicionControlador();
@@ -104,6 +124,11 @@ public class AdquisicionInmuebleControlador {
         return adquisicionInmuebles;
     }
 
+    /**
+     *
+     * @param adquisicionInmueble
+     * @throws SQLException
+     */
     public void insertar(AdquisicionInmueble adquisicionInmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -124,6 +149,11 @@ public class AdquisicionInmuebleControlador {
         }
     }
 
+    /**
+     *
+     * @param adquisicionInmueble
+     * @throws SQLException
+     */
     public void modificar(AdquisicionInmueble adquisicionInmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -145,6 +175,11 @@ public class AdquisicionInmuebleControlador {
         }
     }
 
+    /**
+     *
+     * @param adquisicionInmueble
+     * @throws SQLException
+     */
     public void borrar(AdquisicionInmueble adquisicionInmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
 

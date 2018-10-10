@@ -17,14 +17,26 @@ public class GrillaMueblesMantenibles extends AbstractTableModel {
 
     ArrayList<MuebleMantenible> mueblesMantenibles;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<MuebleMantenible> getMuebleMantenibles() {
         return mueblesMantenibles;
     }
 
+    /**
+     *
+     * @param mueblesMantenibles
+     */
     public void setMueblesMantenibles(ArrayList<MuebleMantenible> mueblesMantenibles) {
         this.mueblesMantenibles = mueblesMantenibles;
     }
 
+    /**
+     *
+     * @param mueblesMantenibles
+     */
     public GrillaMueblesMantenibles(ArrayList<MuebleMantenible> mueblesMantenibles) {
         this.mueblesMantenibles = mueblesMantenibles;
     }

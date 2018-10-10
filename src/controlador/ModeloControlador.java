@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
 import objeto.Marca;
 import objeto.Modelo;
 
+/**
+ *
+ * @author Kuky
+ */
 public class ModeloControlador {
 
     private Modelo modelo;
@@ -23,6 +27,12 @@ public class ModeloControlador {
     private ResultSet rs;
     MarcaControlador marcaControlador = new MarcaControlador();
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Modelo extraer(Integer id) throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
@@ -45,6 +55,11 @@ public class ModeloControlador {
         return modelo;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Modelo> extraerTodos() throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
@@ -68,6 +83,11 @@ public class ModeloControlador {
         return modelos;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Modelo> extraerTodosVisibles() throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
@@ -91,6 +111,12 @@ public class ModeloControlador {
         return modelos;
     }
 
+    /**
+     *
+     * @param marca
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Modelo> extraerTodosVisiblesPorMarca(Marca marca) throws SQLException {
         marcaControlador = new MarcaControlador();
         conn = ConexionDB.GetConnection();
@@ -115,6 +141,11 @@ public class ModeloControlador {
         return modelos;
     }
 
+    /**
+     *
+     * @param modelo
+     * @throws SQLException
+     */
     public void insertar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -131,6 +162,11 @@ public class ModeloControlador {
         }
     }
 
+    /**
+     *
+     * @param modelo
+     * @throws SQLException
+     */
     public void modificar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -148,6 +184,11 @@ public class ModeloControlador {
         }
     }
 
+    /**
+     *
+     * @param modelo
+     * @throws SQLException
+     */
     public void borrar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

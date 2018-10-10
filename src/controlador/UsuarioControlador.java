@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
 import objeto.Reparticion;
 import objeto.Usuario;
 
+/**
+ *
+ * @author Kuky
+ */
 public class UsuarioControlador {
 
     private Usuario usuario;
@@ -24,6 +28,12 @@ public class UsuarioControlador {
     private PerfilControlador perfilcontrolador;
     private ReparticionControlador reparticionControlador;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Usuario extraer(Integer id) throws SQLException {
         perfilcontrolador = new PerfilControlador(); //HAY QUE INICIALIZARLO PARA PODER USARLO
         reparticionControlador = new ReparticionControlador();
@@ -49,6 +59,11 @@ public class UsuarioControlador {
         return usuario;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Usuario> extraerTodos() throws SQLException {
         perfilcontrolador = new PerfilControlador();
         reparticionControlador = new ReparticionControlador();
@@ -75,6 +90,11 @@ public class UsuarioControlador {
         return usuarios;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Usuario> extraerTodosVisibles() throws SQLException {
         perfilcontrolador = new PerfilControlador();
         reparticionControlador = new ReparticionControlador();
@@ -101,6 +121,11 @@ public class UsuarioControlador {
         return usuarios;
     }
 
+    /**
+     *
+     * @param usuario
+     * @throws SQLException
+     */
     public void insertar(Usuario usuario) throws SQLException {
 
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
@@ -120,6 +145,11 @@ public class UsuarioControlador {
         }
     }
 
+    /**
+     *
+     * @param usuario
+     * @throws SQLException
+     */
     public void modificar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -139,6 +169,11 @@ public class UsuarioControlador {
         }
     }
 
+    /**
+     *
+     * @param usuario
+     * @throws SQLException
+     */
     public void borrar(Usuario usuario) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {
@@ -156,6 +191,12 @@ public class UsuarioControlador {
         }
     }
 
+    /**
+     *
+     * @param usuario
+     * @return
+     * @throws SQLException
+     */
     public Usuario validarUsuario(Usuario usuario) throws SQLException {
         perfilcontrolador = new PerfilControlador();
         reparticionControlador = new ReparticionControlador();

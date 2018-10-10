@@ -30,10 +30,18 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionCodigosPresupuestario() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -331,6 +339,9 @@ public class GestionCodigosPresupuestario extends javax.swing.JInternalFrame imp
     private javax.swing.JTable jtCodigos;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

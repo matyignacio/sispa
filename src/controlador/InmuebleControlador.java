@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.Inmueble;
 
+/**
+ *
+ * @author Kuky
+ */
 public class InmuebleControlador {
 
     private Inmueble inmueble;
@@ -27,6 +31,12 @@ public class InmuebleControlador {
     CategoriaControlador categoriaControlador = new CategoriaControlador();
     ReparticionControlador reparticionControlador = new ReparticionControlador();
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Inmueble extraer(Integer id) throws SQLException {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
@@ -55,6 +65,11 @@ public class InmuebleControlador {
         return inmueble;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Inmueble> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
@@ -85,6 +100,11 @@ public class InmuebleControlador {
         return inmuebles;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Inmueble> extraerTodosVisibles() throws SQLException {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
@@ -115,6 +135,11 @@ public class InmuebleControlador {
         return inmuebles;
     }
 
+    /**
+     *
+     * @param inmueble
+     * @throws SQLException
+     */
     public void insertar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -138,6 +163,11 @@ public class InmuebleControlador {
         }
     }
 
+    /**
+     *
+     * @param inmueble
+     * @throws SQLException
+     */
     public void modificar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -164,6 +194,11 @@ public class InmuebleControlador {
         }
     }
 
+    /**
+     *
+     * @param inmueble
+     * @throws SQLException
+     */
     public void borrar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

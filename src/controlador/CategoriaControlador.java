@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.Categoria;
 
+/**
+ *
+ * @author Kuky
+ */
 public class CategoriaControlador {
 
     private Categoria categoria;
@@ -21,6 +25,12 @@ public class CategoriaControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Categoria extraer(Integer id) throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
@@ -44,6 +54,11 @@ public class CategoriaControlador {
         return categoria;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Categoria> extraerTodos() throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
@@ -68,6 +83,11 @@ public class CategoriaControlador {
         return categorias;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Categoria> extraerTodosVisibles() throws SQLException {
         IncisoControlador i = new IncisoControlador();
         CodigoPresupuestarioControlador c = new CodigoPresupuestarioControlador();
@@ -92,6 +112,11 @@ public class CategoriaControlador {
         return categorias;
     }
 
+    /**
+     *
+     * @param categoria
+     * @throws SQLException
+     */
     public void insertar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -108,6 +133,11 @@ public class CategoriaControlador {
         }
     }
 
+    /**
+     *
+     * @param categoria
+     * @throws SQLException
+     */
     public void modificar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -125,6 +155,11 @@ public class CategoriaControlador {
         }
     }
 
+    /**
+     *
+     * @param categoria
+     * @throws SQLException
+     */
     public void borrar(Categoria categoria) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

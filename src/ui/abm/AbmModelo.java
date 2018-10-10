@@ -30,26 +30,50 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
     private Modelo modelo;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Modelo getModelo() {
         return modelo;
     }
 
+    /**
+     *
+     * @param modelo
+     */
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -58,10 +82,21 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param modelo
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmModelo(String operacion, Modelo modelo, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -76,6 +111,10 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         inicializacionVentana();
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmModelo() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -345,6 +384,9 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(modelo.getNombre());
@@ -365,6 +407,10 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         modelo.setNombre(jtfNombre.getText());
@@ -378,6 +424,10 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         ModeloControlador modeloControlador = new ModeloControlador();

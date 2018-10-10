@@ -35,10 +35,18 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         return this.desktopPaneGestion;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPaneGestion = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionMuebles() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -517,6 +525,10 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JTextField jtfBuscar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param muebles
+     */
     public void actualizarGestion(ArrayList<Mueble> muebles) {
         grillaMuebles = new GrillaMuebles(muebles);
         jtMuebles.setModel(grillaMuebles);
@@ -525,6 +537,11 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     /*
     @override
      */
+
+    /**
+     *
+     */
+
     public void actualizarGestion() {
         try {
             muebles = muebleControlador.extraerTodosVisibles();

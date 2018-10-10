@@ -13,10 +13,18 @@ public class AdquisicionMueble extends Adquisicion {
 
     private Mueble mueble;
 
+    /**
+     *
+     * @return
+     */
     public Mueble getMueble() {
         return mueble;
     }
 
+    /**
+     *
+     * @param mueble
+     */
     public void setMueble(Mueble mueble) {
         this.mueble = mueble;
     }

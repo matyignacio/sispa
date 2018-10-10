@@ -19,34 +19,66 @@ public class Usuario extends ObjetoBase {
     private Perfil perfil;
     private Reparticion reparticion;
 
+    /**
+     *
+     * @return
+     */
     public Reparticion getReparticion() {
         return reparticion;
     }
 
+    /**
+     *
+     * @param reparticion
+     */
     public void setReparticion(Reparticion reparticion) {
         this.reparticion = reparticion;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     *
+     * @param mail
+     */
     public void setMail(String mail) {
         this.mail = mail;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getClave() {
         return clave;
     }
 
+    /**
+     *
+     * @param clave
+     */
     public void setClave(String clave) {
         this.clave = clave;
     }
 
+    /**
+     *
+     * @return
+     */
     public Perfil getPerfil() {
         return perfil;
     }
 
+    /**
+     *
+     * @param perfil
+     */
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }

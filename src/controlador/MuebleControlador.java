@@ -30,6 +30,12 @@ public class MuebleControlador {
     ModeloControlador modeloControlador = new ModeloControlador();
     ReparticionControlador reparticionControlador = new ReparticionControlador();
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Mueble extraer(Integer id) throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
@@ -64,6 +70,11 @@ public class MuebleControlador {
 
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Mueble> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
@@ -98,6 +109,11 @@ public class MuebleControlador {
         return muebles;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Mueble> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=0 AND id_reparticion=? order by nombre";
@@ -129,6 +145,11 @@ public class MuebleControlador {
         return muebles;
     }
 
+    /**
+     *
+     * @param mueble
+     * @throws SQLException
+     */
     public void insertar(Mueble mueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -155,6 +176,11 @@ public class MuebleControlador {
         }
     }
 
+    /**
+     *
+     * @param mueble
+     * @throws SQLException
+     */
     public void modificar(Mueble mueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -181,6 +207,11 @@ public class MuebleControlador {
         }
     }
 
+    /**
+     *
+     * @param mueble
+     * @throws SQLException
+     */
     public void borrar(Mueble mueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

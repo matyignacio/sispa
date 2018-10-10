@@ -28,26 +28,50 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
     private Perfil perfil;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Perfil getPerfil() {
         return perfil;
     }
 
+    /**
+     *
+     * @param perfil
+     */
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -56,10 +80,21 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param perfil
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmPerfil(String operacion, Perfil perfil, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -72,6 +107,10 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         inicializacionVentana();
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmPerfil() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -403,6 +442,9 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         validarCheckBox();
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
@@ -478,6 +520,10 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         perfil.setNombre(jtfNombre.getText());
@@ -494,6 +540,10 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         PerfilControlador perfilControlador = new PerfilControlador();
@@ -521,6 +571,9 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     */
     public void validarCheckBox() {
         if (!jcbAjustes.isSelected()) {
             jcbMarcas.setEnabled(false);
@@ -547,6 +600,11 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Operaciones> asigarOperaciones() throws SQLException {
         operacionesControlador = new OperacionesControlador();
         ArrayList<Operaciones> operaciones = new ArrayList<>();

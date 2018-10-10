@@ -34,12 +34,26 @@ import util.Util;
  */
 public class Login extends javax.swing.JFrame {
 
+    /**
+     *
+     */
     public static Login login;
+
+    /**
+     *
+     */
     public static Usuario usuario;
+
+    /**
+     *
+     */
     public static UsuarioControlador usuarioControlador;
     private IniciarSesionTask iniciarSesionTask;
     private javax.swing.JProgressBar pbLogin;
 
+    /**
+     *
+     */
     public Login() {
         initComponents();
         jtfUsuario.requestFocus();
@@ -227,10 +241,18 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    /**
+     *
+     * @param panel
+     */
     public void setColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(197, 197, 197));
     }
 
+    /**
+     *
+     * @param panel
+     */
     public void resetColor(JPanel panel) {
         panel.setBackground(new java.awt.Color(240, 240, 240));
     }
@@ -262,6 +284,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jtfUsuario;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void validarUsuario() {
         pbLogin.setVisible(true);
         jbAceptar.setEnabled(false);

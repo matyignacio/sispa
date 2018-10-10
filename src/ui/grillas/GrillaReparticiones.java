@@ -17,14 +17,26 @@ public class GrillaReparticiones extends AbstractTableModel {
 
     ArrayList<Reparticion> reparticiones;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Reparticion> getReparticiones() {
         return reparticiones;
     }
 
+    /**
+     *
+     * @param reparticiones
+     */
     public void setReparticiones(ArrayList<Reparticion> reparticiones) {
         this.reparticiones = reparticiones;
     }
 
+    /**
+     *
+     * @param reparticiones
+     */
     public GrillaReparticiones(ArrayList<Reparticion> reparticiones) {
         this.reparticiones = reparticiones;
     }

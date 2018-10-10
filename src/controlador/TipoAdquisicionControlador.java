@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.TipoAdquisicion;
 
+/**
+ *
+ * @author Kuky
+ */
 public class TipoAdquisicionControlador {
 
     private TipoAdquisicion tipo;
@@ -21,6 +25,12 @@ public class TipoAdquisicionControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public TipoAdquisicion extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM tipo_adquisicion WHERE id=?";
@@ -40,6 +50,11 @@ public class TipoAdquisicionControlador {
         return tipo;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<TipoAdquisicion> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM tipo_adquisicion order by nombre";
@@ -60,6 +75,11 @@ public class TipoAdquisicionControlador {
         return tipos;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<TipoAdquisicion> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM tipo_adquisicion where visible = TRUE order by nombre";
@@ -80,6 +100,11 @@ public class TipoAdquisicionControlador {
         return tipos;
     }
 
+    /**
+     *
+     * @param tipo
+     * @throws SQLException
+     */
     public void insertar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -94,6 +119,11 @@ public class TipoAdquisicionControlador {
         }
     }
 
+    /**
+     *
+     * @param tipo
+     * @throws SQLException
+     */
     public void modificar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -109,6 +139,11 @@ public class TipoAdquisicionControlador {
         }
     }
 
+    /**
+     *
+     * @param tipo
+     * @throws SQLException
+     */
     public void borrar(TipoAdquisicion tipo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

@@ -27,6 +27,10 @@ public class MiRender extends DefaultTableCellRenderer {
     //NO PUEDO PONER DIRECTAMENTE 31535865388 PORQUE ME DICE "INTEGER TOO LONG" (?)
     long trimestre = (long) (1200000000 * 19.7099158675); //forma de calcular un trimestre en tics
 
+    /**
+     *
+     * @param muebles
+     */
     public MiRender(ArrayList<MuebleMantenible> muebles) {
         this.muebles = muebles;
     }

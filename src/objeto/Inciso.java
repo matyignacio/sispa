@@ -17,42 +17,82 @@ public class Inciso {
     private int parcial;
     private boolean visible;
 
+    /**
+     *
+     * @return
+     */
     public boolean isVisible() {
         return visible;
     }
 
+    /**
+     *
+     * @param visible
+     */
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumero() {
         return numero;
     }
 
+    /**
+     *
+     * @param numero
+     */
     public void setNumero(int numero) {
         this.numero = numero;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPrincipal() {
         return principal;
     }
 
+    /**
+     *
+     * @param principal
+     */
     public void setPrincipal(int principal) {
         this.principal = principal;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getParcial() {
         return parcial;
     }
 
+    /**
+     *
+     * @param parcial
+     */
     public void setParcial(int parcial) {
         this.parcial = parcial;
     }

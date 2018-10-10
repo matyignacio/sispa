@@ -17,14 +17,26 @@ public class GrillaIncisos extends AbstractTableModel {
 
     ArrayList<Inciso> incisos;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Inciso> getIncisos() {
         return incisos;
     }
 
+    /**
+     *
+     * @param incisos
+     */
     public void setIncisos(ArrayList<Inciso> incisos) {
         this.incisos = incisos;
     }
 
+    /**
+     *
+     * @param incisos
+     */
     public GrillaIncisos(ArrayList<Inciso> incisos) {
         this.incisos = incisos;
     }

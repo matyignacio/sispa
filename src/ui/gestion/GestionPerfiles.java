@@ -30,10 +30,18 @@ public class GestionPerfiles extends javax.swing.JInternalFrame implements Gesti
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionPerfiles() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -329,6 +337,9 @@ public class GestionPerfiles extends javax.swing.JInternalFrame implements Gesti
     private javax.swing.JTable jtPerfiles;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

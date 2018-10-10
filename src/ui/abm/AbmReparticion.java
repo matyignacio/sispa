@@ -27,26 +27,50 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
     private Reparticion reparticion;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Reparticion getReparticion() {
         return reparticion;
     }
 
+    /**
+     *
+     * @param reparticion
+     */
     public void setReparticion(Reparticion reparticion) {
         this.reparticion = reparticion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -55,10 +79,21 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param reparticion
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmReparticion(String operacion, Reparticion reparticion, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -74,6 +109,10 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmReparticion() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -385,6 +424,9 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(reparticion.getNombre());
@@ -409,6 +451,10 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         reparticion.setNombre(jtfNombre.getText());
@@ -424,6 +470,10 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         ReparticionControlador reparticionControlador = new ReparticionControlador();

@@ -48,26 +48,50 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private Mueble mueble;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Mueble getMueble() {
         return mueble;
     }
 
+    /**
+     *
+     * @param mueble
+     */
     public void setMueble(Mueble mueble) {
         this.mueble = mueble;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -76,10 +100,21 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param mueble
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmMuebles(String operacion, Mueble mueble, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -108,6 +143,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmMuebles() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -945,6 +984,9 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(mueble.getNombre());
@@ -985,6 +1027,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         mueble.setNombre(jtfNombre.getText());
@@ -1005,6 +1051,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         MuebleControlador muebleControlador = new MuebleControlador();
@@ -1032,6 +1082,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void inicializarComboModelos() throws SQLException {
         dcbmModelo = new DefaultComboBoxModel(modeloControlador.extraerTodosVisiblesPorMarca(
                 (Marca) jcbMarca.getSelectedItem()).toArray());

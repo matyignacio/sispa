@@ -24,26 +24,50 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
     private Inciso inciso;
     private Gestionable ventanaGestion;
 
+    /**
+     *
+     * @return
+     */
     public String getOperacion() {
         return operacion;
     }
 
+    /**
+     *
+     * @param operacion
+     */
     public void setOperacion(String operacion) {
         this.operacion = operacion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Inciso getInciso() {
         return inciso;
     }
 
+    /**
+     *
+     * @param inciso
+     */
     public void setInciso(Inciso inciso) {
         this.inciso = inciso;
     }
 
+    /**
+     *
+     * @return
+     */
     public Gestionable getVentanaGestion() {
         return ventanaGestion;
     }
 
+    /**
+     *
+     * @param ventanaGestion
+     */
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
@@ -52,10 +76,21 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @param operacion
+     * @param inciso
+     * @param ventanaGestion
+     * @throws SQLException
+     */
     public AbmInciso(String operacion, Inciso inciso, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -69,6 +104,10 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
 
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public AbmInciso() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -343,6 +382,9 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    /**
+     *
+     */
     public void inicializacionVentana() {
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNumero.setText(String.valueOf(inciso.getNumero()));
@@ -363,6 +405,10 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
         inciso.setNumero(Integer.parseInt(jtfNumero.getText()));
@@ -376,6 +422,10 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
         return OK;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int grabar() {
         IncisoControlador incisoControlador = new IncisoControlador();

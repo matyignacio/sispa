@@ -31,6 +31,12 @@ public class PerfilControlador {
     private Operaciones operacion;
     private ArrayList<Operaciones> operaciones;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Perfil extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM perfiles where id=?";
@@ -65,6 +71,11 @@ public class PerfilControlador {
         return perfil;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Perfil> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM perfiles order by nombre";
@@ -85,6 +96,11 @@ public class PerfilControlador {
         return perfiles;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Perfil> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM perfiles where visible = TRUE order by nombre";
@@ -105,6 +121,11 @@ public class PerfilControlador {
         return perfiles;
     }
 
+    /**
+     *
+     * @param perfil
+     * @throws SQLException
+     */
     public void insertar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -120,6 +141,13 @@ public class PerfilControlador {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @param operaciones
+     * @param conn
+     * @throws SQLException
+     */
     public void insertarOperacionesPerfiles(Integer id, ArrayList<Operaciones> operaciones, Connection conn) throws SQLException {
         int i;
         for (i = 0; i < operaciones.size(); i++) {
@@ -132,6 +160,12 @@ public class PerfilControlador {
         ps2.close();
     }
 
+    /**
+     *
+     * @param conn
+     * @return
+     * @throws SQLException
+     */
     public int extraerNuevoId(Connection conn) throws SQLException {
         ResultSet rs3;
         PreparedStatement ps3;
@@ -148,6 +182,11 @@ public class PerfilControlador {
         return id;
     }
 
+    /**
+     *
+     * @param perfil
+     * @throws SQLException
+     */
     public void modificar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -169,6 +208,11 @@ public class PerfilControlador {
         }
     }
 
+    /**
+     *
+     * @param perfil
+     * @throws SQLException
+     */
     public void borrar(Perfil perfil) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

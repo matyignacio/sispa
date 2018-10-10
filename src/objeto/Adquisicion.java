@@ -17,26 +17,50 @@ public class Adquisicion extends ObjetoBase {
     private float monto;
     private TipoAdquisicion tipoAdquisicion;
 
+    /**
+     *
+     * @return
+     */
     public Date getFecha() {
         return fecha;
     }
 
+    /**
+     *
+     * @param fecha
+     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getMonto() {
         return monto;
     }
 
+    /**
+     *
+     * @param monto
+     */
     public void setMonto(float monto) {
         this.monto = monto;
     }
 
+    /**
+     *
+     * @return
+     */
     public TipoAdquisicion getTipoAdquisicion() {
         return tipoAdquisicion;
     }
 
+    /**
+     *
+     * @param tipoAdquisicion
+     */
     public void setTipoAdquisicion(TipoAdquisicion tipoAdquisicion) {
         this.tipoAdquisicion = tipoAdquisicion;
     }

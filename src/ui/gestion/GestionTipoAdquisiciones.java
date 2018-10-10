@@ -30,10 +30,18 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionTipoAdquisiciones() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -328,6 +336,9 @@ public class GestionTipoAdquisiciones extends javax.swing.JInternalFrame impleme
     private javax.swing.JTable jtTipoAdquisiciones;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

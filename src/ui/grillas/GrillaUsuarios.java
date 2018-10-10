@@ -17,14 +17,26 @@ public class GrillaUsuarios extends AbstractTableModel {
 
     ArrayList<Usuario> usuarios;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
+    /**
+     *
+     * @param usuarios
+     */
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
 
+    /**
+     *
+     * @param usuarios
+     */
     public GrillaUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
     }

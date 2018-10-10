@@ -15,10 +15,18 @@ public class Perfil extends ObjetoBase {
 
     private ArrayList<Operaciones> operaciones = new ArrayList<>();
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Operaciones> getOperaciones() {
         return operaciones;
     }
 
+    /**
+     *
+     * @param operaciones
+     */
     public void setOperaciones(ArrayList<Operaciones> operaciones) {
         this.operaciones = operaciones;
     }

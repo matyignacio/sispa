@@ -25,6 +25,12 @@ public class IncisoControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Inciso extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM incisos WHERE id=?";
@@ -46,6 +52,11 @@ public class IncisoControlador {
         return inciso;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Inciso> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM incisos order by numero";
@@ -68,6 +79,11 @@ public class IncisoControlador {
         return incisos;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Inciso> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM incisos where visible = TRUE order by numero";
@@ -90,6 +106,11 @@ public class IncisoControlador {
         return incisos;
     }
 
+    /**
+     *
+     * @param inciso
+     * @throws SQLException
+     */
     public void insertar(Inciso inciso) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -106,6 +127,11 @@ public class IncisoControlador {
         }
     }
 
+    /**
+     *
+     * @param inciso
+     * @throws SQLException
+     */
     public void modificar(Inciso inciso) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -123,6 +149,11 @@ public class IncisoControlador {
         }
     }
 
+    /**
+     *
+     * @param inciso
+     * @throws SQLException
+     */
     public void borrar(Inciso inciso) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objeto.Reparticion;
 
+/**
+ *
+ * @author Kuky
+ */
 public class ReparticionControlador {
 
     private Reparticion reparticion;
@@ -21,6 +25,12 @@ public class ReparticionControlador {
     private PreparedStatement ps;
     private ResultSet rs;
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Reparticion extraer(Integer id) throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones WHERE id=?";
@@ -49,6 +59,11 @@ public class ReparticionControlador {
         return reparticion;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Reparticion> extraerTodos() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones order by id";
@@ -81,6 +96,11 @@ public class ReparticionControlador {
         return reparticiones;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Reparticion> extraerTodosSinNinguna() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones WHERE id>0 order by nombre";
@@ -113,6 +133,11 @@ public class ReparticionControlador {
         return reparticiones;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Reparticion> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM reparticiones WHERE visible = true AND id>0  order by nombre";
@@ -145,6 +170,11 @@ public class ReparticionControlador {
         return reparticiones;
     }
 
+    /**
+     *
+     * @param reparticion
+     * @throws SQLException
+     */
     public void insertar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -167,6 +197,11 @@ public class ReparticionControlador {
         }
     }
 
+    /**
+     *
+     * @param reparticion
+     * @throws SQLException
+     */
     public void modificar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -190,6 +225,11 @@ public class ReparticionControlador {
         }
     }
 
+    /**
+     *
+     * @param reparticion
+     * @throws SQLException
+     */
     public void borrar(Reparticion reparticion) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {

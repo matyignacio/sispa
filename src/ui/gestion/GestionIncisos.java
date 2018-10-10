@@ -30,10 +30,18 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionIncisos() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -329,6 +337,9 @@ public class GestionIncisos extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JTable jtIncisos;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

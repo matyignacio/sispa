@@ -19,6 +19,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Muebles2
+     * @throws java.sql.SQLException
      */
     public Ajustes() throws SQLException {
         initComponents();

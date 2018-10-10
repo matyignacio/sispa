@@ -18,34 +18,66 @@ public class MuebleMantenible extends Mueble {
     private Timestamp fecha;
     private int cantidad;
 
+    /**
+     *
+     * @return
+     */
     public int getCantidad() {
         return cantidad;
     }
 
+    /**
+     *
+     * @param cantidad
+     */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
+    /**
+     *
+     * @return
+     */
     public Timestamp getFecha() {
         return fecha;
     }
 
+    /**
+     *
+     * @param fecha
+     */
     public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDominio() {
         return dominio;
     }
 
+    /**
+     *
+     * @param dominio
+     */
     public void setDominio(String dominio) {
         this.dominio = dominio;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getChasis() {
         return chasis;
     }
 
+    /**
+     *
+     * @param chasis
+     */
     public void setChasis(String chasis) {
         this.chasis = chasis;
     }

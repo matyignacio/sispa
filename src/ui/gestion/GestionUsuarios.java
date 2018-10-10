@@ -30,10 +30,18 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionUsuarios() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -328,6 +336,9 @@ public class GestionUsuarios extends javax.swing.JInternalFrame implements Gesti
     private javax.swing.JTable jtUsuario;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

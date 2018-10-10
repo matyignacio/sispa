@@ -16,34 +16,66 @@ public class Mueble extends BienPatrimonial {
     private Modelo modelo;
     private int cantidad;
 
+    /**
+     *
+     * @return
+     */
     public int getCantidad() {
         return cantidad;
     }
 
+    /**
+     *
+     * @param cantidad
+     */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
+    /**
+     *
+     * @return
+     */
     public Estado getEstado() {
         return estado;
     }
 
+    /**
+     *
+     * @param estado
+     */
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
+    /**
+     *
+     * @return
+     */
     public Categoria getCategoria() {
         return categoria;
     }
 
+    /**
+     *
+     * @param categoria
+     */
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
+    /**
+     *
+     * @return
+     */
     public Modelo getModelo() {
         return modelo;
     }
 
+    /**
+     *
+     * @param modelo
+     */
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }

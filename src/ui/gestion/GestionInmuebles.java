@@ -38,10 +38,18 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionInmuebles() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -501,11 +509,18 @@ public class GestionInmuebles extends javax.swing.JInternalFrame implements Gest
     private javax.swing.JTextField jtfBuscar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param inmuebles
+     */
     public void actualizarGestion(ArrayList<Inmueble> inmuebles) {
         grillaInmuebles = new GrillaInmuebles(inmuebles);
         jtInmuebles.setModel(grillaInmuebles);
     }
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

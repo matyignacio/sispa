@@ -30,10 +30,18 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionModelos() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -327,6 +335,9 @@ public class GestionModelos extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JTable jtModelos;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

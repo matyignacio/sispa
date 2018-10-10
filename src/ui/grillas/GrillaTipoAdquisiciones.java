@@ -17,14 +17,26 @@ public class GrillaTipoAdquisiciones extends AbstractTableModel {
 
     ArrayList<TipoAdquisicion> tipoAdquisiciones;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<TipoAdquisicion> getTipoAdquisiciones() {
         return tipoAdquisiciones;
     }
 
+    /**
+     *
+     * @param tipoAdquisiciones
+     */
     public void setTipoAdquisiciones(ArrayList<TipoAdquisicion> tipoAdquisiciones) {
         this.tipoAdquisiciones = tipoAdquisiciones;
     }
 
+    /**
+     *
+     * @param tipoAdquisiciones
+     */
     public GrillaTipoAdquisiciones(ArrayList<TipoAdquisicion> tipoAdquisiciones) {
         this.tipoAdquisiciones = tipoAdquisiciones;
     }

@@ -17,14 +17,26 @@ public class GrillaCodigosPresupuestarios extends AbstractTableModel {
 
     ArrayList<CodigoPresupuestario> codigosPresupuestarios;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<CodigoPresupuestario> getCodigoPresupuestarios() {
         return codigosPresupuestarios;
     }
 
+    /**
+     *
+     * @param codigoPresupuestarios
+     */
     public void setCodigoPresupuestarios(ArrayList<CodigoPresupuestario> codigoPresupuestarios) {
         this.codigosPresupuestarios = codigoPresupuestarios;
     }
 
+    /**
+     *
+     * @param codigoPresupuestarios
+     */
     public GrillaCodigosPresupuestarios(ArrayList<CodigoPresupuestario> codigoPresupuestarios) {
         this.codigosPresupuestarios = codigoPresupuestarios;
     }

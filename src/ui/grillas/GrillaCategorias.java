@@ -17,14 +17,26 @@ public class GrillaCategorias extends AbstractTableModel {
 
     ArrayList<Categoria> categorias;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Categoria> getCategorias() {
         return categorias;
     }
 
+    /**
+     *
+     * @param categorias
+     */
     public void setCategorias(ArrayList<Categoria> categorias) {
         this.categorias = categorias;
     }
 
+    /**
+     *
+     * @param categorias
+     */
     public GrillaCategorias(ArrayList<Categoria> categorias) {
         this.categorias = categorias;
     }

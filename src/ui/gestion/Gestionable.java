@@ -12,10 +12,28 @@ package ui.gestion;
  */
 public interface Gestionable {
 
+    /**
+     *
+     */
     public static final String ABM_ALTA = "ALTA";
+
+    /**
+     *
+     */
     public static final String ABM_BAJA = "BAJA";
+
+    /**
+     *
+     */
     public static final String ABM_MODIFICACION = "MOD";
+
+    /**
+     *
+     */
     public static final String ABM_VER = "VISTA";
 
+    /**
+     *
+     */
     public void actualizarGestion();
 }

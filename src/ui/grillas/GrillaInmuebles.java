@@ -17,14 +17,26 @@ public class GrillaInmuebles extends AbstractTableModel {
 
     ArrayList<Inmueble> inmuebles;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Inmueble> getMuebles() {
         return inmuebles;
     }
 
+    /**
+     *
+     * @param inmuebles
+     */
     public void setInmuebles(ArrayList<Inmueble> inmuebles) {
         this.inmuebles = inmuebles;
     }
 
+    /**
+     *
+     * @param inmuebles
+     */
     public GrillaInmuebles(ArrayList<Inmueble> inmuebles) {
         this.inmuebles = inmuebles;
     }

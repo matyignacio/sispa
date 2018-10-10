@@ -14,18 +14,34 @@ public class Inmueble extends BienPatrimonial {
     private String domicilio;
     private String tipo;
 
+    /**
+     *
+     * @return
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     *
+     * @param tipo
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDomicilio() {
         return domicilio;
     }
 
+    /**
+     *
+     * @param domicilio
+     */
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }

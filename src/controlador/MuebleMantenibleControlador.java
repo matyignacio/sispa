@@ -31,6 +31,12 @@ public class MuebleMantenibleControlador {
     ModeloControlador modeloControlador = new ModeloControlador();
     ReparticionControlador reparticionControlador = new ReparticionControlador();
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public MuebleMantenible extraer(Integer id) throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
@@ -68,6 +74,16 @@ public class MuebleMantenibleControlador {
         return muebleMantenible;
     }
 
+    /**
+     *
+     * @param nombre
+     * @param expediente
+     * @param dominio
+     * @param chasis
+     * @param modelo
+     * @return
+     * @throws SQLException
+     */
     public MuebleMantenible extraerDeTabla(String nombre, String expediente, String dominio,
             String chasis, Integer modelo) throws SQLException {
         categoriaControlador = new CategoriaControlador();
@@ -109,6 +125,11 @@ public class MuebleMantenibleControlador {
         return muebleMantenible;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<MuebleMantenible> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
         estadoControlador = new EstadoControlador();
@@ -146,6 +167,11 @@ public class MuebleMantenibleControlador {
         return mueblesMatenibles;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<MuebleMantenible> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM muebles where visible = TRUE AND mantenible=1 AND id_reparticion=? order by nombre";
@@ -180,6 +206,11 @@ public class MuebleMantenibleControlador {
         return mueblesMatenibles;
     }
 
+    /**
+     *
+     * @param muebleMantenible
+     * @throws SQLException
+     */
     public void insertar(MuebleMantenible muebleMantenible) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
@@ -208,6 +239,11 @@ public class MuebleMantenibleControlador {
         }
     }
 
+    /**
+     *
+     * @param muebleMantenible
+     * @throws SQLException
+     */
     public void modificar(MuebleMantenible muebleMantenible) throws SQLException {
         java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
 //        JOptionPane.showMessageDialog(null, (java.sql.Date) now);
@@ -239,6 +275,11 @@ public class MuebleMantenibleControlador {
         }
     }
 
+    /**
+     *
+     * @param muebleMantenible
+     * @throws SQLException
+     */
     public void borrar(MuebleMantenible muebleMantenible) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {
@@ -256,6 +297,12 @@ public class MuebleMantenibleControlador {
         }
     }
 
+    /**
+     *
+     * @param reparticion
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<MuebleMantenible> necesitaMantenimiento(int reparticion) throws SQLException {
         ArrayList<MuebleMantenible> autos = new ArrayList<>();
         try {

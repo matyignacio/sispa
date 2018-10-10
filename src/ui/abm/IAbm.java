@@ -11,12 +11,30 @@ package ui.abm;
  */
 public interface IAbm {
 
+    /**
+     *
+     */
     public static final int OK = 1;
+
+    /**
+     *
+     */
     public static final int ERROR = 0;
 
+    /**
+     *
+     * @return
+     */
     int grabar();
 
+    /**
+     *
+     */
     void inicializacionVentana();
 
+    /**
+     *
+     * @return
+     */
     int recolectarDatos();
 }

@@ -30,10 +30,18 @@ public class GestionReparticiones extends javax.swing.JInternalFrame implements 
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionReparticiones() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -327,6 +335,9 @@ public class GestionReparticiones extends javax.swing.JInternalFrame implements 
     private javax.swing.JTable jtReparticiones;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {

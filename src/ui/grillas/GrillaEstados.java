@@ -17,14 +17,26 @@ public class GrillaEstados extends AbstractTableModel {
 
     ArrayList<Estado> estados;
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Estado> getEstados() {
         return estados;
     }
 
+    /**
+     *
+     * @param estados
+     */
     public void setEstados(ArrayList<Estado> estados) {
         this.estados = estados;
     }
 
+    /**
+     *
+     * @param estados
+     */
     public GrillaEstados(ArrayList<Estado> estados) {
         this.estados = estados;
     }

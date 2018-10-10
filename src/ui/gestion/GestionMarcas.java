@@ -30,10 +30,18 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
         return this.desktopPane;
     }
 
+    /**
+     *
+     * @param desktopPane
+     */
     public void setDesktopPane(JDesktopPane desktopPane) {
         this.desktopPane = desktopPane;
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     public GestionMarcas() throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -328,6 +336,9 @@ public class GestionMarcas extends javax.swing.JInternalFrame implements Gestion
     private javax.swing.JTable jtMarcas;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     @Override
     public void actualizarGestion() {
         try {
