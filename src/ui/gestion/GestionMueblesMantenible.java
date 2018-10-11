@@ -419,6 +419,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
 
     private void jbVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolver1ActionPerformed
         this.dispose();
+        util.Util.setEnabledMenues(true);
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
     private void jtfBuscarInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jtfBuscarInputMethodTextChanged

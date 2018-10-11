@@ -56,6 +56,7 @@ public class Principal extends javax.swing.JFrame {
 
         dpPrincipal = new javax.swing.JDesktopPane();
         jpPrincipal = new javax.swing.JPanel();
+        jbmueblesMantenibles = new javax.swing.JButton();
         jpTitulo = new javax.swing.JPanel();
         jlNombreUsuario = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
@@ -70,6 +71,7 @@ public class Principal extends javax.swing.JFrame {
         jmModulos = new javax.swing.JMenu();
         jmiMuebles = new javax.swing.JMenuItem();
         jmiInmubles = new javax.swing.JMenuItem();
+        jmiAutomotores = new javax.swing.JMenuItem();
         jmiInformes = new javax.swing.JMenuItem();
         jmiAjustes = new javax.swing.JMenuItem();
         jmAcercaDe = new javax.swing.JMenu();
@@ -95,6 +97,18 @@ public class Principal extends javax.swing.JFrame {
         jpPrincipal.setMinimumSize(new java.awt.Dimension(860, 600));
         jpPrincipal.setPreferredSize(new java.awt.Dimension(854, 600));
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbmueblesMantenibles.setBackground(new java.awt.Color(204, 204, 204));
+        jbmueblesMantenibles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbmueblesMantenibles.setForeground(new java.awt.Color(33, 150, 243));
+        jbmueblesMantenibles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
+        jbmueblesMantenibles.setText("Automotores");
+        jbmueblesMantenibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbmueblesManteniblesActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 1060, 70));
 
         jpTitulo.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -150,7 +164,7 @@ public class Principal extends javax.swing.JFrame {
                 jbInmueblesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 1060, 90));
+        jpPrincipal.add(jbInmuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 1060, 70));
 
         jbMuebles.setBackground(new java.awt.Color(204, 204, 204));
         jbMuebles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -163,7 +177,7 @@ public class Principal extends javax.swing.JFrame {
                 jbMueblesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 1060, 90));
+        jpPrincipal.add(jbMuebles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 1060, 70));
 
         jbInformes.setBackground(new java.awt.Color(204, 204, 204));
         jbInformes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -177,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
                 jbInformesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 1060, 90));
+        jpPrincipal.add(jbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 1060, 70));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -205,7 +219,7 @@ public class Principal extends javax.swing.JFrame {
                 jbAjustesActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 1060, 90));
+        jpPrincipal.add(jbAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 1060, 70));
 
         dpPrincipal.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -244,6 +258,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jmModulos.add(jmiInmubles);
+
+        jmiAutomotores.setText("Automotores");
+        jmiAutomotores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAutomotoresActionPerformed(evt);
+            }
+        });
+        jmModulos.add(jmiAutomotores);
 
         jmiInformes.setText("Informes");
         jmiInformes.addActionListener(new java.awt.event.ActionListener() {
@@ -367,6 +389,14 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jbmueblesManteniblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmueblesManteniblesActionPerformed
+        abrirAutomotores();
+    }//GEN-LAST:event_jbmueblesManteniblesActionPerformed
+
+    private void jmiAutomotoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAutomotoresActionPerformed
+        abrirAutomotores();
+    }//GEN-LAST:event_jmiAutomotoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -425,6 +455,19 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
+    private void abrirAutomotores() {
+        GestionMueblesMantenible gestionMueblesMantenible;
+        try {
+            gestionMueblesMantenible = new GestionMueblesMantenible();
+            this.dpPrincipal.add(gestionMueblesMantenible);
+            util.Util.setEnabledMenues(false);
+            util.Util.centrarVentana(dpPrincipal, gestionMueblesMantenible);
+            gestionMueblesMantenible.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void abrirReportes() {
         GestionReportes gestionReportes;
         try {
@@ -445,6 +488,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jbInmuebles;
     private javax.swing.JButton jbMuebles;
     private javax.swing.JButton jbSalir;
+    private javax.swing.JButton jbmueblesMantenibles;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlTituloPrincipal;
@@ -453,6 +497,7 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JMenu jmSesion;
     private javax.swing.JMenuBar jmbPrincipal;
     private javax.swing.JMenuItem jmiAjustes;
+    private javax.swing.JMenuItem jmiAutomotores;
     private javax.swing.JMenuItem jmiCerrarSesion;
     private javax.swing.JMenuItem jmiInformes;
     private javax.swing.JMenuItem jmiInmubles;

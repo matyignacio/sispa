@@ -80,7 +80,6 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jlBienvenido = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
         jlTituloPrincipal = new javax.swing.JLabel();
-        jbmueblesMantenibles = new javax.swing.JButton();
         jbVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMuebles = new javax.swing.JTable();
@@ -143,18 +142,6 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jlTituloPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_informe_blanco.png"))); // NOI18N
         jlTituloPrincipal.setText("SISPA - Muebles");
         jpTitulo.add(jlTituloPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 340, 70));
-
-        jbmueblesMantenibles.setBackground(new java.awt.Color(204, 204, 204));
-        jbmueblesMantenibles.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbmueblesMantenibles.setForeground(new java.awt.Color(33, 150, 243));
-        jbmueblesMantenibles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_automotores.png"))); // NOI18N
-        jbmueblesMantenibles.setText("Automotores");
-        jbmueblesMantenibles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbmueblesManteniblesActionPerformed(evt);
-            }
-        });
-        jpTitulo.add(jbmueblesMantenibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 230, 60));
 
         jbVolver.setBackground(new java.awt.Color(204, 204, 204));
         jbVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -264,10 +251,10 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
         jtfBuscar.setForeground(new java.awt.Color(33, 150, 243));
         jtfBuscar.setName(""); // NOI18N
         jtfBuscar.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jtfBuscarInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jtfBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -414,21 +401,6 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
 
     }//GEN-LAST:event_jpTituloMouseDragged
 
-    private void jbmueblesManteniblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmueblesManteniblesActionPerformed
-        GestionMueblesMantenible gestionMueblesMantenible;
-        GestionMuebles gestionMuebles;
-        try {
-            gestionMueblesMantenible = new GestionMueblesMantenible();
-            this.desktopPaneGestion.add(gestionMueblesMantenible);
-            gestionMuebles = new GestionMuebles();
-            util.Util.centrarInternalVentana(gestionMuebles, gestionMueblesMantenible);
-            gestionMueblesMantenible.show();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jbmueblesManteniblesActionPerformed
-
     private void jpTitulo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpTitulo1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpTitulo1MousePressed
@@ -511,7 +483,6 @@ public class GestionMuebles extends javax.swing.JInternalFrame implements Gestio
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbVer;
     private javax.swing.JButton jbVolver;
-    private javax.swing.JButton jbmueblesMantenibles;
     private javax.swing.JComboBox jcbAtributo;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlIconoBuscar;

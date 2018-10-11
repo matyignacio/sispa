@@ -149,7 +149,7 @@ public class ModeloControlador {
     public void insertar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "INSERT INTO modelos (nombre, visible, \"año\", id_marca) VALUES (?, ?, ?, ?)";
+            String consultaSql = "INSERT INTO modelos (nombre, visible, año, id_marca) VALUES (?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());
@@ -170,7 +170,7 @@ public class ModeloControlador {
     public void modificar(Modelo modelo) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
-            String consultaSql = "UPDATE modelos SET  nombre=?, visible=?, \"año\"=?, id_marca=? WHERE id=?";
+            String consultaSql = "UPDATE modelos SET  nombre=?, visible=?, año=?, id_marca=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, modelo.getNombre());
             ps.setBoolean(2, modelo.isVisible());

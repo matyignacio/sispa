@@ -23,7 +23,6 @@ import objeto.Marca;
 import objeto.Modelo;
 import objeto.Mueble;
 import objeto.Reparticion;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -31,14 +30,14 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
-
+    
     private MuebleControlador muebleControlador = new MuebleControlador();
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
     private EstadoControlador estadoControlador = new EstadoControlador();
     private CategoriaControlador categoriaControlador = new CategoriaControlador();
     private ModeloControlador modeloControlador = new ModeloControlador();
     private MarcaControlador marcaControlador = new MarcaControlador();
-
+    
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmEstado;
     private DefaultComboBoxModel dcbmCategoria;
@@ -95,7 +94,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-
+    
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
@@ -124,23 +123,23 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.mueble = mueble;
         this.ventanaGestion = ventanaGestion;
-
+        
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosVisibles().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
-
+        
         dcbmEstado = new DefaultComboBoxModel(estadoControlador.extraerTodosVisibles().toArray());
         jcbEstado.setModel(dcbmEstado);
-
+        
         dcbmCategoria = new DefaultComboBoxModel(categoriaControlador.extraerTodosVisibles().toArray());
         jcbCategoria.setModel(dcbmCategoria);
-
+        
         dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodosVisibles().toArray());
         jcbMarca.setModel(dcbmMarca);
-
+        
         inicializarComboModelos();
-
+        
         inicializacionVentana();
-
+        
     }
 
     /**
@@ -150,7 +149,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     public AbmMuebles() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-
+        
     }
 
     /**
@@ -988,6 +987,8 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
      *
      */
     public void inicializacionVentana() {
+        jcbReparticiones.setEnabled(false);
+        jcbReparticiones.setSelectedItem(Login.usuario.getReparticion());
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(mueble.getNombre());
             if (mueble.isVisible()) {
@@ -1005,14 +1006,13 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
             jcbModelo.setSelectedItem(mueble.getModelo());
             jtfCantidad.setText(String.valueOf(mueble.getCantidad()));
             jtfValor.setText(String.valueOf(mueble.getValor()));
-
+            
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
                 jrbNoVisible.setEnabled(false);
                 jtfExpediente.setEditable(false);
                 jtaObservaciones.setEditable(false);
-                jcbReparticiones.setEnabled(false);
                 jcbEstado.setEnabled(false);
                 jcbCategoria.setEnabled(false);
                 jcbMarca.setEnabled(false);

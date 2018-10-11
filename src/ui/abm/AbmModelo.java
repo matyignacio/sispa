@@ -106,7 +106,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.modelo = modelo;
         this.ventanaGestion = ventanaGestion;
-        dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodos().toArray());
+        dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodosVisibles().toArray());
         jcbMarca.setModel(dcbmMarca);
         inicializacionVentana();
     }
