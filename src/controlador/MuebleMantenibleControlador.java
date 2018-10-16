@@ -30,6 +30,7 @@ public class MuebleMantenibleControlador {
     EstadoControlador estadoControlador = new EstadoControlador();
     ModeloControlador modeloControlador = new ModeloControlador();
     ReparticionControlador reparticionControlador = new ReparticionControlador();
+    TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
 
     /**
      *
@@ -66,6 +67,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setFecha(rs.getTimestamp(14));
             muebleMantenible.setCantidad(rs.getInt(15));
             muebleMantenible.setValor(rs.getFloat(16));
+            muebleMantenible.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(17)));
 
         }
         rs.close();
@@ -117,6 +119,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setModelo(modeloControlador.extraer(rs.getInt(11)));
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
             muebleMantenible.setFecha(rs.getTimestamp(14));
+            muebleMantenible.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(17)));
 
         }
         rs.close();
@@ -127,8 +130,7 @@ public class MuebleMantenibleControlador {
 
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
     public ArrayList<MuebleMantenible> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
@@ -158,7 +160,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
             muebleMantenible.setCantidad(rs.getInt(15));
             muebleMantenible.setValor(rs.getFloat(16));
-
+            muebleMantenible.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(17)));
             mueblesMatenibles.add(muebleMantenible);
         }
         rs.close();
@@ -169,8 +171,7 @@ public class MuebleMantenibleControlador {
 
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
     public ArrayList<MuebleMantenible> extraerTodosVisibles() throws SQLException {
         conn = ConexionDB.GetConnection();
@@ -197,7 +198,7 @@ public class MuebleMantenibleControlador {
             muebleMantenible.setFecha(rs.getTimestamp(14));
             muebleMantenible.setCantidad(rs.getInt(15));
             muebleMantenible.setValor(rs.getFloat(16));
-
+            muebleMantenible.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(17)));
             mueblesMatenibles.add(muebleMantenible);
         }
         rs.close();
@@ -215,8 +216,8 @@ public class MuebleMantenibleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "INSERT INTO muebles ( nombre, visible, expediente, caracteristica, observaciones,dominio,chasis,"
-                    + "id_categoria, id_estado, id_modelo, id_reparticion, mantenible, cantidad, valor)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+                    + "id_categoria, id_estado, id_modelo, id_reparticion, mantenible, cantidad, valor, id_tipo_adquisicion)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, muebleMantenible.getNombre());
             ps.setBoolean(2, muebleMantenible.isVisible());
@@ -232,6 +233,7 @@ public class MuebleMantenibleControlador {
             ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
             ps.setInt(13, muebleMantenible.getCantidad());
             ps.setFloat(14, muebleMantenible.getValor());
+            ps.setInt(15, muebleMantenible.getTipoAdquisicion().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -250,7 +252,7 @@ public class MuebleMantenibleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE muebles SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, dominio=?, chasis=?, id_categoria=?,"
-                    + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=?, fecha=?, cantidad=?, valor=? WHERE id=?";
+                    + "id_estado=?, id_modelo=?, id_reparticion=?, mantenible=?, fecha=?, cantidad=?, valor=?, id_tipo_adquisicion=? WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, muebleMantenible.getNombre());
             ps.setBoolean(2, muebleMantenible.isVisible());
@@ -267,7 +269,8 @@ public class MuebleMantenibleControlador {
             ps.setTimestamp(13, currentTimestamp);
             ps.setInt(14, muebleMantenible.getCantidad());
             ps.setFloat(15, muebleMantenible.getValor());
-            ps.setInt(16, muebleMantenible.getId());
+            ps.setInt(16, muebleMantenible.getTipoAdquisicion().getId());
+            ps.setInt(17, muebleMantenible.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, muebleMantenible.toString() + " modificado correctamente");
             ps.close();
@@ -332,6 +335,7 @@ public class MuebleMantenibleControlador {
                 muebleMantenible.setReparticion(reparticionControlador.extraer(rs.getInt(12)));
                 muebleMantenible.setCantidad(rs.getInt(15));
                 muebleMantenible.setValor(rs.getFloat(16));
+                muebleMantenible.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(17)));
                 mueblesMatenibles.add(muebleMantenible);
                 autos.add(muebleMantenible);
             }

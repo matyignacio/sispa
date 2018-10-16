@@ -11,6 +11,7 @@ import controlador.EstadoControlador;
 import controlador.CategoriaControlador;
 import controlador.MarcaControlador;
 import controlador.ModeloControlador;
+import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import objeto.Marca;
 import objeto.Modelo;
 import objeto.Mueble;
 import objeto.Reparticion;
+import objeto.TipoAdquisicion;
 import ui.gestion.Gestionable;
 
 /**
@@ -30,19 +32,21 @@ import ui.gestion.Gestionable;
  * @author Kuky
  */
 public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
-    
+
     private MuebleControlador muebleControlador = new MuebleControlador();
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
     private EstadoControlador estadoControlador = new EstadoControlador();
     private CategoriaControlador categoriaControlador = new CategoriaControlador();
     private ModeloControlador modeloControlador = new ModeloControlador();
     private MarcaControlador marcaControlador = new MarcaControlador();
-    
+    private TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
+
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmEstado;
     private DefaultComboBoxModel dcbmCategoria;
     private DefaultComboBoxModel dcbmMarca;
     private DefaultComboBoxModel dcbmModelo;
+    private DefaultComboBoxModel dcbmTipoAdquisicion;
     private String operacion;
     private Mueble mueble;
     private Gestionable ventanaGestion;
@@ -94,7 +98,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     public void setVentanaGestion(Gestionable ventanaGestion) {
         this.ventanaGestion = ventanaGestion;
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.desktopPane;
     }
@@ -123,23 +127,26 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         this.operacion = operacion;
         this.mueble = mueble;
         this.ventanaGestion = ventanaGestion;
-        
+
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosVisibles().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
-        
+
+        dcbmTipoAdquisicion = new DefaultComboBoxModel(tipoAdquisicionControlador.extraerTodosVisibles().toArray());
+        jcbTipoAdquisicion.setModel(dcbmTipoAdquisicion);
+
         dcbmEstado = new DefaultComboBoxModel(estadoControlador.extraerTodosVisibles().toArray());
         jcbEstado.setModel(dcbmEstado);
-        
+
         dcbmCategoria = new DefaultComboBoxModel(categoriaControlador.extraerTodosVisibles().toArray());
         jcbCategoria.setModel(dcbmCategoria);
-        
+
         dcbmMarca = new DefaultComboBoxModel(marcaControlador.extraerTodosVisibles().toArray());
         jcbMarca.setModel(dcbmMarca);
-        
+
         inicializarComboModelos();
-        
+
         inicializacionVentana();
-        
+
     }
 
     /**
@@ -149,7 +156,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     public AbmMuebles() throws SQLException {
         initComponents();
         jlNombreUsuario.setText(Login.usuario.toString());
-        
+
     }
 
     /**
@@ -184,6 +191,8 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jlCaracteristicas1 = new javax.swing.JLabel();
         jtfCaracteristicas = new javax.swing.JTextField();
         jlNombre = new javax.swing.JLabel();
+        jlTipoAdquisicion = new javax.swing.JLabel();
+        jcbTipoAdquisicion = new javax.swing.JComboBox();
         jcbModelo = new javax.swing.JComboBox();
         jlEstado1 = new javax.swing.JLabel();
         jcbEstado = new javax.swing.JComboBox();
@@ -413,6 +422,24 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jlNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlNombre.setText("Nombre: ");
         jpPrincipal.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 150, 210, 20));
+
+        jlTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jlTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jlTipoAdquisicion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlTipoAdquisicion.setText("Tipo de Aquisic.");
+        jpPrincipal.add(jlTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 120, 20));
+
+        jcbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jcbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jcbTipoAdquisicion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbTipoAdquisicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTipoAdquisicionActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 220, -1));
 
         jcbModelo.setBackground(new java.awt.Color(204, 204, 204));
         jcbModelo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -983,6 +1010,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    private void jcbTipoAdquisicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoAdquisicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTipoAdquisicionActionPerformed
+
     /**
      *
      */
@@ -999,14 +1030,14 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
             jtfExpediente.setText(String.valueOf(mueble.getExpediente()));
             jtfCaracteristicas.setText(String.valueOf(mueble.getCaracteristicas()));
             jtaObservaciones.setText(String.valueOf(mueble.getObservaciones()));
-            jcbReparticiones.setSelectedItem(mueble.getReparticion());
+            jcbTipoAdquisicion.setSelectedItem(mueble.getTipoAdquisicion());
             jcbEstado.setSelectedItem(mueble.getEstado());
             jcbCategoria.setSelectedItem(mueble.getCategoria());
             jcbMarca.setSelectedItem(mueble.getModelo().getMarca());
             jcbModelo.setSelectedItem(mueble.getModelo());
             jtfCantidad.setText(String.valueOf(mueble.getCantidad()));
             jtfValor.setText(String.valueOf(mueble.getValor()));
-            
+
             if (!operacion.equals(Gestionable.ABM_MODIFICACION)) {
                 jtfNombre.setEditable(false);
                 jrbVisible.setEnabled(false);
@@ -1015,6 +1046,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtaObservaciones.setEditable(false);
                 jcbEstado.setEnabled(false);
                 jcbCategoria.setEnabled(false);
+                jcbTipoAdquisicion.setEnabled(false);
                 jcbMarca.setEnabled(false);
                 jcbModelo.setEnabled(false);
                 jtfCantidad.setEditable(false);
@@ -1048,6 +1080,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         mueble.setModelo((Modelo) jcbModelo.getSelectedItem());
         mueble.setCantidad(Integer.parseInt(jtfCantidad.getText()));
         mueble.setValor(Float.parseFloat(jtfValor.getText()));
+        mueble.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
         return OK;
     }
 
@@ -1111,6 +1144,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JComboBox jcbModelo1;
     private javax.swing.JComboBox jcbReparticiones;
     private javax.swing.JComboBox jcbReparticiones1;
+    private javax.swing.JComboBox jcbTipoAdquisicion;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlBienvenido1;
     private javax.swing.JLabel jlCantidad;
@@ -1135,6 +1169,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JLabel jlReparticiones1;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlSubtitulo1;
+    private javax.swing.JLabel jlTipoAdquisicion;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlTituloPrincipal1;
     private javax.swing.JLabel jlValor;

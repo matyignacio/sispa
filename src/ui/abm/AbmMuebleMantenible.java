@@ -11,6 +11,7 @@ import controlador.EstadoControlador;
 import controlador.CategoriaControlador;
 import controlador.MarcaControlador;
 import controlador.ModeloControlador;
+import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import objeto.Marca;
 import objeto.Modelo;
 import objeto.MuebleMantenible;
 import objeto.Reparticion;
+import objeto.TipoAdquisicion;
 import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
@@ -38,12 +40,14 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     private CategoriaControlador categoriaControlador = new CategoriaControlador();
     private ModeloControlador modeloControlador = new ModeloControlador();
     private MarcaControlador marcaControlador = new MarcaControlador();
+    private TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
 
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmEstado;
     private DefaultComboBoxModel dcbmCategoria;
     private DefaultComboBoxModel dcbmMarca;
     private DefaultComboBoxModel dcbmModelo;
+    private DefaultComboBoxModel dcbmTipoAdquisicion;
     private String operacion;
     private MuebleMantenible muebleMantenible;
     private Gestionable ventanaGestion;
@@ -128,6 +132,9 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosVisibles().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
 
+        dcbmTipoAdquisicion = new DefaultComboBoxModel(tipoAdquisicionControlador.extraerTodosVisibles().toArray());
+        jcbTipoAdquisicion.setModel(dcbmTipoAdquisicion);
+
         dcbmEstado = new DefaultComboBoxModel(estadoControlador.extraerTodosVisibles().toArray());
         jcbEstado.setModel(dcbmEstado);
 
@@ -203,6 +210,8 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jlObservaciones = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaObservaciones = new javax.swing.JTextArea();
+        jlTipoAdquisicion = new javax.swing.JLabel();
+        jcbTipoAdquisicion = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("SISPA - Automotores");
@@ -309,7 +318,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jtfChasisActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfChasis, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 170, -1));
+        jpPrincipal.add(jtfChasis, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 170, -1));
 
         jlCaracteristicas1.setBackground(new java.awt.Color(204, 204, 204));
         jlCaracteristicas1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -446,7 +455,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jlChasis.setForeground(new java.awt.Color(33, 150, 243));
         jlChasis.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlChasis.setText("Chasis:");
-        jpPrincipal.add(jlChasis, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 210, 20));
+        jpPrincipal.add(jlChasis, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 210, 20));
 
         jtfExpediente.setBackground(new java.awt.Color(204, 204, 204));
         jtfExpediente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -520,6 +529,24 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jScrollPane1.setViewportView(jtaObservaciones);
 
         jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 440, -1));
+
+        jlTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jlTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jlTipoAdquisicion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlTipoAdquisicion.setText("Tipo de Aquisic.");
+        jpPrincipal.add(jlTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 120, 20));
+
+        jcbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jcbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jcbTipoAdquisicion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbTipoAdquisicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTipoAdquisicionActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 220, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -625,6 +652,10 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    private void jcbTipoAdquisicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoAdquisicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTipoAdquisicionActionPerformed
+
     /**
      *
      */
@@ -641,7 +672,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
             jtaObservaciones.setText(String.valueOf(muebleMantenible.getObservaciones()));
             jtfDominio.setText(String.valueOf(muebleMantenible.getDominio()));
             jtfChasis.setText(String.valueOf(muebleMantenible.getChasis()));
-            jcbReparticiones.setSelectedItem(muebleMantenible.getReparticion());
+            jcbTipoAdquisicion.setSelectedItem(muebleMantenible.getTipoAdquisicion());
             jcbEstado.setSelectedItem(muebleMantenible.getEstado());
             jcbCategoria.setSelectedItem(muebleMantenible.getCategoria());
             jcbMarca.setSelectedItem(muebleMantenible.getModelo().getMarca());
@@ -656,6 +687,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jtfExpediente.setEditable(false);
                 jtaObservaciones.setEditable(false);
                 jtfDominio.setEditable(false);
+                jcbTipoAdquisicion.setEnabled(false);
                 jtfChasis.setEditable(false);
                 jcbReparticiones.setEnabled(false);
                 jcbEstado.setEnabled(false);
@@ -696,6 +728,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         muebleMantenible.setModelo((Modelo) jcbModelo.getSelectedItem());
         muebleMantenible.setCantidad(Integer.parseInt(jtfCantidad.getText()));
         muebleMantenible.setValor(Float.parseFloat(jtfValor.getText()));
+        muebleMantenible.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
         return OK;
     }
 
@@ -750,6 +783,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     private javax.swing.JComboBox jcbMarca;
     private javax.swing.JComboBox jcbModelo;
     private javax.swing.JComboBox jcbReparticiones;
+    private javax.swing.JComboBox jcbTipoAdquisicion;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlCantidad;
     private javax.swing.JLabel jlCaracteristicas1;
@@ -764,6 +798,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     private javax.swing.JLabel jlObservaciones;
     private javax.swing.JLabel jlReparticiones;
     private javax.swing.JLabel jlSubtitulo;
+    private javax.swing.JLabel jlTipoAdquisicion;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlValor;
     private javax.swing.JLabel jlVisible;

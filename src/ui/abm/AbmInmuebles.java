@@ -8,6 +8,7 @@ package ui.abm;
 import controlador.ReparticionControlador;
 import controlador.CategoriaControlador;
 import controlador.InmuebleControlador;
+import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -16,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
 import objeto.Inmueble;
 import objeto.Reparticion;
+import objeto.TipoAdquisicion;
 import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
@@ -26,9 +28,9 @@ import ui.gestion.Gestionable;
 public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
 
     private ReparticionControlador reparticionControlador = new ReparticionControlador();
-
+    private TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
     private DefaultComboBoxModel dcbmReparticiones;
-    private DefaultComboBoxModel dcbmCategoria;
+    private DefaultComboBoxModel dcbmTipoAdquisicion;
     private String operacion;
     private Inmueble inmueble;
     private Gestionable ventanaGestion;
@@ -111,6 +113,8 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosSinNinguna().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
+        dcbmTipoAdquisicion = new DefaultComboBoxModel(tipoAdquisicionControlador.extraerTodosVisibles().toArray());
+        jcbTipoAdquisicion.setModel(dcbmTipoAdquisicion);
 
         inicializacionVentana();
 
@@ -167,6 +171,8 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jlValor = new javax.swing.JLabel();
         jtfValor = new javax.swing.JTextField();
         jpTitulo1 = new javax.swing.JPanel();
+        jlTipoAdquisicion = new javax.swing.JLabel();
+        jcbTipoAdquisicion = new javax.swing.JComboBox();
 
         setClosable(true);
         setTitle("SISPA - Inmuebles");
@@ -248,7 +254,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jbAceptarActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 100, -1));
+        jpPrincipal.add(jbAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 100, -1));
 
         jtfExpediente.setBackground(new java.awt.Color(204, 204, 204));
         jtfExpediente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -302,7 +308,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlObservaciones.setText("Observaciones:");
-        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 210, 20));
+        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 210, 20));
 
         jlReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jlReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -383,7 +389,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jtaObservaciones.setRows(5);
         jScrollPane1.setViewportView(jtaObservaciones);
 
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 600, -1));
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 600, -1));
 
         jlValor.setBackground(new java.awt.Color(204, 204, 204));
         jlValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -415,6 +421,24 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         });
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
+
+        jlTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jlTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jlTipoAdquisicion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlTipoAdquisicion.setText("Tipo de Aquisic.");
+        jpPrincipal.add(jlTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 120, 20));
+
+        jcbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
+        jcbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jcbTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
+        jcbTipoAdquisicion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbTipoAdquisicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTipoAdquisicionActionPerformed(evt);
+            }
+        });
+        jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 220, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -508,6 +532,10 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         this.dispose();
     }//GEN-LAST:event_jbVolver1ActionPerformed
 
+    private void jcbTipoAdquisicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoAdquisicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTipoAdquisicionActionPerformed
+
     /**
      *
      */
@@ -523,6 +551,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
             jtfCaracteristicas.setText(String.valueOf(inmueble.getCaracteristicas()));
             jtaObservaciones.setText(String.valueOf(inmueble.getObservaciones()));
             jtfDomicilio.setText(String.valueOf(inmueble.getDomicilio()));
+            jcbTipoAdquisicion.setSelectedItem(inmueble.getTipoAdquisicion());
             jcbReparticiones.setSelectedItem(inmueble.getReparticion());
             jtfTipo.setText(inmueble.getTipo());
             jtfValor.setText(String.valueOf(inmueble.getValor()));
@@ -534,6 +563,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
                 jtfExpediente.setEditable(false);
                 jtfCaracteristicas.setEditable(false);
                 jtaObservaciones.setEditable(false);
+                jcbTipoAdquisicion.setEnabled(false);
                 jcbReparticiones.setEnabled(false);
                 jtfDomicilio.setEditable(false);
                 jtfTipo.setEditable(false);
@@ -565,6 +595,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         inmueble.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
         inmueble.setTipo(jtfTipo.getText());
         inmueble.setValor(Float.parseFloat(jtfValor.getText()));
+        inmueble.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
         return OK;
     }
 
@@ -605,6 +636,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JButton jbVolver1;
     private javax.swing.ButtonGroup jbgEstado;
     private javax.swing.JComboBox jcbReparticiones;
+    private javax.swing.JComboBox jcbTipoAdquisicion;
     private javax.swing.JLabel jlBienvenido;
     private javax.swing.JLabel jlCaracteristicas1;
     private javax.swing.JLabel jlDomicilio;
@@ -615,6 +647,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JLabel jlReparticiones;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTipo;
+    private javax.swing.JLabel jlTipoAdquisicion;
     private javax.swing.JLabel jlTituloPrincipal;
     private javax.swing.JLabel jlValor;
     private javax.swing.JLabel jlVisible;

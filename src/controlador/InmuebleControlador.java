@@ -30,6 +30,7 @@ public class InmuebleControlador {
     private ResultSet rs;
     CategoriaControlador categoriaControlador = new CategoriaControlador();
     ReparticionControlador reparticionControlador = new ReparticionControlador();
+    TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
 
     /**
      *
@@ -40,6 +41,7 @@ public class InmuebleControlador {
     public Inmueble extraer(Integer id) throws SQLException {
         categoriaControlador = new CategoriaControlador();
         reparticionControlador = new ReparticionControlador();
+        tipoAdquisicionControlador = new TipoAdquisicionControlador();
         conn = ConexionDB.GetConnection();
         String consultaSql = "SELECT * FROM inmuebles WHERE id=?";
         ps = conn.prepareStatement(consultaSql);
@@ -58,6 +60,7 @@ public class InmuebleControlador {
             inmueble.setTipo(rs.getString(8));
             inmueble.setValor(rs.getFloat(10));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(9)));
+            inmueble.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(12)));
         }
         rs.close();
         ps.close();
@@ -67,8 +70,7 @@ public class InmuebleControlador {
 
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
     public ArrayList<Inmueble> extraerTodos() throws SQLException {
         categoriaControlador = new CategoriaControlador();
@@ -92,6 +94,7 @@ public class InmuebleControlador {
             inmueble.setTipo(rs.getString(8));
             inmueble.setValor(rs.getFloat(10));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(9)));
+            inmueble.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(12)));
             inmuebles.add(inmueble);
         }
         rs.close();
@@ -102,8 +105,7 @@ public class InmuebleControlador {
 
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
     public ArrayList<Inmueble> extraerTodosVisibles() throws SQLException {
         categoriaControlador = new CategoriaControlador();
@@ -127,6 +129,7 @@ public class InmuebleControlador {
             inmueble.setTipo(rs.getString(8));
             inmueble.setValor(rs.getFloat(10));
             inmueble.setReparticion(reparticionControlador.extraer(rs.getInt(9)));
+            inmueble.setTipoAdquisicion(tipoAdquisicionControlador.extraer(rs.getInt(12)));
             inmuebles.add(inmueble);
         }
         rs.close();
@@ -144,8 +147,8 @@ public class InmuebleControlador {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "INSERT INTO inmuebles (nombre, visible, expediente, caracteristica, observaciones, \n"
-                    + "            domicilio, tipo, id_reparticion, valor)\n"
-                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);";
+                    + "            domicilio, tipo, id_reparticion, valor, id_tipo_adquisicion)\n"
+                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, inmueble.getNombre());
             ps.setBoolean(2, inmueble.isVisible());
@@ -156,6 +159,7 @@ public class InmuebleControlador {
             ps.setString(7, inmueble.getTipo());
             ps.setInt(8, inmueble.getReparticion().getId());
             ps.setFloat(9, inmueble.getValor());
+            ps.setInt(10, inmueble.getTipoAdquisicion().getId());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Insertado correctamente");
             ps.close();
@@ -173,7 +177,7 @@ public class InmuebleControlador {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE inmuebles"
                     + "   SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, "
-                    + "       domicilio=?, tipo=?, id_reparticion=?, valor=?"
+                    + "       domicilio=?, tipo=?, id_reparticion=?, valor=?, id_tipo_adquisicion=? "
                     + " WHERE id=?";
             ps = conn.prepareStatement(consultaSql);
             ps.setString(1, inmueble.getNombre());
@@ -185,8 +189,8 @@ public class InmuebleControlador {
             ps.setString(7, inmueble.getTipo());
             ps.setInt(8, inmueble.getReparticion().getId());
             ps.setFloat(9, inmueble.getValor());
-            ps.setInt(10, inmueble.getId());
-
+            ps.setInt(10, inmueble.getTipoAdquisicion().getId());
+            ps.setInt(11, inmueble.getId());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, inmueble.toString() + " modificado correctamente");
             ps.close();
@@ -202,7 +206,6 @@ public class InmuebleControlador {
     public void borrar(Inmueble inmueble) throws SQLException {
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea eliminar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             try {
-
                 conn = ConexionDB.GetConnection();
                 String consultaSql = "DELETE FROM inmuebles WHERE id=?";
                 ps = conn.prepareStatement(consultaSql);

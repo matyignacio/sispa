@@ -13,10 +13,9 @@ public class BienPatrimonial extends ObjetoBase {
 
     private String expediente;
     private String caracteristicas;
-
     private String observaciones;
     private Reparticion reparticion;
-
+    private TipoAdquisicion tipoAdquisicion;
     private float valor;
 
     /**
@@ -98,4 +97,21 @@ public class BienPatrimonial extends ObjetoBase {
     public void setReparticion(Reparticion reparticion) {
         this.reparticion = reparticion;
     }
+
+    /**
+     *
+     * @return
+     */
+    public TipoAdquisicion getTipoAdquisicion() {
+        return tipoAdquisicion;
+    }
+
+    /**
+     *
+     * @param tipoAdquisicion
+     */
+    public void setTipoAdquisicion(TipoAdquisicion tipoAdquisicion) {
+        this.tipoAdquisicion = tipoAdquisicion;
+    }
+
 }
