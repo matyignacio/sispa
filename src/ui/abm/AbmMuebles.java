@@ -203,10 +203,10 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaObservaciones = new javax.swing.JTextArea();
         jlCantidad = new javax.swing.JLabel();
-        jtfCantidad = new javax.swing.JTextField();
         jlValor = new javax.swing.JLabel();
-        jtfValor = new javax.swing.JTextField();
         jpTitulo1 = new javax.swing.JPanel();
+        jtfCantidad = new javax.swing.JFormattedTextField();
+        jtfValor = new javax.swing.JFormattedTextField();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         desktopPane1 = new javax.swing.JDesktopPane();
         jpPrincipal1 = new javax.swing.JPanel();
@@ -509,32 +509,12 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         jlCantidad.setText("Cantidad:");
         jpPrincipal.add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 340, 210, 20));
 
-        jtfCantidad.setBackground(new java.awt.Color(204, 204, 204));
-        jtfCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfCantidad.setForeground(new java.awt.Color(33, 150, 243));
-        jtfCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCantidadActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jtfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 220, -1));
-
         jlValor.setBackground(new java.awt.Color(204, 204, 204));
         jlValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlValor.setForeground(new java.awt.Color(33, 150, 243));
         jlValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlValor.setText("Valor:");
         jpPrincipal.add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 390, 210, 20));
-
-        jtfValor.setBackground(new java.awt.Color(204, 204, 204));
-        jtfValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfValor.setForeground(new java.awt.Color(33, 150, 243));
-        jtfValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfValorActionPerformed(evt);
-            }
-        });
-        jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 220, -1));
 
         jpTitulo1.setBackground(new java.awt.Color(33, 150, 243));
         jpTitulo1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -549,6 +529,18 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         });
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1170, 140));
+
+        jtfCantidad.setBackground(new java.awt.Color(204, 204, 204));
+        jtfCantidad.setForeground(new java.awt.Color(33, 150, 243));
+        jtfCantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jtfCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jpPrincipal.add(jtfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 220, 25));
+
+        jtfValor.setBackground(new java.awt.Color(204, 204, 204));
+        jtfValor.setForeground(new java.awt.Color(33, 150, 243));
+        jtfValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        jtfValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 220, 25));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -930,14 +922,6 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
         }
     }//GEN-LAST:event_jcbMarcaActionPerformed
 
-    private void jtfCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfCantidadActionPerformed
-
-    private void jtfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfValorActionPerformed
-
     private void jcbModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbModeloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbModeloActionPerformed
@@ -1188,7 +1172,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JRadioButton jrbVisible1;
     private javax.swing.JTextArea jtaObservaciones;
     private javax.swing.JTextArea jtaObservaciones1;
-    private javax.swing.JTextField jtfCantidad;
+    private javax.swing.JFormattedTextField jtfCantidad;
     private javax.swing.JTextField jtfCantidad1;
     private javax.swing.JTextField jtfCaracteristicas;
     private javax.swing.JTextField jtfCaracteristicas1;
@@ -1196,7 +1180,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
     private javax.swing.JTextField jtfExpediente1;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfNombre1;
-    private javax.swing.JTextField jtfValor;
+    private javax.swing.JFormattedTextField jtfValor;
     private javax.swing.JTextField jtfValor1;
     private javax.swing.JLabel ljCategoria1;
     private javax.swing.JLabel ljCategoria2;
