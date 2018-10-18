@@ -93,6 +93,10 @@ public class Ajustes extends javax.swing.JInternalFrame {
         jbPerfiles = new javax.swing.JButton();
         jbTipoAdquisicion = new javax.swing.JButton();
         jpTitulo1 = new javax.swing.JPanel();
+        jlFlecha = new javax.swing.JLabel();
+        jlFlecha1 = new javax.swing.JLabel();
+        jlFlecha2 = new javax.swing.JLabel();
+        jlFlecha3 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("SISPA - Ajustes");
@@ -196,7 +200,7 @@ public class Ajustes extends javax.swing.JInternalFrame {
                 jbCodigosActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 160, 40));
+        jpPrincipal.add(jbCodigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 160, 40));
 
         jbModelos.setBackground(new java.awt.Color(204, 204, 204));
         jbModelos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -363,6 +367,22 @@ public class Ajustes extends javax.swing.JInternalFrame {
         });
         jpTitulo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpPrincipal.add(jpTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1190, 140));
+
+        jlFlecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlFlecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_flecha_abajo.png"))); // NOI18N
+        jpPrincipal.add(jlFlecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 160, -1));
+
+        jlFlecha1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlFlecha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_flecha_abajo.png"))); // NOI18N
+        jpPrincipal.add(jlFlecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 280, 160, -1));
+
+        jlFlecha2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlFlecha2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_flecha_abajo.png"))); // NOI18N
+        jpPrincipal.add(jlFlecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 160, -1));
+
+        jlFlecha3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlFlecha3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ic_flecha_abajo.png"))); // NOI18N
+        jpPrincipal.add(jlFlecha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 160, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -658,6 +678,10 @@ public class Ajustes extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbUsuarios;
     private javax.swing.JButton jbVolver;
     private javax.swing.JLabel jlBienvenido;
+    private javax.swing.JLabel jlFlecha;
+    private javax.swing.JLabel jlFlecha1;
+    private javax.swing.JLabel jlFlecha2;
+    private javax.swing.JLabel jlFlecha3;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlSubtitulo;
     private javax.swing.JLabel jlTituloPrincipal;
