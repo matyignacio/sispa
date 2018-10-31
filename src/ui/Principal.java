@@ -288,6 +288,11 @@ public class Principal extends javax.swing.JFrame {
         jmAcercaDe.setText("Acerca de");
 
         jmiSispa.setText("Que es SISPA");
+        jmiSispa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSispaActionPerformed(evt);
+            }
+        });
         jmAcercaDe.add(jmiSispa);
 
         jmbPrincipal.add(jmAcercaDe);
@@ -396,6 +401,14 @@ public class Principal extends javax.swing.JFrame {
     private void jmiAutomotoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAutomotoresActionPerformed
         abrirAutomotores();
     }//GEN-LAST:event_jmiAutomotoresActionPerformed
+
+    private void jmiSispaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSispaActionPerformed
+        AcercaDe acercaDe = new AcercaDe();
+        this.dpPrincipal.add(acercaDe);
+        util.Util.setEnabledMenues(false);
+        util.Util.centrarVentana(dpPrincipal, acercaDe);
+        acercaDe.show();
+    }//GEN-LAST:event_jmiSispaActionPerformed
 
     /**
      * @param args the command line arguments
