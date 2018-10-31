@@ -507,6 +507,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     public void actualizarGestion(ArrayList<MuebleMantenible> muebles) {
         grillaMueblesMantenibles = new GrillaMueblesMantenibles(muebles);
         jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
+        jtMueblesMantenibles.setDefaultRenderer(Object.class, new MiRender(muebles));
     }
 
     /**
