@@ -246,9 +246,9 @@ public class MuebleMantenibleControlador {
      * @param muebleMantenible
      * @throws SQLException
      */
-    public void modificar(MuebleMantenible muebleMantenible) throws SQLException {
+    public void modificar(MuebleMantenible muebleMantenible, String observaciones) throws SQLException {
         java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-//        JOptionPane.showMessageDialog(null, (java.sql.Date) now);
+        //JOptionPane.showMessageDialog(null, (java.sql.Date) now);
         if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea modificar?", "ATENCION!", JOptionPane.YES_NO_OPTION) == 0) {
             conn = ConexionDB.GetConnection();
             String consultaSql = "UPDATE muebles SET nombre=?, visible=?, expediente=?, caracteristica=?, observaciones=?, dominio=?, chasis=?, id_categoria=?,"
@@ -266,7 +266,11 @@ public class MuebleMantenibleControlador {
             ps.setInt(10, muebleMantenible.getModelo().getId());
             ps.setInt(11, muebleMantenible.getReparticion().getId());
             ps.setInt(12, util.Util.MUEBLE_MANTENIBLE);
-            ps.setTimestamp(13, currentTimestamp);
+            if (observaciones.compareTo(muebleMantenible.getObservaciones()) != 0) {
+                ps.setTimestamp(13, currentTimestamp);
+            } else {
+                ps.setTimestamp(13, muebleMantenible.getFecha());
+            }
             ps.setInt(14, muebleMantenible.getCantidad());
             ps.setFloat(15, muebleMantenible.getValor());
             ps.setInt(16, muebleMantenible.getTipoAdquisicion().getId());

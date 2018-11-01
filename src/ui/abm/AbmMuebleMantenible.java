@@ -14,6 +14,7 @@ import controlador.ModeloControlador;
 import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -41,6 +42,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     private ModeloControlador modeloControlador = new ModeloControlador();
     private MarcaControlador marcaControlador = new MarcaControlador();
     private TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
+    private String observaciones;
 
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmEstado;
@@ -325,7 +327,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jlCaracteristicas1.setForeground(new java.awt.Color(33, 150, 243));
         jlCaracteristicas1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlCaracteristicas1.setText("Caracteristicas:");
-        jpPrincipal.add(jlCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 290, 210, 20));
+        jpPrincipal.add(jlCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 280, 210, 20));
 
         jlDominio.setBackground(new java.awt.Color(204, 204, 204));
         jlDominio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -339,7 +341,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         ljCategoria1.setForeground(new java.awt.Color(33, 150, 243));
         ljCategoria1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ljCategoria1.setText("Categoria:");
-        jpPrincipal.add(ljCategoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 90, 20));
+        jpPrincipal.add(ljCategoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 90, 20));
 
         jcbReparticiones.setBackground(new java.awt.Color(204, 204, 204));
         jcbReparticiones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -362,14 +364,14 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jcbCategoria.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbCategoria.setForeground(new java.awt.Color(33, 150, 243));
         jcbCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpPrincipal.add(jcbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 220, -1));
+        jpPrincipal.add(jcbCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 220, -1));
 
         jlValor.setBackground(new java.awt.Color(204, 204, 204));
         jlValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlValor.setForeground(new java.awt.Color(33, 150, 243));
         jlValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlValor.setText("Valor:");
-        jpPrincipal.add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 210, 20));
+        jpPrincipal.add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 210, 20));
 
         jcbMarca.setBackground(new java.awt.Color(204, 204, 204));
         jcbMarca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -380,21 +382,21 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jcbMarcaActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jcbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 220, -1));
+        jpPrincipal.add(jcbMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 220, -1));
 
         jlMarca.setBackground(new java.awt.Color(204, 204, 204));
         jlMarca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlMarca.setForeground(new java.awt.Color(33, 150, 243));
         jlMarca.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlMarca.setText("Marca:");
-        jpPrincipal.add(jlMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 120, 20));
+        jpPrincipal.add(jlMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 120, 20));
 
         jlModelo.setBackground(new java.awt.Color(204, 204, 204));
         jlModelo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlModelo.setForeground(new java.awt.Color(33, 150, 243));
         jlModelo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlModelo.setText("Modelo:");
-        jpPrincipal.add(jlModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 120, 20));
+        jpPrincipal.add(jlModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 120, 20));
 
         jtfDominio.setBackground(new java.awt.Color(204, 204, 204));
         jtfDominio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -421,32 +423,32 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jtfCaracteristicasActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 170, -1));
+        jpPrincipal.add(jtfCaracteristicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 170, -1));
 
         jlCantidad.setBackground(new java.awt.Color(204, 204, 204));
         jlCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlCantidad.setForeground(new java.awt.Color(33, 150, 243));
         jlCantidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlCantidad.setText("Cantidad:");
-        jpPrincipal.add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 210, 20));
+        jpPrincipal.add(jlCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 210, 20));
 
         jcbModelo.setBackground(new java.awt.Color(204, 204, 204));
         jcbModelo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jcbModelo.setForeground(new java.awt.Color(33, 150, 243));
         jcbModelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpPrincipal.add(jcbModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, 220, -1));
+        jpPrincipal.add(jcbModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 220, -1));
 
         jtfCantidad.setBackground(new java.awt.Color(204, 204, 204));
         jtfCantidad.setForeground(new java.awt.Color(33, 150, 243));
         jtfCantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jtfCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jpPrincipal.add(jtfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 170, 25));
+        jpPrincipal.add(jtfCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 170, 25));
 
         jtfValor.setBackground(new java.awt.Color(204, 204, 204));
         jtfValor.setForeground(new java.awt.Color(33, 150, 243));
         jtfValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
         jtfValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 170, 25));
+        jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 170, 25));
 
         jlVisible.setBackground(new java.awt.Color(204, 204, 204));
         jlVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -460,7 +462,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jlExpediente.setForeground(new java.awt.Color(33, 150, 243));
         jlExpediente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlExpediente.setText("Expediente:");
-        jpPrincipal.add(jlExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 250, 210, 20));
+        jpPrincipal.add(jlExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 240, 210, 20));
 
         jlChasis.setBackground(new java.awt.Color(204, 204, 204));
         jlChasis.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -477,7 +479,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jtfExpedienteActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jtfExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 170, -1));
+        jpPrincipal.add(jtfExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 170, -1));
 
         jcbEstado.setBackground(new java.awt.Color(204, 204, 204));
         jcbEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -514,20 +516,20 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlObservaciones.setText("Observaciones:");
-        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 330, 210, 30));
+        jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 320, 210, 30));
 
         jtaObservaciones.setColumns(20);
         jtaObservaciones.setRows(5);
         jScrollPane1.setViewportView(jtaObservaciones);
 
-        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 440, -1));
+        jpPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 440, 100));
 
         jlTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
         jlTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlTipoAdquisicion.setForeground(new java.awt.Color(33, 150, 243));
         jlTipoAdquisicion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlTipoAdquisicion.setText("Tipo de Aquisic.");
-        jpPrincipal.add(jlTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 120, 20));
+        jpPrincipal.add(jlTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 120, 20));
 
         jcbTipoAdquisicion.setBackground(new java.awt.Color(204, 204, 204));
         jcbTipoAdquisicion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -538,7 +540,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
                 jcbTipoAdquisicionActionPerformed(evt);
             }
         });
-        jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 220, -1));
+        jpPrincipal.add(jcbTipoAdquisicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, 220, -1));
 
         desktopPane.setLayer(jpPrincipal, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -695,6 +697,11 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
+        if (muebleMantenible.getObservaciones() != null) {
+            observaciones = muebleMantenible.getObservaciones();
+        } else {
+            observaciones = "";
+        }
         muebleMantenible.setNombre(jtfNombre.getText());
         if (jrbVisible.isSelected()) {
             muebleMantenible.setVisible(true);
@@ -739,7 +746,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         }
         if (operacion.equals(Gestionable.ABM_MODIFICACION)) {
             try {
-                muebleMantenibleControlador.modificar(muebleMantenible);
+                muebleMantenibleControlador.modificar(muebleMantenible, observaciones);
             } catch (SQLException ex) {
                 Logger.getLogger(AbmMuebleMantenible.class.getName()).log(Level.SEVERE, null, ex);
             }
