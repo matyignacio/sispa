@@ -12,16 +12,13 @@ import java.util.Objects;
  *
  * @author Kuky
  */
-public class Reparticion {
+public class Reparticion extends ObjetoBase{
 
-    private int id;
-    private String nombre;
     private String localidad;
     private String departamento;
     private String domicilio;
     private ArrayList<Usuario> usuarios;
     private Reparticion reparticionSuperior;
-    private boolean visible;
 
     /**
      *
@@ -51,54 +48,6 @@ public class Reparticion {
     public Reparticion(int id) {
         // ESTE CONSTRUCTOR LO HAGO EN EL ELSE DE LOS EXTRAERTODOS
         this.id = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean isVisible() {
-        return visible;
-    }
-
-    /**
-     *
-     * @param visible
-     */
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     *
-     * @param id
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     *
-     * @param nombre
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     /**
@@ -179,38 +128,6 @@ public class Reparticion {
      */
     public void setReparticionSuperior(Reparticion reparticionSuperior) {
         this.reparticionSuperior = reparticionSuperior;
-    }
-
-    @Override
-    public String toString() {
-        return nombre;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Reparticion other = (Reparticion) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        return true;
     }
 
 }
