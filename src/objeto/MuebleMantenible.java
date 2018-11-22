@@ -16,23 +16,6 @@ public class MuebleMantenible extends Mueble {
     private String dominio;
     private String chasis;
     private Timestamp fecha;
-    private int cantidad;
-
-    /**
-     *
-     * @return
-     */
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    /**
-     *
-     * @param cantidad
-     */
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
 
     /**
      *
