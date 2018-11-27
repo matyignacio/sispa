@@ -11,8 +11,19 @@ package objeto;
  */
 public class ObjetoBase {
 
+    /**
+     *
+     */
     protected int id;
+
+    /**
+     *
+     */
     protected String nombre;
+
+    /**
+     *
+     */
     protected boolean visible;
 
     /**

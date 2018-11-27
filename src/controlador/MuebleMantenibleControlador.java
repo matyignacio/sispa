@@ -244,6 +244,7 @@ public class MuebleMantenibleControlador {
     /**
      *
      * @param muebleMantenible
+     * @param observaciones
      * @throws SQLException
      */
     public void modificar(MuebleMantenible muebleMantenible, String observaciones) throws SQLException {

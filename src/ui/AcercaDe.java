@@ -16,7 +16,6 @@ public class AcercaDe extends javax.swing.JInternalFrame {
     /**
      * Creates new form Muebles2
      *
-     * @throws java.sql.SQLException
      */
     public AcercaDe() {
         initComponents();
