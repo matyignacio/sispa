@@ -10,14 +10,16 @@ import controlador.PerfilControlador;
 import controlador.ReparticionControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Usuario;
 import objeto.Perfil;
 import objeto.Reparticion;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -33,6 +35,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Usuario usuario;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -104,6 +107,9 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
     public AbmUsuarios(String operacion, Usuario usuario, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
+        campos.add(jtfEmail);
+        campos.add(jtfClave);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -274,6 +280,7 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
 
@@ -466,17 +473,22 @@ public class AbmUsuarios extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        usuario.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            usuario.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            usuario.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                usuario.setVisible(true);
+            } else {
+                usuario.setVisible(false);
+            }
+            usuario.setMail(jtfEmail.getText());
+            usuario.setClave(jtfClave.getText());
+            usuario.setPerfil((Perfil) jcbPerfiles.getSelectedItem());
+            usuario.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
+            return OK;
         } else {
-            usuario.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        usuario.setMail(jtfEmail.getText());
-        usuario.setClave(jtfClave.getText());
-        usuario.setPerfil((Perfil) jcbPerfiles.getSelectedItem());
-        usuario.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
-        return OK;
     }
 
     /**

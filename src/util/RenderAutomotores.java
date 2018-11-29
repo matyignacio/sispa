@@ -18,7 +18,7 @@ import objeto.MuebleMantenible;
  *
  * @author Kuky
  */
-public class MiRender extends DefaultTableCellRenderer {
+public class RenderAutomotores extends DefaultTableCellRenderer {
 
     private ArrayList<MuebleMantenible> muebles;
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
@@ -31,7 +31,7 @@ public class MiRender extends DefaultTableCellRenderer {
      *
      * @param muebles
      */
-    public MiRender(ArrayList<MuebleMantenible> muebles) {
+    public RenderAutomotores(ArrayList<MuebleMantenible> muebles) {
         this.muebles = muebles;
     }
 

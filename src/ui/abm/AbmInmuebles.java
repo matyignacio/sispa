@@ -6,19 +6,20 @@
 package ui.abm;
 
 import controlador.ReparticionControlador;
-import controlador.CategoriaControlador;
 import controlador.InmuebleControlador;
 import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Inmueble;
 import objeto.Reparticion;
 import objeto.TipoAdquisicion;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -34,6 +35,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Inmueble inmueble;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -104,13 +106,19 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
      */
     public AbmInmuebles(String operacion, Inmueble inmueble, Gestionable ventanaGestion) throws SQLException {
         initComponents();
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
+        campos.add(jtfExpediente);
+        campos.add(jtfDomicilio);
+        campos.add(jtfCaracteristicas);
+        campos.add(jtfTipo);
+        campos.add(jtfValor);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
         this.operacion = operacion;
         this.inmueble = inmueble;
         this.ventanaGestion = ventanaGestion;
-        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         dcbmReparticiones = new DefaultComboBoxModel(reparticionControlador.extraerTodosSinNinguna().toArray());
         jcbReparticiones.setModel(dcbmReparticiones);
         dcbmTipoAdquisicion = new DefaultComboBoxModel(tipoAdquisicionControlador.extraerTodosVisibles().toArray());
@@ -282,6 +290,7 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
@@ -574,21 +583,26 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        inmueble.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            inmueble.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            inmueble.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                inmueble.setVisible(true);
+            } else {
+                inmueble.setVisible(false);
+            }
+            inmueble.setExpediente(jtfExpediente.getText());
+            inmueble.setCaracteristicas(jtfCaracteristicas.getText());
+            inmueble.setObservaciones(jtaObservaciones.getText());
+            inmueble.setDomicilio(jtfDomicilio.getText());
+            inmueble.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
+            inmueble.setTipo(jtfTipo.getText());
+            inmueble.setValor(Float.parseFloat(jtfValor.getText()));
+            inmueble.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
+            return OK;
         } else {
-            inmueble.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        inmueble.setExpediente(jtfExpediente.getText());
-        inmueble.setCaracteristicas(jtfCaracteristicas.getText());
-        inmueble.setObservaciones(jtaObservaciones.getText());
-        inmueble.setDomicilio(jtfDomicilio.getText());
-        inmueble.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
-        inmueble.setTipo(jtfTipo.getText());
-        inmueble.setValor(Float.parseFloat(jtfValor.getText()));
-        inmueble.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
-        return OK;
     }
 
     /**

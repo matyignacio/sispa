@@ -14,11 +14,13 @@ import controlador.ModeloControlador;
 import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Categoria;
 import objeto.Estado;
 import objeto.Marca;
@@ -26,7 +28,6 @@ import objeto.Modelo;
 import objeto.MuebleMantenible;
 import objeto.Reparticion;
 import objeto.TipoAdquisicion;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -43,6 +44,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     private MarcaControlador marcaControlador = new MarcaControlador();
     private TipoAdquisicionControlador tipoAdquisicionControlador = new TipoAdquisicionControlador();
     private String observaciones;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     private DefaultComboBoxModel dcbmReparticiones;
     private DefaultComboBoxModel dcbmEstado;
@@ -124,6 +126,13 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
     public AbmMuebleMantenible(String operacion, MuebleMantenible muebleMantenible, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
+        campos.add(jtfExpediente);
+        campos.add(jtfCaracteristicas);
+        campos.add(jtfDominio);
+        campos.add(jtfChasis);
+        campos.add(jtfCantidad);
+        campos.add(jtfValor);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -309,6 +318,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
 
@@ -515,7 +525,7 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
         jlObservaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlObservaciones.setForeground(new java.awt.Color(33, 150, 243));
         jlObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlObservaciones.setText("Observaciones:");
+        jlObservaciones.setText("Mantenimiento:");
         jpPrincipal.add(jlObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 320, 210, 30));
 
         jtaObservaciones.setColumns(20);
@@ -697,30 +707,35 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        if (muebleMantenible.getObservaciones() != null) {
-            observaciones = muebleMantenible.getObservaciones();
+        if (util.Util.validarCampos(campos) == true) {
+            if (muebleMantenible.getObservaciones() != null) {
+                observaciones = muebleMantenible.getObservaciones();
+            } else {
+                observaciones = "";
+            }
+            muebleMantenible.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                muebleMantenible.setVisible(true);
+            } else {
+                muebleMantenible.setVisible(false);
+            }
+            muebleMantenible.setExpediente(jtfExpediente.getText());
+            muebleMantenible.setCaracteristicas(jtfCaracteristicas.getText());
+            muebleMantenible.setObservaciones(jtaObservaciones.getText());
+            muebleMantenible.setDominio(jtfDominio.getText());
+            muebleMantenible.setChasis(jtfChasis.getText());
+            muebleMantenible.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
+            muebleMantenible.setEstado((Estado) jcbEstado.getSelectedItem());
+            muebleMantenible.setCategoria((Categoria) jcbCategoria.getSelectedItem());
+            muebleMantenible.setModelo((Modelo) jcbModelo.getSelectedItem());
+            muebleMantenible.setCantidad(Integer.parseInt(jtfCantidad.getText()));
+            muebleMantenible.setValor(Float.parseFloat(jtfValor.getText()));
+            muebleMantenible.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
+            return OK;
         } else {
-            observaciones = "";
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        muebleMantenible.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            muebleMantenible.setVisible(true);
-        } else {
-            muebleMantenible.setVisible(false);
-        }
-        muebleMantenible.setExpediente(jtfExpediente.getText());
-        muebleMantenible.setCaracteristicas(jtfCaracteristicas.getText());
-        muebleMantenible.setObservaciones(jtaObservaciones.getText());
-        muebleMantenible.setDominio(jtfDominio.getText());
-        muebleMantenible.setChasis(jtfChasis.getText());
-        muebleMantenible.setReparticion((Reparticion) jcbReparticiones.getSelectedItem());
-        muebleMantenible.setEstado((Estado) jcbEstado.getSelectedItem());
-        muebleMantenible.setCategoria((Categoria) jcbCategoria.getSelectedItem());
-        muebleMantenible.setModelo((Modelo) jcbModelo.getSelectedItem());
-        muebleMantenible.setCantidad(Integer.parseInt(jtfCantidad.getText()));
-        muebleMantenible.setValor(Float.parseFloat(jtfValor.getText()));
-        muebleMantenible.setTipoAdquisicion((TipoAdquisicion) jcbTipoAdquisicion.getSelectedItem());
-        return OK;
     }
 
     /**

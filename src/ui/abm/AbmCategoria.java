@@ -10,14 +10,16 @@ import controlador.CodigoPresupuestarioControlador;
 import controlador.IncisoControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Categoria;
 import objeto.CodigoPresupuestario;
 import objeto.Inciso;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -33,6 +35,7 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Categoria categoria;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -104,6 +107,7 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
     public AbmCategoria(String operacion, Categoria categoria, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -270,6 +274,7 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, -1, -1));
 
@@ -431,16 +436,21 @@ public class AbmCategoria extends javax.swing.JInternalFrame implements IAbm {
      * @return
      */
     public int recolectarDatos() {
-        //cargamos los datos en el objeto
-        categoria.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            categoria.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            //cargamos los datos en el objeto
+            categoria.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                categoria.setVisible(true);
+            } else {
+                categoria.setVisible(false);
+            }
+            categoria.setInciso((Inciso) jcbIncisos.getSelectedItem());
+            categoria.setCodigoPresupuestaro((CodigoPresupuestario) jcbCodigo.getSelectedItem());
+            return OK;
         } else {
-            categoria.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        categoria.setInciso((Inciso) jcbIncisos.getSelectedItem());
-        categoria.setCodigoPresupuestaro((CodigoPresupuestario) jcbCodigo.getSelectedItem());
-        return OK;
     }
 
     /**

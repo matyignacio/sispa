@@ -8,11 +8,13 @@ package ui.abm;
 import controlador.EstadoControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Estado;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -24,6 +26,7 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Estado estado;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -95,6 +98,7 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
     public AbmEstado(String operacion, Estado estadoDelBien, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -252,6 +256,7 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
 
@@ -366,13 +371,18 @@ public class AbmEstado extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        estado.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            estado.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            estado.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                estado.setVisible(true);
+            } else {
+                estado.setVisible(false);
+            }
+            return OK;
         } else {
-            estado.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        return OK;
     }
 
     /**

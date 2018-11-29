@@ -8,9 +8,12 @@ package ui.abm;
 import controlador.IncisoControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Inciso;
 import ui.gestion.Gestionable;
 
@@ -23,6 +26,7 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Inciso inciso;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -94,6 +98,9 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
     public AbmInciso(String operacion, Inciso inciso, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNumero);
+        campos.add(jtfPrincipal);
+        campos.add(jtfParcial);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -255,6 +262,7 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
 
@@ -411,15 +419,20 @@ public class AbmInciso extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        inciso.setNumero(Integer.parseInt(jtfNumero.getText()));
-        inciso.setPrincipal(Integer.parseInt(jtfPrincipal.getText()));
-        inciso.setParcial(Integer.parseInt(jtfParcial.getText()));
-        if (jrbVisible.isSelected()) {
-            inciso.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            inciso.setNumero(Integer.parseInt(jtfNumero.getText()));
+            inciso.setPrincipal(Integer.parseInt(jtfPrincipal.getText()));
+            inciso.setParcial(Integer.parseInt(jtfParcial.getText()));
+            if (jrbVisible.isSelected()) {
+                inciso.setVisible(true);
+            } else {
+                inciso.setVisible(false);
+            }
+            return OK;
         } else {
-            inciso.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        return OK;
     }
 
     /**

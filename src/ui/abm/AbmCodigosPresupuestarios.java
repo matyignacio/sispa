@@ -8,9 +8,12 @@ package ui.abm;
 import controlador.CodigoPresupuestarioControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.CodigoPresupuestario;
 import ui.gestion.Gestionable;
 
@@ -23,6 +26,7 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
     private String operacion;
     private CodigoPresupuestario codigoPresupuestario;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -93,6 +97,7 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
     public AbmCodigosPresupuestarios(String operacion, CodigoPresupuestario codigoPresupuestario, Gestionable ventanaGestion) {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNumero);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -249,6 +254,7 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, -1, -1));
 
@@ -361,13 +367,18 @@ public class AbmCodigosPresupuestarios extends javax.swing.JInternalFrame implem
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        codigoPresupuestario.setNumero(Integer.parseInt(jtfNumero.getText()));
-        if (jrbVisible.isSelected()) {
-            codigoPresupuestario.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            codigoPresupuestario.setNumero(Integer.parseInt(jtfNumero.getText()));
+            if (jrbVisible.isSelected()) {
+                codigoPresupuestario.setVisible(true);
+            } else {
+                codigoPresupuestario.setVisible(false);
+            }
+            return OK;
         } else {
-            codigoPresupuestario.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        return OK;
     }
 
     /**

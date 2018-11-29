@@ -8,10 +8,13 @@ package ui.abm;
 import controlador.ReparticionControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Reparticion;
 import ui.gestion.Gestionable;
 
@@ -26,6 +29,7 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Reparticion reparticion;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -97,6 +101,10 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
     public AbmReparticion(String operacion, Reparticion reparticion, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
+        campos.add(jtfDomicilio);
+        campos.add(jtfDepartamento);
+        campos.add(jtfLocalidad);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -263,6 +271,7 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
@@ -457,17 +466,22 @@ public class AbmReparticion extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        reparticion.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            reparticion.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            reparticion.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                reparticion.setVisible(true);
+            } else {
+                reparticion.setVisible(false);
+            }
+            reparticion.setDepartamento(jtfDepartamento.getText());
+            reparticion.setLocalidad(jtfLocalidad.getText());
+            reparticion.setDomicilio(jtfDomicilio.getText());
+            reparticion.setReparticionSuperior((Reparticion) jcbReparticionSuperior.getSelectedItem());
+            return OK;
         } else {
-            reparticion.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        reparticion.setDepartamento(jtfDepartamento.getText());
-        reparticion.setLocalidad(jtfLocalidad.getText());
-        reparticion.setDomicilio(jtfDomicilio.getText());
-        reparticion.setReparticionSuperior((Reparticion) jcbReparticionSuperior.getSelectedItem());
-        return OK;
     }
 
     /**

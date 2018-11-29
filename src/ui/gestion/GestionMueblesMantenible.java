@@ -18,7 +18,7 @@ import objeto.MuebleMantenible;
 import ui.grillas.GrillaMueblesMantenibles;
 import ui.abm.AbmMuebleMantenible;
 
-import util.MiRender;
+import util.RenderAutomotores;
 
 /**
  *
@@ -507,7 +507,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
     public void actualizarGestion(ArrayList<MuebleMantenible> muebles) {
         grillaMueblesMantenibles = new GrillaMueblesMantenibles(muebles);
         jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
-        jtMueblesMantenibles.setDefaultRenderer(Object.class, new MiRender(muebles));
+        jtMueblesMantenibles.setDefaultRenderer(Object.class, new RenderAutomotores(muebles));
     }
 
     /**
@@ -520,7 +520,7 @@ public class GestionMueblesMantenible extends javax.swing.JInternalFrame impleme
             muebles = muebleMantenibleControlador.extraerTodosVisibles();
             grillaMueblesMantenibles = new GrillaMueblesMantenibles(muebles);
             jtMueblesMantenibles.setModel(grillaMueblesMantenibles);
-            jtMueblesMantenibles.setDefaultRenderer(Object.class, new MiRender(muebles));
+            jtMueblesMantenibles.setDefaultRenderer(Object.class, new RenderAutomotores(muebles));
         } catch (SQLException ex) {
             Logger.getLogger(GestionMuebles.class.getName()).log(Level.SEVERE, null, ex);
         }

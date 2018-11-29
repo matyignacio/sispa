@@ -8,9 +8,12 @@ package ui.abm;
 import controlador.TipoAdquisicionControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.TipoAdquisicion;
 import ui.gestion.Gestionable;
 
@@ -23,6 +26,7 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
     private String operacion;
     private TipoAdquisicion tipoAdquisicion;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -94,6 +98,7 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
     public AbmTipoAdquisiciones(String operacion, TipoAdquisicion tipoAdquisicion, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -250,6 +255,7 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
 
@@ -360,13 +366,18 @@ public class AbmTipoAdquisiciones extends javax.swing.JInternalFrame implements 
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        tipoAdquisicion.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            tipoAdquisicion.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            tipoAdquisicion.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                tipoAdquisicion.setVisible(true);
+            } else {
+                tipoAdquisicion.setVisible(false);
+            }
+            return OK;
         } else {
-            tipoAdquisicion.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        return OK;
     }
 
     /**

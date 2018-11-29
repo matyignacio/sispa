@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Operaciones;
 import objeto.Perfil;
 import ui.gestion.Gestionable;
@@ -27,6 +29,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Perfil perfil;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -98,6 +101,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
     public AbmPerfil(String operacion, Perfil perfil, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -267,6 +271,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, -1, -1));
 
@@ -526,18 +531,23 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        perfil.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            perfil.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            perfil.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                perfil.setVisible(true);
+            } else {
+                perfil.setVisible(false);
+            }
+            try {
+                perfil.setOperaciones(asigarOperaciones());
+            } catch (SQLException ex) {
+                Logger.getLogger(AbmPerfil.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return OK;
         } else {
-            perfil.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        try {
-            perfil.setOperaciones(asigarOperaciones());
-        } catch (SQLException ex) {
-            Logger.getLogger(AbmPerfil.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return OK;
     }
 
     /**
@@ -602,8 +612,7 @@ public class AbmPerfil extends javax.swing.JInternalFrame implements IAbm {
 
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
     public ArrayList<Operaciones> asigarOperaciones() throws SQLException {
         operacionesControlador = new OperacionesControlador();

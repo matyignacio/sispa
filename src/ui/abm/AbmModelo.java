@@ -9,13 +9,15 @@ import controlador.MarcaControlador;
 import controlador.ModeloControlador;
 import ui.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objeto.Marca;
 import objeto.Modelo;
-import static ui.Login.usuario;
 import ui.gestion.Gestionable;
 
 /**
@@ -29,6 +31,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
     private String operacion;
     private Modelo modelo;
     private Gestionable ventanaGestion;
+    private ArrayList<JTextField> campos = new ArrayList<>();
 
     /**
      *
@@ -100,6 +103,8 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
     public AbmModelo(String operacion, Modelo modelo, Gestionable ventanaGestion) throws SQLException {
         initComponents();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        campos.add(jtfNombre);
+        campos.add(jtfAño);
         jbgEstado.add(jrbVisible);
         jbgEstado.add(jrbNoVisible);
         jlNombreUsuario.setText(Login.usuario.toString());
@@ -261,6 +266,7 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
         jrbVisible.setBackground(new java.awt.Color(204, 204, 204));
         jrbVisible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jrbVisible.setForeground(new java.awt.Color(33, 150, 243));
+        jrbVisible.setSelected(true);
         jrbVisible.setText("Visible");
         jpPrincipal.add(jrbVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, -1));
 
@@ -413,15 +419,20 @@ public class AbmModelo extends javax.swing.JInternalFrame implements IAbm {
      */
     public int recolectarDatos() {
         //cargamos los datos en el objeto
-        modelo.setNombre(jtfNombre.getText());
-        if (jrbVisible.isSelected()) {
-            modelo.setVisible(true);
+        if (util.Util.validarCampos(campos) == true) {
+            modelo.setNombre(jtfNombre.getText());
+            if (jrbVisible.isSelected()) {
+                modelo.setVisible(true);
+            } else {
+                modelo.setVisible(false);
+            }
+            modelo.setAño(Integer.parseInt(jtfAño.getText()));
+            modelo.setMarca((Marca) jcbMarca.getSelectedItem());
+            return OK;
         } else {
-            modelo.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            return 0;
         }
-        modelo.setAño(Integer.parseInt(jtfAño.getText()));
-        modelo.setMarca((Marca) jcbMarca.getSelectedItem());
-        return OK;
     }
 
     /**

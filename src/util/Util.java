@@ -6,7 +6,9 @@
 package util;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JInternalFrame;
+import javax.swing.JTextField;
 import ui.Login;
 
 /**
@@ -148,6 +150,16 @@ public class Util {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+    }
+
+    public static boolean validarCampos(ArrayList<JTextField> campos) {
+        boolean bandera = true;
+        for (int i = 0; i < campos.size(); i++) {
+            if (campos.get(i).getText().trim().equals("")) {
+                bandera = false;
+            }
+        }
+        return bandera;
     }
 
 }
