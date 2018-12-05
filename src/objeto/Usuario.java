@@ -5,9 +5,6 @@
  */
 package objeto;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 /**
  *
  * @author Kuky
