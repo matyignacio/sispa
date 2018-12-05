@@ -6,7 +6,6 @@
 package ui;
 
 import ui.reportes.GestionReportes;
-import java.awt.event.WindowAdapter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

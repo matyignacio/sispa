@@ -5,8 +5,6 @@
  */
 package ui;
 
-import java.sql.SQLException;
-
 /**
  *
  * @author Kuky
