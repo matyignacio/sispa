@@ -5,7 +5,6 @@
  */
 package util;
 
-import controlador.MuebleMantenibleControlador;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;

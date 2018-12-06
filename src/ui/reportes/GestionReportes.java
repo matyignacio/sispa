@@ -7,7 +7,6 @@ package ui.reportes;
 
 import controlador.ConexionDB;
 import java.sql.Connection;
-import ui.*;
 import java.net.URL;
 import java.util.HashMap;
 import java.sql.SQLException;

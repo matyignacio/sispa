@@ -6,7 +6,6 @@
 package ui.gestion;
 
 import controlador.CategoriaControlador;
-import controlador.MarcaControlador;
 import ui.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import objeto.Categoria;
 import ui.abm.AbmCategoria;
-import ui.abm.AbmMarca;
 import ui.grillas.GrillaCategorias;
 
 /**
