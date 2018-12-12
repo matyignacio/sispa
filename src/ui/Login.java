@@ -323,7 +323,7 @@ public class Login extends javax.swing.JFrame {
                     String subject = "Debe realizar mantenimiento a: ", mensaje = "";
                     for (int i = 0; i < autos.size(); i++) {
                         subject += autos.get(i).getDominio() + " - ";
-                        mensaje += "Marca: " + autos.get(i).getNombre() + " Modelo: " + autos.get(i).getModelo().getNombre()
+                        mensaje += "Nombre: " + autos.get(i).getNombre() + " Marca: " + autos.get(i).getModelo().getMarca().getNombre() + " Modelo: " + autos.get(i).getModelo().getNombre()
                                 + " con Dominio " + autos.get(i).getDominio() + "\n";
                     }
                     Properties props = new Properties();
