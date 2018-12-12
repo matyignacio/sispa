@@ -656,6 +656,8 @@ public class AbmMuebleMantenible extends javax.swing.JInternalFrame implements I
      *
      */
     public void inicializacionVentana() {
+        jcbReparticiones.setEnabled(false);
+        jcbReparticiones.setSelectedItem(Login.usuario.getReparticion());
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(muebleMantenible.getNombre());
             if (muebleMantenible.isVisible()) {

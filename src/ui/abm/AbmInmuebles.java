@@ -541,6 +541,8 @@ public class AbmInmuebles extends javax.swing.JInternalFrame implements IAbm {
      *
      */
     public void inicializacionVentana() {
+        jcbReparticiones.setEnabled(false);
+        jcbReparticiones.setSelectedItem(Login.usuario.getReparticion());
         if (!operacion.equals(Gestionable.ABM_ALTA)) {
             jtfNombre.setText(inmueble.getNombre());
             if (inmueble.isVisible()) {
