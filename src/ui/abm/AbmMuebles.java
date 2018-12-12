@@ -548,7 +548,7 @@ public class AbmMuebles extends javax.swing.JInternalFrame implements IAbm {
 
         jtfValor.setBackground(new java.awt.Color(204, 204, 204));
         jtfValor.setForeground(new java.awt.Color(33, 150, 243));
-        jtfValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        jtfValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jtfValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jpPrincipal.add(jtfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 220, 25));
 
